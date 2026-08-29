@@ -1,0 +1,9 @@
+version: v2
+modules:
+  - path: proto
+    name: buf.build/lihongjie0209/platform-protos
+lint:
+  use: [STANDARD]
+breaking:
+  use: [FILE]
+

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package platform.common.v1;
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1";
+
+import "google/protobuf/timestamp.proto";
+
+message PageRequest {
+  uint32 page = 1;
+  uint32 page_size = 2;
+}
+
+message PageResult {
+  uint64 total = 1;
+  uint32 page = 2;
+  uint32 page_size = 3;
+}
+
+message RequestContext {
+  string request_id = 1;
+  string trace_id = 2;
+  string actor_id = 3;
+  string actor_type = 4;
+  string tenant_id = 5;
+  string membership_id = 6;
+}
+
+message EventEnvelope {
+  string event_id = 1;
+  string event_type = 2;
+  string aggregate_id = 3;
+  string aggregate_type = 4;
+  string tenant_id = 5;
+  uint32 schema_version = 6;
+  google.protobuf.Timestamp occurred_at = 7;
+  RequestContext context = 8;
+  bytes payload = 9;
+}
+

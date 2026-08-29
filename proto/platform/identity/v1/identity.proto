@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package platform.identity.v1;
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/identity/v1;identityv1";
+
+import "google/protobuf/timestamp.proto";
+
+service IdentityService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc BatchGetUsers(BatchGetUsersRequest) returns (BatchGetUsersResponse);
+  rpc ValidateSession(ValidateSessionRequest) returns (ValidateSessionResponse);
+  rpc RevokeTenantSessions(RevokeTenantSessionsRequest) returns (RevokeTenantSessionsResponse);
+  rpc IssueTenantToken(IssueTenantTokenRequest) returns (IssueTenantTokenResponse);
+  rpc GetServiceAccount(GetServiceAccountRequest) returns (GetServiceAccountResponse);
+}
+
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_DISABLED = 2;
+  USER_STATUS_LOCKED = 3;
+  USER_STATUS_CLOSED = 4;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string display_name = 3;
+  string email = 4;
+  string phone = 5;
+  UserStatus status = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message GetUserRequest { string user_id = 1; }
+message GetUserResponse { User user = 1; }
+message BatchGetUsersRequest { repeated string user_ids = 1; }
+message BatchGetUsersResponse { repeated User users = 1; }
+message ValidateSessionRequest { string session_id = 1; string user_id = 2; }
+message ValidateSessionResponse { bool valid = 1; google.protobuf.Timestamp expires_at = 2; }
+message RevokeTenantSessionsRequest { string user_id = 1; string tenant_id = 2; string reason = 3; }
+message RevokeTenantSessionsResponse { uint64 revoked_count = 1; }
+message IssueTenantTokenRequest { string user_id = 1; string tenant_id = 2; string membership_id = 3; }
+message IssueTenantTokenResponse { string access_token = 1; google.protobuf.Timestamp expires_at = 2; }
+message GetServiceAccountRequest { string service_account_id = 1; }
+message GetServiceAccountResponse { string id = 1; string name = 2; bool enabled = 3; repeated string audiences = 4; }
+
+message UserStatusChangedEvent {
+  string user_id = 1;
+  UserStatus previous_status = 2;
+  UserStatus current_status = 3;
+  string reason = 4;
+}
+
+message SessionRevokedEvent {
+  string session_id = 1;
+  string user_id = 2;
+  string tenant_id = 3;
+  string reason = 4;
+}

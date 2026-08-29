@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package platform.tenant.v1;
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/tenant/v1;tenantv1";
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+service TenantService {
+  rpc ValidateMembership(ValidateMembershipRequest) returns (ValidateMembershipResponse);
+  rpc GetMembership(GetMembershipRequest) returns (GetMembershipResponse);
+  rpc ListUserTenants(ListUserTenantsRequest) returns (ListUserTenantsResponse);
+  rpc ResolveOrganizationScope(ResolveOrganizationScopeRequest) returns (ResolveOrganizationScopeResponse);
+}
+
+enum TenantStatus {
+  TENANT_STATUS_UNSPECIFIED = 0;
+  TENANT_STATUS_PENDING = 1;
+  TENANT_STATUS_ACTIVE = 2;
+  TENANT_STATUS_SUSPENDED = 3;
+  TENANT_STATUS_CLOSING = 4;
+  TENANT_STATUS_CLOSED = 5;
+}
+
+enum MembershipStatus {
+  MEMBERSHIP_STATUS_UNSPECIFIED = 0;
+  MEMBERSHIP_STATUS_INVITED = 1;
+  MEMBERSHIP_STATUS_ACTIVE = 2;
+  MEMBERSHIP_STATUS_DISABLED = 3;
+  MEMBERSHIP_STATUS_REMOVED = 4;
+}
+
+message Tenant {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  TenantStatus status = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message Membership {
+  string id = 1;
+  string tenant_id = 2;
+  string user_id = 3;
+  MembershipStatus status = 4;
+  string primary_organization_unit_id = 5;
+  google.protobuf.Timestamp joined_at = 6;
+}
+
+message ValidateMembershipRequest { string user_id = 1; string tenant_id = 2; }
+message ValidateMembershipResponse { bool valid = 1; Tenant tenant = 2; Membership membership = 3; }
+message GetMembershipRequest { string membership_id = 1; }
+message GetMembershipResponse { Membership membership = 1; }
+message ListUserTenantsRequest { string user_id = 1; platform.common.v1.PageRequest page = 2; }
+message ListUserTenantsResponse { repeated Tenant tenants = 1; platform.common.v1.PageResult page = 2; }
+message ResolveOrganizationScopeRequest { string membership_id = 1; }
+message ResolveOrganizationScopeResponse { repeated string organization_unit_ids = 1; }
+
+message MembershipChangedEvent {
+  string membership_id = 1;
+  string tenant_id = 2;
+  string user_id = 3;
+  MembershipStatus previous_status = 4;
+  MembershipStatus current_status = 5;
+  string reason = 6;
+}
+
+message TenantStatusChangedEvent {
+  string tenant_id = 1;
+  TenantStatus previous_status = 2;
+  TenantStatus current_status = 3;
+  string reason = 4;
+}
+

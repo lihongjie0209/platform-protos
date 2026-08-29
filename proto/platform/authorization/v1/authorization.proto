@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package platform.authorization.v1;
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/authorization/v1;authorizationv1";
+
+import "platform/common/v1/common.proto";
+
+service AuthorizationService {
+  rpc Check(CheckRequest) returns (CheckResponse);
+  rpc BatchCheck(BatchCheckRequest) returns (BatchCheckResponse);
+  rpc ResolveDataScope(ResolveDataScopeRequest) returns (ResolveDataScopeResponse);
+  rpc InvalidateSubject(InvalidateSubjectRequest) returns (InvalidateSubjectResponse);
+}
+
+enum SubjectType {
+  SUBJECT_TYPE_UNSPECIFIED = 0;
+  SUBJECT_TYPE_MEMBERSHIP = 1;
+  SUBJECT_TYPE_SERVICE_ACCOUNT = 2;
+  SUBJECT_TYPE_GROUP = 3;
+}
+
+enum DataScopeType {
+  DATA_SCOPE_TYPE_UNSPECIFIED = 0;
+  DATA_SCOPE_TYPE_NONE = 1;
+  DATA_SCOPE_TYPE_SELF = 2;
+  DATA_SCOPE_TYPE_ORGANIZATION = 3;
+  DATA_SCOPE_TYPE_TENANT = 4;
+  DATA_SCOPE_TYPE_ALL = 5;
+}
+
+message Subject { string id = 1; SubjectType type = 2; }
+
+message CheckRequest {
+  string tenant_id = 1;
+  Subject subject = 2;
+  string resource_type = 3;
+  string resource_id = 4;
+  string action = 5;
+  map<string, string> attributes = 6;
+  platform.common.v1.RequestContext context = 7;
+}
+
+message CheckResponse {
+  bool allowed = 1;
+  string decision_id = 2;
+  string reason = 3;
+  uint64 policy_version = 4;
+  DataScopeType data_scope = 5;
+  repeated string organization_unit_ids = 6;
+}
+
+message BatchCheckRequest { repeated CheckRequest checks = 1; }
+message BatchCheckResponse { repeated CheckResponse decisions = 1; }
+message ResolveDataScopeRequest { CheckRequest check = 1; }
+message ResolveDataScopeResponse { CheckResponse decision = 1; }
+message InvalidateSubjectRequest { string tenant_id = 1; Subject subject = 2; }
+message InvalidateSubjectResponse {}
+
+message AuthorizationChangedEvent {
+  string tenant_id = 1;
+  string subject_id = 2;
+  SubjectType subject_type = 3;
+  uint64 policy_version = 4;
+  string reason = 5;
+}
+
