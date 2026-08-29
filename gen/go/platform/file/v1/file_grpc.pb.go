@@ -19,12 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FileService_InitiateUpload_FullMethodName    = "/platform.file.v1.FileService/InitiateUpload"
-	FileService_CompleteUpload_FullMethodName    = "/platform.file.v1.FileService/CompleteUpload"
-	FileService_ReportScanResult_FullMethodName  = "/platform.file.v1.FileService/ReportScanResult"
-	FileService_AuthorizeDownload_FullMethodName = "/platform.file.v1.FileService/AuthorizeDownload"
-	FileService_GetMetadata_FullMethodName       = "/platform.file.v1.FileService/GetMetadata"
-	FileService_Delete_FullMethodName            = "/platform.file.v1.FileService/Delete"
+	FileService_InitiateUpload_FullMethodName          = "/platform.file.v1.FileService/InitiateUpload"
+	FileService_InitiateMultipartUpload_FullMethodName = "/platform.file.v1.FileService/InitiateMultipartUpload"
+	FileService_AuthorizeUploadPart_FullMethodName     = "/platform.file.v1.FileService/AuthorizeUploadPart"
+	FileService_CompleteMultipartUpload_FullMethodName = "/platform.file.v1.FileService/CompleteMultipartUpload"
+	FileService_AbortMultipartUpload_FullMethodName    = "/platform.file.v1.FileService/AbortMultipartUpload"
+	FileService_CompleteUpload_FullMethodName          = "/platform.file.v1.FileService/CompleteUpload"
+	FileService_ReportScanResult_FullMethodName        = "/platform.file.v1.FileService/ReportScanResult"
+	FileService_AuthorizeDownload_FullMethodName       = "/platform.file.v1.FileService/AuthorizeDownload"
+	FileService_GetMetadata_FullMethodName             = "/platform.file.v1.FileService/GetMetadata"
+	FileService_Delete_FullMethodName                  = "/platform.file.v1.FileService/Delete"
 )
 
 // FileServiceClient is the client API for FileService service.
@@ -32,6 +36,10 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FileServiceClient interface {
 	InitiateUpload(ctx context.Context, in *InitiateUploadRequest, opts ...grpc.CallOption) (*InitiateUploadResponse, error)
+	InitiateMultipartUpload(ctx context.Context, in *InitiateMultipartUploadRequest, opts ...grpc.CallOption) (*InitiateMultipartUploadResponse, error)
+	AuthorizeUploadPart(ctx context.Context, in *AuthorizeUploadPartRequest, opts ...grpc.CallOption) (*AuthorizeUploadPartResponse, error)
+	CompleteMultipartUpload(ctx context.Context, in *CompleteMultipartUploadRequest, opts ...grpc.CallOption) (*CompleteMultipartUploadResponse, error)
+	AbortMultipartUpload(ctx context.Context, in *AbortMultipartUploadRequest, opts ...grpc.CallOption) (*AbortMultipartUploadResponse, error)
 	CompleteUpload(ctx context.Context, in *CompleteUploadRequest, opts ...grpc.CallOption) (*CompleteUploadResponse, error)
 	ReportScanResult(ctx context.Context, in *ReportScanResultRequest, opts ...grpc.CallOption) (*ReportScanResultResponse, error)
 	AuthorizeDownload(ctx context.Context, in *AuthorizeDownloadRequest, opts ...grpc.CallOption) (*AuthorizeDownloadResponse, error)
@@ -51,6 +59,46 @@ func (c *fileServiceClient) InitiateUpload(ctx context.Context, in *InitiateUplo
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InitiateUploadResponse)
 	err := c.cc.Invoke(ctx, FileService_InitiateUpload_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) InitiateMultipartUpload(ctx context.Context, in *InitiateMultipartUploadRequest, opts ...grpc.CallOption) (*InitiateMultipartUploadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(InitiateMultipartUploadResponse)
+	err := c.cc.Invoke(ctx, FileService_InitiateMultipartUpload_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) AuthorizeUploadPart(ctx context.Context, in *AuthorizeUploadPartRequest, opts ...grpc.CallOption) (*AuthorizeUploadPartResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AuthorizeUploadPartResponse)
+	err := c.cc.Invoke(ctx, FileService_AuthorizeUploadPart_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) CompleteMultipartUpload(ctx context.Context, in *CompleteMultipartUploadRequest, opts ...grpc.CallOption) (*CompleteMultipartUploadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CompleteMultipartUploadResponse)
+	err := c.cc.Invoke(ctx, FileService_CompleteMultipartUpload_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) AbortMultipartUpload(ctx context.Context, in *AbortMultipartUploadRequest, opts ...grpc.CallOption) (*AbortMultipartUploadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AbortMultipartUploadResponse)
+	err := c.cc.Invoke(ctx, FileService_AbortMultipartUpload_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,6 +160,10 @@ func (c *fileServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts 
 // for forward compatibility.
 type FileServiceServer interface {
 	InitiateUpload(context.Context, *InitiateUploadRequest) (*InitiateUploadResponse, error)
+	InitiateMultipartUpload(context.Context, *InitiateMultipartUploadRequest) (*InitiateMultipartUploadResponse, error)
+	AuthorizeUploadPart(context.Context, *AuthorizeUploadPartRequest) (*AuthorizeUploadPartResponse, error)
+	CompleteMultipartUpload(context.Context, *CompleteMultipartUploadRequest) (*CompleteMultipartUploadResponse, error)
+	AbortMultipartUpload(context.Context, *AbortMultipartUploadRequest) (*AbortMultipartUploadResponse, error)
 	CompleteUpload(context.Context, *CompleteUploadRequest) (*CompleteUploadResponse, error)
 	ReportScanResult(context.Context, *ReportScanResultRequest) (*ReportScanResultResponse, error)
 	AuthorizeDownload(context.Context, *AuthorizeDownloadRequest) (*AuthorizeDownloadResponse, error)
@@ -129,6 +181,18 @@ type UnimplementedFileServiceServer struct{}
 
 func (UnimplementedFileServiceServer) InitiateUpload(context.Context, *InitiateUploadRequest) (*InitiateUploadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitiateUpload not implemented")
+}
+func (UnimplementedFileServiceServer) InitiateMultipartUpload(context.Context, *InitiateMultipartUploadRequest) (*InitiateMultipartUploadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InitiateMultipartUpload not implemented")
+}
+func (UnimplementedFileServiceServer) AuthorizeUploadPart(context.Context, *AuthorizeUploadPartRequest) (*AuthorizeUploadPartResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthorizeUploadPart not implemented")
+}
+func (UnimplementedFileServiceServer) CompleteMultipartUpload(context.Context, *CompleteMultipartUploadRequest) (*CompleteMultipartUploadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompleteMultipartUpload not implemented")
+}
+func (UnimplementedFileServiceServer) AbortMultipartUpload(context.Context, *AbortMultipartUploadRequest) (*AbortMultipartUploadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AbortMultipartUpload not implemented")
 }
 func (UnimplementedFileServiceServer) CompleteUpload(context.Context, *CompleteUploadRequest) (*CompleteUploadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompleteUpload not implemented")
@@ -180,6 +244,78 @@ func _FileService_InitiateUpload_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FileServiceServer).InitiateUpload(ctx, req.(*InitiateUploadRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_InitiateMultipartUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InitiateMultipartUploadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).InitiateMultipartUpload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_InitiateMultipartUpload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).InitiateMultipartUpload(ctx, req.(*InitiateMultipartUploadRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_AuthorizeUploadPart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthorizeUploadPartRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).AuthorizeUploadPart(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_AuthorizeUploadPart_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).AuthorizeUploadPart(ctx, req.(*AuthorizeUploadPartRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_CompleteMultipartUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompleteMultipartUploadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).CompleteMultipartUpload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_CompleteMultipartUpload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).CompleteMultipartUpload(ctx, req.(*CompleteMultipartUploadRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_AbortMultipartUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AbortMultipartUploadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).AbortMultipartUpload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_AbortMultipartUpload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).AbortMultipartUpload(ctx, req.(*AbortMultipartUploadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -284,6 +420,22 @@ var FileService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InitiateUpload",
 			Handler:    _FileService_InitiateUpload_Handler,
+		},
+		{
+			MethodName: "InitiateMultipartUpload",
+			Handler:    _FileService_InitiateMultipartUpload_Handler,
+		},
+		{
+			MethodName: "AuthorizeUploadPart",
+			Handler:    _FileService_AuthorizeUploadPart_Handler,
+		},
+		{
+			MethodName: "CompleteMultipartUpload",
+			Handler:    _FileService_CompleteMultipartUpload_Handler,
+		},
+		{
+			MethodName: "AbortMultipartUpload",
+			Handler:    _FileService_AbortMultipartUpload_Handler,
 		},
 		{
 			MethodName: "CompleteUpload",

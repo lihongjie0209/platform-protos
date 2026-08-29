@@ -8,6 +8,10 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/fi
 
 service FileService {
   rpc InitiateUpload(InitiateUploadRequest) returns (InitiateUploadResponse);
+  rpc InitiateMultipartUpload(InitiateMultipartUploadRequest) returns (InitiateMultipartUploadResponse);
+  rpc AuthorizeUploadPart(AuthorizeUploadPartRequest) returns (AuthorizeUploadPartResponse);
+  rpc CompleteMultipartUpload(CompleteMultipartUploadRequest) returns (CompleteMultipartUploadResponse);
+  rpc AbortMultipartUpload(AbortMultipartUploadRequest) returns (AbortMultipartUploadResponse);
   rpc CompleteUpload(CompleteUploadRequest) returns (CompleteUploadResponse);
   rpc ReportScanResult(ReportScanResultRequest) returns (ReportScanResultResponse);
   rpc AuthorizeDownload(AuthorizeDownloadRequest) returns (AuthorizeDownloadResponse);
@@ -31,6 +35,11 @@ message FileMetadata {
   google.protobuf.Timestamp updated_at = 14;
   string created_by = 15;
   string updated_by = 16;
+  string upload_mode = 17;
+  string multipart_upload_id = 18;
+  int64 part_size = 19;
+  int32 part_count = 20;
+  google.protobuf.Timestamp upload_expires_at = 21;
 }
 message InitiateUploadRequest {
   string tenant_id = 1;
@@ -45,6 +54,54 @@ message InitiateUploadResponse {
   string upload_url = 2;
   map<string, string> headers = 3;
   google.protobuf.Timestamp expires_at = 4;
+}
+message InitiateMultipartUploadRequest {
+  string tenant_id = 1;
+  string filename = 2;
+  string content_type = 3;
+  int64 size = 4;
+  string checksum_sha256 = 5;
+  string idempotency_key = 6;
+  int64 part_size = 7;
+}
+message InitiateMultipartUploadResponse {
+  FileMetadata file = 1;
+  string upload_id = 2;
+  int64 part_size = 3;
+  int32 part_count = 4;
+  google.protobuf.Timestamp expires_at = 5;
+}
+message AuthorizeUploadPartRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int32 part_number = 3;
+}
+message AuthorizeUploadPartResponse {
+  string upload_url = 1;
+  map<string, string> headers = 2;
+  google.protobuf.Timestamp expires_at = 3;
+}
+message CompletedPart {
+  int32 part_number = 1;
+  string etag = 2;
+}
+message CompleteMultipartUploadRequest {
+  string id = 1;
+  string tenant_id = 2;
+  repeated CompletedPart parts = 3;
+  string checksum_sha256 = 4;
+  int64 expected_version = 5;
+}
+message CompleteMultipartUploadResponse {
+  FileMetadata file = 1;
+}
+message AbortMultipartUploadRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+message AbortMultipartUploadResponse {
+  FileMetadata file = 1;
 }
 message CompleteUploadRequest {
   string id = 1;
