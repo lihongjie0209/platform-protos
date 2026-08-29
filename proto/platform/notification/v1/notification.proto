@@ -10,6 +10,7 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/no
 service NotificationService {
   rpc PutTemplate(PutTemplateRequest) returns (PutTemplateResponse);
   rpc Send(SendRequest) returns (SendResponse);
+  rpc RecordProviderReceipt(RecordProviderReceiptRequest) returns (RecordProviderReceiptResponse);
   rpc GetDelivery(GetDeliveryRequest) returns (GetDeliveryResponse);
   rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
 }
@@ -64,6 +65,16 @@ message SendRequest {
   string idempotency_key = 7;
 }
 message SendResponse {
+  Delivery delivery = 1;
+}
+message RecordProviderReceiptRequest {
+  string tenant_id = 1;
+  string provider = 2;
+  string provider_message_id = 3;
+  string status = 4;
+  string failure_reason = 5;
+}
+message RecordProviderReceiptResponse {
   Delivery delivery = 1;
 }
 message GetDeliveryRequest {

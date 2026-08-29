@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	NotificationService_PutTemplate_FullMethodName    = "/platform.notification.v1.NotificationService/PutTemplate"
-	NotificationService_Send_FullMethodName           = "/platform.notification.v1.NotificationService/Send"
-	NotificationService_GetDelivery_FullMethodName    = "/platform.notification.v1.NotificationService/GetDelivery"
-	NotificationService_ListDeliveries_FullMethodName = "/platform.notification.v1.NotificationService/ListDeliveries"
+	NotificationService_PutTemplate_FullMethodName           = "/platform.notification.v1.NotificationService/PutTemplate"
+	NotificationService_Send_FullMethodName                  = "/platform.notification.v1.NotificationService/Send"
+	NotificationService_RecordProviderReceipt_FullMethodName = "/platform.notification.v1.NotificationService/RecordProviderReceipt"
+	NotificationService_GetDelivery_FullMethodName           = "/platform.notification.v1.NotificationService/GetDelivery"
+	NotificationService_ListDeliveries_FullMethodName        = "/platform.notification.v1.NotificationService/ListDeliveries"
 )
 
 // NotificationServiceClient is the client API for NotificationService service.
@@ -31,6 +32,7 @@ const (
 type NotificationServiceClient interface {
 	PutTemplate(ctx context.Context, in *PutTemplateRequest, opts ...grpc.CallOption) (*PutTemplateResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
+	RecordProviderReceipt(ctx context.Context, in *RecordProviderReceiptRequest, opts ...grpc.CallOption) (*RecordProviderReceiptResponse, error)
 	GetDelivery(ctx context.Context, in *GetDeliveryRequest, opts ...grpc.CallOption) (*GetDeliveryResponse, error)
 	ListDeliveries(ctx context.Context, in *ListDeliveriesRequest, opts ...grpc.CallOption) (*ListDeliveriesResponse, error)
 }
@@ -63,6 +65,16 @@ func (c *notificationServiceClient) Send(ctx context.Context, in *SendRequest, o
 	return out, nil
 }
 
+func (c *notificationServiceClient) RecordProviderReceipt(ctx context.Context, in *RecordProviderReceiptRequest, opts ...grpc.CallOption) (*RecordProviderReceiptResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RecordProviderReceiptResponse)
+	err := c.cc.Invoke(ctx, NotificationService_RecordProviderReceipt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *notificationServiceClient) GetDelivery(ctx context.Context, in *GetDeliveryRequest, opts ...grpc.CallOption) (*GetDeliveryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetDeliveryResponse)
@@ -89,6 +101,7 @@ func (c *notificationServiceClient) ListDeliveries(ctx context.Context, in *List
 type NotificationServiceServer interface {
 	PutTemplate(context.Context, *PutTemplateRequest) (*PutTemplateResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
+	RecordProviderReceipt(context.Context, *RecordProviderReceiptRequest) (*RecordProviderReceiptResponse, error)
 	GetDelivery(context.Context, *GetDeliveryRequest) (*GetDeliveryResponse, error)
 	ListDeliveries(context.Context, *ListDeliveriesRequest) (*ListDeliveriesResponse, error)
 	mustEmbedUnimplementedNotificationServiceServer()
@@ -106,6 +119,9 @@ func (UnimplementedNotificationServiceServer) PutTemplate(context.Context, *PutT
 }
 func (UnimplementedNotificationServiceServer) Send(context.Context, *SendRequest) (*SendResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
+}
+func (UnimplementedNotificationServiceServer) RecordProviderReceipt(context.Context, *RecordProviderReceiptRequest) (*RecordProviderReceiptResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordProviderReceipt not implemented")
 }
 func (UnimplementedNotificationServiceServer) GetDelivery(context.Context, *GetDeliveryRequest) (*GetDeliveryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDelivery not implemented")
@@ -170,6 +186,24 @@ func _NotificationService_Send_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NotificationService_RecordProviderReceipt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordProviderReceiptRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationServiceServer).RecordProviderReceipt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotificationService_RecordProviderReceipt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationServiceServer).RecordProviderReceipt(ctx, req.(*RecordProviderReceiptRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _NotificationService_GetDelivery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetDeliveryRequest)
 	if err := dec(in); err != nil {
@@ -220,6 +254,10 @@ var NotificationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Send",
 			Handler:    _NotificationService_Send_Handler,
+		},
+		{
+			MethodName: "RecordProviderReceipt",
+			Handler:    _NotificationService_RecordProviderReceipt_Handler,
 		},
 		{
 			MethodName: "GetDelivery",
