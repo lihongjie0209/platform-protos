@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package platform.identity.v1;
 
-option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/identity/v1;identityv1";
-
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/identity/v1;identityv1";
 
 service IdentityService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
@@ -32,20 +32,57 @@ message User {
   UserStatus status = 6;
   google.protobuf.Timestamp created_at = 7;
   google.protobuf.Timestamp updated_at = 8;
+  int64 version = 9;
+  string created_by = 10;
+  string updated_by = 11;
 }
 
-message GetUserRequest { string user_id = 1; }
-message GetUserResponse { User user = 1; }
-message BatchGetUsersRequest { repeated string user_ids = 1; }
-message BatchGetUsersResponse { repeated User users = 1; }
-message ValidateSessionRequest { string session_id = 1; string user_id = 2; }
-message ValidateSessionResponse { bool valid = 1; google.protobuf.Timestamp expires_at = 2; }
-message RevokeTenantSessionsRequest { string user_id = 1; string tenant_id = 2; string reason = 3; }
-message RevokeTenantSessionsResponse { uint64 revoked_count = 1; }
-message IssueTenantTokenRequest { string user_id = 1; string tenant_id = 2; string membership_id = 3; }
-message IssueTenantTokenResponse { string access_token = 1; google.protobuf.Timestamp expires_at = 2; }
-message GetServiceAccountRequest { string service_account_id = 1; }
-message GetServiceAccountResponse { string id = 1; string name = 2; bool enabled = 3; repeated string audiences = 4; }
+message GetUserRequest {
+  string user_id = 1;
+}
+message GetUserResponse {
+  User user = 1;
+}
+message BatchGetUsersRequest {
+  repeated string user_ids = 1;
+}
+message BatchGetUsersResponse {
+  repeated User users = 1;
+}
+message ValidateSessionRequest {
+  string session_id = 1;
+  string user_id = 2;
+}
+message ValidateSessionResponse {
+  bool valid = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+message RevokeTenantSessionsRequest {
+  string user_id = 1;
+  string tenant_id = 2;
+  string reason = 3;
+}
+message RevokeTenantSessionsResponse {
+  uint64 revoked_count = 1;
+}
+message IssueTenantTokenRequest {
+  string user_id = 1;
+  string tenant_id = 2;
+  string membership_id = 3;
+}
+message IssueTenantTokenResponse {
+  string access_token = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+message GetServiceAccountRequest {
+  string service_account_id = 1;
+}
+message GetServiceAccountResponse {
+  string id = 1;
+  string name = 2;
+  bool enabled = 3;
+  repeated string audiences = 4;
+}
 
 message UserStatusChangedEvent {
   string user_id = 1;
@@ -54,9 +91,20 @@ message UserStatusChangedEvent {
   string reason = 4;
 }
 
+message UserCreatedEvent {
+  User user = 1;
+}
+
 message SessionRevokedEvent {
   string session_id = 1;
   string user_id = 2;
   string tenant_id = 3;
+  string reason = 4;
+}
+
+message ServiceAccountStatusChangedEvent {
+  string service_account_id = 1;
+  string previous_status = 2;
+  string current_status = 3;
   string reason = 4;
 }

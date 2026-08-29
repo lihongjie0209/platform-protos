@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package platform.audit.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/audit/v1;auditv1";
+
+service AuditService {
+  rpc Record(RecordRequest) returns (RecordResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Query(QueryRequest) returns (QueryResponse);
+  rpc Export(ExportRequest) returns (ExportResponse);
+}
+
+message AuditRecord {
+  string id = 1;
+  string tenant_id = 2;
+  string actor_id = 3;
+  string actor_type = 4;
+  string action = 5;
+  string resource_type = 6;
+  string resource_id = 7;
+  string request_id = 8;
+  string trace_id = 9;
+  string source_service = 10;
+  bytes before_summary = 11;
+  bytes after_summary = 12;
+  google.protobuf.Timestamp occurred_at = 13;
+  int64 version = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
+  string created_by = 17;
+  string updated_by = 18;
+}
+
+message RecordRequest {
+  AuditRecord record = 1;
+  string idempotency_key = 2;
+}
+message RecordResponse {
+  AuditRecord record = 1;
+}
+message GetRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message GetResponse {
+  AuditRecord record = 1;
+}
+message QueryRequest {
+  string tenant_id = 1;
+  string actor_id = 2;
+  string action = 3;
+  string resource_type = 4;
+  string resource_id = 5;
+  string request_id = 6;
+  google.protobuf.Timestamp occurred_from = 7;
+  google.protobuf.Timestamp occurred_to = 8;
+  platform.common.v1.PageRequest page = 9;
+}
+message QueryResponse {
+  repeated AuditRecord records = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message ExportRequest {
+  QueryRequest filter = 1;
+  int32 max_records = 2;
+}
+message ExportResponse {
+  bytes content = 1;
+  string content_type = 2;
+  string filename = 3;
+  int64 record_count = 4;
+}
+
+message AuditRecordedEvent {
+  AuditRecord record = 1;
+}

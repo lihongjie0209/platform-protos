@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package platform.file.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/file/v1;filev1";
+
+service FileService {
+  rpc InitiateUpload(InitiateUploadRequest) returns (InitiateUploadResponse);
+  rpc CompleteUpload(CompleteUploadRequest) returns (CompleteUploadResponse);
+  rpc ReportScanResult(ReportScanResultRequest) returns (ReportScanResultResponse);
+  rpc AuthorizeDownload(AuthorizeDownloadRequest) returns (AuthorizeDownloadResponse);
+  rpc GetMetadata(GetMetadataRequest) returns (GetMetadataResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+message FileMetadata {
+  string id = 1;
+  string tenant_id = 2;
+  string owner_id = 3;
+  string bucket = 4;
+  string object_key = 5;
+  string filename = 6;
+  string content_type = 7;
+  int64 size = 8;
+  string checksum_sha256 = 9;
+  string status = 10;
+  string scan_status = 11;
+  int64 version = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  string created_by = 15;
+  string updated_by = 16;
+}
+message InitiateUploadRequest {
+  string tenant_id = 1;
+  string filename = 2;
+  string content_type = 3;
+  int64 size = 4;
+  string checksum_sha256 = 5;
+  string idempotency_key = 6;
+}
+message InitiateUploadResponse {
+  FileMetadata file = 1;
+  string upload_url = 2;
+  map<string, string> headers = 3;
+  google.protobuf.Timestamp expires_at = 4;
+}
+message CompleteUploadRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string checksum_sha256 = 3;
+  int64 expected_version = 4;
+}
+message CompleteUploadResponse {
+  FileMetadata file = 1;
+}
+message ReportScanResultRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string scan_status = 3;
+  int64 expected_version = 4;
+}
+message ReportScanResultResponse {
+  FileMetadata file = 1;
+}
+message AuthorizeDownloadRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message AuthorizeDownloadResponse {
+  string download_url = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+message GetMetadataRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message GetMetadataResponse {
+  FileMetadata file = 1;
+}
+message DeleteRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+message DeleteResponse {
+  FileMetadata file = 1;
+}
+message FileStatusChangedEvent {
+  FileMetadata file = 1;
+}

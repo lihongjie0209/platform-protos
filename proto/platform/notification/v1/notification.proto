@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package platform.notification.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/notification/v1;notificationv1";
+
+service NotificationService {
+  rpc PutTemplate(PutTemplateRequest) returns (PutTemplateResponse);
+  rpc Send(SendRequest) returns (SendResponse);
+  rpc GetDelivery(GetDeliveryRequest) returns (GetDeliveryResponse);
+  rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
+}
+message Template {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string channel = 4;
+  string locale = 5;
+  string subject = 6;
+  string content = 7;
+  string status = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+message Delivery {
+  string id = 1;
+  string tenant_id = 2;
+  string template_code = 3;
+  string channel = 4;
+  string recipient = 5;
+  map<string, string> variables = 6;
+  string status = 7;
+  string provider = 8;
+  string provider_message_id = 9;
+  string failure_reason = 10;
+  int32 attempts = 11;
+  google.protobuf.Timestamp next_attempt_at = 12;
+  int64 version = 13;
+  google.protobuf.Timestamp created_at = 14;
+  google.protobuf.Timestamp updated_at = 15;
+  string created_by = 16;
+  string updated_by = 17;
+}
+message PutTemplateRequest {
+  Template template = 1;
+  int64 expected_version = 2;
+}
+message PutTemplateResponse {
+  Template template = 1;
+}
+message SendRequest {
+  string tenant_id = 1;
+  string template_code = 2;
+  string channel = 3;
+  string locale = 4;
+  string recipient = 5;
+  map<string, string> variables = 6;
+  string idempotency_key = 7;
+}
+message SendResponse {
+  Delivery delivery = 1;
+}
+message GetDeliveryRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message GetDeliveryResponse {
+  Delivery delivery = 1;
+}
+message ListDeliveriesRequest {
+  string tenant_id = 1;
+  string status = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListDeliveriesResponse {
+  repeated Delivery deliveries = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message NotificationRequestedEvent {
+  Delivery delivery = 1;
+}
+message NotificationStatusChangedEvent {
+  Delivery delivery = 1;
+}

@@ -19,10 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthorizationService_Check_FullMethodName             = "/platform.authorization.v1.AuthorizationService/Check"
-	AuthorizationService_BatchCheck_FullMethodName        = "/platform.authorization.v1.AuthorizationService/BatchCheck"
-	AuthorizationService_ResolveDataScope_FullMethodName  = "/platform.authorization.v1.AuthorizationService/ResolveDataScope"
-	AuthorizationService_InvalidateSubject_FullMethodName = "/platform.authorization.v1.AuthorizationService/InvalidateSubject"
+	AuthorizationService_Check_FullMethodName                = "/platform.authorization.v1.AuthorizationService/Check"
+	AuthorizationService_BatchCheck_FullMethodName           = "/platform.authorization.v1.AuthorizationService/BatchCheck"
+	AuthorizationService_ResolveDataScope_FullMethodName     = "/platform.authorization.v1.AuthorizationService/ResolveDataScope"
+	AuthorizationService_InvalidateSubject_FullMethodName    = "/platform.authorization.v1.AuthorizationService/InvalidateSubject"
+	AuthorizationService_CreatePermission_FullMethodName     = "/platform.authorization.v1.AuthorizationService/CreatePermission"
+	AuthorizationService_ListPermissions_FullMethodName      = "/platform.authorization.v1.AuthorizationService/ListPermissions"
+	AuthorizationService_CreateRole_FullMethodName           = "/platform.authorization.v1.AuthorizationService/CreateRole"
+	AuthorizationService_UpdateRole_FullMethodName           = "/platform.authorization.v1.AuthorizationService/UpdateRole"
+	AuthorizationService_ListRoles_FullMethodName            = "/platform.authorization.v1.AuthorizationService/ListRoles"
+	AuthorizationService_GrantRolePermission_FullMethodName  = "/platform.authorization.v1.AuthorizationService/GrantRolePermission"
+	AuthorizationService_RevokeRolePermission_FullMethodName = "/platform.authorization.v1.AuthorizationService/RevokeRolePermission"
+	AuthorizationService_ListRolePermissions_FullMethodName  = "/platform.authorization.v1.AuthorizationService/ListRolePermissions"
+	AuthorizationService_CreateBinding_FullMethodName        = "/platform.authorization.v1.AuthorizationService/CreateBinding"
+	AuthorizationService_RevokeBinding_FullMethodName        = "/platform.authorization.v1.AuthorizationService/RevokeBinding"
+	AuthorizationService_ListBindings_FullMethodName         = "/platform.authorization.v1.AuthorizationService/ListBindings"
 )
 
 // AuthorizationServiceClient is the client API for AuthorizationService service.
@@ -33,6 +44,17 @@ type AuthorizationServiceClient interface {
 	BatchCheck(ctx context.Context, in *BatchCheckRequest, opts ...grpc.CallOption) (*BatchCheckResponse, error)
 	ResolveDataScope(ctx context.Context, in *ResolveDataScopeRequest, opts ...grpc.CallOption) (*ResolveDataScopeResponse, error)
 	InvalidateSubject(ctx context.Context, in *InvalidateSubjectRequest, opts ...grpc.CallOption) (*InvalidateSubjectResponse, error)
+	CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error)
+	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
+	CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*CreateRoleResponse, error)
+	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
+	ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error)
+	GrantRolePermission(ctx context.Context, in *GrantRolePermissionRequest, opts ...grpc.CallOption) (*GrantRolePermissionResponse, error)
+	RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*RevokeRolePermissionResponse, error)
+	ListRolePermissions(ctx context.Context, in *ListRolePermissionsRequest, opts ...grpc.CallOption) (*ListRolePermissionsResponse, error)
+	CreateBinding(ctx context.Context, in *CreateBindingRequest, opts ...grpc.CallOption) (*CreateBindingResponse, error)
+	RevokeBinding(ctx context.Context, in *RevokeBindingRequest, opts ...grpc.CallOption) (*RevokeBindingResponse, error)
+	ListBindings(ctx context.Context, in *ListBindingsRequest, opts ...grpc.CallOption) (*ListBindingsResponse, error)
 }
 
 type authorizationServiceClient struct {
@@ -83,6 +105,116 @@ func (c *authorizationServiceClient) InvalidateSubject(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *authorizationServiceClient) CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreatePermissionResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_CreatePermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListPermissionsResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_ListPermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*CreateRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateRoleResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_CreateRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateRoleResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_UpdateRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) ListRoles(ctx context.Context, in *ListRolesRequest, opts ...grpc.CallOption) (*ListRolesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRolesResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_ListRoles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) GrantRolePermission(ctx context.Context, in *GrantRolePermissionRequest, opts ...grpc.CallOption) (*GrantRolePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GrantRolePermissionResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_GrantRolePermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*RevokeRolePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevokeRolePermissionResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_RevokeRolePermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) ListRolePermissions(ctx context.Context, in *ListRolePermissionsRequest, opts ...grpc.CallOption) (*ListRolePermissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListRolePermissionsResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_ListRolePermissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) CreateBinding(ctx context.Context, in *CreateBindingRequest, opts ...grpc.CallOption) (*CreateBindingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateBindingResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_CreateBinding_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) RevokeBinding(ctx context.Context, in *RevokeBindingRequest, opts ...grpc.CallOption) (*RevokeBindingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RevokeBindingResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_RevokeBinding_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) ListBindings(ctx context.Context, in *ListBindingsRequest, opts ...grpc.CallOption) (*ListBindingsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListBindingsResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_ListBindings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthorizationServiceServer is the server API for AuthorizationService service.
 // All implementations must embed UnimplementedAuthorizationServiceServer
 // for forward compatibility.
@@ -91,6 +223,17 @@ type AuthorizationServiceServer interface {
 	BatchCheck(context.Context, *BatchCheckRequest) (*BatchCheckResponse, error)
 	ResolveDataScope(context.Context, *ResolveDataScopeRequest) (*ResolveDataScopeResponse, error)
 	InvalidateSubject(context.Context, *InvalidateSubjectRequest) (*InvalidateSubjectResponse, error)
+	CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error)
+	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
+	CreateRole(context.Context, *CreateRoleRequest) (*CreateRoleResponse, error)
+	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
+	ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error)
+	GrantRolePermission(context.Context, *GrantRolePermissionRequest) (*GrantRolePermissionResponse, error)
+	RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*RevokeRolePermissionResponse, error)
+	ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error)
+	CreateBinding(context.Context, *CreateBindingRequest) (*CreateBindingResponse, error)
+	RevokeBinding(context.Context, *RevokeBindingRequest) (*RevokeBindingResponse, error)
+	ListBindings(context.Context, *ListBindingsRequest) (*ListBindingsResponse, error)
 	mustEmbedUnimplementedAuthorizationServiceServer()
 }
 
@@ -112,6 +255,39 @@ func (UnimplementedAuthorizationServiceServer) ResolveDataScope(context.Context,
 }
 func (UnimplementedAuthorizationServiceServer) InvalidateSubject(context.Context, *InvalidateSubjectRequest) (*InvalidateSubjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InvalidateSubject not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePermission not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPermissions not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) CreateRole(context.Context, *CreateRoleRequest) (*CreateRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) ListRoles(context.Context, *ListRolesRequest) (*ListRolesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) GrantRolePermission(context.Context, *GrantRolePermissionRequest) (*GrantRolePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GrantRolePermission not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*RevokeRolePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeRolePermission not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRolePermissions not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) CreateBinding(context.Context, *CreateBindingRequest) (*CreateBindingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBinding not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) RevokeBinding(context.Context, *RevokeBindingRequest) (*RevokeBindingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RevokeBinding not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) ListBindings(context.Context, *ListBindingsRequest) (*ListBindingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBindings not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) mustEmbedUnimplementedAuthorizationServiceServer() {}
 func (UnimplementedAuthorizationServiceServer) testEmbeddedByValue()                              {}
@@ -206,6 +382,204 @@ func _AuthorizationService_InvalidateSubject_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthorizationService_CreatePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).CreatePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_CreatePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).CreatePermission(ctx, req.(*CreatePermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_ListPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).ListPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_ListPermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).ListPermissions(ctx, req.(*ListPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_CreateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).CreateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_CreateRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).CreateRole(ctx, req.(*CreateRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).UpdateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_UpdateRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).UpdateRole(ctx, req.(*UpdateRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_ListRoles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRolesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).ListRoles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_ListRoles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).ListRoles(ctx, req.(*ListRolesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_GrantRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GrantRolePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).GrantRolePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_GrantRolePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).GrantRolePermission(ctx, req.(*GrantRolePermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_RevokeRolePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeRolePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).RevokeRolePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_RevokeRolePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).RevokeRolePermission(ctx, req.(*RevokeRolePermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_ListRolePermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRolePermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).ListRolePermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_ListRolePermissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).ListRolePermissions(ctx, req.(*ListRolePermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_CreateBinding_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBindingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).CreateBinding(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_CreateBinding_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).CreateBinding(ctx, req.(*CreateBindingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_RevokeBinding_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RevokeBindingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).RevokeBinding(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_RevokeBinding_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).RevokeBinding(ctx, req.(*RevokeBindingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_ListBindings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBindingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).ListBindings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_ListBindings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).ListBindings(ctx, req.(*ListBindingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthorizationService_ServiceDesc is the grpc.ServiceDesc for AuthorizationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +602,50 @@ var AuthorizationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InvalidateSubject",
 			Handler:    _AuthorizationService_InvalidateSubject_Handler,
+		},
+		{
+			MethodName: "CreatePermission",
+			Handler:    _AuthorizationService_CreatePermission_Handler,
+		},
+		{
+			MethodName: "ListPermissions",
+			Handler:    _AuthorizationService_ListPermissions_Handler,
+		},
+		{
+			MethodName: "CreateRole",
+			Handler:    _AuthorizationService_CreateRole_Handler,
+		},
+		{
+			MethodName: "UpdateRole",
+			Handler:    _AuthorizationService_UpdateRole_Handler,
+		},
+		{
+			MethodName: "ListRoles",
+			Handler:    _AuthorizationService_ListRoles_Handler,
+		},
+		{
+			MethodName: "GrantRolePermission",
+			Handler:    _AuthorizationService_GrantRolePermission_Handler,
+		},
+		{
+			MethodName: "RevokeRolePermission",
+			Handler:    _AuthorizationService_RevokeRolePermission_Handler,
+		},
+		{
+			MethodName: "ListRolePermissions",
+			Handler:    _AuthorizationService_ListRolePermissions_Handler,
+		},
+		{
+			MethodName: "CreateBinding",
+			Handler:    _AuthorizationService_CreateBinding_Handler,
+		},
+		{
+			MethodName: "RevokeBinding",
+			Handler:    _AuthorizationService_RevokeBinding_Handler,
+		},
+		{
+			MethodName: "ListBindings",
+			Handler:    _AuthorizationService_ListBindings_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

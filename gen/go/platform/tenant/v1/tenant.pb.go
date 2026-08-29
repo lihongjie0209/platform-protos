@@ -144,6 +144,9 @@ type Tenant struct {
 	Status        TenantStatus           `protobuf:"varint,4,opt,name=status,proto3,enum=platform.tenant.v1.TenantStatus" json:"status,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Version       int64                  `protobuf:"varint,7,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,8,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,9,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -220,6 +223,27 @@ func (x *Tenant) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Tenant) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *Tenant) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Tenant) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
 type Membership struct {
 	state                     protoimpl.MessageState `protogen:"open.v1"`
 	Id                        string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -228,6 +252,11 @@ type Membership struct {
 	Status                    MembershipStatus       `protobuf:"varint,4,opt,name=status,proto3,enum=platform.tenant.v1.MembershipStatus" json:"status,omitempty"`
 	PrimaryOrganizationUnitId string                 `protobuf:"bytes,5,opt,name=primary_organization_unit_id,json=primaryOrganizationUnitId,proto3" json:"primary_organization_unit_id,omitempty"`
 	JoinedAt                  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
+	Version                   int64                  `protobuf:"varint,7,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt                 *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt                 *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy                 string                 `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy                 string                 `protobuf:"bytes,11,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
 	unknownFields             protoimpl.UnknownFields
 	sizeCache                 protoimpl.SizeCache
 }
@@ -304,6 +333,2713 @@ func (x *Membership) GetJoinedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *Membership) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *Membership) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Membership) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Membership) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Membership) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
+type OrganizationUnit struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ParentId      string                 `protobuf:"bytes,3,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
+	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Path          string                 `protobuf:"bytes,6,opt,name=path,proto3" json:"path,omitempty"`
+	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
+	Version       int64                  `protobuf:"varint,8,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,11,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,12,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OrganizationUnit) Reset() {
+	*x = OrganizationUnit{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrganizationUnit) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrganizationUnit) ProtoMessage() {}
+
+func (x *OrganizationUnit) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrganizationUnit.ProtoReflect.Descriptor instead.
+func (*OrganizationUnit) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *OrganizationUnit) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetParentId() string {
+	if x != nil {
+		return x.ParentId
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *OrganizationUnit) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *OrganizationUnit) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *OrganizationUnit) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *OrganizationUnit) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
+type Invitation struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId         string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Email            string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Status           string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	ExpiresAt        *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	AcceptedByUserId string                 `protobuf:"bytes,6,opt,name=accepted_by_user_id,json=acceptedByUserId,proto3" json:"accepted_by_user_id,omitempty"`
+	Version          int64                  `protobuf:"varint,7,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt        *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt        *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy        string                 `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy        string                 `protobuf:"bytes,11,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *Invitation) Reset() {
+	*x = Invitation{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Invitation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Invitation) ProtoMessage() {}
+
+func (x *Invitation) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Invitation.ProtoReflect.Descriptor instead.
+func (*Invitation) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Invitation) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Invitation) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *Invitation) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *Invitation) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *Invitation) GetExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresAt
+	}
+	return nil
+}
+
+func (x *Invitation) GetAcceptedByUserId() string {
+	if x != nil {
+		return x.AcceptedByUserId
+	}
+	return ""
+}
+
+func (x *Invitation) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *Invitation) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Invitation) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Invitation) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Invitation) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
+type Group struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	Version       int64                  `protobuf:"varint,6,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,9,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,10,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Group) Reset() {
+	*x = Group{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Group) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Group) ProtoMessage() {}
+
+func (x *Group) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Group.ProtoReflect.Descriptor instead.
+func (*Group) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Group) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Group) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *Group) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *Group) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Group) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *Group) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *Group) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Group) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Group) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Group) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
+type Quota struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Limit         int64                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	Used          int64                  `protobuf:"varint,4,opt,name=used,proto3" json:"used,omitempty"`
+	Version       int64                  `protobuf:"varint,5,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,8,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,9,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Quota) Reset() {
+	*x = Quota{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Quota) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Quota) ProtoMessage() {}
+
+func (x *Quota) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Quota.ProtoReflect.Descriptor instead.
+func (*Quota) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Quota) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *Quota) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Quota) GetLimit() int64 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *Quota) GetUsed() int64 {
+	if x != nil {
+		return x.Used
+	}
+	return 0
+}
+
+func (x *Quota) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *Quota) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Quota) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Quota) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *Quota) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
+}
+
+type CreateTenantRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          string                 `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	OwnerUserId   string                 `protobuf:"bytes,3,opt,name=owner_user_id,json=ownerUserId,proto3" json:"owner_user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateTenantRequest) Reset() {
+	*x = CreateTenantRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTenantRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTenantRequest) ProtoMessage() {}
+
+func (x *CreateTenantRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTenantRequest.ProtoReflect.Descriptor instead.
+func (*CreateTenantRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreateTenantRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *CreateTenantRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateTenantRequest) GetOwnerUserId() string {
+	if x != nil {
+		return x.OwnerUserId
+	}
+	return ""
+}
+
+type CreateTenantResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Tenant          *Tenant                `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	OwnerMembership *Membership            `protobuf:"bytes,2,opt,name=owner_membership,json=ownerMembership,proto3" json:"owner_membership,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CreateTenantResponse) Reset() {
+	*x = CreateTenantResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateTenantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateTenantResponse) ProtoMessage() {}
+
+func (x *CreateTenantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateTenantResponse.ProtoReflect.Descriptor instead.
+func (*CreateTenantResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CreateTenantResponse) GetTenant() *Tenant {
+	if x != nil {
+		return x.Tenant
+	}
+	return nil
+}
+
+func (x *CreateTenantResponse) GetOwnerMembership() *Membership {
+	if x != nil {
+		return x.OwnerMembership
+	}
+	return nil
+}
+
+type GetTenantRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTenantRequest) Reset() {
+	*x = GetTenantRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTenantRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTenantRequest) ProtoMessage() {}
+
+func (x *GetTenantRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTenantRequest.ProtoReflect.Descriptor instead.
+func (*GetTenantRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetTenantRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type GetTenantResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tenant        *Tenant                `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTenantResponse) Reset() {
+	*x = GetTenantResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTenantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTenantResponse) ProtoMessage() {}
+
+func (x *GetTenantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTenantResponse.ProtoReflect.Descriptor instead.
+func (*GetTenantResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetTenantResponse) GetTenant() *Tenant {
+	if x != nil {
+		return x.Tenant
+	}
+	return nil
+}
+
+type UpdateTenantRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	TenantId        string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Status          TenantStatus           `protobuf:"varint,3,opt,name=status,proto3,enum=platform.tenant.v1.TenantStatus" json:"status,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	Reason          string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateTenantRequest) Reset() {
+	*x = UpdateTenantRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTenantRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTenantRequest) ProtoMessage() {}
+
+func (x *UpdateTenantRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTenantRequest.ProtoReflect.Descriptor instead.
+func (*UpdateTenantRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateTenantRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *UpdateTenantRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateTenantRequest) GetStatus() TenantStatus {
+	if x != nil {
+		return x.Status
+	}
+	return TenantStatus_TENANT_STATUS_UNSPECIFIED
+}
+
+func (x *UpdateTenantRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+func (x *UpdateTenantRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type UpdateTenantResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tenant        *Tenant                `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateTenantResponse) Reset() {
+	*x = UpdateTenantResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateTenantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTenantResponse) ProtoMessage() {}
+
+func (x *UpdateTenantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTenantResponse.ProtoReflect.Descriptor instead.
+func (*UpdateTenantResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateTenantResponse) GetTenant() *Tenant {
+	if x != nil {
+		return x.Tenant
+	}
+	return nil
+}
+
+type AddMembershipRequest struct {
+	state                     protoimpl.MessageState `protogen:"open.v1"`
+	TenantId                  string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserId                    string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	PrimaryOrganizationUnitId string                 `protobuf:"bytes,3,opt,name=primary_organization_unit_id,json=primaryOrganizationUnitId,proto3" json:"primary_organization_unit_id,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
+func (x *AddMembershipRequest) Reset() {
+	*x = AddMembershipRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddMembershipRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddMembershipRequest) ProtoMessage() {}
+
+func (x *AddMembershipRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddMembershipRequest.ProtoReflect.Descriptor instead.
+func (*AddMembershipRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AddMembershipRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *AddMembershipRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *AddMembershipRequest) GetPrimaryOrganizationUnitId() string {
+	if x != nil {
+		return x.PrimaryOrganizationUnitId
+	}
+	return ""
+}
+
+type AddMembershipResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Membership    *Membership            `protobuf:"bytes,1,opt,name=membership,proto3" json:"membership,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddMembershipResponse) Reset() {
+	*x = AddMembershipResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddMembershipResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddMembershipResponse) ProtoMessage() {}
+
+func (x *AddMembershipResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddMembershipResponse.ProtoReflect.Descriptor instead.
+func (*AddMembershipResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AddMembershipResponse) GetMembership() *Membership {
+	if x != nil {
+		return x.Membership
+	}
+	return nil
+}
+
+type UpdateMembershipRequest struct {
+	state                     protoimpl.MessageState `protogen:"open.v1"`
+	MembershipId              string                 `protobuf:"bytes,1,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	Status                    MembershipStatus       `protobuf:"varint,2,opt,name=status,proto3,enum=platform.tenant.v1.MembershipStatus" json:"status,omitempty"`
+	PrimaryOrganizationUnitId string                 `protobuf:"bytes,3,opt,name=primary_organization_unit_id,json=primaryOrganizationUnitId,proto3" json:"primary_organization_unit_id,omitempty"`
+	ExpectedVersion           int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	Reason                    string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
+func (x *UpdateMembershipRequest) Reset() {
+	*x = UpdateMembershipRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateMembershipRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMembershipRequest) ProtoMessage() {}
+
+func (x *UpdateMembershipRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMembershipRequest.ProtoReflect.Descriptor instead.
+func (*UpdateMembershipRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UpdateMembershipRequest) GetMembershipId() string {
+	if x != nil {
+		return x.MembershipId
+	}
+	return ""
+}
+
+func (x *UpdateMembershipRequest) GetStatus() MembershipStatus {
+	if x != nil {
+		return x.Status
+	}
+	return MembershipStatus_MEMBERSHIP_STATUS_UNSPECIFIED
+}
+
+func (x *UpdateMembershipRequest) GetPrimaryOrganizationUnitId() string {
+	if x != nil {
+		return x.PrimaryOrganizationUnitId
+	}
+	return ""
+}
+
+func (x *UpdateMembershipRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+func (x *UpdateMembershipRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type UpdateMembershipResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Membership    *Membership            `protobuf:"bytes,1,opt,name=membership,proto3" json:"membership,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateMembershipResponse) Reset() {
+	*x = UpdateMembershipResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateMembershipResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMembershipResponse) ProtoMessage() {}
+
+func (x *UpdateMembershipResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMembershipResponse.ProtoReflect.Descriptor instead.
+func (*UpdateMembershipResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateMembershipResponse) GetMembership() *Membership {
+	if x != nil {
+		return x.Membership
+	}
+	return nil
+}
+
+type CreateOrganizationUnitRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ParentId      string                 `protobuf:"bytes,2,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateOrganizationUnitRequest) Reset() {
+	*x = CreateOrganizationUnitRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateOrganizationUnitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateOrganizationUnitRequest) ProtoMessage() {}
+
+func (x *CreateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateOrganizationUnitRequest.ProtoReflect.Descriptor instead.
+func (*CreateOrganizationUnitRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *CreateOrganizationUnitRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CreateOrganizationUnitRequest) GetParentId() string {
+	if x != nil {
+		return x.ParentId
+	}
+	return ""
+}
+
+func (x *CreateOrganizationUnitRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *CreateOrganizationUnitRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateOrganizationUnitResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnit *OrganizationUnit      `protobuf:"bytes,1,opt,name=organization_unit,json=organizationUnit,proto3" json:"organization_unit,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CreateOrganizationUnitResponse) Reset() {
+	*x = CreateOrganizationUnitResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateOrganizationUnitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateOrganizationUnitResponse) ProtoMessage() {}
+
+func (x *CreateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateOrganizationUnitResponse.ProtoReflect.Descriptor instead.
+func (*CreateOrganizationUnitResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *CreateOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
+	if x != nil {
+		return x.OrganizationUnit
+	}
+	return nil
+}
+
+type GetOrganizationUnitRequest struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnitId string                 `protobuf:"bytes,1,opt,name=organization_unit_id,json=organizationUnitId,proto3" json:"organization_unit_id,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *GetOrganizationUnitRequest) Reset() {
+	*x = GetOrganizationUnitRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOrganizationUnitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOrganizationUnitRequest) ProtoMessage() {}
+
+func (x *GetOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOrganizationUnitRequest.ProtoReflect.Descriptor instead.
+func (*GetOrganizationUnitRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetOrganizationUnitRequest) GetOrganizationUnitId() string {
+	if x != nil {
+		return x.OrganizationUnitId
+	}
+	return ""
+}
+
+type GetOrganizationUnitResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnit *OrganizationUnit      `protobuf:"bytes,1,opt,name=organization_unit,json=organizationUnit,proto3" json:"organization_unit,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GetOrganizationUnitResponse) Reset() {
+	*x = GetOrganizationUnitResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetOrganizationUnitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetOrganizationUnitResponse) ProtoMessage() {}
+
+func (x *GetOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetOrganizationUnitResponse.ProtoReflect.Descriptor instead.
+func (*GetOrganizationUnitResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
+	if x != nil {
+		return x.OrganizationUnit
+	}
+	return nil
+}
+
+type UpdateOrganizationUnitRequest struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnitId string                 `protobuf:"bytes,1,opt,name=organization_unit_id,json=organizationUnitId,proto3" json:"organization_unit_id,omitempty"`
+	ParentId           string                 `protobuf:"bytes,2,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
+	Name               string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Status             string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	ExpectedVersion    int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *UpdateOrganizationUnitRequest) Reset() {
+	*x = UpdateOrganizationUnitRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateOrganizationUnitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateOrganizationUnitRequest) ProtoMessage() {}
+
+func (x *UpdateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateOrganizationUnitRequest.ProtoReflect.Descriptor instead.
+func (*UpdateOrganizationUnitRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *UpdateOrganizationUnitRequest) GetOrganizationUnitId() string {
+	if x != nil {
+		return x.OrganizationUnitId
+	}
+	return ""
+}
+
+func (x *UpdateOrganizationUnitRequest) GetParentId() string {
+	if x != nil {
+		return x.ParentId
+	}
+	return ""
+}
+
+func (x *UpdateOrganizationUnitRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateOrganizationUnitRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateOrganizationUnitRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type UpdateOrganizationUnitResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnit *OrganizationUnit      `protobuf:"bytes,1,opt,name=organization_unit,json=organizationUnit,proto3" json:"organization_unit,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *UpdateOrganizationUnitResponse) Reset() {
+	*x = UpdateOrganizationUnitResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateOrganizationUnitResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateOrganizationUnitResponse) ProtoMessage() {}
+
+func (x *UpdateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateOrganizationUnitResponse.ProtoReflect.Descriptor instead.
+func (*UpdateOrganizationUnitResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UpdateOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
+	if x != nil {
+		return x.OrganizationUnit
+	}
+	return nil
+}
+
+type ListOrganizationUnitsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListOrganizationUnitsRequest) Reset() {
+	*x = ListOrganizationUnitsRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOrganizationUnitsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOrganizationUnitsRequest) ProtoMessage() {}
+
+func (x *ListOrganizationUnitsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOrganizationUnitsRequest.ProtoReflect.Descriptor instead.
+func (*ListOrganizationUnitsRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *ListOrganizationUnitsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type ListOrganizationUnitsResponse struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnits []*OrganizationUnit    `protobuf:"bytes,1,rep,name=organization_units,json=organizationUnits,proto3" json:"organization_units,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *ListOrganizationUnitsResponse) Reset() {
+	*x = ListOrganizationUnitsResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListOrganizationUnitsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListOrganizationUnitsResponse) ProtoMessage() {}
+
+func (x *ListOrganizationUnitsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListOrganizationUnitsResponse.ProtoReflect.Descriptor instead.
+func (*ListOrganizationUnitsResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *ListOrganizationUnitsResponse) GetOrganizationUnits() []*OrganizationUnit {
+	if x != nil {
+		return x.OrganizationUnits
+	}
+	return nil
+}
+
+type CreateInvitationRequest struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	TenantId         string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Email            string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	ExpiresInSeconds int64                  `protobuf:"varint,3,opt,name=expires_in_seconds,json=expiresInSeconds,proto3" json:"expires_in_seconds,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *CreateInvitationRequest) Reset() {
+	*x = CreateInvitationRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateInvitationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateInvitationRequest) ProtoMessage() {}
+
+func (x *CreateInvitationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateInvitationRequest.ProtoReflect.Descriptor instead.
+func (*CreateInvitationRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *CreateInvitationRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CreateInvitationRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *CreateInvitationRequest) GetExpiresInSeconds() int64 {
+	if x != nil {
+		return x.ExpiresInSeconds
+	}
+	return 0
+}
+
+type CreateInvitationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Invitation    *Invitation            `protobuf:"bytes,1,opt,name=invitation,proto3" json:"invitation,omitempty"`
+	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateInvitationResponse) Reset() {
+	*x = CreateInvitationResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateInvitationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateInvitationResponse) ProtoMessage() {}
+
+func (x *CreateInvitationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateInvitationResponse.ProtoReflect.Descriptor instead.
+func (*CreateInvitationResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *CreateInvitationResponse) GetInvitation() *Invitation {
+	if x != nil {
+		return x.Invitation
+	}
+	return nil
+}
+
+func (x *CreateInvitationResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+type AcceptInvitationRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AcceptInvitationRequest) Reset() {
+	*x = AcceptInvitationRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AcceptInvitationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AcceptInvitationRequest) ProtoMessage() {}
+
+func (x *AcceptInvitationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AcceptInvitationRequest.ProtoReflect.Descriptor instead.
+func (*AcceptInvitationRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *AcceptInvitationRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *AcceptInvitationRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type AcceptInvitationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Invitation    *Invitation            `protobuf:"bytes,1,opt,name=invitation,proto3" json:"invitation,omitempty"`
+	Membership    *Membership            `protobuf:"bytes,2,opt,name=membership,proto3" json:"membership,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AcceptInvitationResponse) Reset() {
+	*x = AcceptInvitationResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AcceptInvitationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AcceptInvitationResponse) ProtoMessage() {}
+
+func (x *AcceptInvitationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AcceptInvitationResponse.ProtoReflect.Descriptor instead.
+func (*AcceptInvitationResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *AcceptInvitationResponse) GetInvitation() *Invitation {
+	if x != nil {
+		return x.Invitation
+	}
+	return nil
+}
+
+func (x *AcceptInvitationResponse) GetMembership() *Membership {
+	if x != nil {
+		return x.Membership
+	}
+	return nil
+}
+
+type RevokeInvitationRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	InvitationId    string                 `protobuf:"bytes,1,opt,name=invitation_id,json=invitationId,proto3" json:"invitation_id,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,2,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *RevokeInvitationRequest) Reset() {
+	*x = RevokeInvitationRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevokeInvitationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevokeInvitationRequest) ProtoMessage() {}
+
+func (x *RevokeInvitationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevokeInvitationRequest.ProtoReflect.Descriptor instead.
+func (*RevokeInvitationRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *RevokeInvitationRequest) GetInvitationId() string {
+	if x != nil {
+		return x.InvitationId
+	}
+	return ""
+}
+
+func (x *RevokeInvitationRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type RevokeInvitationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Invitation    *Invitation            `protobuf:"bytes,1,opt,name=invitation,proto3" json:"invitation,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RevokeInvitationResponse) Reset() {
+	*x = RevokeInvitationResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RevokeInvitationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RevokeInvitationResponse) ProtoMessage() {}
+
+func (x *RevokeInvitationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RevokeInvitationResponse.ProtoReflect.Descriptor instead.
+func (*RevokeInvitationResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *RevokeInvitationResponse) GetInvitation() *Invitation {
+	if x != nil {
+		return x.Invitation
+	}
+	return nil
+}
+
+type ListInvitationsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Page          *v1.PageRequest        `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListInvitationsRequest) Reset() {
+	*x = ListInvitationsRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListInvitationsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListInvitationsRequest) ProtoMessage() {}
+
+func (x *ListInvitationsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListInvitationsRequest.ProtoReflect.Descriptor instead.
+func (*ListInvitationsRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *ListInvitationsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ListInvitationsRequest) GetPage() *v1.PageRequest {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type ListInvitationsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Invitations   []*Invitation          `protobuf:"bytes,1,rep,name=invitations,proto3" json:"invitations,omitempty"`
+	Page          *v1.PageResult         `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListInvitationsResponse) Reset() {
+	*x = ListInvitationsResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListInvitationsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListInvitationsResponse) ProtoMessage() {}
+
+func (x *ListInvitationsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListInvitationsResponse.ProtoReflect.Descriptor instead.
+func (*ListInvitationsResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ListInvitationsResponse) GetInvitations() []*Invitation {
+	if x != nil {
+		return x.Invitations
+	}
+	return nil
+}
+
+func (x *ListInvitationsResponse) GetPage() *v1.PageResult {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type CreateGroupRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateGroupRequest) Reset() {
+	*x = CreateGroupRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateGroupRequest) ProtoMessage() {}
+
+func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateGroupRequest.ProtoReflect.Descriptor instead.
+func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *CreateGroupRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CreateGroupRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *CreateGroupRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateGroupResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Group         *Group                 `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateGroupResponse) Reset() {
+	*x = CreateGroupResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateGroupResponse) ProtoMessage() {}
+
+func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateGroupResponse.ProtoReflect.Descriptor instead.
+func (*CreateGroupResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *CreateGroupResponse) GetGroup() *Group {
+	if x != nil {
+		return x.Group
+	}
+	return nil
+}
+
+type UpdateGroupRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	GroupId         string                 `protobuf:"bytes,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Status          string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateGroupRequest) Reset() {
+	*x = UpdateGroupRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGroupRequest) ProtoMessage() {}
+
+func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGroupRequest.ProtoReflect.Descriptor instead.
+func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *UpdateGroupRequest) GetGroupId() string {
+	if x != nil {
+		return x.GroupId
+	}
+	return ""
+}
+
+func (x *UpdateGroupRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateGroupRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateGroupRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type UpdateGroupResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Group         *Group                 `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateGroupResponse) Reset() {
+	*x = UpdateGroupResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGroupResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGroupResponse) ProtoMessage() {}
+
+func (x *UpdateGroupResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGroupResponse.ProtoReflect.Descriptor instead.
+func (*UpdateGroupResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *UpdateGroupResponse) GetGroup() *Group {
+	if x != nil {
+		return x.Group
+	}
+	return nil
+}
+
+type AddGroupMemberRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GroupId       string                 `protobuf:"bytes,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	MembershipId  string                 `protobuf:"bytes,2,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddGroupMemberRequest) Reset() {
+	*x = AddGroupMemberRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGroupMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGroupMemberRequest) ProtoMessage() {}
+
+func (x *AddGroupMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGroupMemberRequest.ProtoReflect.Descriptor instead.
+func (*AddGroupMemberRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *AddGroupMemberRequest) GetGroupId() string {
+	if x != nil {
+		return x.GroupId
+	}
+	return ""
+}
+
+func (x *AddGroupMemberRequest) GetMembershipId() string {
+	if x != nil {
+		return x.MembershipId
+	}
+	return ""
+}
+
+type AddGroupMemberResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Added         bool                   `protobuf:"varint,1,opt,name=added,proto3" json:"added,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddGroupMemberResponse) Reset() {
+	*x = AddGroupMemberResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddGroupMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddGroupMemberResponse) ProtoMessage() {}
+
+func (x *AddGroupMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddGroupMemberResponse.ProtoReflect.Descriptor instead.
+func (*AddGroupMemberResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *AddGroupMemberResponse) GetAdded() bool {
+	if x != nil {
+		return x.Added
+	}
+	return false
+}
+
+type RemoveGroupMemberRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	GroupId         string                 `protobuf:"bytes,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	MembershipId    string                 `protobuf:"bytes,2,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *RemoveGroupMemberRequest) Reset() {
+	*x = RemoveGroupMemberRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveGroupMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveGroupMemberRequest) ProtoMessage() {}
+
+func (x *RemoveGroupMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveGroupMemberRequest.ProtoReflect.Descriptor instead.
+func (*RemoveGroupMemberRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *RemoveGroupMemberRequest) GetGroupId() string {
+	if x != nil {
+		return x.GroupId
+	}
+	return ""
+}
+
+func (x *RemoveGroupMemberRequest) GetMembershipId() string {
+	if x != nil {
+		return x.MembershipId
+	}
+	return ""
+}
+
+func (x *RemoveGroupMemberRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type RemoveGroupMemberResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Removed       bool                   `protobuf:"varint,1,opt,name=removed,proto3" json:"removed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveGroupMemberResponse) Reset() {
+	*x = RemoveGroupMemberResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveGroupMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveGroupMemberResponse) ProtoMessage() {}
+
+func (x *RemoveGroupMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveGroupMemberResponse.ProtoReflect.Descriptor instead.
+func (*RemoveGroupMemberResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *RemoveGroupMemberResponse) GetRemoved() bool {
+	if x != nil {
+		return x.Removed
+	}
+	return false
+}
+
+type ListGroupsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGroupsRequest) Reset() {
+	*x = ListGroupsRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGroupsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGroupsRequest) ProtoMessage() {}
+
+func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGroupsRequest.ProtoReflect.Descriptor instead.
+func (*ListGroupsRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *ListGroupsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type ListGroupsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Groups        []*Group               `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListGroupsResponse) Reset() {
+	*x = ListGroupsResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListGroupsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListGroupsResponse) ProtoMessage() {}
+
+func (x *ListGroupsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListGroupsResponse.ProtoReflect.Descriptor instead.
+func (*ListGroupsResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *ListGroupsResponse) GetGroups() []*Group {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
+type GetQuotaRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQuotaRequest) Reset() {
+	*x = GetQuotaRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQuotaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQuotaRequest) ProtoMessage() {}
+
+func (x *GetQuotaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQuotaRequest.ProtoReflect.Descriptor instead.
+func (*GetQuotaRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *GetQuotaRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetQuotaRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+type GetQuotaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Quota         *Quota                 `protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQuotaResponse) Reset() {
+	*x = GetQuotaResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQuotaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQuotaResponse) ProtoMessage() {}
+
+func (x *GetQuotaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQuotaResponse.ProtoReflect.Descriptor instead.
+func (*GetQuotaResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *GetQuotaResponse) GetQuota() *Quota {
+	if x != nil {
+		return x.Quota
+	}
+	return nil
+}
+
+type SetQuotaRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	TenantId        string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Key             string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Limit           int64                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *SetQuotaRequest) Reset() {
+	*x = SetQuotaRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetQuotaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetQuotaRequest) ProtoMessage() {}
+
+func (x *SetQuotaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetQuotaRequest.ProtoReflect.Descriptor instead.
+func (*SetQuotaRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *SetQuotaRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *SetQuotaRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *SetQuotaRequest) GetLimit() int64 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *SetQuotaRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type SetQuotaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Quota         *Quota                 `protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetQuotaResponse) Reset() {
+	*x = SetQuotaResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetQuotaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetQuotaResponse) ProtoMessage() {}
+
+func (x *SetQuotaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetQuotaResponse.ProtoReflect.Descriptor instead.
+func (*SetQuotaResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *SetQuotaResponse) GetQuota() *Quota {
+	if x != nil {
+		return x.Quota
+	}
+	return nil
+}
+
+type ConsumeQuotaRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Key           string                 `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Amount        int64                  `protobuf:"varint,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConsumeQuotaRequest) Reset() {
+	*x = ConsumeQuotaRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConsumeQuotaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConsumeQuotaRequest) ProtoMessage() {}
+
+func (x *ConsumeQuotaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConsumeQuotaRequest.ProtoReflect.Descriptor instead.
+func (*ConsumeQuotaRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *ConsumeQuotaRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ConsumeQuotaRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *ConsumeQuotaRequest) GetAmount() int64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
+}
+
+type ConsumeQuotaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Quota         *Quota                 `protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
+	Allowed       bool                   `protobuf:"varint,2,opt,name=allowed,proto3" json:"allowed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConsumeQuotaResponse) Reset() {
+	*x = ConsumeQuotaResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConsumeQuotaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConsumeQuotaResponse) ProtoMessage() {}
+
+func (x *ConsumeQuotaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConsumeQuotaResponse.ProtoReflect.Descriptor instead.
+func (*ConsumeQuotaResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *ConsumeQuotaResponse) GetQuota() *Quota {
+	if x != nil {
+		return x.Quota
+	}
+	return nil
+}
+
+func (x *ConsumeQuotaResponse) GetAllowed() bool {
+	if x != nil {
+		return x.Allowed
+	}
+	return false
+}
+
 type ValidateMembershipRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -314,7 +3050,7 @@ type ValidateMembershipRequest struct {
 
 func (x *ValidateMembershipRequest) Reset() {
 	*x = ValidateMembershipRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[2]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -326,7 +3062,7 @@ func (x *ValidateMembershipRequest) String() string {
 func (*ValidateMembershipRequest) ProtoMessage() {}
 
 func (x *ValidateMembershipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[2]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,7 +3075,7 @@ func (x *ValidateMembershipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateMembershipRequest.ProtoReflect.Descriptor instead.
 func (*ValidateMembershipRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{2}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ValidateMembershipRequest) GetUserId() string {
@@ -367,7 +3103,7 @@ type ValidateMembershipResponse struct {
 
 func (x *ValidateMembershipResponse) Reset() {
 	*x = ValidateMembershipResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[3]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -379,7 +3115,7 @@ func (x *ValidateMembershipResponse) String() string {
 func (*ValidateMembershipResponse) ProtoMessage() {}
 
 func (x *ValidateMembershipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[3]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -392,7 +3128,7 @@ func (x *ValidateMembershipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateMembershipResponse.ProtoReflect.Descriptor instead.
 func (*ValidateMembershipResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{3}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *ValidateMembershipResponse) GetValid() bool {
@@ -425,7 +3161,7 @@ type GetMembershipRequest struct {
 
 func (x *GetMembershipRequest) Reset() {
 	*x = GetMembershipRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[4]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -437,7 +3173,7 @@ func (x *GetMembershipRequest) String() string {
 func (*GetMembershipRequest) ProtoMessage() {}
 
 func (x *GetMembershipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[4]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -450,7 +3186,7 @@ func (x *GetMembershipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMembershipRequest.ProtoReflect.Descriptor instead.
 func (*GetMembershipRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{4}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *GetMembershipRequest) GetMembershipId() string {
@@ -469,7 +3205,7 @@ type GetMembershipResponse struct {
 
 func (x *GetMembershipResponse) Reset() {
 	*x = GetMembershipResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[5]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -481,7 +3217,7 @@ func (x *GetMembershipResponse) String() string {
 func (*GetMembershipResponse) ProtoMessage() {}
 
 func (x *GetMembershipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[5]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -494,7 +3230,7 @@ func (x *GetMembershipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMembershipResponse.ProtoReflect.Descriptor instead.
 func (*GetMembershipResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{5}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GetMembershipResponse) GetMembership() *Membership {
@@ -514,7 +3250,7 @@ type ListUserTenantsRequest struct {
 
 func (x *ListUserTenantsRequest) Reset() {
 	*x = ListUserTenantsRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[6]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -526,7 +3262,7 @@ func (x *ListUserTenantsRequest) String() string {
 func (*ListUserTenantsRequest) ProtoMessage() {}
 
 func (x *ListUserTenantsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[6]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -539,7 +3275,7 @@ func (x *ListUserTenantsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserTenantsRequest.ProtoReflect.Descriptor instead.
 func (*ListUserTenantsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{6}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *ListUserTenantsRequest) GetUserId() string {
@@ -566,7 +3302,7 @@ type ListUserTenantsResponse struct {
 
 func (x *ListUserTenantsResponse) Reset() {
 	*x = ListUserTenantsResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[7]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -578,7 +3314,7 @@ func (x *ListUserTenantsResponse) String() string {
 func (*ListUserTenantsResponse) ProtoMessage() {}
 
 func (x *ListUserTenantsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[7]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -591,7 +3327,7 @@ func (x *ListUserTenantsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserTenantsResponse.ProtoReflect.Descriptor instead.
 func (*ListUserTenantsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{7}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ListUserTenantsResponse) GetTenants() []*Tenant {
@@ -617,7 +3353,7 @@ type ResolveOrganizationScopeRequest struct {
 
 func (x *ResolveOrganizationScopeRequest) Reset() {
 	*x = ResolveOrganizationScopeRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[8]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -629,7 +3365,7 @@ func (x *ResolveOrganizationScopeRequest) String() string {
 func (*ResolveOrganizationScopeRequest) ProtoMessage() {}
 
 func (x *ResolveOrganizationScopeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[8]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -642,7 +3378,7 @@ func (x *ResolveOrganizationScopeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveOrganizationScopeRequest.ProtoReflect.Descriptor instead.
 func (*ResolveOrganizationScopeRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{8}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *ResolveOrganizationScopeRequest) GetMembershipId() string {
@@ -661,7 +3397,7 @@ type ResolveOrganizationScopeResponse struct {
 
 func (x *ResolveOrganizationScopeResponse) Reset() {
 	*x = ResolveOrganizationScopeResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[9]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -673,7 +3409,7 @@ func (x *ResolveOrganizationScopeResponse) String() string {
 func (*ResolveOrganizationScopeResponse) ProtoMessage() {}
 
 func (x *ResolveOrganizationScopeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[9]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -686,7 +3422,7 @@ func (x *ResolveOrganizationScopeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveOrganizationScopeResponse.ProtoReflect.Descriptor instead.
 func (*ResolveOrganizationScopeResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{9}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ResolveOrganizationScopeResponse) GetOrganizationUnitIds() []string {
@@ -710,7 +3446,7 @@ type MembershipChangedEvent struct {
 
 func (x *MembershipChangedEvent) Reset() {
 	*x = MembershipChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[10]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -722,7 +3458,7 @@ func (x *MembershipChangedEvent) String() string {
 func (*MembershipChangedEvent) ProtoMessage() {}
 
 func (x *MembershipChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[10]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -735,7 +3471,7 @@ func (x *MembershipChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MembershipChangedEvent.ProtoReflect.Descriptor instead.
 func (*MembershipChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{10}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *MembershipChangedEvent) GetMembershipId() string {
@@ -780,6 +3516,66 @@ func (x *MembershipChangedEvent) GetReason() string {
 	return ""
 }
 
+type TenantCreatedEvent struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Tenant            *Tenant                `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	OwnerMembershipId string                 `protobuf:"bytes,2,opt,name=owner_membership_id,json=ownerMembershipId,proto3" json:"owner_membership_id,omitempty"`
+	OwnerUserId       string                 `protobuf:"bytes,3,opt,name=owner_user_id,json=ownerUserId,proto3" json:"owner_user_id,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *TenantCreatedEvent) Reset() {
+	*x = TenantCreatedEvent{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantCreatedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantCreatedEvent) ProtoMessage() {}
+
+func (x *TenantCreatedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantCreatedEvent.ProtoReflect.Descriptor instead.
+func (*TenantCreatedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *TenantCreatedEvent) GetTenant() *Tenant {
+	if x != nil {
+		return x.Tenant
+	}
+	return nil
+}
+
+func (x *TenantCreatedEvent) GetOwnerMembershipId() string {
+	if x != nil {
+		return x.OwnerMembershipId
+	}
+	return ""
+}
+
+func (x *TenantCreatedEvent) GetOwnerUserId() string {
+	if x != nil {
+		return x.OwnerUserId
+	}
+	return ""
+}
+
 type TenantStatusChangedEvent struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -792,7 +3588,7 @@ type TenantStatusChangedEvent struct {
 
 func (x *TenantStatusChangedEvent) Reset() {
 	*x = TenantStatusChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[11]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -804,7 +3600,7 @@ func (x *TenantStatusChangedEvent) String() string {
 func (*TenantStatusChangedEvent) ProtoMessage() {}
 
 func (x *TenantStatusChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[11]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -817,7 +3613,7 @@ func (x *TenantStatusChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TenantStatusChangedEvent.ProtoReflect.Descriptor instead.
 func (*TenantStatusChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{11}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *TenantStatusChangedEvent) GetTenantId() string {
@@ -848,11 +3644,243 @@ func (x *TenantStatusChangedEvent) GetReason() string {
 	return ""
 }
 
+type OrganizationUnitChangedEvent struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationUnit *OrganizationUnit      `protobuf:"bytes,1,opt,name=organization_unit,json=organizationUnit,proto3" json:"organization_unit,omitempty"`
+	PreviousParentId string                 `protobuf:"bytes,2,opt,name=previous_parent_id,json=previousParentId,proto3" json:"previous_parent_id,omitempty"`
+	ChangeType       string                 `protobuf:"bytes,3,opt,name=change_type,json=changeType,proto3" json:"change_type,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *OrganizationUnitChangedEvent) Reset() {
+	*x = OrganizationUnitChangedEvent{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OrganizationUnitChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OrganizationUnitChangedEvent) ProtoMessage() {}
+
+func (x *OrganizationUnitChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use OrganizationUnitChangedEvent.ProtoReflect.Descriptor instead.
+func (*OrganizationUnitChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *OrganizationUnitChangedEvent) GetOrganizationUnit() *OrganizationUnit {
+	if x != nil {
+		return x.OrganizationUnit
+	}
+	return nil
+}
+
+func (x *OrganizationUnitChangedEvent) GetPreviousParentId() string {
+	if x != nil {
+		return x.PreviousParentId
+	}
+	return ""
+}
+
+func (x *OrganizationUnitChangedEvent) GetChangeType() string {
+	if x != nil {
+		return x.ChangeType
+	}
+	return ""
+}
+
+type InvitationChangedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Invitation    *Invitation            `protobuf:"bytes,1,opt,name=invitation,proto3" json:"invitation,omitempty"`
+	ChangeType    string                 `protobuf:"bytes,2,opt,name=change_type,json=changeType,proto3" json:"change_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *InvitationChangedEvent) Reset() {
+	*x = InvitationChangedEvent{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *InvitationChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InvitationChangedEvent) ProtoMessage() {}
+
+func (x *InvitationChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InvitationChangedEvent.ProtoReflect.Descriptor instead.
+func (*InvitationChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *InvitationChangedEvent) GetInvitation() *Invitation {
+	if x != nil {
+		return x.Invitation
+	}
+	return nil
+}
+
+func (x *InvitationChangedEvent) GetChangeType() string {
+	if x != nil {
+		return x.ChangeType
+	}
+	return ""
+}
+
+type GroupChangedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Group         *Group                 `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+	MembershipId  string                 `protobuf:"bytes,2,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	ChangeType    string                 `protobuf:"bytes,3,opt,name=change_type,json=changeType,proto3" json:"change_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GroupChangedEvent) Reset() {
+	*x = GroupChangedEvent{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GroupChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupChangedEvent) ProtoMessage() {}
+
+func (x *GroupChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupChangedEvent.ProtoReflect.Descriptor instead.
+func (*GroupChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *GroupChangedEvent) GetGroup() *Group {
+	if x != nil {
+		return x.Group
+	}
+	return nil
+}
+
+func (x *GroupChangedEvent) GetMembershipId() string {
+	if x != nil {
+		return x.MembershipId
+	}
+	return ""
+}
+
+func (x *GroupChangedEvent) GetChangeType() string {
+	if x != nil {
+		return x.ChangeType
+	}
+	return ""
+}
+
+type QuotaChangedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Quota         *Quota                 `protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
+	Delta         int64                  `protobuf:"varint,2,opt,name=delta,proto3" json:"delta,omitempty"`
+	ChangeType    string                 `protobuf:"bytes,3,opt,name=change_type,json=changeType,proto3" json:"change_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *QuotaChangedEvent) Reset() {
+	*x = QuotaChangedEvent{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QuotaChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QuotaChangedEvent) ProtoMessage() {}
+
+func (x *QuotaChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QuotaChangedEvent.ProtoReflect.Descriptor instead.
+func (*QuotaChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *QuotaChangedEvent) GetQuota() *Quota {
+	if x != nil {
+		return x.Quota
+	}
+	return nil
+}
+
+func (x *QuotaChangedEvent) GetDelta() int64 {
+	if x != nil {
+		return x.Delta
+	}
+	return 0
+}
+
+func (x *QuotaChangedEvent) GetChangeType() string {
+	if x != nil {
+		return x.ChangeType
+	}
+	return ""
+}
+
 var File_platform_tenant_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
-	"\x1fplatform/tenant/v1/tenant.proto\x12\x12platform.tenant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xf0\x01\n" +
+	"\x1fplatform/tenant/v1/tenant.proto\x12\x12platform.tenant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xc8\x02\n" +
 	"\x06Tenant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
@@ -861,7 +3889,12 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x8a\x02\n" +
+	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x18\n" +
+	"\aversion\x18\a \x01(\x03R\aversion\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\b \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\t \x01(\tR\tupdatedBy\"\xd8\x03\n" +
 	"\n" +
 	"Membership\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
@@ -869,7 +3902,223 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\auser_id\x18\x03 \x01(\tR\x06userId\x12<\n" +
 	"\x06status\x18\x04 \x01(\x0e2$.platform.tenant.v1.MembershipStatusR\x06status\x12?\n" +
 	"\x1cprimary_organization_unit_id\x18\x05 \x01(\tR\x19primaryOrganizationUnitId\x127\n" +
-	"\tjoined_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"Q\n" +
+	"\tjoined_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\x12\x18\n" +
+	"\aversion\x18\a \x01(\x03R\aversion\x129\n" +
+	"\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\n" +
+	" \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\v \x01(\tR\tupdatedBy\"\xfe\x02\n" +
+	"\x10OrganizationUnit\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1b\n" +
+	"\tparent_id\x18\x03 \x01(\tR\bparentId\x12\x12\n" +
+	"\x04code\x18\x04 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x05 \x01(\tR\x04name\x12\x12\n" +
+	"\x04path\x18\x06 \x01(\tR\x04path\x12\x16\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x12\x18\n" +
+	"\aversion\x18\b \x01(\x03R\aversion\x129\n" +
+	"\n" +
+	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\v \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\f \x01(\tR\tupdatedBy\"\x9f\x03\n" +
+	"\n" +
+	"Invitation\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x129\n" +
+	"\n" +
+	"expires_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12-\n" +
+	"\x13accepted_by_user_id\x18\x06 \x01(\tR\x10acceptedByUserId\x12\x18\n" +
+	"\aversion\x18\a \x01(\x03R\aversion\x129\n" +
+	"\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\n" +
+	" \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\v \x01(\tR\tupdatedBy\"\xc2\x02\n" +
+	"\x05Group\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\x12\x16\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\x12\x18\n" +
+	"\aversion\x18\x06 \x01(\x03R\aversion\x129\n" +
+	"\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\t \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\n" +
+	" \x01(\tR\tupdatedBy\"\xae\x02\n" +
+	"\x05Quota\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x03R\x05limit\x12\x12\n" +
+	"\x04used\x18\x04 \x01(\x03R\x04used\x12\x18\n" +
+	"\aversion\x18\x05 \x01(\x03R\aversion\x129\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\b \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\t \x01(\tR\tupdatedBy\"a\n" +
+	"\x13CreateTenantRequest\x12\x12\n" +
+	"\x04code\x18\x01 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\"\n" +
+	"\rowner_user_id\x18\x03 \x01(\tR\vownerUserId\"\x95\x01\n" +
+	"\x14CreateTenantResponse\x122\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x1a.platform.tenant.v1.TenantR\x06tenant\x12I\n" +
+	"\x10owner_membership\x18\x02 \x01(\v2\x1e.platform.tenant.v1.MembershipR\x0fownerMembership\"/\n" +
+	"\x10GetTenantRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"G\n" +
+	"\x11GetTenantResponse\x122\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x1a.platform.tenant.v1.TenantR\x06tenant\"\xc3\x01\n" +
+	"\x13UpdateTenantRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x128\n" +
+	"\x06status\x18\x03 \x01(\x0e2 .platform.tenant.v1.TenantStatusR\x06status\x12)\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\"J\n" +
+	"\x14UpdateTenantResponse\x122\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x1a.platform.tenant.v1.TenantR\x06tenant\"\x8d\x01\n" +
+	"\x14AddMembershipRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12?\n" +
+	"\x1cprimary_organization_unit_id\x18\x03 \x01(\tR\x19primaryOrganizationUnitId\"W\n" +
+	"\x15AddMembershipResponse\x12>\n" +
+	"\n" +
+	"membership\x18\x01 \x01(\v2\x1e.platform.tenant.v1.MembershipR\n" +
+	"membership\"\x80\x02\n" +
+	"\x17UpdateMembershipRequest\x12#\n" +
+	"\rmembership_id\x18\x01 \x01(\tR\fmembershipId\x12<\n" +
+	"\x06status\x18\x02 \x01(\x0e2$.platform.tenant.v1.MembershipStatusR\x06status\x12?\n" +
+	"\x1cprimary_organization_unit_id\x18\x03 \x01(\tR\x19primaryOrganizationUnitId\x12)\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\"Z\n" +
+	"\x18UpdateMembershipResponse\x12>\n" +
+	"\n" +
+	"membership\x18\x01 \x01(\v2\x1e.platform.tenant.v1.MembershipR\n" +
+	"membership\"\x81\x01\n" +
+	"\x1dCreateOrganizationUnitRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1b\n" +
+	"\tparent_id\x18\x02 \x01(\tR\bparentId\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\"s\n" +
+	"\x1eCreateOrganizationUnitResponse\x12Q\n" +
+	"\x11organization_unit\x18\x01 \x01(\v2$.platform.tenant.v1.OrganizationUnitR\x10organizationUnit\"N\n" +
+	"\x1aGetOrganizationUnitRequest\x120\n" +
+	"\x14organization_unit_id\x18\x01 \x01(\tR\x12organizationUnitId\"p\n" +
+	"\x1bGetOrganizationUnitResponse\x12Q\n" +
+	"\x11organization_unit\x18\x01 \x01(\v2$.platform.tenant.v1.OrganizationUnitR\x10organizationUnit\"\xc5\x01\n" +
+	"\x1dUpdateOrganizationUnitRequest\x120\n" +
+	"\x14organization_unit_id\x18\x01 \x01(\tR\x12organizationUnitId\x12\x1b\n" +
+	"\tparent_id\x18\x02 \x01(\tR\bparentId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12)\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"s\n" +
+	"\x1eUpdateOrganizationUnitResponse\x12Q\n" +
+	"\x11organization_unit\x18\x01 \x01(\v2$.platform.tenant.v1.OrganizationUnitR\x10organizationUnit\";\n" +
+	"\x1cListOrganizationUnitsRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"t\n" +
+	"\x1dListOrganizationUnitsResponse\x12S\n" +
+	"\x12organization_units\x18\x01 \x03(\v2$.platform.tenant.v1.OrganizationUnitR\x11organizationUnits\"z\n" +
+	"\x17CreateInvitationRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12,\n" +
+	"\x12expires_in_seconds\x18\x03 \x01(\x03R\x10expiresInSeconds\"p\n" +
+	"\x18CreateInvitationResponse\x12>\n" +
+	"\n" +
+	"invitation\x18\x01 \x01(\v2\x1e.platform.tenant.v1.InvitationR\n" +
+	"invitation\x12\x14\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\"H\n" +
+	"\x17AcceptInvitationRequest\x12\x14\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"\x9a\x01\n" +
+	"\x18AcceptInvitationResponse\x12>\n" +
+	"\n" +
+	"invitation\x18\x01 \x01(\v2\x1e.platform.tenant.v1.InvitationR\n" +
+	"invitation\x12>\n" +
+	"\n" +
+	"membership\x18\x02 \x01(\v2\x1e.platform.tenant.v1.MembershipR\n" +
+	"membership\"i\n" +
+	"\x17RevokeInvitationRequest\x12#\n" +
+	"\rinvitation_id\x18\x01 \x01(\tR\finvitationId\x12)\n" +
+	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"Z\n" +
+	"\x18RevokeInvitationResponse\x12>\n" +
+	"\n" +
+	"invitation\x18\x01 \x01(\v2\x1e.platform.tenant.v1.InvitationR\n" +
+	"invitation\"j\n" +
+	"\x16ListInvitationsRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x123\n" +
+	"\x04page\x18\x02 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x8f\x01\n" +
+	"\x17ListInvitationsResponse\x12@\n" +
+	"\vinvitations\x18\x01 \x03(\v2\x1e.platform.tenant.v1.InvitationR\vinvitations\x122\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"Y\n" +
+	"\x12CreateGroupRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"F\n" +
+	"\x13CreateGroupResponse\x12/\n" +
+	"\x05group\x18\x01 \x01(\v2\x19.platform.tenant.v1.GroupR\x05group\"\x86\x01\n" +
+	"\x12UpdateGroupRequest\x12\x19\n" +
+	"\bgroup_id\x18\x01 \x01(\tR\agroupId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12)\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\"F\n" +
+	"\x13UpdateGroupResponse\x12/\n" +
+	"\x05group\x18\x01 \x01(\v2\x19.platform.tenant.v1.GroupR\x05group\"W\n" +
+	"\x15AddGroupMemberRequest\x12\x19\n" +
+	"\bgroup_id\x18\x01 \x01(\tR\agroupId\x12#\n" +
+	"\rmembership_id\x18\x02 \x01(\tR\fmembershipId\".\n" +
+	"\x16AddGroupMemberResponse\x12\x14\n" +
+	"\x05added\x18\x01 \x01(\bR\x05added\"\x85\x01\n" +
+	"\x18RemoveGroupMemberRequest\x12\x19\n" +
+	"\bgroup_id\x18\x01 \x01(\tR\agroupId\x12#\n" +
+	"\rmembership_id\x18\x02 \x01(\tR\fmembershipId\x12)\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"5\n" +
+	"\x19RemoveGroupMemberResponse\x12\x18\n" +
+	"\aremoved\x18\x01 \x01(\bR\aremoved\"0\n" +
+	"\x11ListGroupsRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"G\n" +
+	"\x12ListGroupsResponse\x121\n" +
+	"\x06groups\x18\x01 \x03(\v2\x19.platform.tenant.v1.GroupR\x06groups\"@\n" +
+	"\x0fGetQuotaRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\"C\n" +
+	"\x10GetQuotaResponse\x12/\n" +
+	"\x05quota\x18\x01 \x01(\v2\x19.platform.tenant.v1.QuotaR\x05quota\"\x81\x01\n" +
+	"\x0fSetQuotaRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\x03R\x05limit\x12)\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\"C\n" +
+	"\x10SetQuotaResponse\x12/\n" +
+	"\x05quota\x18\x01 \x01(\v2\x19.platform.tenant.v1.QuotaR\x05quota\"\\\n" +
+	"\x13ConsumeQuotaRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x16\n" +
+	"\x06amount\x18\x03 \x01(\x03R\x06amount\"a\n" +
+	"\x14ConsumeQuotaResponse\x12/\n" +
+	"\x05quota\x18\x01 \x01(\v2\x19.platform.tenant.v1.QuotaR\x05quota\x12\x18\n" +
+	"\aallowed\x18\x02 \x01(\bR\aallowed\"Q\n" +
 	"\x19ValidateMembershipRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"\xa6\x01\n" +
@@ -901,12 +4150,37 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\auser_id\x18\x03 \x01(\tR\x06userId\x12M\n" +
 	"\x0fprevious_status\x18\x04 \x01(\x0e2$.platform.tenant.v1.MembershipStatusR\x0epreviousStatus\x12K\n" +
 	"\x0ecurrent_status\x18\x05 \x01(\x0e2$.platform.tenant.v1.MembershipStatusR\rcurrentStatus\x12\x16\n" +
-	"\x06reason\x18\x06 \x01(\tR\x06reason\"\xe3\x01\n" +
+	"\x06reason\x18\x06 \x01(\tR\x06reason\"\x9c\x01\n" +
+	"\x12TenantCreatedEvent\x122\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x1a.platform.tenant.v1.TenantR\x06tenant\x12.\n" +
+	"\x13owner_membership_id\x18\x02 \x01(\tR\x11ownerMembershipId\x12\"\n" +
+	"\rowner_user_id\x18\x03 \x01(\tR\vownerUserId\"\xe3\x01\n" +
 	"\x18TenantStatusChangedEvent\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12I\n" +
 	"\x0fprevious_status\x18\x02 \x01(\x0e2 .platform.tenant.v1.TenantStatusR\x0epreviousStatus\x12G\n" +
 	"\x0ecurrent_status\x18\x03 \x01(\x0e2 .platform.tenant.v1.TenantStatusR\rcurrentStatus\x12\x16\n" +
-	"\x06reason\x18\x04 \x01(\tR\x06reason*\xb4\x01\n" +
+	"\x06reason\x18\x04 \x01(\tR\x06reason\"\xc0\x01\n" +
+	"\x1cOrganizationUnitChangedEvent\x12Q\n" +
+	"\x11organization_unit\x18\x01 \x01(\v2$.platform.tenant.v1.OrganizationUnitR\x10organizationUnit\x12,\n" +
+	"\x12previous_parent_id\x18\x02 \x01(\tR\x10previousParentId\x12\x1f\n" +
+	"\vchange_type\x18\x03 \x01(\tR\n" +
+	"changeType\"y\n" +
+	"\x16InvitationChangedEvent\x12>\n" +
+	"\n" +
+	"invitation\x18\x01 \x01(\v2\x1e.platform.tenant.v1.InvitationR\n" +
+	"invitation\x12\x1f\n" +
+	"\vchange_type\x18\x02 \x01(\tR\n" +
+	"changeType\"\x8a\x01\n" +
+	"\x11GroupChangedEvent\x12/\n" +
+	"\x05group\x18\x01 \x01(\v2\x19.platform.tenant.v1.GroupR\x05group\x12#\n" +
+	"\rmembership_id\x18\x02 \x01(\tR\fmembershipId\x12\x1f\n" +
+	"\vchange_type\x18\x03 \x01(\tR\n" +
+	"changeType\"{\n" +
+	"\x11QuotaChangedEvent\x12/\n" +
+	"\x05quota\x18\x01 \x01(\v2\x19.platform.tenant.v1.QuotaR\x05quota\x12\x14\n" +
+	"\x05delta\x18\x02 \x01(\x03R\x05delta\x12\x1f\n" +
+	"\vchange_type\x18\x03 \x01(\tR\n" +
+	"changeType*\xb4\x01\n" +
 	"\fTenantStatus\x12\x1d\n" +
 	"\x19TENANT_STATUS_UNSPECIFIED\x10\x00\x12\x19\n" +
 	"\x15TENANT_STATUS_PENDING\x10\x01\x12\x18\n" +
@@ -919,8 +4193,30 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x19MEMBERSHIP_STATUS_INVITED\x10\x01\x12\x1c\n" +
 	"\x18MEMBERSHIP_STATUS_ACTIVE\x10\x02\x12\x1e\n" +
 	"\x1aMEMBERSHIP_STATUS_DISABLED\x10\x03\x12\x1d\n" +
-	"\x19MEMBERSHIP_STATUS_REMOVED\x10\x042\xde\x03\n" +
-	"\rTenantService\x12s\n" +
+	"\x19MEMBERSHIP_STATUS_REMOVED\x10\x042\x8d\x15\n" +
+	"\rTenantService\x12a\n" +
+	"\fCreateTenant\x12'.platform.tenant.v1.CreateTenantRequest\x1a(.platform.tenant.v1.CreateTenantResponse\x12X\n" +
+	"\tGetTenant\x12$.platform.tenant.v1.GetTenantRequest\x1a%.platform.tenant.v1.GetTenantResponse\x12a\n" +
+	"\fUpdateTenant\x12'.platform.tenant.v1.UpdateTenantRequest\x1a(.platform.tenant.v1.UpdateTenantResponse\x12d\n" +
+	"\rAddMembership\x12(.platform.tenant.v1.AddMembershipRequest\x1a).platform.tenant.v1.AddMembershipResponse\x12m\n" +
+	"\x10UpdateMembership\x12+.platform.tenant.v1.UpdateMembershipRequest\x1a,.platform.tenant.v1.UpdateMembershipResponse\x12\x7f\n" +
+	"\x16CreateOrganizationUnit\x121.platform.tenant.v1.CreateOrganizationUnitRequest\x1a2.platform.tenant.v1.CreateOrganizationUnitResponse\x12v\n" +
+	"\x13GetOrganizationUnit\x12..platform.tenant.v1.GetOrganizationUnitRequest\x1a/.platform.tenant.v1.GetOrganizationUnitResponse\x12\x7f\n" +
+	"\x16UpdateOrganizationUnit\x121.platform.tenant.v1.UpdateOrganizationUnitRequest\x1a2.platform.tenant.v1.UpdateOrganizationUnitResponse\x12|\n" +
+	"\x15ListOrganizationUnits\x120.platform.tenant.v1.ListOrganizationUnitsRequest\x1a1.platform.tenant.v1.ListOrganizationUnitsResponse\x12m\n" +
+	"\x10CreateInvitation\x12+.platform.tenant.v1.CreateInvitationRequest\x1a,.platform.tenant.v1.CreateInvitationResponse\x12m\n" +
+	"\x10AcceptInvitation\x12+.platform.tenant.v1.AcceptInvitationRequest\x1a,.platform.tenant.v1.AcceptInvitationResponse\x12m\n" +
+	"\x10RevokeInvitation\x12+.platform.tenant.v1.RevokeInvitationRequest\x1a,.platform.tenant.v1.RevokeInvitationResponse\x12j\n" +
+	"\x0fListInvitations\x12*.platform.tenant.v1.ListInvitationsRequest\x1a+.platform.tenant.v1.ListInvitationsResponse\x12^\n" +
+	"\vCreateGroup\x12&.platform.tenant.v1.CreateGroupRequest\x1a'.platform.tenant.v1.CreateGroupResponse\x12^\n" +
+	"\vUpdateGroup\x12&.platform.tenant.v1.UpdateGroupRequest\x1a'.platform.tenant.v1.UpdateGroupResponse\x12g\n" +
+	"\x0eAddGroupMember\x12).platform.tenant.v1.AddGroupMemberRequest\x1a*.platform.tenant.v1.AddGroupMemberResponse\x12p\n" +
+	"\x11RemoveGroupMember\x12,.platform.tenant.v1.RemoveGroupMemberRequest\x1a-.platform.tenant.v1.RemoveGroupMemberResponse\x12[\n" +
+	"\n" +
+	"ListGroups\x12%.platform.tenant.v1.ListGroupsRequest\x1a&.platform.tenant.v1.ListGroupsResponse\x12U\n" +
+	"\bGetQuota\x12#.platform.tenant.v1.GetQuotaRequest\x1a$.platform.tenant.v1.GetQuotaResponse\x12U\n" +
+	"\bSetQuota\x12#.platform.tenant.v1.SetQuotaRequest\x1a$.platform.tenant.v1.SetQuotaResponse\x12a\n" +
+	"\fConsumeQuota\x12'.platform.tenant.v1.ConsumeQuotaRequest\x1a(.platform.tenant.v1.ConsumeQuotaResponse\x12s\n" +
 	"\x12ValidateMembership\x12-.platform.tenant.v1.ValidateMembershipRequest\x1a..platform.tenant.v1.ValidateMembershipResponse\x12d\n" +
 	"\rGetMembership\x12(.platform.tenant.v1.GetMembershipRequest\x1a).platform.tenant.v1.GetMembershipResponse\x12j\n" +
 	"\x0fListUserTenants\x12*.platform.tenant.v1.ListUserTenantsRequest\x1a+.platform.tenant.v1.ListUserTenantsResponse\x12\x85\x01\n" +
@@ -939,55 +4235,189 @@ func file_platform_tenant_v1_tenant_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_tenant_v1_tenant_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_platform_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_platform_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 63)
 var file_platform_tenant_v1_tenant_proto_goTypes = []any{
 	(TenantStatus)(0),                        // 0: platform.tenant.v1.TenantStatus
 	(MembershipStatus)(0),                    // 1: platform.tenant.v1.MembershipStatus
 	(*Tenant)(nil),                           // 2: platform.tenant.v1.Tenant
 	(*Membership)(nil),                       // 3: platform.tenant.v1.Membership
-	(*ValidateMembershipRequest)(nil),        // 4: platform.tenant.v1.ValidateMembershipRequest
-	(*ValidateMembershipResponse)(nil),       // 5: platform.tenant.v1.ValidateMembershipResponse
-	(*GetMembershipRequest)(nil),             // 6: platform.tenant.v1.GetMembershipRequest
-	(*GetMembershipResponse)(nil),            // 7: platform.tenant.v1.GetMembershipResponse
-	(*ListUserTenantsRequest)(nil),           // 8: platform.tenant.v1.ListUserTenantsRequest
-	(*ListUserTenantsResponse)(nil),          // 9: platform.tenant.v1.ListUserTenantsResponse
-	(*ResolveOrganizationScopeRequest)(nil),  // 10: platform.tenant.v1.ResolveOrganizationScopeRequest
-	(*ResolveOrganizationScopeResponse)(nil), // 11: platform.tenant.v1.ResolveOrganizationScopeResponse
-	(*MembershipChangedEvent)(nil),           // 12: platform.tenant.v1.MembershipChangedEvent
-	(*TenantStatusChangedEvent)(nil),         // 13: platform.tenant.v1.TenantStatusChangedEvent
-	(*timestamppb.Timestamp)(nil),            // 14: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                   // 15: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                    // 16: platform.common.v1.PageResult
+	(*OrganizationUnit)(nil),                 // 4: platform.tenant.v1.OrganizationUnit
+	(*Invitation)(nil),                       // 5: platform.tenant.v1.Invitation
+	(*Group)(nil),                            // 6: platform.tenant.v1.Group
+	(*Quota)(nil),                            // 7: platform.tenant.v1.Quota
+	(*CreateTenantRequest)(nil),              // 8: platform.tenant.v1.CreateTenantRequest
+	(*CreateTenantResponse)(nil),             // 9: platform.tenant.v1.CreateTenantResponse
+	(*GetTenantRequest)(nil),                 // 10: platform.tenant.v1.GetTenantRequest
+	(*GetTenantResponse)(nil),                // 11: platform.tenant.v1.GetTenantResponse
+	(*UpdateTenantRequest)(nil),              // 12: platform.tenant.v1.UpdateTenantRequest
+	(*UpdateTenantResponse)(nil),             // 13: platform.tenant.v1.UpdateTenantResponse
+	(*AddMembershipRequest)(nil),             // 14: platform.tenant.v1.AddMembershipRequest
+	(*AddMembershipResponse)(nil),            // 15: platform.tenant.v1.AddMembershipResponse
+	(*UpdateMembershipRequest)(nil),          // 16: platform.tenant.v1.UpdateMembershipRequest
+	(*UpdateMembershipResponse)(nil),         // 17: platform.tenant.v1.UpdateMembershipResponse
+	(*CreateOrganizationUnitRequest)(nil),    // 18: platform.tenant.v1.CreateOrganizationUnitRequest
+	(*CreateOrganizationUnitResponse)(nil),   // 19: platform.tenant.v1.CreateOrganizationUnitResponse
+	(*GetOrganizationUnitRequest)(nil),       // 20: platform.tenant.v1.GetOrganizationUnitRequest
+	(*GetOrganizationUnitResponse)(nil),      // 21: platform.tenant.v1.GetOrganizationUnitResponse
+	(*UpdateOrganizationUnitRequest)(nil),    // 22: platform.tenant.v1.UpdateOrganizationUnitRequest
+	(*UpdateOrganizationUnitResponse)(nil),   // 23: platform.tenant.v1.UpdateOrganizationUnitResponse
+	(*ListOrganizationUnitsRequest)(nil),     // 24: platform.tenant.v1.ListOrganizationUnitsRequest
+	(*ListOrganizationUnitsResponse)(nil),    // 25: platform.tenant.v1.ListOrganizationUnitsResponse
+	(*CreateInvitationRequest)(nil),          // 26: platform.tenant.v1.CreateInvitationRequest
+	(*CreateInvitationResponse)(nil),         // 27: platform.tenant.v1.CreateInvitationResponse
+	(*AcceptInvitationRequest)(nil),          // 28: platform.tenant.v1.AcceptInvitationRequest
+	(*AcceptInvitationResponse)(nil),         // 29: platform.tenant.v1.AcceptInvitationResponse
+	(*RevokeInvitationRequest)(nil),          // 30: platform.tenant.v1.RevokeInvitationRequest
+	(*RevokeInvitationResponse)(nil),         // 31: platform.tenant.v1.RevokeInvitationResponse
+	(*ListInvitationsRequest)(nil),           // 32: platform.tenant.v1.ListInvitationsRequest
+	(*ListInvitationsResponse)(nil),          // 33: platform.tenant.v1.ListInvitationsResponse
+	(*CreateGroupRequest)(nil),               // 34: platform.tenant.v1.CreateGroupRequest
+	(*CreateGroupResponse)(nil),              // 35: platform.tenant.v1.CreateGroupResponse
+	(*UpdateGroupRequest)(nil),               // 36: platform.tenant.v1.UpdateGroupRequest
+	(*UpdateGroupResponse)(nil),              // 37: platform.tenant.v1.UpdateGroupResponse
+	(*AddGroupMemberRequest)(nil),            // 38: platform.tenant.v1.AddGroupMemberRequest
+	(*AddGroupMemberResponse)(nil),           // 39: platform.tenant.v1.AddGroupMemberResponse
+	(*RemoveGroupMemberRequest)(nil),         // 40: platform.tenant.v1.RemoveGroupMemberRequest
+	(*RemoveGroupMemberResponse)(nil),        // 41: platform.tenant.v1.RemoveGroupMemberResponse
+	(*ListGroupsRequest)(nil),                // 42: platform.tenant.v1.ListGroupsRequest
+	(*ListGroupsResponse)(nil),               // 43: platform.tenant.v1.ListGroupsResponse
+	(*GetQuotaRequest)(nil),                  // 44: platform.tenant.v1.GetQuotaRequest
+	(*GetQuotaResponse)(nil),                 // 45: platform.tenant.v1.GetQuotaResponse
+	(*SetQuotaRequest)(nil),                  // 46: platform.tenant.v1.SetQuotaRequest
+	(*SetQuotaResponse)(nil),                 // 47: platform.tenant.v1.SetQuotaResponse
+	(*ConsumeQuotaRequest)(nil),              // 48: platform.tenant.v1.ConsumeQuotaRequest
+	(*ConsumeQuotaResponse)(nil),             // 49: platform.tenant.v1.ConsumeQuotaResponse
+	(*ValidateMembershipRequest)(nil),        // 50: platform.tenant.v1.ValidateMembershipRequest
+	(*ValidateMembershipResponse)(nil),       // 51: platform.tenant.v1.ValidateMembershipResponse
+	(*GetMembershipRequest)(nil),             // 52: platform.tenant.v1.GetMembershipRequest
+	(*GetMembershipResponse)(nil),            // 53: platform.tenant.v1.GetMembershipResponse
+	(*ListUserTenantsRequest)(nil),           // 54: platform.tenant.v1.ListUserTenantsRequest
+	(*ListUserTenantsResponse)(nil),          // 55: platform.tenant.v1.ListUserTenantsResponse
+	(*ResolveOrganizationScopeRequest)(nil),  // 56: platform.tenant.v1.ResolveOrganizationScopeRequest
+	(*ResolveOrganizationScopeResponse)(nil), // 57: platform.tenant.v1.ResolveOrganizationScopeResponse
+	(*MembershipChangedEvent)(nil),           // 58: platform.tenant.v1.MembershipChangedEvent
+	(*TenantCreatedEvent)(nil),               // 59: platform.tenant.v1.TenantCreatedEvent
+	(*TenantStatusChangedEvent)(nil),         // 60: platform.tenant.v1.TenantStatusChangedEvent
+	(*OrganizationUnitChangedEvent)(nil),     // 61: platform.tenant.v1.OrganizationUnitChangedEvent
+	(*InvitationChangedEvent)(nil),           // 62: platform.tenant.v1.InvitationChangedEvent
+	(*GroupChangedEvent)(nil),                // 63: platform.tenant.v1.GroupChangedEvent
+	(*QuotaChangedEvent)(nil),                // 64: platform.tenant.v1.QuotaChangedEvent
+	(*timestamppb.Timestamp)(nil),            // 65: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                   // 66: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                    // 67: platform.common.v1.PageResult
 }
 var file_platform_tenant_v1_tenant_proto_depIdxs = []int32{
 	0,  // 0: platform.tenant.v1.Tenant.status:type_name -> platform.tenant.v1.TenantStatus
-	14, // 1: platform.tenant.v1.Tenant.created_at:type_name -> google.protobuf.Timestamp
-	14, // 2: platform.tenant.v1.Tenant.updated_at:type_name -> google.protobuf.Timestamp
+	65, // 1: platform.tenant.v1.Tenant.created_at:type_name -> google.protobuf.Timestamp
+	65, // 2: platform.tenant.v1.Tenant.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 3: platform.tenant.v1.Membership.status:type_name -> platform.tenant.v1.MembershipStatus
-	14, // 4: platform.tenant.v1.Membership.joined_at:type_name -> google.protobuf.Timestamp
-	2,  // 5: platform.tenant.v1.ValidateMembershipResponse.tenant:type_name -> platform.tenant.v1.Tenant
-	3,  // 6: platform.tenant.v1.ValidateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
-	3,  // 7: platform.tenant.v1.GetMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
-	15, // 8: platform.tenant.v1.ListUserTenantsRequest.page:type_name -> platform.common.v1.PageRequest
-	2,  // 9: platform.tenant.v1.ListUserTenantsResponse.tenants:type_name -> platform.tenant.v1.Tenant
-	16, // 10: platform.tenant.v1.ListUserTenantsResponse.page:type_name -> platform.common.v1.PageResult
-	1,  // 11: platform.tenant.v1.MembershipChangedEvent.previous_status:type_name -> platform.tenant.v1.MembershipStatus
-	1,  // 12: platform.tenant.v1.MembershipChangedEvent.current_status:type_name -> platform.tenant.v1.MembershipStatus
-	0,  // 13: platform.tenant.v1.TenantStatusChangedEvent.previous_status:type_name -> platform.tenant.v1.TenantStatus
-	0,  // 14: platform.tenant.v1.TenantStatusChangedEvent.current_status:type_name -> platform.tenant.v1.TenantStatus
-	4,  // 15: platform.tenant.v1.TenantService.ValidateMembership:input_type -> platform.tenant.v1.ValidateMembershipRequest
-	6,  // 16: platform.tenant.v1.TenantService.GetMembership:input_type -> platform.tenant.v1.GetMembershipRequest
-	8,  // 17: platform.tenant.v1.TenantService.ListUserTenants:input_type -> platform.tenant.v1.ListUserTenantsRequest
-	10, // 18: platform.tenant.v1.TenantService.ResolveOrganizationScope:input_type -> platform.tenant.v1.ResolveOrganizationScopeRequest
-	5,  // 19: platform.tenant.v1.TenantService.ValidateMembership:output_type -> platform.tenant.v1.ValidateMembershipResponse
-	7,  // 20: platform.tenant.v1.TenantService.GetMembership:output_type -> platform.tenant.v1.GetMembershipResponse
-	9,  // 21: platform.tenant.v1.TenantService.ListUserTenants:output_type -> platform.tenant.v1.ListUserTenantsResponse
-	11, // 22: platform.tenant.v1.TenantService.ResolveOrganizationScope:output_type -> platform.tenant.v1.ResolveOrganizationScopeResponse
-	19, // [19:23] is the sub-list for method output_type
-	15, // [15:19] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	65, // 4: platform.tenant.v1.Membership.joined_at:type_name -> google.protobuf.Timestamp
+	65, // 5: platform.tenant.v1.Membership.created_at:type_name -> google.protobuf.Timestamp
+	65, // 6: platform.tenant.v1.Membership.updated_at:type_name -> google.protobuf.Timestamp
+	65, // 7: platform.tenant.v1.OrganizationUnit.created_at:type_name -> google.protobuf.Timestamp
+	65, // 8: platform.tenant.v1.OrganizationUnit.updated_at:type_name -> google.protobuf.Timestamp
+	65, // 9: platform.tenant.v1.Invitation.expires_at:type_name -> google.protobuf.Timestamp
+	65, // 10: platform.tenant.v1.Invitation.created_at:type_name -> google.protobuf.Timestamp
+	65, // 11: platform.tenant.v1.Invitation.updated_at:type_name -> google.protobuf.Timestamp
+	65, // 12: platform.tenant.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	65, // 13: platform.tenant.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	65, // 14: platform.tenant.v1.Quota.created_at:type_name -> google.protobuf.Timestamp
+	65, // 15: platform.tenant.v1.Quota.updated_at:type_name -> google.protobuf.Timestamp
+	2,  // 16: platform.tenant.v1.CreateTenantResponse.tenant:type_name -> platform.tenant.v1.Tenant
+	3,  // 17: platform.tenant.v1.CreateTenantResponse.owner_membership:type_name -> platform.tenant.v1.Membership
+	2,  // 18: platform.tenant.v1.GetTenantResponse.tenant:type_name -> platform.tenant.v1.Tenant
+	0,  // 19: platform.tenant.v1.UpdateTenantRequest.status:type_name -> platform.tenant.v1.TenantStatus
+	2,  // 20: platform.tenant.v1.UpdateTenantResponse.tenant:type_name -> platform.tenant.v1.Tenant
+	3,  // 21: platform.tenant.v1.AddMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	1,  // 22: platform.tenant.v1.UpdateMembershipRequest.status:type_name -> platform.tenant.v1.MembershipStatus
+	3,  // 23: platform.tenant.v1.UpdateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	4,  // 24: platform.tenant.v1.CreateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	4,  // 25: platform.tenant.v1.GetOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	4,  // 26: platform.tenant.v1.UpdateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	4,  // 27: platform.tenant.v1.ListOrganizationUnitsResponse.organization_units:type_name -> platform.tenant.v1.OrganizationUnit
+	5,  // 28: platform.tenant.v1.CreateInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	5,  // 29: platform.tenant.v1.AcceptInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	3,  // 30: platform.tenant.v1.AcceptInvitationResponse.membership:type_name -> platform.tenant.v1.Membership
+	5,  // 31: platform.tenant.v1.RevokeInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	66, // 32: platform.tenant.v1.ListInvitationsRequest.page:type_name -> platform.common.v1.PageRequest
+	5,  // 33: platform.tenant.v1.ListInvitationsResponse.invitations:type_name -> platform.tenant.v1.Invitation
+	67, // 34: platform.tenant.v1.ListInvitationsResponse.page:type_name -> platform.common.v1.PageResult
+	6,  // 35: platform.tenant.v1.CreateGroupResponse.group:type_name -> platform.tenant.v1.Group
+	6,  // 36: platform.tenant.v1.UpdateGroupResponse.group:type_name -> platform.tenant.v1.Group
+	6,  // 37: platform.tenant.v1.ListGroupsResponse.groups:type_name -> platform.tenant.v1.Group
+	7,  // 38: platform.tenant.v1.GetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	7,  // 39: platform.tenant.v1.SetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	7,  // 40: platform.tenant.v1.ConsumeQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	2,  // 41: platform.tenant.v1.ValidateMembershipResponse.tenant:type_name -> platform.tenant.v1.Tenant
+	3,  // 42: platform.tenant.v1.ValidateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	3,  // 43: platform.tenant.v1.GetMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	66, // 44: platform.tenant.v1.ListUserTenantsRequest.page:type_name -> platform.common.v1.PageRequest
+	2,  // 45: platform.tenant.v1.ListUserTenantsResponse.tenants:type_name -> platform.tenant.v1.Tenant
+	67, // 46: platform.tenant.v1.ListUserTenantsResponse.page:type_name -> platform.common.v1.PageResult
+	1,  // 47: platform.tenant.v1.MembershipChangedEvent.previous_status:type_name -> platform.tenant.v1.MembershipStatus
+	1,  // 48: platform.tenant.v1.MembershipChangedEvent.current_status:type_name -> platform.tenant.v1.MembershipStatus
+	2,  // 49: platform.tenant.v1.TenantCreatedEvent.tenant:type_name -> platform.tenant.v1.Tenant
+	0,  // 50: platform.tenant.v1.TenantStatusChangedEvent.previous_status:type_name -> platform.tenant.v1.TenantStatus
+	0,  // 51: platform.tenant.v1.TenantStatusChangedEvent.current_status:type_name -> platform.tenant.v1.TenantStatus
+	4,  // 52: platform.tenant.v1.OrganizationUnitChangedEvent.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	5,  // 53: platform.tenant.v1.InvitationChangedEvent.invitation:type_name -> platform.tenant.v1.Invitation
+	6,  // 54: platform.tenant.v1.GroupChangedEvent.group:type_name -> platform.tenant.v1.Group
+	7,  // 55: platform.tenant.v1.QuotaChangedEvent.quota:type_name -> platform.tenant.v1.Quota
+	8,  // 56: platform.tenant.v1.TenantService.CreateTenant:input_type -> platform.tenant.v1.CreateTenantRequest
+	10, // 57: platform.tenant.v1.TenantService.GetTenant:input_type -> platform.tenant.v1.GetTenantRequest
+	12, // 58: platform.tenant.v1.TenantService.UpdateTenant:input_type -> platform.tenant.v1.UpdateTenantRequest
+	14, // 59: platform.tenant.v1.TenantService.AddMembership:input_type -> platform.tenant.v1.AddMembershipRequest
+	16, // 60: platform.tenant.v1.TenantService.UpdateMembership:input_type -> platform.tenant.v1.UpdateMembershipRequest
+	18, // 61: platform.tenant.v1.TenantService.CreateOrganizationUnit:input_type -> platform.tenant.v1.CreateOrganizationUnitRequest
+	20, // 62: platform.tenant.v1.TenantService.GetOrganizationUnit:input_type -> platform.tenant.v1.GetOrganizationUnitRequest
+	22, // 63: platform.tenant.v1.TenantService.UpdateOrganizationUnit:input_type -> platform.tenant.v1.UpdateOrganizationUnitRequest
+	24, // 64: platform.tenant.v1.TenantService.ListOrganizationUnits:input_type -> platform.tenant.v1.ListOrganizationUnitsRequest
+	26, // 65: platform.tenant.v1.TenantService.CreateInvitation:input_type -> platform.tenant.v1.CreateInvitationRequest
+	28, // 66: platform.tenant.v1.TenantService.AcceptInvitation:input_type -> platform.tenant.v1.AcceptInvitationRequest
+	30, // 67: platform.tenant.v1.TenantService.RevokeInvitation:input_type -> platform.tenant.v1.RevokeInvitationRequest
+	32, // 68: platform.tenant.v1.TenantService.ListInvitations:input_type -> platform.tenant.v1.ListInvitationsRequest
+	34, // 69: platform.tenant.v1.TenantService.CreateGroup:input_type -> platform.tenant.v1.CreateGroupRequest
+	36, // 70: platform.tenant.v1.TenantService.UpdateGroup:input_type -> platform.tenant.v1.UpdateGroupRequest
+	38, // 71: platform.tenant.v1.TenantService.AddGroupMember:input_type -> platform.tenant.v1.AddGroupMemberRequest
+	40, // 72: platform.tenant.v1.TenantService.RemoveGroupMember:input_type -> platform.tenant.v1.RemoveGroupMemberRequest
+	42, // 73: platform.tenant.v1.TenantService.ListGroups:input_type -> platform.tenant.v1.ListGroupsRequest
+	44, // 74: platform.tenant.v1.TenantService.GetQuota:input_type -> platform.tenant.v1.GetQuotaRequest
+	46, // 75: platform.tenant.v1.TenantService.SetQuota:input_type -> platform.tenant.v1.SetQuotaRequest
+	48, // 76: platform.tenant.v1.TenantService.ConsumeQuota:input_type -> platform.tenant.v1.ConsumeQuotaRequest
+	50, // 77: platform.tenant.v1.TenantService.ValidateMembership:input_type -> platform.tenant.v1.ValidateMembershipRequest
+	52, // 78: platform.tenant.v1.TenantService.GetMembership:input_type -> platform.tenant.v1.GetMembershipRequest
+	54, // 79: platform.tenant.v1.TenantService.ListUserTenants:input_type -> platform.tenant.v1.ListUserTenantsRequest
+	56, // 80: platform.tenant.v1.TenantService.ResolveOrganizationScope:input_type -> platform.tenant.v1.ResolveOrganizationScopeRequest
+	9,  // 81: platform.tenant.v1.TenantService.CreateTenant:output_type -> platform.tenant.v1.CreateTenantResponse
+	11, // 82: platform.tenant.v1.TenantService.GetTenant:output_type -> platform.tenant.v1.GetTenantResponse
+	13, // 83: platform.tenant.v1.TenantService.UpdateTenant:output_type -> platform.tenant.v1.UpdateTenantResponse
+	15, // 84: platform.tenant.v1.TenantService.AddMembership:output_type -> platform.tenant.v1.AddMembershipResponse
+	17, // 85: platform.tenant.v1.TenantService.UpdateMembership:output_type -> platform.tenant.v1.UpdateMembershipResponse
+	19, // 86: platform.tenant.v1.TenantService.CreateOrganizationUnit:output_type -> platform.tenant.v1.CreateOrganizationUnitResponse
+	21, // 87: platform.tenant.v1.TenantService.GetOrganizationUnit:output_type -> platform.tenant.v1.GetOrganizationUnitResponse
+	23, // 88: platform.tenant.v1.TenantService.UpdateOrganizationUnit:output_type -> platform.tenant.v1.UpdateOrganizationUnitResponse
+	25, // 89: platform.tenant.v1.TenantService.ListOrganizationUnits:output_type -> platform.tenant.v1.ListOrganizationUnitsResponse
+	27, // 90: platform.tenant.v1.TenantService.CreateInvitation:output_type -> platform.tenant.v1.CreateInvitationResponse
+	29, // 91: platform.tenant.v1.TenantService.AcceptInvitation:output_type -> platform.tenant.v1.AcceptInvitationResponse
+	31, // 92: platform.tenant.v1.TenantService.RevokeInvitation:output_type -> platform.tenant.v1.RevokeInvitationResponse
+	33, // 93: platform.tenant.v1.TenantService.ListInvitations:output_type -> platform.tenant.v1.ListInvitationsResponse
+	35, // 94: platform.tenant.v1.TenantService.CreateGroup:output_type -> platform.tenant.v1.CreateGroupResponse
+	37, // 95: platform.tenant.v1.TenantService.UpdateGroup:output_type -> platform.tenant.v1.UpdateGroupResponse
+	39, // 96: platform.tenant.v1.TenantService.AddGroupMember:output_type -> platform.tenant.v1.AddGroupMemberResponse
+	41, // 97: platform.tenant.v1.TenantService.RemoveGroupMember:output_type -> platform.tenant.v1.RemoveGroupMemberResponse
+	43, // 98: platform.tenant.v1.TenantService.ListGroups:output_type -> platform.tenant.v1.ListGroupsResponse
+	45, // 99: platform.tenant.v1.TenantService.GetQuota:output_type -> platform.tenant.v1.GetQuotaResponse
+	47, // 100: platform.tenant.v1.TenantService.SetQuota:output_type -> platform.tenant.v1.SetQuotaResponse
+	49, // 101: platform.tenant.v1.TenantService.ConsumeQuota:output_type -> platform.tenant.v1.ConsumeQuotaResponse
+	51, // 102: platform.tenant.v1.TenantService.ValidateMembership:output_type -> platform.tenant.v1.ValidateMembershipResponse
+	53, // 103: platform.tenant.v1.TenantService.GetMembership:output_type -> platform.tenant.v1.GetMembershipResponse
+	55, // 104: platform.tenant.v1.TenantService.ListUserTenants:output_type -> platform.tenant.v1.ListUserTenantsResponse
+	57, // 105: platform.tenant.v1.TenantService.ResolveOrganizationScope:output_type -> platform.tenant.v1.ResolveOrganizationScopeResponse
+	81, // [81:106] is the sub-list for method output_type
+	56, // [56:81] is the sub-list for method input_type
+	56, // [56:56] is the sub-list for extension type_name
+	56, // [56:56] is the sub-list for extension extendee
+	0,  // [0:56] is the sub-list for field type_name
 }
 
 func init() { file_platform_tenant_v1_tenant_proto_init() }
@@ -1001,7 +4431,7 @@ func file_platform_tenant_v1_tenant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_tenant_v1_tenant_proto_rawDesc), len(file_platform_tenant_v1_tenant_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   12,
+			NumMessages:   63,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

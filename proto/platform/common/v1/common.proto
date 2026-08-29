@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package platform.common.v1;
 
-option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1";
-
 import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1";
 
 message PageRequest {
   uint32 page = 1;
@@ -37,4 +37,3 @@ message EventEnvelope {
   RequestContext context = 8;
   bytes payload = 9;
 }
-

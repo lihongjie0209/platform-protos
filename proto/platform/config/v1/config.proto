@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package platform.config.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/config/v1;configv1";
+
+service ConfigService {
+  rpc PutDraft(PutDraftRequest) returns (PutDraftResponse);
+  rpc Publish(PublishRequest) returns (PublishResponse);
+  rpc Rollback(RollbackRequest) returns (RollbackResponse);
+  rpc Resolve(ResolveRequest) returns (ResolveResponse);
+  rpc List(ListRequest) returns (ListResponse);
+}
+
+message ConfigEntry {
+  string id = 1;
+  string environment = 2;
+  string tenant_id = 3;
+  string service = 4;
+  string key = 5;
+  bytes value = 6;
+  string secret_ref = 7;
+  string status = 8;
+  int64 revision = 9;
+  int32 rollout_percentage = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+message PutDraftRequest {
+  ConfigEntry entry = 1;
+  int64 expected_version = 2;
+}
+message PutDraftResponse {
+  ConfigEntry entry = 1;
+}
+message PublishRequest {
+  string id = 1;
+  int64 expected_version = 2;
+}
+message PublishResponse {
+  ConfigEntry entry = 1;
+}
+message RollbackRequest {
+  string id = 1;
+  int64 target_revision = 2;
+  int64 expected_version = 3;
+}
+message RollbackResponse {
+  ConfigEntry entry = 1;
+}
+message ResolveRequest {
+  string environment = 1;
+  string tenant_id = 2;
+  string service = 3;
+  repeated string keys = 4;
+  string subject_id = 5;
+}
+message ResolveResponse {
+  repeated ConfigEntry entries = 1;
+  string etag = 2;
+}
+message ListRequest {
+  string environment = 1;
+  string tenant_id = 2;
+  string service = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListResponse {
+  repeated ConfigEntry entries = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message ConfigChangedEvent {
+  ConfigEntry entry = 1;
+  string change_type = 2;
+}

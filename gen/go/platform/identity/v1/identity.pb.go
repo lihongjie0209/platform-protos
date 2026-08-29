@@ -87,6 +87,9 @@ type User struct {
 	Status        UserStatus             `protobuf:"varint,6,opt,name=status,proto3,enum=platform.identity.v1.UserStatus" json:"status,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Version       int64                  `protobuf:"varint,9,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,11,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -175,6 +178,27 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 		return x.UpdatedAt
 	}
 	return nil
+}
+
+func (x *User) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+func (x *User) GetCreatedBy() string {
+	if x != nil {
+		return x.CreatedBy
+	}
+	return ""
+}
+
+func (x *User) GetUpdatedBy() string {
+	if x != nil {
+		return x.UpdatedBy
+	}
+	return ""
 }
 
 type GetUserRequest struct {
@@ -853,6 +877,50 @@ func (x *UserStatusChangedEvent) GetReason() string {
 	return ""
 }
 
+type UserCreatedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserCreatedEvent) Reset() {
+	*x = UserCreatedEvent{}
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserCreatedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserCreatedEvent) ProtoMessage() {}
+
+func (x *UserCreatedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserCreatedEvent.ProtoReflect.Descriptor instead.
+func (*UserCreatedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UserCreatedEvent) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type SessionRevokedEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
@@ -865,7 +933,7 @@ type SessionRevokedEvent struct {
 
 func (x *SessionRevokedEvent) Reset() {
 	*x = SessionRevokedEvent{}
-	mi := &file_platform_identity_v1_identity_proto_msgTypes[14]
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -877,7 +945,7 @@ func (x *SessionRevokedEvent) String() string {
 func (*SessionRevokedEvent) ProtoMessage() {}
 
 func (x *SessionRevokedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_identity_v1_identity_proto_msgTypes[14]
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -890,7 +958,7 @@ func (x *SessionRevokedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionRevokedEvent.ProtoReflect.Descriptor instead.
 func (*SessionRevokedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{14}
+	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SessionRevokedEvent) GetSessionId() string {
@@ -921,11 +989,79 @@ func (x *SessionRevokedEvent) GetReason() string {
 	return ""
 }
 
+type ServiceAccountStatusChangedEvent struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	ServiceAccountId string                 `protobuf:"bytes,1,opt,name=service_account_id,json=serviceAccountId,proto3" json:"service_account_id,omitempty"`
+	PreviousStatus   string                 `protobuf:"bytes,2,opt,name=previous_status,json=previousStatus,proto3" json:"previous_status,omitempty"`
+	CurrentStatus    string                 `protobuf:"bytes,3,opt,name=current_status,json=currentStatus,proto3" json:"current_status,omitempty"`
+	Reason           string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ServiceAccountStatusChangedEvent) Reset() {
+	*x = ServiceAccountStatusChangedEvent{}
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ServiceAccountStatusChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ServiceAccountStatusChangedEvent) ProtoMessage() {}
+
+func (x *ServiceAccountStatusChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ServiceAccountStatusChangedEvent.ProtoReflect.Descriptor instead.
+func (*ServiceAccountStatusChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ServiceAccountStatusChangedEvent) GetServiceAccountId() string {
+	if x != nil {
+		return x.ServiceAccountId
+	}
+	return ""
+}
+
+func (x *ServiceAccountStatusChangedEvent) GetPreviousStatus() string {
+	if x != nil {
+		return x.PreviousStatus
+	}
+	return ""
+}
+
+func (x *ServiceAccountStatusChangedEvent) GetCurrentStatus() string {
+	if x != nil {
+		return x.CurrentStatus
+	}
+	return ""
+}
+
+func (x *ServiceAccountStatusChangedEvent) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
 var File_platform_identity_v1_identity_proto protoreflect.FileDescriptor
 
 const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\n" +
-	"#platform/identity/v1/identity.proto\x12\x14platform.identity.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb1\x02\n" +
+	"#platform/identity/v1/identity.proto\x12\x14platform.identity.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x89\x03\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12!\n" +
@@ -936,7 +1072,13 @@ const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\")\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x18\n" +
+	"\aversion\x18\t \x01(\x03R\aversion\x12\x1d\n" +
+	"\n" +
+	"created_by\x18\n" +
+	" \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"\n" +
+	"updated_by\x18\v \x01(\tR\tupdatedBy\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"A\n" +
 	"\x0fGetUserResponse\x12.\n" +
@@ -978,12 +1120,19 @@ const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12I\n" +
 	"\x0fprevious_status\x18\x02 \x01(\x0e2 .platform.identity.v1.UserStatusR\x0epreviousStatus\x12G\n" +
 	"\x0ecurrent_status\x18\x03 \x01(\x0e2 .platform.identity.v1.UserStatusR\rcurrentStatus\x12\x16\n" +
-	"\x06reason\x18\x04 \x01(\tR\x06reason\"\x82\x01\n" +
+	"\x06reason\x18\x04 \x01(\tR\x06reason\"B\n" +
+	"\x10UserCreatedEvent\x12.\n" +
+	"\x04user\x18\x01 \x01(\v2\x1a.platform.identity.v1.UserR\x04user\"\x82\x01\n" +
 	"\x13SessionRevokedEvent\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
 	"\ttenant_id\x18\x03 \x01(\tR\btenantId\x12\x16\n" +
+	"\x06reason\x18\x04 \x01(\tR\x06reason\"\xb8\x01\n" +
+	" ServiceAccountStatusChangedEvent\x12,\n" +
+	"\x12service_account_id\x18\x01 \x01(\tR\x10serviceAccountId\x12'\n" +
+	"\x0fprevious_status\x18\x02 \x01(\tR\x0epreviousStatus\x12%\n" +
+	"\x0ecurrent_status\x18\x03 \x01(\tR\rcurrentStatus\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason*\x8b\x01\n" +
 	"\n" +
 	"UserStatus\x12\x1b\n" +
@@ -1013,53 +1162,56 @@ func file_platform_identity_v1_identity_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_identity_v1_identity_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_platform_identity_v1_identity_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_platform_identity_v1_identity_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_platform_identity_v1_identity_proto_goTypes = []any{
-	(UserStatus)(0),                      // 0: platform.identity.v1.UserStatus
-	(*User)(nil),                         // 1: platform.identity.v1.User
-	(*GetUserRequest)(nil),               // 2: platform.identity.v1.GetUserRequest
-	(*GetUserResponse)(nil),              // 3: platform.identity.v1.GetUserResponse
-	(*BatchGetUsersRequest)(nil),         // 4: platform.identity.v1.BatchGetUsersRequest
-	(*BatchGetUsersResponse)(nil),        // 5: platform.identity.v1.BatchGetUsersResponse
-	(*ValidateSessionRequest)(nil),       // 6: platform.identity.v1.ValidateSessionRequest
-	(*ValidateSessionResponse)(nil),      // 7: platform.identity.v1.ValidateSessionResponse
-	(*RevokeTenantSessionsRequest)(nil),  // 8: platform.identity.v1.RevokeTenantSessionsRequest
-	(*RevokeTenantSessionsResponse)(nil), // 9: platform.identity.v1.RevokeTenantSessionsResponse
-	(*IssueTenantTokenRequest)(nil),      // 10: platform.identity.v1.IssueTenantTokenRequest
-	(*IssueTenantTokenResponse)(nil),     // 11: platform.identity.v1.IssueTenantTokenResponse
-	(*GetServiceAccountRequest)(nil),     // 12: platform.identity.v1.GetServiceAccountRequest
-	(*GetServiceAccountResponse)(nil),    // 13: platform.identity.v1.GetServiceAccountResponse
-	(*UserStatusChangedEvent)(nil),       // 14: platform.identity.v1.UserStatusChangedEvent
-	(*SessionRevokedEvent)(nil),          // 15: platform.identity.v1.SessionRevokedEvent
-	(*timestamppb.Timestamp)(nil),        // 16: google.protobuf.Timestamp
+	(UserStatus)(0),                          // 0: platform.identity.v1.UserStatus
+	(*User)(nil),                             // 1: platform.identity.v1.User
+	(*GetUserRequest)(nil),                   // 2: platform.identity.v1.GetUserRequest
+	(*GetUserResponse)(nil),                  // 3: platform.identity.v1.GetUserResponse
+	(*BatchGetUsersRequest)(nil),             // 4: platform.identity.v1.BatchGetUsersRequest
+	(*BatchGetUsersResponse)(nil),            // 5: platform.identity.v1.BatchGetUsersResponse
+	(*ValidateSessionRequest)(nil),           // 6: platform.identity.v1.ValidateSessionRequest
+	(*ValidateSessionResponse)(nil),          // 7: platform.identity.v1.ValidateSessionResponse
+	(*RevokeTenantSessionsRequest)(nil),      // 8: platform.identity.v1.RevokeTenantSessionsRequest
+	(*RevokeTenantSessionsResponse)(nil),     // 9: platform.identity.v1.RevokeTenantSessionsResponse
+	(*IssueTenantTokenRequest)(nil),          // 10: platform.identity.v1.IssueTenantTokenRequest
+	(*IssueTenantTokenResponse)(nil),         // 11: platform.identity.v1.IssueTenantTokenResponse
+	(*GetServiceAccountRequest)(nil),         // 12: platform.identity.v1.GetServiceAccountRequest
+	(*GetServiceAccountResponse)(nil),        // 13: platform.identity.v1.GetServiceAccountResponse
+	(*UserStatusChangedEvent)(nil),           // 14: platform.identity.v1.UserStatusChangedEvent
+	(*UserCreatedEvent)(nil),                 // 15: platform.identity.v1.UserCreatedEvent
+	(*SessionRevokedEvent)(nil),              // 16: platform.identity.v1.SessionRevokedEvent
+	(*ServiceAccountStatusChangedEvent)(nil), // 17: platform.identity.v1.ServiceAccountStatusChangedEvent
+	(*timestamppb.Timestamp)(nil),            // 18: google.protobuf.Timestamp
 }
 var file_platform_identity_v1_identity_proto_depIdxs = []int32{
 	0,  // 0: platform.identity.v1.User.status:type_name -> platform.identity.v1.UserStatus
-	16, // 1: platform.identity.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	16, // 2: platform.identity.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	18, // 1: platform.identity.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	18, // 2: platform.identity.v1.User.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 3: platform.identity.v1.GetUserResponse.user:type_name -> platform.identity.v1.User
 	1,  // 4: platform.identity.v1.BatchGetUsersResponse.users:type_name -> platform.identity.v1.User
-	16, // 5: platform.identity.v1.ValidateSessionResponse.expires_at:type_name -> google.protobuf.Timestamp
-	16, // 6: platform.identity.v1.IssueTenantTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	18, // 5: platform.identity.v1.ValidateSessionResponse.expires_at:type_name -> google.protobuf.Timestamp
+	18, // 6: platform.identity.v1.IssueTenantTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
 	0,  // 7: platform.identity.v1.UserStatusChangedEvent.previous_status:type_name -> platform.identity.v1.UserStatus
 	0,  // 8: platform.identity.v1.UserStatusChangedEvent.current_status:type_name -> platform.identity.v1.UserStatus
-	2,  // 9: platform.identity.v1.IdentityService.GetUser:input_type -> platform.identity.v1.GetUserRequest
-	4,  // 10: platform.identity.v1.IdentityService.BatchGetUsers:input_type -> platform.identity.v1.BatchGetUsersRequest
-	6,  // 11: platform.identity.v1.IdentityService.ValidateSession:input_type -> platform.identity.v1.ValidateSessionRequest
-	8,  // 12: platform.identity.v1.IdentityService.RevokeTenantSessions:input_type -> platform.identity.v1.RevokeTenantSessionsRequest
-	10, // 13: platform.identity.v1.IdentityService.IssueTenantToken:input_type -> platform.identity.v1.IssueTenantTokenRequest
-	12, // 14: platform.identity.v1.IdentityService.GetServiceAccount:input_type -> platform.identity.v1.GetServiceAccountRequest
-	3,  // 15: platform.identity.v1.IdentityService.GetUser:output_type -> platform.identity.v1.GetUserResponse
-	5,  // 16: platform.identity.v1.IdentityService.BatchGetUsers:output_type -> platform.identity.v1.BatchGetUsersResponse
-	7,  // 17: platform.identity.v1.IdentityService.ValidateSession:output_type -> platform.identity.v1.ValidateSessionResponse
-	9,  // 18: platform.identity.v1.IdentityService.RevokeTenantSessions:output_type -> platform.identity.v1.RevokeTenantSessionsResponse
-	11, // 19: platform.identity.v1.IdentityService.IssueTenantToken:output_type -> platform.identity.v1.IssueTenantTokenResponse
-	13, // 20: platform.identity.v1.IdentityService.GetServiceAccount:output_type -> platform.identity.v1.GetServiceAccountResponse
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	1,  // 9: platform.identity.v1.UserCreatedEvent.user:type_name -> platform.identity.v1.User
+	2,  // 10: platform.identity.v1.IdentityService.GetUser:input_type -> platform.identity.v1.GetUserRequest
+	4,  // 11: platform.identity.v1.IdentityService.BatchGetUsers:input_type -> platform.identity.v1.BatchGetUsersRequest
+	6,  // 12: platform.identity.v1.IdentityService.ValidateSession:input_type -> platform.identity.v1.ValidateSessionRequest
+	8,  // 13: platform.identity.v1.IdentityService.RevokeTenantSessions:input_type -> platform.identity.v1.RevokeTenantSessionsRequest
+	10, // 14: platform.identity.v1.IdentityService.IssueTenantToken:input_type -> platform.identity.v1.IssueTenantTokenRequest
+	12, // 15: platform.identity.v1.IdentityService.GetServiceAccount:input_type -> platform.identity.v1.GetServiceAccountRequest
+	3,  // 16: platform.identity.v1.IdentityService.GetUser:output_type -> platform.identity.v1.GetUserResponse
+	5,  // 17: platform.identity.v1.IdentityService.BatchGetUsers:output_type -> platform.identity.v1.BatchGetUsersResponse
+	7,  // 18: platform.identity.v1.IdentityService.ValidateSession:output_type -> platform.identity.v1.ValidateSessionResponse
+	9,  // 19: platform.identity.v1.IdentityService.RevokeTenantSessions:output_type -> platform.identity.v1.RevokeTenantSessionsResponse
+	11, // 20: platform.identity.v1.IdentityService.IssueTenantToken:output_type -> platform.identity.v1.IssueTenantTokenResponse
+	13, // 21: platform.identity.v1.IdentityService.GetServiceAccount:output_type -> platform.identity.v1.GetServiceAccountResponse
+	16, // [16:22] is the sub-list for method output_type
+	10, // [10:16] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_platform_identity_v1_identity_proto_init() }
@@ -1073,7 +1225,7 @@ func file_platform_identity_v1_identity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_identity_v1_identity_proto_rawDesc), len(file_platform_identity_v1_identity_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   15,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

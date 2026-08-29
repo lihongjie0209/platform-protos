@@ -2,15 +2,27 @@ syntax = "proto3";
 
 package platform.authorization.v1;
 
-option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/authorization/v1;authorizationv1";
-
+import "google/protobuf/timestamp.proto";
 import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/authorization/v1;authorizationv1";
 
 service AuthorizationService {
   rpc Check(CheckRequest) returns (CheckResponse);
   rpc BatchCheck(BatchCheckRequest) returns (BatchCheckResponse);
   rpc ResolveDataScope(ResolveDataScopeRequest) returns (ResolveDataScopeResponse);
   rpc InvalidateSubject(InvalidateSubjectRequest) returns (InvalidateSubjectResponse);
+  rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+  rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
+  rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
+  rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse);
+  rpc ListRoles(ListRolesRequest) returns (ListRolesResponse);
+  rpc GrantRolePermission(GrantRolePermissionRequest) returns (GrantRolePermissionResponse);
+  rpc RevokeRolePermission(RevokeRolePermissionRequest) returns (RevokeRolePermissionResponse);
+  rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse);
+  rpc CreateBinding(CreateBindingRequest) returns (CreateBindingResponse);
+  rpc RevokeBinding(RevokeBindingRequest) returns (RevokeBindingResponse);
+  rpc ListBindings(ListBindingsRequest) returns (ListBindingsResponse);
 }
 
 enum SubjectType {
@@ -29,7 +41,10 @@ enum DataScopeType {
   DATA_SCOPE_TYPE_ALL = 5;
 }
 
-message Subject { string id = 1; SubjectType type = 2; }
+message Subject {
+  string id = 1;
+  SubjectType type = 2;
+}
 
 message CheckRequest {
   string tenant_id = 1;
@@ -50,12 +65,179 @@ message CheckResponse {
   repeated string organization_unit_ids = 6;
 }
 
-message BatchCheckRequest { repeated CheckRequest checks = 1; }
-message BatchCheckResponse { repeated CheckResponse decisions = 1; }
-message ResolveDataScopeRequest { CheckRequest check = 1; }
-message ResolveDataScopeResponse { CheckResponse decision = 1; }
-message InvalidateSubjectRequest { string tenant_id = 1; Subject subject = 2; }
+message BatchCheckRequest {
+  repeated CheckRequest checks = 1;
+}
+message BatchCheckResponse {
+  repeated CheckResponse decisions = 1;
+}
+message ResolveDataScopeRequest {
+  CheckRequest check = 1;
+}
+message ResolveDataScopeResponse {
+  CheckResponse decision = 1;
+}
+message InvalidateSubjectRequest {
+  string tenant_id = 1;
+  Subject subject = 2;
+}
 message InvalidateSubjectResponse {}
+
+message Permission {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string name = 4;
+  string resource_type = 5;
+  string action = 6;
+  string status = 7;
+  int64 version = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  string created_by = 11;
+  string updated_by = 12;
+  string condition_expression = 13;
+}
+
+message Role {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string name = 4;
+  string description = 5;
+  string data_scope = 6;
+  string status = 7;
+  int64 version = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  string created_by = 11;
+  string updated_by = 12;
+}
+
+message RolePermission {
+  string id = 1;
+  string tenant_id = 2;
+  string role_id = 3;
+  string permission_id = 4;
+  string status = 5;
+  int64 version = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  string created_by = 9;
+  string updated_by = 10;
+}
+
+message Binding {
+  string id = 1;
+  string tenant_id = 2;
+  Subject subject = 3;
+  string role_id = 4;
+  string organization_unit_id = 5;
+  string status = 6;
+  int64 version = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  string created_by = 10;
+  string updated_by = 11;
+}
+
+message CreatePermissionRequest {
+  string tenant_id = 1;
+  string code = 2;
+  string name = 3;
+  string resource_type = 4;
+  string action = 5;
+  string condition_expression = 6;
+}
+message CreatePermissionResponse {
+  Permission permission = 1;
+}
+message ListPermissionsRequest {
+  string tenant_id = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListPermissionsResponse {
+  repeated Permission permissions = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message CreateRoleRequest {
+  string tenant_id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  string data_scope = 5;
+}
+message CreateRoleResponse {
+  Role role = 1;
+}
+message UpdateRoleRequest {
+  string role_id = 1;
+  string name = 2;
+  string description = 3;
+  string data_scope = 4;
+  string status = 5;
+  int64 expected_version = 6;
+}
+message UpdateRoleResponse {
+  Role role = 1;
+}
+message ListRolesRequest {
+  string tenant_id = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListRolesResponse {
+  repeated Role roles = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message GrantRolePermissionRequest {
+  string tenant_id = 1;
+  string role_id = 2;
+  string permission_id = 3;
+}
+message GrantRolePermissionResponse {
+  RolePermission role_permission = 1;
+}
+message RevokeRolePermissionRequest {
+  string role_permission_id = 1;
+  int64 expected_version = 2;
+}
+message RevokeRolePermissionResponse {
+  RolePermission role_permission = 1;
+}
+message ListRolePermissionsRequest {
+  string role_id = 1;
+}
+message ListRolePermissionsResponse {
+  repeated RolePermission role_permissions = 1;
+}
+
+message CreateBindingRequest {
+  string tenant_id = 1;
+  Subject subject = 2;
+  string role_id = 3;
+  string organization_unit_id = 4;
+}
+message CreateBindingResponse {
+  Binding binding = 1;
+}
+message RevokeBindingRequest {
+  string binding_id = 1;
+  int64 expected_version = 2;
+}
+message RevokeBindingResponse {
+  Binding binding = 1;
+}
+message ListBindingsRequest {
+  string tenant_id = 1;
+  Subject subject = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListBindingsResponse {
+  repeated Binding bindings = 1;
+  platform.common.v1.PageResult page = 2;
+}
 
 message AuthorizationChangedEvent {
   string tenant_id = 1;
@@ -64,4 +246,3 @@ message AuthorizationChangedEvent {
   uint64 policy_version = 4;
   string reason = 5;
 }
-

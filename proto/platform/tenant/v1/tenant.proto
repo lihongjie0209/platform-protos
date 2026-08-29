@@ -2,12 +2,33 @@ syntax = "proto3";
 
 package platform.tenant.v1;
 
-option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/tenant/v1;tenantv1";
-
 import "google/protobuf/timestamp.proto";
 import "platform/common/v1/common.proto";
 
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/tenant/v1;tenantv1";
+
 service TenantService {
+  rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse);
+  rpc GetTenant(GetTenantRequest) returns (GetTenantResponse);
+  rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse);
+  rpc AddMembership(AddMembershipRequest) returns (AddMembershipResponse);
+  rpc UpdateMembership(UpdateMembershipRequest) returns (UpdateMembershipResponse);
+  rpc CreateOrganizationUnit(CreateOrganizationUnitRequest) returns (CreateOrganizationUnitResponse);
+  rpc GetOrganizationUnit(GetOrganizationUnitRequest) returns (GetOrganizationUnitResponse);
+  rpc UpdateOrganizationUnit(UpdateOrganizationUnitRequest) returns (UpdateOrganizationUnitResponse);
+  rpc ListOrganizationUnits(ListOrganizationUnitsRequest) returns (ListOrganizationUnitsResponse);
+  rpc CreateInvitation(CreateInvitationRequest) returns (CreateInvitationResponse);
+  rpc AcceptInvitation(AcceptInvitationRequest) returns (AcceptInvitationResponse);
+  rpc RevokeInvitation(RevokeInvitationRequest) returns (RevokeInvitationResponse);
+  rpc ListInvitations(ListInvitationsRequest) returns (ListInvitationsResponse);
+  rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse);
+  rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse);
+  rpc AddGroupMember(AddGroupMemberRequest) returns (AddGroupMemberResponse);
+  rpc RemoveGroupMember(RemoveGroupMemberRequest) returns (RemoveGroupMemberResponse);
+  rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse);
+  rpc GetQuota(GetQuotaRequest) returns (GetQuotaResponse);
+  rpc SetQuota(SetQuotaRequest) returns (SetQuotaResponse);
+  rpc ConsumeQuota(ConsumeQuotaRequest) returns (ConsumeQuotaResponse);
   rpc ValidateMembership(ValidateMembershipRequest) returns (ValidateMembershipResponse);
   rpc GetMembership(GetMembershipRequest) returns (GetMembershipResponse);
   rpc ListUserTenants(ListUserTenantsRequest) returns (ListUserTenantsResponse);
@@ -38,6 +59,9 @@ message Tenant {
   TenantStatus status = 4;
   google.protobuf.Timestamp created_at = 5;
   google.protobuf.Timestamp updated_at = 6;
+  int64 version = 7;
+  string created_by = 8;
+  string updated_by = 9;
 }
 
 message Membership {
@@ -47,16 +71,266 @@ message Membership {
   MembershipStatus status = 4;
   string primary_organization_unit_id = 5;
   google.protobuf.Timestamp joined_at = 6;
+  int64 version = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  string created_by = 10;
+  string updated_by = 11;
 }
 
-message ValidateMembershipRequest { string user_id = 1; string tenant_id = 2; }
-message ValidateMembershipResponse { bool valid = 1; Tenant tenant = 2; Membership membership = 3; }
-message GetMembershipRequest { string membership_id = 1; }
-message GetMembershipResponse { Membership membership = 1; }
-message ListUserTenantsRequest { string user_id = 1; platform.common.v1.PageRequest page = 2; }
-message ListUserTenantsResponse { repeated Tenant tenants = 1; platform.common.v1.PageResult page = 2; }
-message ResolveOrganizationScopeRequest { string membership_id = 1; }
-message ResolveOrganizationScopeResponse { repeated string organization_unit_ids = 1; }
+message OrganizationUnit {
+  string id = 1;
+  string tenant_id = 2;
+  string parent_id = 3;
+  string code = 4;
+  string name = 5;
+  string path = 6;
+  string status = 7;
+  int64 version = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  string created_by = 11;
+  string updated_by = 12;
+}
+
+message Invitation {
+  string id = 1;
+  string tenant_id = 2;
+  string email = 3;
+  string status = 4;
+  google.protobuf.Timestamp expires_at = 5;
+  string accepted_by_user_id = 6;
+  int64 version = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  string created_by = 10;
+  string updated_by = 11;
+}
+
+message Group {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string name = 4;
+  string status = 5;
+  int64 version = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  string created_by = 9;
+  string updated_by = 10;
+}
+
+message Quota {
+  string tenant_id = 1;
+  string key = 2;
+  int64 limit = 3;
+  int64 used = 4;
+  int64 version = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  string created_by = 8;
+  string updated_by = 9;
+}
+
+message CreateTenantRequest {
+  string code = 1;
+  string name = 2;
+  string owner_user_id = 3;
+}
+message CreateTenantResponse {
+  Tenant tenant = 1;
+  Membership owner_membership = 2;
+}
+message GetTenantRequest {
+  string tenant_id = 1;
+}
+message GetTenantResponse {
+  Tenant tenant = 1;
+}
+message UpdateTenantRequest {
+  string tenant_id = 1;
+  string name = 2;
+  TenantStatus status = 3;
+  int64 expected_version = 4;
+  string reason = 5;
+}
+message UpdateTenantResponse {
+  Tenant tenant = 1;
+}
+message AddMembershipRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+  string primary_organization_unit_id = 3;
+}
+message AddMembershipResponse {
+  Membership membership = 1;
+}
+message UpdateMembershipRequest {
+  string membership_id = 1;
+  MembershipStatus status = 2;
+  string primary_organization_unit_id = 3;
+  int64 expected_version = 4;
+  string reason = 5;
+}
+message UpdateMembershipResponse {
+  Membership membership = 1;
+}
+message CreateOrganizationUnitRequest {
+  string tenant_id = 1;
+  string parent_id = 2;
+  string code = 3;
+  string name = 4;
+}
+message CreateOrganizationUnitResponse {
+  OrganizationUnit organization_unit = 1;
+}
+message GetOrganizationUnitRequest {
+  string organization_unit_id = 1;
+}
+message GetOrganizationUnitResponse {
+  OrganizationUnit organization_unit = 1;
+}
+message UpdateOrganizationUnitRequest {
+  string organization_unit_id = 1;
+  string parent_id = 2;
+  string name = 3;
+  string status = 4;
+  int64 expected_version = 5;
+}
+message UpdateOrganizationUnitResponse {
+  OrganizationUnit organization_unit = 1;
+}
+message ListOrganizationUnitsRequest {
+  string tenant_id = 1;
+}
+message ListOrganizationUnitsResponse {
+  repeated OrganizationUnit organization_units = 1;
+}
+message CreateInvitationRequest {
+  string tenant_id = 1;
+  string email = 2;
+  int64 expires_in_seconds = 3;
+}
+message CreateInvitationResponse {
+  Invitation invitation = 1;
+  string token = 2;
+}
+message AcceptInvitationRequest {
+  string token = 1;
+  string user_id = 2;
+}
+message AcceptInvitationResponse {
+  Invitation invitation = 1;
+  Membership membership = 2;
+}
+message RevokeInvitationRequest {
+  string invitation_id = 1;
+  int64 expected_version = 2;
+}
+message RevokeInvitationResponse {
+  Invitation invitation = 1;
+}
+message ListInvitationsRequest {
+  string tenant_id = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListInvitationsResponse {
+  repeated Invitation invitations = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message CreateGroupRequest {
+  string tenant_id = 1;
+  string code = 2;
+  string name = 3;
+}
+message CreateGroupResponse {
+  Group group = 1;
+}
+message UpdateGroupRequest {
+  string group_id = 1;
+  string name = 2;
+  string status = 3;
+  int64 expected_version = 4;
+}
+message UpdateGroupResponse {
+  Group group = 1;
+}
+message AddGroupMemberRequest {
+  string group_id = 1;
+  string membership_id = 2;
+}
+message AddGroupMemberResponse {
+  bool added = 1;
+}
+message RemoveGroupMemberRequest {
+  string group_id = 1;
+  string membership_id = 2;
+  int64 expected_version = 3;
+}
+message RemoveGroupMemberResponse {
+  bool removed = 1;
+}
+message ListGroupsRequest {
+  string tenant_id = 1;
+}
+message ListGroupsResponse {
+  repeated Group groups = 1;
+}
+message GetQuotaRequest {
+  string tenant_id = 1;
+  string key = 2;
+}
+message GetQuotaResponse {
+  Quota quota = 1;
+}
+message SetQuotaRequest {
+  string tenant_id = 1;
+  string key = 2;
+  int64 limit = 3;
+  int64 expected_version = 4;
+}
+message SetQuotaResponse {
+  Quota quota = 1;
+}
+message ConsumeQuotaRequest {
+  string tenant_id = 1;
+  string key = 2;
+  int64 amount = 3;
+}
+message ConsumeQuotaResponse {
+  Quota quota = 1;
+  bool allowed = 2;
+}
+
+message ValidateMembershipRequest {
+  string user_id = 1;
+  string tenant_id = 2;
+}
+message ValidateMembershipResponse {
+  bool valid = 1;
+  Tenant tenant = 2;
+  Membership membership = 3;
+}
+message GetMembershipRequest {
+  string membership_id = 1;
+}
+message GetMembershipResponse {
+  Membership membership = 1;
+}
+message ListUserTenantsRequest {
+  string user_id = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListUserTenantsResponse {
+  repeated Tenant tenants = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message ResolveOrganizationScopeRequest {
+  string membership_id = 1;
+}
+message ResolveOrganizationScopeResponse {
+  repeated string organization_unit_ids = 1;
+}
 
 message MembershipChangedEvent {
   string membership_id = 1;
@@ -67,6 +341,12 @@ message MembershipChangedEvent {
   string reason = 6;
 }
 
+message TenantCreatedEvent {
+  Tenant tenant = 1;
+  string owner_membership_id = 2;
+  string owner_user_id = 3;
+}
+
 message TenantStatusChangedEvent {
   string tenant_id = 1;
   TenantStatus previous_status = 2;
@@ -74,3 +354,22 @@ message TenantStatusChangedEvent {
   string reason = 4;
 }
 
+message OrganizationUnitChangedEvent {
+  OrganizationUnit organization_unit = 1;
+  string previous_parent_id = 2;
+  string change_type = 3;
+}
+message InvitationChangedEvent {
+  Invitation invitation = 1;
+  string change_type = 2;
+}
+message GroupChangedEvent {
+  Group group = 1;
+  string membership_id = 2;
+  string change_type = 3;
+}
+message QuotaChangedEvent {
+  Quota quota = 1;
+  int64 delta = 2;
+  string change_type = 3;
+}
