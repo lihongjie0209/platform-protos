@@ -9,6 +9,9 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/co
 
 service ConfigService {
   rpc PutDraft(PutDraftRequest) returns (PutDraftResponse);
+  rpc SubmitForApproval(SubmitForApprovalRequest) returns (SubmitForApprovalResponse);
+  rpc Approve(ApproveRequest) returns (ApproveResponse);
+  rpc Reject(RejectRequest) returns (RejectResponse);
   rpc Publish(PublishRequest) returns (PublishResponse);
   rpc Rollback(RollbackRequest) returns (RollbackResponse);
   rpc Resolve(ResolveRequest) returns (ResolveResponse);
@@ -31,12 +34,39 @@ message ConfigEntry {
   google.protobuf.Timestamp updated_at = 13;
   string created_by = 14;
   string updated_by = 15;
+  int64 published_revision = 16;
+  string review_comment = 17;
+  string reviewed_by = 18;
+  google.protobuf.Timestamp reviewed_at = 19;
 }
 message PutDraftRequest {
   ConfigEntry entry = 1;
   int64 expected_version = 2;
 }
 message PutDraftResponse {
+  ConfigEntry entry = 1;
+}
+message SubmitForApprovalRequest {
+  string id = 1;
+  int64 expected_version = 2;
+}
+message SubmitForApprovalResponse {
+  ConfigEntry entry = 1;
+}
+message ApproveRequest {
+  string id = 1;
+  int64 expected_version = 2;
+  string comment = 3;
+}
+message ApproveResponse {
+  ConfigEntry entry = 1;
+}
+message RejectRequest {
+  string id = 1;
+  int64 expected_version = 2;
+  string reason = 3;
+}
+message RejectResponse {
   ConfigEntry entry = 1;
 }
 message PublishRequest {

@@ -19,11 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ConfigService_PutDraft_FullMethodName = "/platform.config.v1.ConfigService/PutDraft"
-	ConfigService_Publish_FullMethodName  = "/platform.config.v1.ConfigService/Publish"
-	ConfigService_Rollback_FullMethodName = "/platform.config.v1.ConfigService/Rollback"
-	ConfigService_Resolve_FullMethodName  = "/platform.config.v1.ConfigService/Resolve"
-	ConfigService_List_FullMethodName     = "/platform.config.v1.ConfigService/List"
+	ConfigService_PutDraft_FullMethodName          = "/platform.config.v1.ConfigService/PutDraft"
+	ConfigService_SubmitForApproval_FullMethodName = "/platform.config.v1.ConfigService/SubmitForApproval"
+	ConfigService_Approve_FullMethodName           = "/platform.config.v1.ConfigService/Approve"
+	ConfigService_Reject_FullMethodName            = "/platform.config.v1.ConfigService/Reject"
+	ConfigService_Publish_FullMethodName           = "/platform.config.v1.ConfigService/Publish"
+	ConfigService_Rollback_FullMethodName          = "/platform.config.v1.ConfigService/Rollback"
+	ConfigService_Resolve_FullMethodName           = "/platform.config.v1.ConfigService/Resolve"
+	ConfigService_List_FullMethodName              = "/platform.config.v1.ConfigService/List"
 )
 
 // ConfigServiceClient is the client API for ConfigService service.
@@ -31,6 +34,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConfigServiceClient interface {
 	PutDraft(ctx context.Context, in *PutDraftRequest, opts ...grpc.CallOption) (*PutDraftResponse, error)
+	SubmitForApproval(ctx context.Context, in *SubmitForApprovalRequest, opts ...grpc.CallOption) (*SubmitForApprovalResponse, error)
+	Approve(ctx context.Context, in *ApproveRequest, opts ...grpc.CallOption) (*ApproveResponse, error)
+	Reject(ctx context.Context, in *RejectRequest, opts ...grpc.CallOption) (*RejectResponse, error)
 	Publish(ctx context.Context, in *PublishRequest, opts ...grpc.CallOption) (*PublishResponse, error)
 	Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*RollbackResponse, error)
 	Resolve(ctx context.Context, in *ResolveRequest, opts ...grpc.CallOption) (*ResolveResponse, error)
@@ -49,6 +55,36 @@ func (c *configServiceClient) PutDraft(ctx context.Context, in *PutDraftRequest,
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PutDraftResponse)
 	err := c.cc.Invoke(ctx, ConfigService_PutDraft_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *configServiceClient) SubmitForApproval(ctx context.Context, in *SubmitForApprovalRequest, opts ...grpc.CallOption) (*SubmitForApprovalResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubmitForApprovalResponse)
+	err := c.cc.Invoke(ctx, ConfigService_SubmitForApproval_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *configServiceClient) Approve(ctx context.Context, in *ApproveRequest, opts ...grpc.CallOption) (*ApproveResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ApproveResponse)
+	err := c.cc.Invoke(ctx, ConfigService_Approve_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *configServiceClient) Reject(ctx context.Context, in *RejectRequest, opts ...grpc.CallOption) (*RejectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RejectResponse)
+	err := c.cc.Invoke(ctx, ConfigService_Reject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,6 +136,9 @@ func (c *configServiceClient) List(ctx context.Context, in *ListRequest, opts ..
 // for forward compatibility.
 type ConfigServiceServer interface {
 	PutDraft(context.Context, *PutDraftRequest) (*PutDraftResponse, error)
+	SubmitForApproval(context.Context, *SubmitForApprovalRequest) (*SubmitForApprovalResponse, error)
+	Approve(context.Context, *ApproveRequest) (*ApproveResponse, error)
+	Reject(context.Context, *RejectRequest) (*RejectResponse, error)
 	Publish(context.Context, *PublishRequest) (*PublishResponse, error)
 	Rollback(context.Context, *RollbackRequest) (*RollbackResponse, error)
 	Resolve(context.Context, *ResolveRequest) (*ResolveResponse, error)
@@ -116,6 +155,15 @@ type UnimplementedConfigServiceServer struct{}
 
 func (UnimplementedConfigServiceServer) PutDraft(context.Context, *PutDraftRequest) (*PutDraftResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PutDraft not implemented")
+}
+func (UnimplementedConfigServiceServer) SubmitForApproval(context.Context, *SubmitForApprovalRequest) (*SubmitForApprovalResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitForApproval not implemented")
+}
+func (UnimplementedConfigServiceServer) Approve(context.Context, *ApproveRequest) (*ApproveResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Approve not implemented")
+}
+func (UnimplementedConfigServiceServer) Reject(context.Context, *RejectRequest) (*RejectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Reject not implemented")
 }
 func (UnimplementedConfigServiceServer) Publish(context.Context, *PublishRequest) (*PublishResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Publish not implemented")
@@ -164,6 +212,60 @@ func _ConfigService_PutDraft_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ConfigServiceServer).PutDraft(ctx, req.(*PutDraftRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_SubmitForApproval_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitForApprovalRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).SubmitForApproval(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_SubmitForApproval_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).SubmitForApproval(ctx, req.(*SubmitForApprovalRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_Approve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApproveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).Approve(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_Approve_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).Approve(ctx, req.(*ApproveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ConfigService_Reject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RejectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).Reject(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_Reject_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).Reject(ctx, req.(*RejectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -250,6 +352,18 @@ var ConfigService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PutDraft",
 			Handler:    _ConfigService_PutDraft_Handler,
+		},
+		{
+			MethodName: "SubmitForApproval",
+			Handler:    _ConfigService_SubmitForApproval_Handler,
+		},
+		{
+			MethodName: "Approve",
+			Handler:    _ConfigService_Approve_Handler,
+		},
+		{
+			MethodName: "Reject",
+			Handler:    _ConfigService_Reject_Handler,
 		},
 		{
 			MethodName: "Publish",
