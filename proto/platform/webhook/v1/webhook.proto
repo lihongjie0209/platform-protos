@@ -1,0 +1,206 @@
+syntax = "proto3";
+
+package platform.webhook.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/webhook/v1;webhookv1";
+
+// WebhookService manages tenant-owned external event subscriptions and delivery operations.
+service WebhookService {
+  rpc CreateSubscription(CreateSubscriptionRequest) returns (CreateSubscriptionResponse);
+  rpc UpdateSubscription(UpdateSubscriptionRequest) returns (UpdateSubscriptionResponse);
+  rpc GetSubscription(GetSubscriptionRequest) returns (GetSubscriptionResponse);
+  rpc ListSubscriptions(ListSubscriptionsRequest) returns (ListSubscriptionsResponse);
+  rpc RotateSubscriptionSecret(RotateSubscriptionSecretRequest) returns (RotateSubscriptionSecretResponse);
+  rpc DeleteSubscription(DeleteSubscriptionRequest) returns (DeleteSubscriptionResponse);
+  rpc TestSubscription(TestSubscriptionRequest) returns (TestSubscriptionResponse);
+  rpc GetDelivery(GetDeliveryRequest) returns (GetDeliveryResponse);
+  rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
+  rpc ReplayDelivery(ReplayDeliveryRequest) returns (ReplayDeliveryResponse);
+}
+
+enum SubscriptionStatus {
+  SUBSCRIPTION_STATUS_UNSPECIFIED = 0;
+  SUBSCRIPTION_STATUS_ACTIVE = 1;
+  SUBSCRIPTION_STATUS_PAUSED = 2;
+  SUBSCRIPTION_STATUS_DISABLED = 3;
+}
+
+enum DeliveryStatus {
+  DELIVERY_STATUS_UNSPECIFIED = 0;
+  DELIVERY_STATUS_PENDING = 1;
+  DELIVERY_STATUS_PROCESSING = 2;
+  DELIVERY_STATUS_SUCCEEDED = 3;
+  DELIVERY_STATUS_RETRYING = 4;
+  DELIVERY_STATUS_DEAD = 5;
+}
+
+message Subscription {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string name = 4;
+  string endpoint_url = 5;
+  string subject_filter = 6;
+  SubscriptionStatus status = 7;
+  uint32 timeout_ms = 8;
+  uint32 max_attempts = 9;
+  uint32 retry_initial_seconds = 10;
+  uint64 secret_version = 11;
+  int64 version = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  string created_by = 15;
+  string updated_by = 16;
+}
+
+message Delivery {
+  string id = 1;
+  string subscription_id = 2;
+  string tenant_id = 3;
+  string event_id = 4;
+  string event_subject = 5;
+  DeliveryStatus status = 6;
+  uint32 attempt_count = 7;
+  google.protobuf.Timestamp next_attempt_at = 8;
+  google.protobuf.Timestamp last_attempt_at = 9;
+  int32 response_status = 10;
+  string response_body = 11;
+  string error_message = 12;
+  google.protobuf.Timestamp delivered_at = 13;
+  int64 version = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
+  string created_by = 17;
+  string updated_by = 18;
+}
+
+message CreateSubscriptionRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string name = 3;
+  string endpoint_url = 4;
+  string subject_filter = 5;
+  uint32 timeout_ms = 6;
+  uint32 max_attempts = 7;
+  uint32 retry_initial_seconds = 8;
+}
+
+message CreateSubscriptionResponse {
+  Subscription subscription = 1;
+  // signing_secret is returned once and is never available from read APIs.
+  string signing_secret = 2;
+}
+
+message UpdateSubscriptionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string name = 3;
+  string endpoint_url = 4;
+  string subject_filter = 5;
+  SubscriptionStatus status = 6;
+  uint32 timeout_ms = 7;
+  uint32 max_attempts = 8;
+  uint32 retry_initial_seconds = 9;
+  int64 expected_version = 10;
+}
+
+message UpdateSubscriptionResponse {
+  Subscription subscription = 1;
+}
+
+message GetSubscriptionRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+
+message GetSubscriptionResponse {
+  Subscription subscription = 1;
+}
+
+message ListSubscriptionsRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  SubscriptionStatus status = 3;
+  string search = 4;
+  platform.common.v1.PageRequest page = 5;
+}
+
+message ListSubscriptionsResponse {
+  repeated Subscription subscriptions = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message RotateSubscriptionSecretRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+
+message RotateSubscriptionSecretResponse {
+  Subscription subscription = 1;
+  string signing_secret = 2;
+}
+
+message DeleteSubscriptionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+
+message DeleteSubscriptionResponse {}
+
+message TestSubscriptionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string payload_json = 3;
+}
+
+message TestSubscriptionResponse {
+  Delivery delivery = 1;
+}
+
+message GetDeliveryRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+
+message GetDeliveryResponse {
+  Delivery delivery = 1;
+}
+
+message ListDeliveriesRequest {
+  string tenant_id = 1;
+  string subscription_id = 2;
+  DeliveryStatus status = 3;
+  google.protobuf.Timestamp created_from = 4;
+  google.protobuf.Timestamp created_until = 5;
+  platform.common.v1.PageRequest page = 6;
+}
+
+message ListDeliveriesResponse {
+  repeated Delivery deliveries = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message ReplayDeliveryRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+
+message ReplayDeliveryResponse {
+  Delivery delivery = 1;
+}
+
+message SubscriptionChangedEvent {
+  Subscription subscription = 1;
+  string change_type = 2;
+}
+
+message DeliveryStatusChangedEvent {
+  Delivery delivery = 1;
+  DeliveryStatus previous_status = 2;
+}
