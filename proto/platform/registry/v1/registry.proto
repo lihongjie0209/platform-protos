@@ -1,0 +1,143 @@
+syntax = "proto3";
+
+package platform.registry.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/registry/v1;registryv1";
+
+// RegistryService manages ephemeral service instances. Redis-backed leases are
+// intentionally not a source of business truth; clients must tolerate expiry.
+service RegistryService {
+  rpc RegisterInstance(RegisterInstanceRequest) returns (RegisterInstanceResponse);
+  rpc RenewLease(RenewLeaseRequest) returns (RenewLeaseResponse);
+  rpc DeregisterInstance(DeregisterInstanceRequest) returns (DeregisterInstanceResponse);
+  rpc SetInstanceStatus(SetInstanceStatusRequest) returns (SetInstanceStatusResponse);
+  rpc GetInstance(GetInstanceRequest) returns (GetInstanceResponse);
+  rpc ListInstances(ListInstancesRequest) returns (ListInstancesResponse);
+  rpc ListServices(ListServicesRequest) returns (ListServicesResponse);
+  rpc WatchService(WatchServiceRequest) returns (stream WatchServiceResponse);
+}
+
+enum InstanceStatus {
+  INSTANCE_STATUS_UNSPECIFIED = 0;
+  INSTANCE_STATUS_STARTING = 1;
+  INSTANCE_STATUS_HEALTHY = 2;
+  INSTANCE_STATUS_DRAINING = 3;
+}
+
+enum InstanceChangeType {
+  INSTANCE_CHANGE_TYPE_UNSPECIFIED = 0;
+  INSTANCE_CHANGE_TYPE_UPSERT = 1;
+  INSTANCE_CHANGE_TYPE_DELETE = 2;
+  INSTANCE_CHANGE_TYPE_SNAPSHOT = 3;
+}
+
+message ServiceInstance {
+  string instance_id = 1;
+  string service_name = 2;
+  string endpoint = 3;
+  string protocol = 4;
+  InstanceStatus status = 5;
+  uint32 weight = 6;
+  string version = 7;
+  map<string, string> metadata = 8;
+  google.protobuf.Timestamp registered_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Timestamp lease_expires_at = 11;
+}
+
+message RegisterInstanceRequest {
+  ServiceInstance instance = 1;
+  uint32 lease_seconds = 2;
+}
+message RegisterInstanceResponse {
+  ServiceInstance instance = 1;
+  string lease_token = 2;
+  uint64 revision = 3;
+}
+
+message RenewLeaseRequest {
+  string service_name = 1;
+  string instance_id = 2;
+  string lease_token = 3;
+  uint32 lease_seconds = 4;
+}
+message RenewLeaseResponse {
+  ServiceInstance instance = 1;
+  uint64 revision = 2;
+}
+
+message DeregisterInstanceRequest {
+  string service_name = 1;
+  string instance_id = 2;
+  string lease_token = 3;
+}
+message DeregisterInstanceResponse {
+  uint64 revision = 1;
+}
+
+message SetInstanceStatusRequest {
+  string service_name = 1;
+  string instance_id = 2;
+  string lease_token = 3;
+  InstanceStatus status = 4;
+}
+message SetInstanceStatusResponse {
+  ServiceInstance instance = 1;
+  uint64 revision = 2;
+}
+
+message GetInstanceRequest {
+  string service_name = 1;
+  string instance_id = 2;
+}
+message GetInstanceResponse {
+  ServiceInstance instance = 1;
+  uint64 revision = 2;
+}
+
+message MetadataSelector {
+  map<string, string> match = 1;
+}
+message ListInstancesRequest {
+  // Empty means all services and requires a metadata selector.
+  string service_name = 1;
+  MetadataSelector selector = 2;
+  bool include_draining = 3;
+}
+message ListInstancesResponse {
+  repeated ServiceInstance instances = 1;
+  uint64 revision = 2;
+}
+
+message ListServicesRequest {
+  string prefix = 1;
+}
+message ServiceSummary {
+  string service_name = 1;
+  uint32 healthy_instances = 2;
+  uint32 draining_instances = 3;
+}
+message ListServicesResponse {
+  repeated ServiceSummary services = 1;
+  uint64 revision = 2;
+}
+
+message WatchServiceRequest {
+  // Empty means all services and requires a metadata selector.
+  string service_name = 1;
+  MetadataSelector selector = 2;
+  uint64 after_revision = 3;
+  bool include_draining = 4;
+}
+message InstanceChange {
+  InstanceChangeType type = 1;
+  ServiceInstance instance = 2;
+  string service_name = 3;
+  string instance_id = 4;
+}
+message WatchServiceResponse {
+  uint64 revision = 1;
+  repeated InstanceChange changes = 2;
+}
