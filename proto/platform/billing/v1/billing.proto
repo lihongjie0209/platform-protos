@@ -1,0 +1,414 @@
+syntax = "proto3";
+
+package platform.billing.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/billing/v1;billingv1";
+
+// BillingService owns commercial plans, tenant subscriptions, invoices,
+// payments, refunds, and reconciliation. It reads usage through Metering APIs
+// or events and never reads another service's schema.
+service BillingService {
+  rpc CreatePlan(CreatePlanRequest) returns (CreatePlanResponse);
+  rpc UpdatePlan(UpdatePlanRequest) returns (UpdatePlanResponse);
+  rpc GetPlan(GetPlanRequest) returns (GetPlanResponse);
+  rpc ListPlans(ListPlansRequest) returns (ListPlansResponse);
+  rpc UpsertUsagePrice(UpsertUsagePriceRequest) returns (UpsertUsagePriceResponse);
+  rpc DeleteUsagePrice(DeleteUsagePriceRequest) returns (DeleteUsagePriceResponse);
+
+  rpc CreateSubscription(CreateSubscriptionRequest) returns (CreateSubscriptionResponse);
+  rpc ChangeSubscription(ChangeSubscriptionRequest) returns (ChangeSubscriptionResponse);
+  rpc CancelSubscription(CancelSubscriptionRequest) returns (CancelSubscriptionResponse);
+  rpc GetSubscription(GetSubscriptionRequest) returns (GetSubscriptionResponse);
+  rpc ListSubscriptions(ListSubscriptionsRequest) returns (ListSubscriptionsResponse);
+
+  rpc PreviewInvoice(PreviewInvoiceRequest) returns (PreviewInvoiceResponse);
+  rpc GenerateInvoice(GenerateInvoiceRequest) returns (GenerateInvoiceResponse);
+  rpc FinalizeInvoice(FinalizeInvoiceRequest) returns (FinalizeInvoiceResponse);
+  rpc VoidInvoice(VoidInvoiceRequest) returns (VoidInvoiceResponse);
+  rpc GetInvoice(GetInvoiceRequest) returns (GetInvoiceResponse);
+  rpc ListInvoices(ListInvoicesRequest) returns (ListInvoicesResponse);
+
+  rpc CreatePaymentAttempt(CreatePaymentAttemptRequest) returns (CreatePaymentAttemptResponse);
+  rpc ApplyPaymentResult(ApplyPaymentResultRequest) returns (ApplyPaymentResultResponse);
+  rpc RecordRefund(RecordRefundRequest) returns (RecordRefundResponse);
+  rpc ReconcilePayment(ReconcilePaymentRequest) returns (ReconcilePaymentResponse);
+}
+
+message Plan {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  string currency = 5;
+  string billing_interval = 6;
+  int64 base_amount_minor = 7;
+  int32 trial_days = 8;
+  string status = 9;
+  string entitlements_json = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+
+message UsagePrice {
+  string id = 1;
+  string plan_id = 2;
+  string meter_code = 3;
+  int64 included_quantity = 4;
+  int64 unit_quantity = 5;
+  int64 unit_amount_minor = 6;
+  string pricing_model = 7;
+  string tiers_json = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message Subscription {
+  string id = 1;
+  string tenant_id = 2;
+  string plan_id = 3;
+  string status = 4;
+  google.protobuf.Timestamp current_period_start = 5;
+  google.protobuf.Timestamp current_period_end = 6;
+  bool cancel_at_period_end = 7;
+  google.protobuf.Timestamp canceled_at = 8;
+  string external_reference = 9;
+  int64 version = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+  string created_by = 13;
+  string updated_by = 14;
+}
+
+message Invoice {
+  string id = 1;
+  string number = 2;
+  string tenant_id = 3;
+  string subscription_id = 4;
+  string currency = 5;
+  string status = 6;
+  google.protobuf.Timestamp period_start = 7;
+  google.protobuf.Timestamp period_end = 8;
+  int64 subtotal_minor = 9;
+  int64 discount_minor = 10;
+  int64 tax_minor = 11;
+  int64 total_minor = 12;
+  int64 paid_minor = 13;
+  int64 refunded_minor = 14;
+  google.protobuf.Timestamp due_at = 15;
+  google.protobuf.Timestamp finalized_at = 16;
+  google.protobuf.Timestamp paid_at = 17;
+  int64 version = 18;
+  google.protobuf.Timestamp created_at = 19;
+  google.protobuf.Timestamp updated_at = 20;
+  string created_by = 21;
+  string updated_by = 22;
+}
+
+message InvoiceLine {
+  string id = 1;
+  string invoice_id = 2;
+  string type = 3;
+  string description = 4;
+  string meter_code = 5;
+  int64 quantity = 6;
+  int64 unit_quantity = 7;
+  int64 unit_amount_minor = 8;
+  int64 amount_minor = 9;
+  string metadata_json = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+
+message PaymentAttempt {
+  string id = 1;
+  string invoice_id = 2;
+  string tenant_id = 3;
+  string provider = 4;
+  string provider_payment_id = 5;
+  string idempotency_key = 6;
+  string currency = 7;
+  int64 amount_minor = 8;
+  string status = 9;
+  string failure_code = 10;
+  string failure_message = 11;
+  google.protobuf.Timestamp processed_at = 12;
+  int64 version = 13;
+  google.protobuf.Timestamp created_at = 14;
+  google.protobuf.Timestamp updated_at = 15;
+  string created_by = 16;
+  string updated_by = 17;
+}
+
+message Refund {
+  string id = 1;
+  string payment_attempt_id = 2;
+  string invoice_id = 3;
+  string provider_refund_id = 4;
+  string idempotency_key = 5;
+  int64 amount_minor = 6;
+  string reason = 7;
+  string status = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message CreatePlanRequest {
+  string code = 1;
+  string name = 2;
+  string description = 3;
+  string currency = 4;
+  string billing_interval = 5;
+  int64 base_amount_minor = 6;
+  int32 trial_days = 7;
+  string entitlements_json = 8;
+}
+message CreatePlanResponse {
+  Plan plan = 1;
+}
+message UpdatePlanRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  int64 base_amount_minor = 4;
+  int32 trial_days = 5;
+  string status = 6;
+  string entitlements_json = 7;
+  int64 version = 8;
+}
+message UpdatePlanResponse {
+  Plan plan = 1;
+}
+message GetPlanRequest {
+  string id = 1;
+  string code = 2;
+}
+message GetPlanResponse {
+  Plan plan = 1;
+  repeated UsagePrice usage_prices = 2;
+}
+message ListPlansRequest {
+  string status = 1;
+  string keyword = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListPlansResponse {
+  repeated Plan plans = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message UpsertUsagePriceRequest {
+  string id = 1;
+  string plan_id = 2;
+  string meter_code = 3;
+  int64 included_quantity = 4;
+  int64 unit_quantity = 5;
+  int64 unit_amount_minor = 6;
+  string pricing_model = 7;
+  string tiers_json = 8;
+  int64 expected_version = 9;
+}
+message UpsertUsagePriceResponse {
+  UsagePrice usage_price = 1;
+}
+message DeleteUsagePriceRequest {
+  string id = 1;
+  int64 version = 2;
+}
+message DeleteUsagePriceResponse {}
+
+message CreateSubscriptionRequest {
+  string tenant_id = 1;
+  string plan_id = 2;
+  google.protobuf.Timestamp starts_at = 3;
+  string external_reference = 4;
+  string idempotency_key = 5;
+}
+message CreateSubscriptionResponse {
+  Subscription subscription = 1;
+}
+message ChangeSubscriptionRequest {
+  string id = 1;
+  string plan_id = 2;
+  string effective_mode = 3;
+  int64 version = 4;
+}
+message ChangeSubscriptionResponse {
+  Subscription subscription = 1;
+}
+message CancelSubscriptionRequest {
+  string id = 1;
+  bool at_period_end = 2;
+  int64 version = 3;
+}
+message CancelSubscriptionResponse {
+  Subscription subscription = 1;
+}
+message GetSubscriptionRequest {
+  string tenant_id = 1;
+  string id = 2;
+}
+message GetSubscriptionResponse {
+  Subscription subscription = 1;
+  Plan plan = 2;
+}
+message ListSubscriptionsRequest {
+  string tenant_id = 1;
+  string status = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListSubscriptionsResponse {
+  repeated Subscription subscriptions = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message PreviewInvoiceRequest {
+  string tenant_id = 1;
+  string subscription_id = 2;
+  google.protobuf.Timestamp period_start = 3;
+  google.protobuf.Timestamp period_end = 4;
+}
+message PreviewInvoiceResponse {
+  Invoice invoice = 1;
+  repeated InvoiceLine lines = 2;
+}
+message GenerateInvoiceRequest {
+  string tenant_id = 1;
+  string subscription_id = 2;
+  google.protobuf.Timestamp period_start = 3;
+  google.protobuf.Timestamp period_end = 4;
+  string idempotency_key = 5;
+}
+message GenerateInvoiceResponse {
+  Invoice invoice = 1;
+  repeated InvoiceLine lines = 2;
+  bool duplicate = 3;
+}
+message FinalizeInvoiceRequest {
+  string id = 1;
+  google.protobuf.Timestamp due_at = 2;
+  int64 version = 3;
+}
+message FinalizeInvoiceResponse {
+  Invoice invoice = 1;
+}
+message VoidInvoiceRequest {
+  string id = 1;
+  string reason = 2;
+  int64 version = 3;
+}
+message VoidInvoiceResponse {
+  Invoice invoice = 1;
+}
+message GetInvoiceRequest {
+  string tenant_id = 1;
+  string id = 2;
+}
+message GetInvoiceResponse {
+  Invoice invoice = 1;
+  repeated InvoiceLine lines = 2;
+}
+message ListInvoicesRequest {
+  string tenant_id = 1;
+  string status = 2;
+  google.protobuf.Timestamp created_from = 3;
+  google.protobuf.Timestamp created_to = 4;
+  platform.common.v1.PageRequest page = 5;
+}
+message ListInvoicesResponse {
+  repeated Invoice invoices = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message CreatePaymentAttemptRequest {
+  string invoice_id = 1;
+  string provider = 2;
+  string payment_method_reference = 3;
+  string idempotency_key = 4;
+}
+message CreatePaymentAttemptResponse {
+  PaymentAttempt payment_attempt = 1;
+  bool duplicate = 2;
+}
+message ApplyPaymentResultRequest {
+  string payment_attempt_id = 1;
+  string provider_payment_id = 2;
+  string provider_event_id = 3;
+  string status = 4;
+  string failure_code = 5;
+  string failure_message = 6;
+  google.protobuf.Timestamp processed_at = 7;
+}
+message ApplyPaymentResultResponse {
+  PaymentAttempt payment_attempt = 1;
+  Invoice invoice = 2;
+  bool duplicate = 3;
+}
+message RecordRefundRequest {
+  string payment_attempt_id = 1;
+  string provider_refund_id = 2;
+  string idempotency_key = 3;
+  int64 amount_minor = 4;
+  string reason = 5;
+  string status = 6;
+}
+message RecordRefundResponse {
+  Refund refund = 1;
+  Invoice invoice = 2;
+  bool duplicate = 3;
+}
+message ReconcilePaymentRequest {
+  string provider = 1;
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+  string cursor = 4;
+  uint32 limit = 5;
+}
+message ReconciliationMismatch {
+  string provider_payment_id = 1;
+  string payment_attempt_id = 2;
+  string reason = 3;
+  int64 provider_amount_minor = 4;
+  int64 local_amount_minor = 5;
+}
+message ReconcilePaymentResponse {
+  repeated ReconciliationMismatch mismatches = 1;
+  string next_cursor = 2;
+}
+
+message PlanChangedEvent {
+  Plan plan = 1;
+  string change_type = 2;
+}
+message SubscriptionChangedEvent {
+  Subscription subscription = 1;
+  string change_type = 2;
+}
+message InvoiceChangedEvent {
+  Invoice invoice = 1;
+  repeated InvoiceLine lines = 2;
+  string change_type = 3;
+}
+message PaymentChangedEvent {
+  PaymentAttempt payment_attempt = 1;
+  Invoice invoice = 2;
+  string change_type = 3;
+}
+message RefundChangedEvent {
+  Refund refund = 1;
+  Invoice invoice = 2;
+  string change_type = 3;
+}
