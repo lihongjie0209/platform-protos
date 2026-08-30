@@ -1,0 +1,230 @@
+syntax = "proto3";
+
+package platform.application.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/application/v1;applicationv1";
+
+service ApplicationService {
+  rpc CreateApplication(CreateApplicationRequest) returns (CreateApplicationResponse);
+  rpc UpdateApplication(UpdateApplicationRequest) returns (UpdateApplicationResponse);
+  rpc GetApplication(GetApplicationRequest) returns (GetApplicationResponse);
+  rpc ListApplications(ListApplicationsRequest) returns (ListApplicationsResponse);
+  rpc UpsertMenu(UpsertMenuRequest) returns (UpsertMenuResponse);
+  rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
+  rpc ListMenuDraft(ListMenuDraftRequest) returns (ListMenuDraftResponse);
+  rpc PublishMenus(PublishMenusRequest) returns (PublishMenusResponse);
+  rpc GetPublishedNavigation(GetPublishedNavigationRequest) returns (GetPublishedNavigationResponse);
+  rpc GrantTenantApplication(GrantTenantApplicationRequest) returns (GrantTenantApplicationResponse);
+  rpc RevokeTenantApplication(RevokeTenantApplicationRequest) returns (RevokeTenantApplicationResponse);
+  rpc ListTenantApplications(ListTenantApplicationsRequest) returns (ListTenantApplicationsResponse);
+  rpc BatchCheckTenantApplications(BatchCheckTenantApplicationsRequest) returns (BatchCheckTenantApplicationsResponse);
+}
+
+message Application {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  string icon = 5;
+  string default_route = 6;
+  int32 sort_order = 7;
+  string status = 8;
+  string metadata_json = 9;
+  int64 published_release = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+
+message Menu {
+  string id = 1;
+  string application_id = 2;
+  int64 release_number = 3;
+  string parent_id = 4;
+  string code = 5;
+  string type = 6;
+  string name = 7;
+  string i18n_key = 8;
+  string route = 9;
+  string component = 10;
+  string icon = 11;
+  string external_url = 12;
+  string permission_code = 13;
+  int32 sort_order = 14;
+  bool visible = 15;
+  string status = 16;
+  int64 version = 17;
+  google.protobuf.Timestamp created_at = 18;
+  google.protobuf.Timestamp updated_at = 19;
+  string created_by = 20;
+  string updated_by = 21;
+}
+
+message MenuRelease {
+  string id = 1;
+  string application_id = 2;
+  int64 release_number = 3;
+  string status = 4;
+  string comment = 5;
+  int64 version = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  string created_by = 9;
+  string updated_by = 10;
+}
+
+message TenantApplicationGrant {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string status = 4;
+  google.protobuf.Timestamp valid_from = 5;
+  google.protobuf.Timestamp valid_until = 6;
+  string source = 7;
+  string entitlements_json = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message CreateApplicationRequest {
+  string code = 1;
+  string name = 2;
+  string description = 3;
+  string icon = 4;
+  string default_route = 5;
+  int32 sort_order = 6;
+  string metadata_json = 7;
+}
+message CreateApplicationResponse {
+  Application application = 1;
+}
+message UpdateApplicationRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string icon = 4;
+  string default_route = 5;
+  int32 sort_order = 6;
+  string status = 7;
+  string metadata_json = 8;
+  int64 version = 9;
+}
+message UpdateApplicationResponse {
+  Application application = 1;
+}
+message GetApplicationRequest {
+  string id = 1;
+}
+message GetApplicationResponse {
+  Application application = 1;
+}
+message ListApplicationsRequest {
+  string status = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListApplicationsResponse {
+  repeated Application applications = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message UpsertMenuRequest {
+  Menu menu = 1;
+  int64 expected_version = 2;
+}
+message UpsertMenuResponse {
+  Menu menu = 1;
+}
+message DeleteMenuRequest {
+  string id = 1;
+  int64 version = 2;
+}
+message DeleteMenuResponse {}
+message ListMenuDraftRequest {
+  string application_id = 1;
+}
+message ListMenuDraftResponse {
+  repeated Menu menus = 1;
+}
+message PublishMenusRequest {
+  string application_id = 1;
+  int64 application_version = 2;
+  string comment = 3;
+}
+message PublishMenusResponse {
+  MenuRelease release = 1;
+  repeated Menu menus = 2;
+}
+message GetPublishedNavigationRequest {
+  string application_id = 1;
+  string locale = 2;
+}
+message GetPublishedNavigationResponse {
+  Application application = 1;
+  MenuRelease release = 2;
+  repeated Menu menus = 3;
+}
+
+message GrantTenantApplicationRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  google.protobuf.Timestamp valid_from = 3;
+  google.protobuf.Timestamp valid_until = 4;
+  string source = 5;
+  string entitlements_json = 6;
+  int64 expected_version = 7;
+}
+message GrantTenantApplicationResponse {
+  TenantApplicationGrant grant = 1;
+}
+message RevokeTenantApplicationRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  int64 version = 3;
+}
+message RevokeTenantApplicationResponse {
+  TenantApplicationGrant grant = 1;
+}
+message ListTenantApplicationsRequest {
+  string tenant_id = 1;
+  bool active_only = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListTenantApplicationsResponse {
+  repeated TenantApplicationGrant grants = 1;
+  repeated Application applications = 2;
+  platform.common.v1.PageResult page = 3;
+}
+message BatchCheckTenantApplicationsRequest {
+  string tenant_id = 1;
+  repeated string application_ids = 2;
+  google.protobuf.Timestamp at = 3;
+}
+message TenantApplicationDecision {
+  string application_id = 1;
+  bool granted = 2;
+  string reason = 3;
+}
+message BatchCheckTenantApplicationsResponse {
+  repeated TenantApplicationDecision decisions = 1;
+}
+
+message ApplicationChangedEvent {
+  Application application = 1;
+  string change_type = 2;
+}
+message MenuPublishedEvent {
+  MenuRelease release = 1;
+  repeated string permission_codes = 2;
+}
+message TenantApplicationGrantChangedEvent {
+  TenantApplicationGrant grant = 1;
+  string change_type = 2;
+}
