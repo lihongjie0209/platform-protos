@@ -1,0 +1,346 @@
+syntax = "proto3";
+
+package platform.workflow.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/workflow/v1;workflowv1";
+
+// WorkflowService manages versioned workflow definitions, runtime instances,
+// and the authenticated caller's approval task inbox.
+service WorkflowService {
+  rpc CreateDefinition(CreateDefinitionRequest) returns (CreateDefinitionResponse);
+  rpc UpdateDefinition(UpdateDefinitionRequest) returns (UpdateDefinitionResponse);
+  rpc PublishDefinition(PublishDefinitionRequest) returns (PublishDefinitionResponse);
+  rpc DisableDefinition(DisableDefinitionRequest) returns (DisableDefinitionResponse);
+  rpc GetDefinition(GetDefinitionRequest) returns (GetDefinitionResponse);
+  rpc ListDefinitions(ListDefinitionsRequest) returns (ListDefinitionsResponse);
+
+  rpc StartInstance(StartInstanceRequest) returns (StartInstanceResponse);
+  rpc CancelInstance(CancelInstanceRequest) returns (CancelInstanceResponse);
+  rpc GetInstance(GetInstanceRequest) returns (GetInstanceResponse);
+  rpc ListInstances(ListInstancesRequest) returns (ListInstancesResponse);
+
+  rpc ClaimTask(ClaimTaskRequest) returns (ClaimTaskResponse);
+  rpc CompleteTask(CompleteTaskRequest) returns (CompleteTaskResponse);
+  rpc DelegateTask(DelegateTaskRequest) returns (DelegateTaskResponse);
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse);
+  rpc ListTasks(ListTasksRequest) returns (ListTasksResponse);
+}
+
+enum DefinitionStatus {
+  DEFINITION_STATUS_UNSPECIFIED = 0;
+  DEFINITION_STATUS_DRAFT = 1;
+  DEFINITION_STATUS_PUBLISHED = 2;
+  DEFINITION_STATUS_DISABLED = 3;
+}
+
+enum NodeType {
+  NODE_TYPE_UNSPECIFIED = 0;
+  NODE_TYPE_START = 1;
+  NODE_TYPE_APPROVAL = 2;
+  NODE_TYPE_SERVICE_TASK = 3;
+  NODE_TYPE_TIMER = 4;
+  NODE_TYPE_END = 5;
+}
+
+enum AssigneeType {
+  ASSIGNEE_TYPE_UNSPECIFIED = 0;
+  ASSIGNEE_TYPE_USER = 1;
+  ASSIGNEE_TYPE_ROLE = 2;
+  ASSIGNEE_TYPE_STARTER = 3;
+  ASSIGNEE_TYPE_EXPRESSION = 4;
+}
+
+enum InstanceStatus {
+  INSTANCE_STATUS_UNSPECIFIED = 0;
+  INSTANCE_STATUS_RUNNING = 1;
+  INSTANCE_STATUS_COMPLETED = 2;
+  INSTANCE_STATUS_REJECTED = 3;
+  INSTANCE_STATUS_CANCELLED = 4;
+  INSTANCE_STATUS_FAILED = 5;
+}
+
+enum TaskStatus {
+  TASK_STATUS_UNSPECIFIED = 0;
+  TASK_STATUS_PENDING = 1;
+  TASK_STATUS_CLAIMED = 2;
+  TASK_STATUS_APPROVED = 3;
+  TASK_STATUS_REJECTED = 4;
+  TASK_STATUS_CANCELLED = 5;
+  TASK_STATUS_EXPIRED = 6;
+}
+
+enum TaskDecision {
+  TASK_DECISION_UNSPECIFIED = 0;
+  TASK_DECISION_APPROVE = 1;
+  TASK_DECISION_REJECT = 2;
+}
+
+message WorkflowNode {
+  string id = 1;
+  string name = 2;
+  NodeType type = 3;
+  AssigneeType assignee_type = 4;
+  string assignee = 5;
+  uint32 timeout_seconds = 6;
+  string target_service = 7;
+  string full_method = 8;
+  string request_template_json = 9;
+  string compensation_method = 10;
+  uint32 timer_seconds = 11;
+  string config_json = 12;
+}
+
+message WorkflowEdge {
+  string from_node_id = 1;
+  string to_node_id = 2;
+  string condition_expression = 3;
+  int32 priority = 4;
+}
+
+message WorkflowDefinition {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string key = 4;
+  string name = 5;
+  string description = 6;
+  DefinitionStatus status = 7;
+  uint32 published_revision = 8;
+  repeated WorkflowNode nodes = 9;
+  repeated WorkflowEdge edges = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+
+message WorkflowInstance {
+  string id = 1;
+  string tenant_id = 2;
+  string definition_id = 3;
+  uint32 definition_revision = 4;
+  string business_key = 5;
+  string title = 6;
+  string starter_id = 7;
+  InstanceStatus status = 8;
+  string current_node_id = 9;
+  string variables_json = 10;
+  string result_json = 11;
+  string error_code = 12;
+  string error_message = 13;
+  google.protobuf.Timestamp started_at = 14;
+  google.protobuf.Timestamp finished_at = 15;
+  int64 version = 16;
+  google.protobuf.Timestamp created_at = 17;
+  google.protobuf.Timestamp updated_at = 18;
+  string created_by = 19;
+  string updated_by = 20;
+}
+
+message WorkflowTask {
+  string id = 1;
+  string tenant_id = 2;
+  string instance_id = 3;
+  string node_id = 4;
+  string name = 5;
+  AssigneeType assignee_type = 6;
+  string assignee = 7;
+  string claimed_by = 8;
+  TaskStatus status = 9;
+  TaskDecision decision = 10;
+  string comment = 11;
+  string input_json = 12;
+  string output_json = 13;
+  google.protobuf.Timestamp due_at = 14;
+  google.protobuf.Timestamp completed_at = 15;
+  int64 version = 16;
+  google.protobuf.Timestamp created_at = 17;
+  google.protobuf.Timestamp updated_at = 18;
+  string created_by = 19;
+  string updated_by = 20;
+}
+
+message CreateDefinitionRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string key = 3;
+  string name = 4;
+  string description = 5;
+  repeated WorkflowNode nodes = 6;
+  repeated WorkflowEdge edges = 7;
+}
+message CreateDefinitionResponse {
+  WorkflowDefinition definition = 1;
+}
+
+message UpdateDefinitionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string name = 4;
+  string description = 5;
+  repeated WorkflowNode nodes = 6;
+  repeated WorkflowEdge edges = 7;
+  int64 expected_version = 8;
+}
+message UpdateDefinitionResponse {
+  WorkflowDefinition definition = 1;
+}
+
+message PublishDefinitionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+message PublishDefinitionResponse {
+  WorkflowDefinition definition = 1;
+}
+
+message DisableDefinitionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+message DisableDefinitionResponse {
+  WorkflowDefinition definition = 1;
+}
+
+message GetDefinitionRequest {
+  string id = 1;
+  string tenant_id = 2;
+  uint32 revision = 3;
+}
+message GetDefinitionResponse {
+  WorkflowDefinition definition = 1;
+}
+
+message ListDefinitionsRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  DefinitionStatus status = 3;
+  string search = 4;
+  platform.common.v1.PageRequest page = 5;
+}
+message ListDefinitionsResponse {
+  repeated WorkflowDefinition definitions = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message StartInstanceRequest {
+  string tenant_id = 1;
+  string definition_key = 2;
+  string business_key = 3;
+  string title = 4;
+  string variables_json = 5;
+  string idempotency_key = 6;
+}
+message StartInstanceResponse {
+  WorkflowInstance instance = 1;
+}
+
+message CancelInstanceRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string reason = 3;
+  int64 expected_version = 4;
+}
+message CancelInstanceResponse {
+  WorkflowInstance instance = 1;
+}
+
+message GetInstanceRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message GetInstanceResponse {
+  WorkflowInstance instance = 1;
+}
+
+message ListInstancesRequest {
+  string tenant_id = 1;
+  string definition_id = 2;
+  InstanceStatus status = 3;
+  string starter_id = 4;
+  string search = 5;
+  google.protobuf.Timestamp started_from = 6;
+  google.protobuf.Timestamp started_until = 7;
+  platform.common.v1.PageRequest page = 8;
+}
+message ListInstancesResponse {
+  repeated WorkflowInstance instances = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message ClaimTaskRequest {
+  string id = 1;
+  string tenant_id = 2;
+  int64 expected_version = 3;
+}
+message ClaimTaskResponse {
+  WorkflowTask task = 1;
+}
+
+message CompleteTaskRequest {
+  string id = 1;
+  string tenant_id = 2;
+  TaskDecision decision = 3;
+  string comment = 4;
+  string output_json = 5;
+  int64 expected_version = 6;
+}
+message CompleteTaskResponse {
+  WorkflowTask task = 1;
+  WorkflowInstance instance = 2;
+}
+
+message DelegateTaskRequest {
+  string id = 1;
+  string tenant_id = 2;
+  string delegate_to = 3;
+  string reason = 4;
+  int64 expected_version = 5;
+}
+message DelegateTaskResponse {
+  WorkflowTask task = 1;
+}
+
+message GetTaskRequest {
+  string id = 1;
+  string tenant_id = 2;
+}
+message GetTaskResponse {
+  WorkflowTask task = 1;
+}
+
+message ListTasksRequest {
+  string tenant_id = 1;
+  string instance_id = 2;
+  TaskStatus status = 3;
+  string assignee_user_id = 4;
+  repeated string role_ids = 5;
+  bool include_unclaimed = 6;
+  string search = 7;
+  platform.common.v1.PageRequest page = 8;
+}
+message ListTasksResponse {
+  repeated WorkflowTask tasks = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message DefinitionPublishedEvent {
+  WorkflowDefinition definition = 1;
+}
+message InstanceStatusChangedEvent {
+  WorkflowInstance instance = 1;
+  InstanceStatus previous_status = 2;
+}
+message TaskCreatedEvent {
+  WorkflowTask task = 1;
+}
+message TaskCompletedEvent {
+  WorkflowTask task = 1;
+}
