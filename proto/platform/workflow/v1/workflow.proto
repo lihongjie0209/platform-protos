@@ -321,8 +321,11 @@ message ListTasksRequest {
   string instance_id = 2;
   TaskStatus status = 3;
   string assignee_user_id = 4;
-  repeated string role_ids = 5;
-  bool include_unclaimed = 6;
+  // Deprecated: the server derives roles from the authenticated membership
+  // through authorization-service. Caller-provided roles are always ignored.
+  repeated string role_ids = 5 [deprecated = true];
+  // Deprecated: visibility is always calculated by the server.
+  bool include_unclaimed = 6 [deprecated = true];
   string search = 7;
   platform.common.v1.PageRequest page = 8;
 }
@@ -333,6 +336,19 @@ message ListTasksResponse {
 
 message DefinitionPublishedEvent {
   WorkflowDefinition definition = 1;
+}
+// InstanceStartRequestedEvent is emitted in the same database transaction as
+// the new instance. The workflow runtime consumes it idempotently and starts
+// the durable Temporal execution.
+message InstanceStartRequestedEvent {
+  WorkflowInstance instance = 1;
+  WorkflowDefinition definition = 2;
+}
+// InstanceCancellationRequestedEvent is emitted in the same transaction as
+// the instance status change and cancels its durable Temporal execution.
+message InstanceCancellationRequestedEvent {
+  WorkflowInstance instance = 1;
+  string reason = 2;
 }
 message InstanceStatusChangedEvent {
   WorkflowInstance instance = 1;
