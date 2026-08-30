@@ -326,6 +326,109 @@ func (x *EventEnvelope) GetPayload() []byte {
 	return nil
 }
 
+// DeadLetterEvent records an event that a durable consumer could not process.
+// Exactly one of original_event or original_data is normally populated. Raw
+// data is retained only when the original envelope could not be decoded.
+type DeadLetterEvent struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	OriginalEvent   *EventEnvelope         `protobuf:"bytes,1,opt,name=original_event,json=originalEvent,proto3" json:"original_event,omitempty"`
+	OriginalSubject string                 `protobuf:"bytes,2,opt,name=original_subject,json=originalSubject,proto3" json:"original_subject,omitempty"`
+	Consumer        string                 `protobuf:"bytes,3,opt,name=consumer,proto3" json:"consumer,omitempty"`
+	Reason          string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
+	DeliveryCount   uint64                 `protobuf:"varint,5,opt,name=delivery_count,json=deliveryCount,proto3" json:"delivery_count,omitempty"`
+	DeadLetteredAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=dead_lettered_at,json=deadLetteredAt,proto3" json:"dead_lettered_at,omitempty"`
+	DecodingFailed  bool                   `protobuf:"varint,7,opt,name=decoding_failed,json=decodingFailed,proto3" json:"decoding_failed,omitempty"`
+	OriginalData    []byte                 `protobuf:"bytes,8,opt,name=original_data,json=originalData,proto3" json:"original_data,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *DeadLetterEvent) Reset() {
+	*x = DeadLetterEvent{}
+	mi := &file_platform_common_v1_common_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeadLetterEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeadLetterEvent) ProtoMessage() {}
+
+func (x *DeadLetterEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_common_v1_common_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeadLetterEvent.ProtoReflect.Descriptor instead.
+func (*DeadLetterEvent) Descriptor() ([]byte, []int) {
+	return file_platform_common_v1_common_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DeadLetterEvent) GetOriginalEvent() *EventEnvelope {
+	if x != nil {
+		return x.OriginalEvent
+	}
+	return nil
+}
+
+func (x *DeadLetterEvent) GetOriginalSubject() string {
+	if x != nil {
+		return x.OriginalSubject
+	}
+	return ""
+}
+
+func (x *DeadLetterEvent) GetConsumer() string {
+	if x != nil {
+		return x.Consumer
+	}
+	return ""
+}
+
+func (x *DeadLetterEvent) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *DeadLetterEvent) GetDeliveryCount() uint64 {
+	if x != nil {
+		return x.DeliveryCount
+	}
+	return 0
+}
+
+func (x *DeadLetterEvent) GetDeadLetteredAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeadLetteredAt
+	}
+	return nil
+}
+
+func (x *DeadLetterEvent) GetDecodingFailed() bool {
+	if x != nil {
+		return x.DecodingFailed
+	}
+	return false
+}
+
+func (x *DeadLetterEvent) GetOriginalData() []byte {
+	if x != nil {
+		return x.OriginalData
+	}
+	return nil
+}
+
 var File_platform_common_v1_common_proto protoreflect.FileDescriptor
 
 const file_platform_common_v1_common_proto_rawDesc = "" +
@@ -359,7 +462,16 @@ const file_platform_common_v1_common_proto_rawDesc = "" +
 	"\voccurred_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12<\n" +
 	"\acontext\x18\b \x01(\v2\".platform.common.v1.RequestContextR\acontext\x12\x18\n" +
-	"\apayload\x18\t \x01(\fR\apayloadBMZKgithub.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1b\x06proto3"
+	"\apayload\x18\t \x01(\fR\apayload\"\xf5\x02\n" +
+	"\x0fDeadLetterEvent\x12H\n" +
+	"\x0eoriginal_event\x18\x01 \x01(\v2!.platform.common.v1.EventEnvelopeR\roriginalEvent\x12)\n" +
+	"\x10original_subject\x18\x02 \x01(\tR\x0foriginalSubject\x12\x1a\n" +
+	"\bconsumer\x18\x03 \x01(\tR\bconsumer\x12\x16\n" +
+	"\x06reason\x18\x04 \x01(\tR\x06reason\x12%\n" +
+	"\x0edelivery_count\x18\x05 \x01(\x04R\rdeliveryCount\x12D\n" +
+	"\x10dead_lettered_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\x0edeadLetteredAt\x12'\n" +
+	"\x0fdecoding_failed\x18\a \x01(\bR\x0edecodingFailed\x12#\n" +
+	"\roriginal_data\x18\b \x01(\fR\foriginalDataBMZKgithub.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1b\x06proto3"
 
 var (
 	file_platform_common_v1_common_proto_rawDescOnce sync.Once
@@ -373,22 +485,25 @@ func file_platform_common_v1_common_proto_rawDescGZIP() []byte {
 	return file_platform_common_v1_common_proto_rawDescData
 }
 
-var file_platform_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_platform_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_platform_common_v1_common_proto_goTypes = []any{
 	(*PageRequest)(nil),           // 0: platform.common.v1.PageRequest
 	(*PageResult)(nil),            // 1: platform.common.v1.PageResult
 	(*RequestContext)(nil),        // 2: platform.common.v1.RequestContext
 	(*EventEnvelope)(nil),         // 3: platform.common.v1.EventEnvelope
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*DeadLetterEvent)(nil),       // 4: platform.common.v1.DeadLetterEvent
+	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_platform_common_v1_common_proto_depIdxs = []int32{
-	4, // 0: platform.common.v1.EventEnvelope.occurred_at:type_name -> google.protobuf.Timestamp
+	5, // 0: platform.common.v1.EventEnvelope.occurred_at:type_name -> google.protobuf.Timestamp
 	2, // 1: platform.common.v1.EventEnvelope.context:type_name -> platform.common.v1.RequestContext
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 2: platform.common.v1.DeadLetterEvent.original_event:type_name -> platform.common.v1.EventEnvelope
+	5, // 3: platform.common.v1.DeadLetterEvent.dead_lettered_at:type_name -> google.protobuf.Timestamp
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_platform_common_v1_common_proto_init() }
@@ -402,7 +517,7 @@ func file_platform_common_v1_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_common_v1_common_proto_rawDesc), len(file_platform_common_v1_common_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

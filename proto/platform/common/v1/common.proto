@@ -37,3 +37,17 @@ message EventEnvelope {
   RequestContext context = 8;
   bytes payload = 9;
 }
+
+// DeadLetterEvent records an event that a durable consumer could not process.
+// Exactly one of original_event or original_data is normally populated. Raw
+// data is retained only when the original envelope could not be decoded.
+message DeadLetterEvent {
+  EventEnvelope original_event = 1;
+  string original_subject = 2;
+  string consumer = 3;
+  string reason = 4;
+  uint64 delivery_count = 5;
+  google.protobuf.Timestamp dead_lettered_at = 6;
+  bool decoding_failed = 7;
+  bytes original_data = 8;
+}
