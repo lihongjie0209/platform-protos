@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package platform.metering.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/metering/v1;meteringv1";
+
+// MeteringService owns immutable usage facts and queryable usage aggregates.
+service MeteringService {
+  rpc CreateMeter(CreateMeterRequest) returns (CreateMeterResponse);
+  rpc UpdateMeter(UpdateMeterRequest) returns (UpdateMeterResponse);
+  rpc GetMeter(GetMeterRequest) returns (GetMeterResponse);
+  rpc ListMeters(ListMetersRequest) returns (ListMetersResponse);
+  rpc RecordUsage(RecordUsageRequest) returns (RecordUsageResponse);
+  rpc QueryUsage(QueryUsageRequest) returns (QueryUsageResponse);
+  rpc AdjustUsage(AdjustUsageRequest) returns (AdjustUsageResponse);
+}
+
+message Meter {
+  string id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  string unit = 5;
+  string aggregation = 6;
+  repeated string dimension_keys = 7;
+  string status = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message UsageFact {
+  string id = 1;
+  string event_id = 2;
+  string tenant_id = 3;
+  string meter_code = 4;
+  int64 quantity = 5;
+  map<string, string> dimensions = 6;
+  google.protobuf.Timestamp occurred_at = 7;
+  string source_service = 8;
+  string source_id = 9;
+  bool adjustment = 10;
+  string reason = 11;
+  int64 version = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+  string created_by = 15;
+  string updated_by = 16;
+}
+
+message UsagePoint {
+  google.protobuf.Timestamp window_start = 1;
+  google.protobuf.Timestamp window_end = 2;
+  int64 quantity = 3;
+  map<string, string> dimensions = 4;
+}
+
+message CreateMeterRequest {
+  string code = 1;
+  string name = 2;
+  string description = 3;
+  string unit = 4;
+  string aggregation = 5;
+  repeated string dimension_keys = 6;
+}
+message CreateMeterResponse {
+  Meter meter = 1;
+}
+message UpdateMeterRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+  int64 version = 5;
+}
+message UpdateMeterResponse {
+  Meter meter = 1;
+}
+message GetMeterRequest {
+  string id = 1;
+  string code = 2;
+}
+message GetMeterResponse {
+  Meter meter = 1;
+}
+message ListMetersRequest {
+  string status = 1;
+  string keyword = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListMetersResponse {
+  repeated Meter meters = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message UsageInput {
+  string event_id = 1;
+  string tenant_id = 2;
+  string meter_code = 3;
+  int64 quantity = 4;
+  map<string, string> dimensions = 5;
+  google.protobuf.Timestamp occurred_at = 6;
+  string source_service = 7;
+  string source_id = 8;
+}
+message RecordUsageRequest {
+  repeated UsageInput events = 1;
+}
+message RecordUsageResult {
+  string event_id = 1;
+  string fact_id = 2;
+  bool duplicate = 3;
+}
+message RecordUsageResponse {
+  repeated RecordUsageResult results = 1;
+}
+
+message QueryUsageRequest {
+  string tenant_id = 1;
+  string meter_code = 2;
+  google.protobuf.Timestamp start_at = 3;
+  google.protobuf.Timestamp end_at = 4;
+  map<string, string> dimensions = 5;
+  string granularity = 6;
+  platform.common.v1.PageRequest page = 7;
+}
+message QueryUsageResponse {
+  repeated UsagePoint points = 1;
+  int64 total_quantity = 2;
+  platform.common.v1.PageResult page = 3;
+}
+
+message AdjustUsageRequest {
+  string event_id = 1;
+  string tenant_id = 2;
+  string meter_code = 3;
+  int64 quantity = 4;
+  map<string, string> dimensions = 5;
+  google.protobuf.Timestamp occurred_at = 6;
+  string source_id = 7;
+  string reason = 8;
+}
+message AdjustUsageResponse {
+  UsageFact fact = 1;
+  bool duplicate = 2;
+}
+
+message UsageRecordedEvent {
+  repeated UsageFact facts = 1;
+}
+
+message MeterChangedEvent {
+  Meter meter = 1;
+  string change_type = 2;
+}
