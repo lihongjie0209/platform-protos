@@ -7,7 +7,7 @@ BUF_VERSION ?= v1.50.0
 PROTOC_GEN_GO_VERSION ?= v1.36.12
 PROTOC_GEN_GO_GRPC_VERSION ?= v1.5.1
 
-.PHONY: bootstrap fmt lint generate check test
+.PHONY: bootstrap fmt fmt-check lint generate check test
 
 bootstrap:
 	@mkdir -p $(TOOLS_DIR)
@@ -18,13 +18,16 @@ bootstrap:
 fmt:
 	$(BUF) format -w
 
+fmt-check:
+	$(BUF) format --diff --exit-code
+
 lint:
 	$(BUF) lint
 
 generate: fmt lint
 	PATH="$(PATH_WITH_TOOLS)" $(BUF) generate
 
-check: fmt lint
+check: fmt-check lint
 	@tmp_dir=$$(mktemp -d); \
 	trap 'rm -rf "$$tmp_dir"' EXIT; \
 	cp -R gen/go "$$tmp_dir/go"; \
