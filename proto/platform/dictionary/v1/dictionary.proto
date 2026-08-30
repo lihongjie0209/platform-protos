@@ -1,0 +1,290 @@
+syntax = "proto3";
+
+package platform.dictionary.v1;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/dictionary/v1;dictionaryv1";
+
+service DictionaryService {
+  rpc CreateDictionary(CreateDictionaryRequest) returns (CreateDictionaryResponse);
+  rpc UpdateDictionary(UpdateDictionaryRequest) returns (UpdateDictionaryResponse);
+  rpc GetDictionary(GetDictionaryRequest) returns (GetDictionaryResponse);
+  rpc ListDictionaries(ListDictionariesRequest) returns (ListDictionariesResponse);
+  rpc UpsertItems(UpsertItemsRequest) returns (UpsertItemsResponse);
+  rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
+  rpc PublishDictionary(PublishDictionaryRequest) returns (PublishDictionaryResponse);
+  rpc Query(QueryRequest) returns (QueryResponse);
+  rpc Tree(TreeRequest) returns (TreeResponse);
+  rpc ResolveCodes(ResolveCodesRequest) returns (ResolveCodesResponse);
+  rpc RegisterProvider(RegisterProviderRequest) returns (RegisterProviderResponse);
+  rpc HeartbeatProvider(HeartbeatProviderRequest) returns (HeartbeatProviderResponse);
+  rpc UnregisterProvider(UnregisterProviderRequest) returns (UnregisterProviderResponse);
+  rpc ListProviders(ListProvidersRequest) returns (ListProvidersResponse);
+}
+
+// Implemented by every business service that exposes dynamic dictionaries.
+// Provider implementations must be read-only and must not expose arbitrary SQL.
+service DictionaryProviderService {
+  rpc Describe(DictionaryProviderServiceDescribeRequest) returns (DictionaryProviderServiceDescribeResponse);
+  rpc Query(DictionaryProviderServiceQueryRequest) returns (DictionaryProviderServiceQueryResponse);
+  rpc Tree(DictionaryProviderServiceTreeRequest) returns (DictionaryProviderServiceTreeResponse);
+  rpc ResolveCodes(DictionaryProviderServiceResolveCodesRequest) returns (DictionaryProviderServiceResolveCodesResponse);
+}
+
+enum DictionaryKind {
+  DICTIONARY_KIND_UNSPECIFIED = 0;
+  DICTIONARY_KIND_STATIC = 1;
+  DICTIONARY_KIND_DYNAMIC = 2;
+}
+
+enum TreeMode {
+  TREE_MODE_UNSPECIFIED = 0;
+  TREE_MODE_FULL = 1;
+  TREE_MODE_CHILDREN = 2;
+  TREE_MODE_SEARCH_WITH_ANCESTORS = 3;
+}
+
+message AuditFields {
+  google.protobuf.Timestamp created_at = 1;
+  google.protobuf.Timestamp updated_at = 2;
+  string created_by = 3;
+  string updated_by = 4;
+  int64 version = 5;
+}
+
+message Dictionary {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string name = 4;
+  string description = 5;
+  DictionaryKind kind = 6;
+  string status = 7;
+  string provider_id = 8;
+  int64 published_version = 9;
+  google.protobuf.Struct metadata = 10;
+  AuditFields audit = 11;
+}
+
+message DictionaryItem {
+  string id = 1;
+  string dictionary_code = 2;
+  string code = 3;
+  string name = 4;
+  string parent_id = 5;
+  string parent_code = 6;
+  bool leaf = 7;
+  int32 sort_order = 8;
+  bool disabled = 9;
+  string status = 10;
+  google.protobuf.Struct metadata = 11;
+  AuditFields audit = 12;
+}
+
+message SearchSpec {
+  string keyword = 1;
+  map<string, string> filters = 2;
+  string sort = 3;
+  bool descending = 4;
+  platform.common.v1.PageRequest page = 5;
+  string cursor = 6;
+  uint32 limit = 7;
+}
+
+message ResultPage {
+  platform.common.v1.PageResult page = 1;
+  string next_cursor = 2;
+  bool has_more = 3;
+}
+
+message CreateDictionaryRequest {
+  string tenant_id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+  google.protobuf.Struct metadata = 5;
+}
+message CreateDictionaryResponse {
+  Dictionary dictionary = 1;
+}
+message UpdateDictionaryRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+  google.protobuf.Struct metadata = 5;
+  int64 version = 6;
+}
+message UpdateDictionaryResponse {
+  Dictionary dictionary = 1;
+}
+message GetDictionaryRequest {
+  string tenant_id = 1;
+  string code = 2;
+}
+message GetDictionaryResponse {
+  Dictionary dictionary = 1;
+}
+message ListDictionariesRequest {
+  string tenant_id = 1;
+  string status = 2;
+  string keyword = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListDictionariesResponse {
+  repeated Dictionary dictionaries = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message UpsertItemsRequest {
+  string dictionary_id = 1;
+  repeated DictionaryItem items = 2;
+}
+message UpsertItemsResponse {
+  repeated DictionaryItem items = 1;
+}
+message DeleteItemRequest {
+  string id = 1;
+  int64 version = 2;
+}
+message DeleteItemResponse {}
+message PublishDictionaryRequest {
+  string dictionary_id = 1;
+  int64 dictionary_version = 2;
+  string comment = 3;
+}
+message PublishDictionaryResponse {
+  int64 published_version = 1;
+  repeated DictionaryItem items = 2;
+}
+
+message QueryRequest {
+  string tenant_id = 1;
+  string dictionary_code = 2;
+  SearchSpec search = 3;
+}
+message QueryResponse {
+  repeated DictionaryItem items = 1;
+  ResultPage result = 2;
+}
+message TreeRequest {
+  string tenant_id = 1;
+  string dictionary_code = 2;
+  TreeMode mode = 3;
+  string parent_id = 4;
+  string keyword = 5;
+  uint32 max_depth = 6;
+  uint32 max_nodes = 7;
+  map<string, string> filters = 8;
+}
+message TreeNode {
+  DictionaryItem item = 1;
+  repeated TreeNode children = 2;
+}
+message TreeResponse {
+  repeated TreeNode roots = 1;
+  bool truncated = 2;
+}
+message ResolveCodesRequest {
+  string tenant_id = 1;
+  string dictionary_code = 2;
+  repeated string codes = 3;
+}
+message ResolvedCode {
+  string code = 1;
+  bool found = 2;
+  DictionaryItem item = 3;
+}
+message ResolveCodesResponse {
+  repeated ResolvedCode values = 1;
+}
+
+message ProviderCapability {
+  string dictionary_code = 1;
+  bool supports_search = 2;
+  bool supports_tree = 3;
+  bool supports_cursor = 4;
+  repeated string filter_keys = 5;
+  repeated string sort_keys = 6;
+  uint32 max_page_size = 7;
+  uint32 max_tree_depth = 8;
+  uint32 max_tree_nodes = 9;
+}
+message Provider {
+  string id = 1;
+  string service_name = 2;
+  string target = 3;
+  string status = 4;
+  repeated ProviderCapability capabilities = 5;
+  uint32 cache_ttl_seconds = 6;
+  uint32 timeout_milliseconds = 7;
+  google.protobuf.Timestamp lease_expires_at = 8;
+  AuditFields audit = 9;
+}
+message RegisterProviderRequest {
+  string service_name = 1;
+  string target = 2;
+  repeated ProviderCapability capabilities = 3;
+  uint32 cache_ttl_seconds = 4;
+  uint32 timeout_milliseconds = 5;
+  uint32 lease_seconds = 6;
+}
+message RegisterProviderResponse {
+  Provider provider = 1;
+  string lease_token = 2;
+}
+message HeartbeatProviderRequest {
+  string provider_id = 1;
+  string lease_token = 2;
+  uint32 lease_seconds = 3;
+}
+message HeartbeatProviderResponse {
+  google.protobuf.Timestamp lease_expires_at = 1;
+}
+message UnregisterProviderRequest {
+  string provider_id = 1;
+  string lease_token = 2;
+}
+message UnregisterProviderResponse {}
+message ListProvidersRequest {
+  string status = 1;
+  platform.common.v1.PageRequest page = 2;
+}
+message ListProvidersResponse {
+  repeated Provider providers = 1;
+  platform.common.v1.PageResult page = 2;
+}
+message DictionaryProviderServiceDescribeRequest {}
+message DictionaryProviderServiceDescribeResponse {
+  string service_name = 1;
+  repeated ProviderCapability capabilities = 2;
+}
+message DictionaryProviderServiceQueryRequest {
+  QueryRequest query = 1;
+}
+message DictionaryProviderServiceQueryResponse {
+  QueryResponse result = 1;
+}
+message DictionaryProviderServiceTreeRequest {
+  TreeRequest query = 1;
+}
+message DictionaryProviderServiceTreeResponse {
+  TreeResponse result = 1;
+}
+message DictionaryProviderServiceResolveCodesRequest {
+  ResolveCodesRequest query = 1;
+}
+message DictionaryProviderServiceResolveCodesResponse {
+  ResolveCodesResponse result = 1;
+}
+
+message DictionaryPublishedEvent {
+  Dictionary dictionary = 1;
+  int64 published_version = 2;
+}
+message ProviderChangedEvent {
+  Provider provider = 1;
+  string change_type = 2;
+}
