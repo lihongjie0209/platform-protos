@@ -330,17 +330,18 @@ func (x *EventEnvelope) GetPayload() []byte {
 // Exactly one of original_event or original_data is normally populated. Raw
 // data is retained only when the original envelope could not be decoded.
 type DeadLetterEvent struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	OriginalEvent   *EventEnvelope         `protobuf:"bytes,1,opt,name=original_event,json=originalEvent,proto3" json:"original_event,omitempty"`
-	OriginalSubject string                 `protobuf:"bytes,2,opt,name=original_subject,json=originalSubject,proto3" json:"original_subject,omitempty"`
-	Consumer        string                 `protobuf:"bytes,3,opt,name=consumer,proto3" json:"consumer,omitempty"`
-	Reason          string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
-	DeliveryCount   uint64                 `protobuf:"varint,5,opt,name=delivery_count,json=deliveryCount,proto3" json:"delivery_count,omitempty"`
-	DeadLetteredAt  *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=dead_lettered_at,json=deadLetteredAt,proto3" json:"dead_lettered_at,omitempty"`
-	DecodingFailed  bool                   `protobuf:"varint,7,opt,name=decoding_failed,json=decodingFailed,proto3" json:"decoding_failed,omitempty"`
-	OriginalData    []byte                 `protobuf:"bytes,8,opt,name=original_data,json=originalData,proto3" json:"original_data,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	OriginalEvent         *EventEnvelope         `protobuf:"bytes,1,opt,name=original_event,json=originalEvent,proto3" json:"original_event,omitempty"`
+	OriginalSubject       string                 `protobuf:"bytes,2,opt,name=original_subject,json=originalSubject,proto3" json:"original_subject,omitempty"`
+	Consumer              string                 `protobuf:"bytes,3,opt,name=consumer,proto3" json:"consumer,omitempty"`
+	Reason                string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
+	DeliveryCount         uint64                 `protobuf:"varint,5,opt,name=delivery_count,json=deliveryCount,proto3" json:"delivery_count,omitempty"`
+	DeadLetteredAt        *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=dead_lettered_at,json=deadLetteredAt,proto3" json:"dead_lettered_at,omitempty"`
+	DecodingFailed        bool                   `protobuf:"varint,7,opt,name=decoding_failed,json=decodingFailed,proto3" json:"decoding_failed,omitempty"`
+	OriginalData          []byte                 `protobuf:"bytes,8,opt,name=original_data,json=originalData,proto3" json:"original_data,omitempty"`
+	OriginalDataTruncated bool                   `protobuf:"varint,9,opt,name=original_data_truncated,json=originalDataTruncated,proto3" json:"original_data_truncated,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *DeadLetterEvent) Reset() {
@@ -429,6 +430,13 @@ func (x *DeadLetterEvent) GetOriginalData() []byte {
 	return nil
 }
 
+func (x *DeadLetterEvent) GetOriginalDataTruncated() bool {
+	if x != nil {
+		return x.OriginalDataTruncated
+	}
+	return false
+}
+
 var File_platform_common_v1_common_proto protoreflect.FileDescriptor
 
 const file_platform_common_v1_common_proto_rawDesc = "" +
@@ -462,7 +470,7 @@ const file_platform_common_v1_common_proto_rawDesc = "" +
 	"\voccurred_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12<\n" +
 	"\acontext\x18\b \x01(\v2\".platform.common.v1.RequestContextR\acontext\x12\x18\n" +
-	"\apayload\x18\t \x01(\fR\apayload\"\xf5\x02\n" +
+	"\apayload\x18\t \x01(\fR\apayload\"\xad\x03\n" +
 	"\x0fDeadLetterEvent\x12H\n" +
 	"\x0eoriginal_event\x18\x01 \x01(\v2!.platform.common.v1.EventEnvelopeR\roriginalEvent\x12)\n" +
 	"\x10original_subject\x18\x02 \x01(\tR\x0foriginalSubject\x12\x1a\n" +
@@ -471,7 +479,8 @@ const file_platform_common_v1_common_proto_rawDesc = "" +
 	"\x0edelivery_count\x18\x05 \x01(\x04R\rdeliveryCount\x12D\n" +
 	"\x10dead_lettered_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\x0edeadLetteredAt\x12'\n" +
 	"\x0fdecoding_failed\x18\a \x01(\bR\x0edecodingFailed\x12#\n" +
-	"\roriginal_data\x18\b \x01(\fR\foriginalDataBMZKgithub.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1b\x06proto3"
+	"\roriginal_data\x18\b \x01(\fR\foriginalData\x126\n" +
+	"\x17original_data_truncated\x18\t \x01(\bR\x15originalDataTruncatedBMZKgithub.com/lihongjie0209/platform-protos/gen/go/platform/common/v1;commonv1b\x06proto3"
 
 var (
 	file_platform_common_v1_common_proto_rawDescOnce sync.Once

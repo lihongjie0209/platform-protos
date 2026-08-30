@@ -50,4 +50,5 @@ message DeadLetterEvent {
   google.protobuf.Timestamp dead_lettered_at = 6;
   bool decoding_failed = 7;
   bytes original_data = 8;
+  bool original_data_truncated = 9;
 }
