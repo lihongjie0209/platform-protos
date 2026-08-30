@@ -1,0 +1,129 @@
+syntax = "proto3";
+
+package platform.scheduler.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/scheduler/v1;schedulerv1";
+
+service SchedulerService {
+  rpc CreateJob(CreateJobRequest) returns (CreateJobResponse);
+  rpc UpdateJob(UpdateJobRequest) returns (UpdateJobResponse);
+  rpc DeleteJob(DeleteJobRequest) returns (DeleteJobResponse);
+  rpc GetJob(GetJobRequest) returns (GetJobResponse);
+  rpc ListJobs(ListJobsRequest) returns (ListJobsResponse);
+  rpc TriggerJob(TriggerJobRequest) returns (TriggerJobResponse);
+  rpc GetExecution(GetExecutionRequest) returns (GetExecutionResponse);
+  rpc ListExecutions(ListExecutionsRequest) returns (ListExecutionsResponse);
+}
+
+message Job {
+  string id = 1;
+  string name = 2;
+  string cron_expression = 3;
+  string timezone = 4;
+  string upstream = 5;
+  string full_method = 6;
+  string request_json = 7;
+  int64 timeout_milliseconds = 8;
+  string status = 9;
+  int64 version = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+  string created_by = 13;
+  string updated_by = 14;
+}
+
+message Execution {
+  string id = 1;
+  string job_id = 2;
+  string trigger_type = 3;
+  string status = 4;
+  string response_json = 5;
+  string error_code = 6;
+  string error_message = 7;
+  google.protobuf.Timestamp started_at = 8;
+  google.protobuf.Timestamp finished_at = 9;
+  int64 duration_milliseconds = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
+}
+
+message CreateJobRequest {
+  string name = 1;
+  string cron_expression = 2;
+  string timezone = 3;
+  string upstream = 4;
+  string full_method = 5;
+  string request_json = 6;
+  int64 timeout_milliseconds = 7;
+  bool enabled = 8;
+}
+message CreateJobResponse {
+  Job job = 1;
+}
+
+message UpdateJobRequest {
+  string id = 1;
+  string name = 2;
+  string cron_expression = 3;
+  string timezone = 4;
+  string upstream = 5;
+  string full_method = 6;
+  string request_json = 7;
+  int64 timeout_milliseconds = 8;
+  bool enabled = 9;
+  int64 version = 10;
+}
+message UpdateJobResponse {
+  Job job = 1;
+}
+
+message DeleteJobRequest {
+  string id = 1;
+  int64 version = 2;
+}
+message DeleteJobResponse {}
+message GetJobRequest {
+  string id = 1;
+}
+message GetJobResponse {
+  Job job = 1;
+}
+message ListJobsRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  string status = 3;
+}
+message ListJobsResponse {
+  repeated Job items = 1;
+  int64 total = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}
+message TriggerJobRequest {
+  string id = 1;
+}
+message TriggerJobResponse {
+  Execution execution = 1;
+}
+message GetExecutionRequest {
+  string id = 1;
+}
+message GetExecutionResponse {
+  Execution execution = 1;
+}
+message ListExecutionsRequest {
+  string job_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+message ListExecutionsResponse {
+  repeated Execution items = 1;
+  int64 total = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+}
