@@ -31,6 +31,9 @@ enum SubjectType {
   SUBJECT_TYPE_MEMBERSHIP = 1;
   SUBJECT_TYPE_SERVICE_ACCOUNT = 2;
   SUBJECT_TYPE_GROUP = 3;
+  // A global identity used for platform-scope administration before or
+  // outside a tenant membership exists.
+  SUBJECT_TYPE_USER = 4;
 }
 
 enum DataScopeType {

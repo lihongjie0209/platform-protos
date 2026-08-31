@@ -30,6 +30,9 @@ const (
 	SubjectType_SUBJECT_TYPE_MEMBERSHIP      SubjectType = 1
 	SubjectType_SUBJECT_TYPE_SERVICE_ACCOUNT SubjectType = 2
 	SubjectType_SUBJECT_TYPE_GROUP           SubjectType = 3
+	// A global identity used for platform-scope administration before or
+	// outside a tenant membership exists.
+	SubjectType_SUBJECT_TYPE_USER SubjectType = 4
 )
 
 // Enum value maps for SubjectType.
@@ -39,12 +42,14 @@ var (
 		1: "SUBJECT_TYPE_MEMBERSHIP",
 		2: "SUBJECT_TYPE_SERVICE_ACCOUNT",
 		3: "SUBJECT_TYPE_GROUP",
+		4: "SUBJECT_TYPE_USER",
 	}
 	SubjectType_value = map[string]int32{
 		"SUBJECT_TYPE_UNSPECIFIED":     0,
 		"SUBJECT_TYPE_MEMBERSHIP":      1,
 		"SUBJECT_TYPE_SERVICE_ACCOUNT": 2,
 		"SUBJECT_TYPE_GROUP":           3,
+		"SUBJECT_TYPE_USER":            4,
 	}
 )
 
@@ -2733,12 +2738,13 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"subject_id\x18\x02 \x01(\tR\tsubjectId\x12I\n" +
 	"\fsubject_type\x18\x03 \x01(\x0e2&.platform.authorization.v1.SubjectTypeR\vsubjectType\x12%\n" +
 	"\x0epolicy_version\x18\x04 \x01(\x04R\rpolicyVersion\x12\x16\n" +
-	"\x06reason\x18\x05 \x01(\tR\x06reason*\x82\x01\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason*\x99\x01\n" +
 	"\vSubjectType\x12\x1c\n" +
 	"\x18SUBJECT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SUBJECT_TYPE_MEMBERSHIP\x10\x01\x12 \n" +
 	"\x1cSUBJECT_TYPE_SERVICE_ACCOUNT\x10\x02\x12\x16\n" +
-	"\x12SUBJECT_TYPE_GROUP\x10\x03*\xbb\x01\n" +
+	"\x12SUBJECT_TYPE_GROUP\x10\x03\x12\x15\n" +
+	"\x11SUBJECT_TYPE_USER\x10\x04*\xbb\x01\n" +
 	"\rDataScopeType\x12\x1f\n" +
 	"\x1bDATA_SCOPE_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14DATA_SCOPE_TYPE_NONE\x10\x01\x12\x18\n" +
