@@ -40,6 +40,7 @@ const (
 	TenantService_RemoveGroupMember_FullMethodName        = "/platform.tenant.v1.TenantService/RemoveGroupMember"
 	TenantService_ListGroups_FullMethodName               = "/platform.tenant.v1.TenantService/ListGroups"
 	TenantService_GetQuota_FullMethodName                 = "/platform.tenant.v1.TenantService/GetQuota"
+	TenantService_ListQuotas_FullMethodName               = "/platform.tenant.v1.TenantService/ListQuotas"
 	TenantService_SetQuota_FullMethodName                 = "/platform.tenant.v1.TenantService/SetQuota"
 	TenantService_ConsumeQuota_FullMethodName             = "/platform.tenant.v1.TenantService/ConsumeQuota"
 	TenantService_ValidateMembership_FullMethodName       = "/platform.tenant.v1.TenantService/ValidateMembership"
@@ -73,6 +74,7 @@ type TenantServiceClient interface {
 	RemoveGroupMember(ctx context.Context, in *RemoveGroupMemberRequest, opts ...grpc.CallOption) (*RemoveGroupMemberResponse, error)
 	ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error)
 	GetQuota(ctx context.Context, in *GetQuotaRequest, opts ...grpc.CallOption) (*GetQuotaResponse, error)
+	ListQuotas(ctx context.Context, in *ListQuotasRequest, opts ...grpc.CallOption) (*ListQuotasResponse, error)
 	SetQuota(ctx context.Context, in *SetQuotaRequest, opts ...grpc.CallOption) (*SetQuotaResponse, error)
 	ConsumeQuota(ctx context.Context, in *ConsumeQuotaRequest, opts ...grpc.CallOption) (*ConsumeQuotaResponse, error)
 	ValidateMembership(ctx context.Context, in *ValidateMembershipRequest, opts ...grpc.CallOption) (*ValidateMembershipResponse, error)
@@ -299,6 +301,16 @@ func (c *tenantServiceClient) GetQuota(ctx context.Context, in *GetQuotaRequest,
 	return out, nil
 }
 
+func (c *tenantServiceClient) ListQuotas(ctx context.Context, in *ListQuotasRequest, opts ...grpc.CallOption) (*ListQuotasResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListQuotasResponse)
+	err := c.cc.Invoke(ctx, TenantService_ListQuotas_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tenantServiceClient) SetQuota(ctx context.Context, in *SetQuotaRequest, opts ...grpc.CallOption) (*SetQuotaResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SetQuotaResponse)
@@ -384,6 +396,7 @@ type TenantServiceServer interface {
 	RemoveGroupMember(context.Context, *RemoveGroupMemberRequest) (*RemoveGroupMemberResponse, error)
 	ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error)
 	GetQuota(context.Context, *GetQuotaRequest) (*GetQuotaResponse, error)
+	ListQuotas(context.Context, *ListQuotasRequest) (*ListQuotasResponse, error)
 	SetQuota(context.Context, *SetQuotaRequest) (*SetQuotaResponse, error)
 	ConsumeQuota(context.Context, *ConsumeQuotaRequest) (*ConsumeQuotaResponse, error)
 	ValidateMembership(context.Context, *ValidateMembershipRequest) (*ValidateMembershipResponse, error)
@@ -462,6 +475,9 @@ func (UnimplementedTenantServiceServer) ListGroups(context.Context, *ListGroupsR
 }
 func (UnimplementedTenantServiceServer) GetQuota(context.Context, *GetQuotaRequest) (*GetQuotaResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetQuota not implemented")
+}
+func (UnimplementedTenantServiceServer) ListQuotas(context.Context, *ListQuotasRequest) (*ListQuotasResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListQuotas not implemented")
 }
 func (UnimplementedTenantServiceServer) SetQuota(context.Context, *SetQuotaRequest) (*SetQuotaResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetQuota not implemented")
@@ -880,6 +896,24 @@ func _TenantService_GetQuota_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TenantService_ListQuotas_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListQuotasRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).ListQuotas(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_ListQuotas_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).ListQuotas(ctx, req.(*ListQuotasRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TenantService_SetQuota_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetQuotaRequest)
 	if err := dec(in); err != nil {
@@ -1078,6 +1112,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetQuota",
 			Handler:    _TenantService_GetQuota_Handler,
+		},
+		{
+			MethodName: "ListQuotas",
+			Handler:    _TenantService_ListQuotas_Handler,
 		},
 		{
 			MethodName: "SetQuota",
