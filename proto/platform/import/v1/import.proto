@@ -11,6 +11,8 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/im
 // ImportService owns asynchronous import jobs, validation reports, and the
 // explicit confirmation boundary before writes reach a business service.
 service ImportService {
+  rpc ListImportDatasets(ListImportDatasetsRequest) returns (ListImportDatasetsResponse);
+  rpc DescribeAvailableImportDataset(DescribeAvailableImportDatasetRequest) returns (DescribeAvailableImportDatasetResponse);
   rpc CreateImportJob(CreateImportJobRequest) returns (CreateImportJobResponse);
   rpc CompleteUpload(CompleteUploadRequest) returns (CompleteUploadResponse);
   rpc GetImportJob(GetImportJobRequest) returns (GetImportJobResponse);
@@ -78,6 +80,35 @@ message ImportDatasetDescriptor {
   repeated string formats = 4;
   int32 max_batch_size = 5;
   bool supports_dry_run = 6;
+}
+
+message ImportDatasetSummary {
+  string provider_service = 1;
+  string code = 2;
+  string title = 3;
+  repeated string formats = 4;
+  int32 max_batch_size = 5;
+  bool supports_dry_run = 6;
+  int32 healthy_instances = 7;
+}
+
+message ListImportDatasetsRequest {
+  string tenant_id = 1;
+  string search = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListImportDatasetsResponse {
+  repeated ImportDatasetSummary datasets = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message DescribeAvailableImportDatasetRequest {
+  string tenant_id = 1;
+  string provider_service = 2;
+  string dataset_code = 3;
+}
+message DescribeAvailableImportDatasetResponse {
+  ImportDatasetDescriptor dataset = 1;
 }
 
 message RowIssue {

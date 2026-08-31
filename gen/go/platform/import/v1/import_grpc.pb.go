@@ -19,14 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ImportService_CreateImportJob_FullMethodName              = "/platform.import.v1.ImportService/CreateImportJob"
-	ImportService_CompleteUpload_FullMethodName               = "/platform.import.v1.ImportService/CompleteUpload"
-	ImportService_GetImportJob_FullMethodName                 = "/platform.import.v1.ImportService/GetImportJob"
-	ImportService_ListImportJobs_FullMethodName               = "/platform.import.v1.ImportService/ListImportJobs"
-	ImportService_CancelImportJob_FullMethodName              = "/platform.import.v1.ImportService/CancelImportJob"
-	ImportService_RetryImportJob_FullMethodName               = "/platform.import.v1.ImportService/RetryImportJob"
-	ImportService_ConfirmImportJob_FullMethodName             = "/platform.import.v1.ImportService/ConfirmImportJob"
-	ImportService_CreateErrorReportDownloadURL_FullMethodName = "/platform.import.v1.ImportService/CreateErrorReportDownloadURL"
+	ImportService_ListImportDatasets_FullMethodName             = "/platform.import.v1.ImportService/ListImportDatasets"
+	ImportService_DescribeAvailableImportDataset_FullMethodName = "/platform.import.v1.ImportService/DescribeAvailableImportDataset"
+	ImportService_CreateImportJob_FullMethodName                = "/platform.import.v1.ImportService/CreateImportJob"
+	ImportService_CompleteUpload_FullMethodName                 = "/platform.import.v1.ImportService/CompleteUpload"
+	ImportService_GetImportJob_FullMethodName                   = "/platform.import.v1.ImportService/GetImportJob"
+	ImportService_ListImportJobs_FullMethodName                 = "/platform.import.v1.ImportService/ListImportJobs"
+	ImportService_CancelImportJob_FullMethodName                = "/platform.import.v1.ImportService/CancelImportJob"
+	ImportService_RetryImportJob_FullMethodName                 = "/platform.import.v1.ImportService/RetryImportJob"
+	ImportService_ConfirmImportJob_FullMethodName               = "/platform.import.v1.ImportService/ConfirmImportJob"
+	ImportService_CreateErrorReportDownloadURL_FullMethodName   = "/platform.import.v1.ImportService/CreateErrorReportDownloadURL"
 )
 
 // ImportServiceClient is the client API for ImportService service.
@@ -36,6 +38,8 @@ const (
 // ImportService owns asynchronous import jobs, validation reports, and the
 // explicit confirmation boundary before writes reach a business service.
 type ImportServiceClient interface {
+	ListImportDatasets(ctx context.Context, in *ListImportDatasetsRequest, opts ...grpc.CallOption) (*ListImportDatasetsResponse, error)
+	DescribeAvailableImportDataset(ctx context.Context, in *DescribeAvailableImportDatasetRequest, opts ...grpc.CallOption) (*DescribeAvailableImportDatasetResponse, error)
 	CreateImportJob(ctx context.Context, in *CreateImportJobRequest, opts ...grpc.CallOption) (*CreateImportJobResponse, error)
 	CompleteUpload(ctx context.Context, in *CompleteUploadRequest, opts ...grpc.CallOption) (*CompleteUploadResponse, error)
 	GetImportJob(ctx context.Context, in *GetImportJobRequest, opts ...grpc.CallOption) (*GetImportJobResponse, error)
@@ -52,6 +56,26 @@ type importServiceClient struct {
 
 func NewImportServiceClient(cc grpc.ClientConnInterface) ImportServiceClient {
 	return &importServiceClient{cc}
+}
+
+func (c *importServiceClient) ListImportDatasets(ctx context.Context, in *ListImportDatasetsRequest, opts ...grpc.CallOption) (*ListImportDatasetsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListImportDatasetsResponse)
+	err := c.cc.Invoke(ctx, ImportService_ListImportDatasets_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *importServiceClient) DescribeAvailableImportDataset(ctx context.Context, in *DescribeAvailableImportDatasetRequest, opts ...grpc.CallOption) (*DescribeAvailableImportDatasetResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DescribeAvailableImportDatasetResponse)
+	err := c.cc.Invoke(ctx, ImportService_DescribeAvailableImportDataset_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *importServiceClient) CreateImportJob(ctx context.Context, in *CreateImportJobRequest, opts ...grpc.CallOption) (*CreateImportJobResponse, error) {
@@ -141,6 +165,8 @@ func (c *importServiceClient) CreateErrorReportDownloadURL(ctx context.Context, 
 // ImportService owns asynchronous import jobs, validation reports, and the
 // explicit confirmation boundary before writes reach a business service.
 type ImportServiceServer interface {
+	ListImportDatasets(context.Context, *ListImportDatasetsRequest) (*ListImportDatasetsResponse, error)
+	DescribeAvailableImportDataset(context.Context, *DescribeAvailableImportDatasetRequest) (*DescribeAvailableImportDatasetResponse, error)
 	CreateImportJob(context.Context, *CreateImportJobRequest) (*CreateImportJobResponse, error)
 	CompleteUpload(context.Context, *CompleteUploadRequest) (*CompleteUploadResponse, error)
 	GetImportJob(context.Context, *GetImportJobRequest) (*GetImportJobResponse, error)
@@ -159,6 +185,12 @@ type ImportServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedImportServiceServer struct{}
 
+func (UnimplementedImportServiceServer) ListImportDatasets(context.Context, *ListImportDatasetsRequest) (*ListImportDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListImportDatasets not implemented")
+}
+func (UnimplementedImportServiceServer) DescribeAvailableImportDataset(context.Context, *DescribeAvailableImportDatasetRequest) (*DescribeAvailableImportDatasetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAvailableImportDataset not implemented")
+}
 func (UnimplementedImportServiceServer) CreateImportJob(context.Context, *CreateImportJobRequest) (*CreateImportJobResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateImportJob not implemented")
 }
@@ -202,6 +234,42 @@ func RegisterImportServiceServer(s grpc.ServiceRegistrar, srv ImportServiceServe
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&ImportService_ServiceDesc, srv)
+}
+
+func _ImportService_ListImportDatasets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListImportDatasetsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImportServiceServer).ListImportDatasets(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ImportService_ListImportDatasets_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImportServiceServer).ListImportDatasets(ctx, req.(*ListImportDatasetsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ImportService_DescribeAvailableImportDataset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAvailableImportDatasetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ImportServiceServer).DescribeAvailableImportDataset(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ImportService_DescribeAvailableImportDataset_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ImportServiceServer).DescribeAvailableImportDataset(ctx, req.(*DescribeAvailableImportDatasetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ImportService_CreateImportJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -355,6 +423,14 @@ var ImportService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "platform.import.v1.ImportService",
 	HandlerType: (*ImportServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListImportDatasets",
+			Handler:    _ImportService_ListImportDatasets_Handler,
+		},
+		{
+			MethodName: "DescribeAvailableImportDataset",
+			Handler:    _ImportService_DescribeAvailableImportDataset_Handler,
+		},
 		{
 			MethodName: "CreateImportJob",
 			Handler:    _ImportService_CreateImportJob_Handler,

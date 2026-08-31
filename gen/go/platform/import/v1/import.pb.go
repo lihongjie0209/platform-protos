@@ -460,6 +460,314 @@ func (x *ImportDatasetDescriptor) GetSupportsDryRun() bool {
 	return false
 }
 
+type ImportDatasetSummary struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	ProviderService  string                 `protobuf:"bytes,1,opt,name=provider_service,json=providerService,proto3" json:"provider_service,omitempty"`
+	Code             string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Title            string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
+	Formats          []string               `protobuf:"bytes,4,rep,name=formats,proto3" json:"formats,omitempty"`
+	MaxBatchSize     int32                  `protobuf:"varint,5,opt,name=max_batch_size,json=maxBatchSize,proto3" json:"max_batch_size,omitempty"`
+	SupportsDryRun   bool                   `protobuf:"varint,6,opt,name=supports_dry_run,json=supportsDryRun,proto3" json:"supports_dry_run,omitempty"`
+	HealthyInstances int32                  `protobuf:"varint,7,opt,name=healthy_instances,json=healthyInstances,proto3" json:"healthy_instances,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ImportDatasetSummary) Reset() {
+	*x = ImportDatasetSummary{}
+	mi := &file_platform_import_v1_import_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ImportDatasetSummary) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ImportDatasetSummary) ProtoMessage() {}
+
+func (x *ImportDatasetSummary) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_import_v1_import_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ImportDatasetSummary.ProtoReflect.Descriptor instead.
+func (*ImportDatasetSummary) Descriptor() ([]byte, []int) {
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ImportDatasetSummary) GetProviderService() string {
+	if x != nil {
+		return x.ProviderService
+	}
+	return ""
+}
+
+func (x *ImportDatasetSummary) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *ImportDatasetSummary) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *ImportDatasetSummary) GetFormats() []string {
+	if x != nil {
+		return x.Formats
+	}
+	return nil
+}
+
+func (x *ImportDatasetSummary) GetMaxBatchSize() int32 {
+	if x != nil {
+		return x.MaxBatchSize
+	}
+	return 0
+}
+
+func (x *ImportDatasetSummary) GetSupportsDryRun() bool {
+	if x != nil {
+		return x.SupportsDryRun
+	}
+	return false
+}
+
+func (x *ImportDatasetSummary) GetHealthyInstances() int32 {
+	if x != nil {
+		return x.HealthyInstances
+	}
+	return 0
+}
+
+type ListImportDatasetsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Search        string                 `protobuf:"bytes,2,opt,name=search,proto3" json:"search,omitempty"`
+	Page          *v1.PageRequest        `protobuf:"bytes,3,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListImportDatasetsRequest) Reset() {
+	*x = ListImportDatasetsRequest{}
+	mi := &file_platform_import_v1_import_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListImportDatasetsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListImportDatasetsRequest) ProtoMessage() {}
+
+func (x *ListImportDatasetsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_import_v1_import_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListImportDatasetsRequest.ProtoReflect.Descriptor instead.
+func (*ListImportDatasetsRequest) Descriptor() ([]byte, []int) {
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ListImportDatasetsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ListImportDatasetsRequest) GetSearch() string {
+	if x != nil {
+		return x.Search
+	}
+	return ""
+}
+
+func (x *ListImportDatasetsRequest) GetPage() *v1.PageRequest {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type ListImportDatasetsResponse struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Datasets      []*ImportDatasetSummary `protobuf:"bytes,1,rep,name=datasets,proto3" json:"datasets,omitempty"`
+	Page          *v1.PageResult          `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListImportDatasetsResponse) Reset() {
+	*x = ListImportDatasetsResponse{}
+	mi := &file_platform_import_v1_import_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListImportDatasetsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListImportDatasetsResponse) ProtoMessage() {}
+
+func (x *ListImportDatasetsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_import_v1_import_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListImportDatasetsResponse.ProtoReflect.Descriptor instead.
+func (*ListImportDatasetsResponse) Descriptor() ([]byte, []int) {
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListImportDatasetsResponse) GetDatasets() []*ImportDatasetSummary {
+	if x != nil {
+		return x.Datasets
+	}
+	return nil
+}
+
+func (x *ListImportDatasetsResponse) GetPage() *v1.PageResult {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type DescribeAvailableImportDatasetRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	TenantId        string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ProviderService string                 `protobuf:"bytes,2,opt,name=provider_service,json=providerService,proto3" json:"provider_service,omitempty"`
+	DatasetCode     string                 `protobuf:"bytes,3,opt,name=dataset_code,json=datasetCode,proto3" json:"dataset_code,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *DescribeAvailableImportDatasetRequest) Reset() {
+	*x = DescribeAvailableImportDatasetRequest{}
+	mi := &file_platform_import_v1_import_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DescribeAvailableImportDatasetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DescribeAvailableImportDatasetRequest) ProtoMessage() {}
+
+func (x *DescribeAvailableImportDatasetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_import_v1_import_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DescribeAvailableImportDatasetRequest.ProtoReflect.Descriptor instead.
+func (*DescribeAvailableImportDatasetRequest) Descriptor() ([]byte, []int) {
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DescribeAvailableImportDatasetRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *DescribeAvailableImportDatasetRequest) GetProviderService() string {
+	if x != nil {
+		return x.ProviderService
+	}
+	return ""
+}
+
+func (x *DescribeAvailableImportDatasetRequest) GetDatasetCode() string {
+	if x != nil {
+		return x.DatasetCode
+	}
+	return ""
+}
+
+type DescribeAvailableImportDatasetResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Dataset       *ImportDatasetDescriptor `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DescribeAvailableImportDatasetResponse) Reset() {
+	*x = DescribeAvailableImportDatasetResponse{}
+	mi := &file_platform_import_v1_import_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DescribeAvailableImportDatasetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DescribeAvailableImportDatasetResponse) ProtoMessage() {}
+
+func (x *DescribeAvailableImportDatasetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_import_v1_import_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DescribeAvailableImportDatasetResponse.ProtoReflect.Descriptor instead.
+func (*DescribeAvailableImportDatasetResponse) Descriptor() ([]byte, []int) {
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DescribeAvailableImportDatasetResponse) GetDataset() *ImportDatasetDescriptor {
+	if x != nil {
+		return x.Dataset
+	}
+	return nil
+}
+
 type RowIssue struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RowNumber     int64                  `protobuf:"varint,1,opt,name=row_number,json=rowNumber,proto3" json:"row_number,omitempty"`
@@ -472,7 +780,7 @@ type RowIssue struct {
 
 func (x *RowIssue) Reset() {
 	*x = RowIssue{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[3]
+	mi := &file_platform_import_v1_import_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -484,7 +792,7 @@ func (x *RowIssue) String() string {
 func (*RowIssue) ProtoMessage() {}
 
 func (x *RowIssue) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[3]
+	mi := &file_platform_import_v1_import_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -497,7 +805,7 @@ func (x *RowIssue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RowIssue.ProtoReflect.Descriptor instead.
 func (*RowIssue) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{3}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RowIssue) GetRowNumber() int64 {
@@ -542,7 +850,7 @@ type CreateImportJobRequest struct {
 
 func (x *CreateImportJobRequest) Reset() {
 	*x = CreateImportJobRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[4]
+	mi := &file_platform_import_v1_import_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -554,7 +862,7 @@ func (x *CreateImportJobRequest) String() string {
 func (*CreateImportJobRequest) ProtoMessage() {}
 
 func (x *CreateImportJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[4]
+	mi := &file_platform_import_v1_import_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -567,7 +875,7 @@ func (x *CreateImportJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateImportJobRequest.ProtoReflect.Descriptor instead.
 func (*CreateImportJobRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{4}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CreateImportJobRequest) GetTenantId() string {
@@ -625,7 +933,7 @@ type CreateImportJobResponse struct {
 
 func (x *CreateImportJobResponse) Reset() {
 	*x = CreateImportJobResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[5]
+	mi := &file_platform_import_v1_import_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -637,7 +945,7 @@ func (x *CreateImportJobResponse) String() string {
 func (*CreateImportJobResponse) ProtoMessage() {}
 
 func (x *CreateImportJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[5]
+	mi := &file_platform_import_v1_import_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -650,7 +958,7 @@ func (x *CreateImportJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateImportJobResponse.ProtoReflect.Descriptor instead.
 func (*CreateImportJobResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{5}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateImportJobResponse) GetJob() *ImportJob {
@@ -701,7 +1009,7 @@ type CompleteUploadRequest struct {
 
 func (x *CompleteUploadRequest) Reset() {
 	*x = CompleteUploadRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[6]
+	mi := &file_platform_import_v1_import_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -713,7 +1021,7 @@ func (x *CompleteUploadRequest) String() string {
 func (*CompleteUploadRequest) ProtoMessage() {}
 
 func (x *CompleteUploadRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[6]
+	mi := &file_platform_import_v1_import_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -726,7 +1034,7 @@ func (x *CompleteUploadRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompleteUploadRequest.ProtoReflect.Descriptor instead.
 func (*CompleteUploadRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{6}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CompleteUploadRequest) GetTenantId() string {
@@ -773,7 +1081,7 @@ type CompleteUploadResponse struct {
 
 func (x *CompleteUploadResponse) Reset() {
 	*x = CompleteUploadResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[7]
+	mi := &file_platform_import_v1_import_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -785,7 +1093,7 @@ func (x *CompleteUploadResponse) String() string {
 func (*CompleteUploadResponse) ProtoMessage() {}
 
 func (x *CompleteUploadResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[7]
+	mi := &file_platform_import_v1_import_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -798,7 +1106,7 @@ func (x *CompleteUploadResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompleteUploadResponse.ProtoReflect.Descriptor instead.
 func (*CompleteUploadResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{7}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CompleteUploadResponse) GetJob() *ImportJob {
@@ -818,7 +1126,7 @@ type GetImportJobRequest struct {
 
 func (x *GetImportJobRequest) Reset() {
 	*x = GetImportJobRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[8]
+	mi := &file_platform_import_v1_import_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -830,7 +1138,7 @@ func (x *GetImportJobRequest) String() string {
 func (*GetImportJobRequest) ProtoMessage() {}
 
 func (x *GetImportJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[8]
+	mi := &file_platform_import_v1_import_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -843,7 +1151,7 @@ func (x *GetImportJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetImportJobRequest.ProtoReflect.Descriptor instead.
 func (*GetImportJobRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{8}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetImportJobRequest) GetTenantId() string {
@@ -869,7 +1177,7 @@ type GetImportJobResponse struct {
 
 func (x *GetImportJobResponse) Reset() {
 	*x = GetImportJobResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[9]
+	mi := &file_platform_import_v1_import_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -881,7 +1189,7 @@ func (x *GetImportJobResponse) String() string {
 func (*GetImportJobResponse) ProtoMessage() {}
 
 func (x *GetImportJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[9]
+	mi := &file_platform_import_v1_import_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -894,7 +1202,7 @@ func (x *GetImportJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetImportJobResponse.ProtoReflect.Descriptor instead.
 func (*GetImportJobResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{9}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetImportJobResponse) GetJob() *ImportJob {
@@ -918,7 +1226,7 @@ type ListImportJobsRequest struct {
 
 func (x *ListImportJobsRequest) Reset() {
 	*x = ListImportJobsRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[10]
+	mi := &file_platform_import_v1_import_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -930,7 +1238,7 @@ func (x *ListImportJobsRequest) String() string {
 func (*ListImportJobsRequest) ProtoMessage() {}
 
 func (x *ListImportJobsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[10]
+	mi := &file_platform_import_v1_import_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -943,7 +1251,7 @@ func (x *ListImportJobsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListImportJobsRequest.ProtoReflect.Descriptor instead.
 func (*ListImportJobsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{10}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListImportJobsRequest) GetTenantId() string {
@@ -998,7 +1306,7 @@ type ListImportJobsResponse struct {
 
 func (x *ListImportJobsResponse) Reset() {
 	*x = ListImportJobsResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[11]
+	mi := &file_platform_import_v1_import_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1010,7 +1318,7 @@ func (x *ListImportJobsResponse) String() string {
 func (*ListImportJobsResponse) ProtoMessage() {}
 
 func (x *ListImportJobsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[11]
+	mi := &file_platform_import_v1_import_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1023,7 +1331,7 @@ func (x *ListImportJobsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListImportJobsResponse.ProtoReflect.Descriptor instead.
 func (*ListImportJobsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{11}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ListImportJobsResponse) GetJobs() []*ImportJob {
@@ -1051,7 +1359,7 @@ type CancelImportJobRequest struct {
 
 func (x *CancelImportJobRequest) Reset() {
 	*x = CancelImportJobRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[12]
+	mi := &file_platform_import_v1_import_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1063,7 +1371,7 @@ func (x *CancelImportJobRequest) String() string {
 func (*CancelImportJobRequest) ProtoMessage() {}
 
 func (x *CancelImportJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[12]
+	mi := &file_platform_import_v1_import_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1076,7 +1384,7 @@ func (x *CancelImportJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelImportJobRequest.ProtoReflect.Descriptor instead.
 func (*CancelImportJobRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{12}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CancelImportJobRequest) GetTenantId() string {
@@ -1109,7 +1417,7 @@ type CancelImportJobResponse struct {
 
 func (x *CancelImportJobResponse) Reset() {
 	*x = CancelImportJobResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[13]
+	mi := &file_platform_import_v1_import_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1121,7 +1429,7 @@ func (x *CancelImportJobResponse) String() string {
 func (*CancelImportJobResponse) ProtoMessage() {}
 
 func (x *CancelImportJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[13]
+	mi := &file_platform_import_v1_import_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1134,7 +1442,7 @@ func (x *CancelImportJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelImportJobResponse.ProtoReflect.Descriptor instead.
 func (*CancelImportJobResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{13}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CancelImportJobResponse) GetJob() *ImportJob {
@@ -1156,7 +1464,7 @@ type RetryImportJobRequest struct {
 
 func (x *RetryImportJobRequest) Reset() {
 	*x = RetryImportJobRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[14]
+	mi := &file_platform_import_v1_import_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1168,7 +1476,7 @@ func (x *RetryImportJobRequest) String() string {
 func (*RetryImportJobRequest) ProtoMessage() {}
 
 func (x *RetryImportJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[14]
+	mi := &file_platform_import_v1_import_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1181,7 +1489,7 @@ func (x *RetryImportJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RetryImportJobRequest.ProtoReflect.Descriptor instead.
 func (*RetryImportJobRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{14}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *RetryImportJobRequest) GetTenantId() string {
@@ -1225,7 +1533,7 @@ type RetryImportJobResponse struct {
 
 func (x *RetryImportJobResponse) Reset() {
 	*x = RetryImportJobResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[15]
+	mi := &file_platform_import_v1_import_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1237,7 +1545,7 @@ func (x *RetryImportJobResponse) String() string {
 func (*RetryImportJobResponse) ProtoMessage() {}
 
 func (x *RetryImportJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[15]
+	mi := &file_platform_import_v1_import_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1250,7 +1558,7 @@ func (x *RetryImportJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RetryImportJobResponse.ProtoReflect.Descriptor instead.
 func (*RetryImportJobResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{15}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *RetryImportJobResponse) GetJob() *ImportJob {
@@ -1300,7 +1608,7 @@ type ConfirmImportJobRequest struct {
 
 func (x *ConfirmImportJobRequest) Reset() {
 	*x = ConfirmImportJobRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[16]
+	mi := &file_platform_import_v1_import_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1312,7 +1620,7 @@ func (x *ConfirmImportJobRequest) String() string {
 func (*ConfirmImportJobRequest) ProtoMessage() {}
 
 func (x *ConfirmImportJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[16]
+	mi := &file_platform_import_v1_import_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1325,7 +1633,7 @@ func (x *ConfirmImportJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmImportJobRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmImportJobRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{16}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ConfirmImportJobRequest) GetTenantId() string {
@@ -1366,7 +1674,7 @@ type ConfirmImportJobResponse struct {
 
 func (x *ConfirmImportJobResponse) Reset() {
 	*x = ConfirmImportJobResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[17]
+	mi := &file_platform_import_v1_import_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1378,7 +1686,7 @@ func (x *ConfirmImportJobResponse) String() string {
 func (*ConfirmImportJobResponse) ProtoMessage() {}
 
 func (x *ConfirmImportJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[17]
+	mi := &file_platform_import_v1_import_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1391,7 +1699,7 @@ func (x *ConfirmImportJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmImportJobResponse.ProtoReflect.Descriptor instead.
 func (*ConfirmImportJobResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{17}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ConfirmImportJobResponse) GetJob() *ImportJob {
@@ -1419,7 +1727,7 @@ type CreateErrorReportDownloadURLRequest struct {
 
 func (x *CreateErrorReportDownloadURLRequest) Reset() {
 	*x = CreateErrorReportDownloadURLRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[18]
+	mi := &file_platform_import_v1_import_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1431,7 +1739,7 @@ func (x *CreateErrorReportDownloadURLRequest) String() string {
 func (*CreateErrorReportDownloadURLRequest) ProtoMessage() {}
 
 func (x *CreateErrorReportDownloadURLRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[18]
+	mi := &file_platform_import_v1_import_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1444,7 +1752,7 @@ func (x *CreateErrorReportDownloadURLRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CreateErrorReportDownloadURLRequest.ProtoReflect.Descriptor instead.
 func (*CreateErrorReportDownloadURLRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{18}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CreateErrorReportDownloadURLRequest) GetTenantId() string {
@@ -1480,7 +1788,7 @@ type CreateErrorReportDownloadURLResponse struct {
 
 func (x *CreateErrorReportDownloadURLResponse) Reset() {
 	*x = CreateErrorReportDownloadURLResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[19]
+	mi := &file_platform_import_v1_import_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1492,7 +1800,7 @@ func (x *CreateErrorReportDownloadURLResponse) String() string {
 func (*CreateErrorReportDownloadURLResponse) ProtoMessage() {}
 
 func (x *CreateErrorReportDownloadURLResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[19]
+	mi := &file_platform_import_v1_import_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1505,7 +1813,7 @@ func (x *CreateErrorReportDownloadURLResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CreateErrorReportDownloadURLResponse.ProtoReflect.Descriptor instead.
 func (*CreateErrorReportDownloadURLResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{19}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CreateErrorReportDownloadURLResponse) GetUrl() string {
@@ -1546,7 +1854,7 @@ type DescribeImportDatasetRequest struct {
 
 func (x *DescribeImportDatasetRequest) Reset() {
 	*x = DescribeImportDatasetRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[20]
+	mi := &file_platform_import_v1_import_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1558,7 +1866,7 @@ func (x *DescribeImportDatasetRequest) String() string {
 func (*DescribeImportDatasetRequest) ProtoMessage() {}
 
 func (x *DescribeImportDatasetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[20]
+	mi := &file_platform_import_v1_import_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1571,7 +1879,7 @@ func (x *DescribeImportDatasetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DescribeImportDatasetRequest.ProtoReflect.Descriptor instead.
 func (*DescribeImportDatasetRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{20}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *DescribeImportDatasetRequest) GetTenantId() string {
@@ -1597,7 +1905,7 @@ type DescribeImportDatasetResponse struct {
 
 func (x *DescribeImportDatasetResponse) Reset() {
 	*x = DescribeImportDatasetResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[21]
+	mi := &file_platform_import_v1_import_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1609,7 +1917,7 @@ func (x *DescribeImportDatasetResponse) String() string {
 func (*DescribeImportDatasetResponse) ProtoMessage() {}
 
 func (x *DescribeImportDatasetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[21]
+	mi := &file_platform_import_v1_import_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1622,7 +1930,7 @@ func (x *DescribeImportDatasetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DescribeImportDatasetResponse.ProtoReflect.Descriptor instead.
 func (*DescribeImportDatasetResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{21}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DescribeImportDatasetResponse) GetDataset() *ImportDatasetDescriptor {
@@ -1646,7 +1954,7 @@ type ValidateRowsRequest struct {
 
 func (x *ValidateRowsRequest) Reset() {
 	*x = ValidateRowsRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[22]
+	mi := &file_platform_import_v1_import_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1658,7 +1966,7 @@ func (x *ValidateRowsRequest) String() string {
 func (*ValidateRowsRequest) ProtoMessage() {}
 
 func (x *ValidateRowsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[22]
+	mi := &file_platform_import_v1_import_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1671,7 +1979,7 @@ func (x *ValidateRowsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateRowsRequest.ProtoReflect.Descriptor instead.
 func (*ValidateRowsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{22}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ValidateRowsRequest) GetTenantId() string {
@@ -1727,7 +2035,7 @@ type ValidateRowsResponse struct {
 
 func (x *ValidateRowsResponse) Reset() {
 	*x = ValidateRowsResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[23]
+	mi := &file_platform_import_v1_import_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1739,7 +2047,7 @@ func (x *ValidateRowsResponse) String() string {
 func (*ValidateRowsResponse) ProtoMessage() {}
 
 func (x *ValidateRowsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[23]
+	mi := &file_platform_import_v1_import_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1752,7 +2060,7 @@ func (x *ValidateRowsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateRowsResponse.ProtoReflect.Descriptor instead.
 func (*ValidateRowsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{23}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ValidateRowsResponse) GetBatchNumber() int64 {
@@ -1790,7 +2098,7 @@ type ApplyRowsRequest struct {
 
 func (x *ApplyRowsRequest) Reset() {
 	*x = ApplyRowsRequest{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[24]
+	mi := &file_platform_import_v1_import_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1802,7 +2110,7 @@ func (x *ApplyRowsRequest) String() string {
 func (*ApplyRowsRequest) ProtoMessage() {}
 
 func (x *ApplyRowsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[24]
+	mi := &file_platform_import_v1_import_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1815,7 +2123,7 @@ func (x *ApplyRowsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyRowsRequest.ProtoReflect.Descriptor instead.
 func (*ApplyRowsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{24}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ApplyRowsRequest) GetTenantId() string {
@@ -1871,7 +2179,7 @@ type ApplyRowsResponse struct {
 
 func (x *ApplyRowsResponse) Reset() {
 	*x = ApplyRowsResponse{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[25]
+	mi := &file_platform_import_v1_import_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1883,7 +2191,7 @@ func (x *ApplyRowsResponse) String() string {
 func (*ApplyRowsResponse) ProtoMessage() {}
 
 func (x *ApplyRowsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[25]
+	mi := &file_platform_import_v1_import_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1896,7 +2204,7 @@ func (x *ApplyRowsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyRowsResponse.ProtoReflect.Descriptor instead.
 func (*ApplyRowsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{25}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ApplyRowsResponse) GetBatchNumber() int64 {
@@ -1930,7 +2238,7 @@ type ImportJobChangedEvent struct {
 
 func (x *ImportJobChangedEvent) Reset() {
 	*x = ImportJobChangedEvent{}
-	mi := &file_platform_import_v1_import_proto_msgTypes[26]
+	mi := &file_platform_import_v1_import_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1942,7 +2250,7 @@ func (x *ImportJobChangedEvent) String() string {
 func (*ImportJobChangedEvent) ProtoMessage() {}
 
 func (x *ImportJobChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_import_v1_import_proto_msgTypes[26]
+	mi := &file_platform_import_v1_import_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1955,7 +2263,7 @@ func (x *ImportJobChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ImportJobChangedEvent.ProtoReflect.Descriptor instead.
 func (*ImportJobChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{26}
+	return file_platform_import_v1_import_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ImportJobChangedEvent) GetJob() *ImportJob {
@@ -2029,7 +2337,28 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\acolumns\x18\x03 \x03(\v2 .platform.import.v1.ImportColumnR\acolumns\x12\x18\n" +
 	"\aformats\x18\x04 \x03(\tR\aformats\x12$\n" +
 	"\x0emax_batch_size\x18\x05 \x01(\x05R\fmaxBatchSize\x12(\n" +
-	"\x10supports_dry_run\x18\x06 \x01(\bR\x0esupportsDryRun\"v\n" +
+	"\x10supports_dry_run\x18\x06 \x01(\bR\x0esupportsDryRun\"\x82\x02\n" +
+	"\x14ImportDatasetSummary\x12)\n" +
+	"\x10provider_service\x18\x01 \x01(\tR\x0fproviderService\x12\x12\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\x12\x14\n" +
+	"\x05title\x18\x03 \x01(\tR\x05title\x12\x18\n" +
+	"\aformats\x18\x04 \x03(\tR\aformats\x12$\n" +
+	"\x0emax_batch_size\x18\x05 \x01(\x05R\fmaxBatchSize\x12(\n" +
+	"\x10supports_dry_run\x18\x06 \x01(\bR\x0esupportsDryRun\x12+\n" +
+	"\x11healthy_instances\x18\a \x01(\x05R\x10healthyInstances\"\x85\x01\n" +
+	"\x19ListImportDatasetsRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
+	"\x06search\x18\x02 \x01(\tR\x06search\x123\n" +
+	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x96\x01\n" +
+	"\x1aListImportDatasetsResponse\x12D\n" +
+	"\bdatasets\x18\x01 \x03(\v2(.platform.import.v1.ImportDatasetSummaryR\bdatasets\x122\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x92\x01\n" +
+	"%DescribeAvailableImportDatasetRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12)\n" +
+	"\x10provider_service\x18\x02 \x01(\tR\x0fproviderService\x12!\n" +
+	"\fdataset_code\x18\x03 \x01(\tR\vdatasetCode\"o\n" +
+	"&DescribeAvailableImportDatasetResponse\x12E\n" +
+	"\adataset\x18\x01 \x01(\v2+.platform.import.v1.ImportDatasetDescriptorR\adataset\"v\n" +
 	"\bRowIssue\x12\x1d\n" +
 	"\n" +
 	"row_number\x18\x01 \x01(\x03R\trowNumber\x12\x1d\n" +
@@ -2148,8 +2477,10 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\x15ImportJobChangedEvent\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\x12\x1f\n" +
 	"\vchange_type\x18\x02 \x01(\tR\n" +
-	"changeType2\x88\a\n" +
-	"\rImportService\x12j\n" +
+	"changeType2\x97\t\n" +
+	"\rImportService\x12s\n" +
+	"\x12ListImportDatasets\x12-.platform.import.v1.ListImportDatasetsRequest\x1a..platform.import.v1.ListImportDatasetsResponse\x12\x97\x01\n" +
+	"\x1eDescribeAvailableImportDataset\x129.platform.import.v1.DescribeAvailableImportDatasetRequest\x1a:.platform.import.v1.DescribeAvailableImportDatasetResponse\x12j\n" +
 	"\x0fCreateImportJob\x12*.platform.import.v1.CreateImportJobRequest\x1a+.platform.import.v1.CreateImportJobResponse\x12g\n" +
 	"\x0eCompleteUpload\x12).platform.import.v1.CompleteUploadRequest\x1a*.platform.import.v1.CompleteUploadResponse\x12a\n" +
 	"\fGetImportJob\x12'.platform.import.v1.GetImportJobRequest\x1a(.platform.import.v1.GetImportJobResponse\x12g\n" +
@@ -2175,100 +2506,113 @@ func file_platform_import_v1_import_proto_rawDescGZIP() []byte {
 	return file_platform_import_v1_import_proto_rawDescData
 }
 
-var file_platform_import_v1_import_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_platform_import_v1_import_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_platform_import_v1_import_proto_goTypes = []any{
-	(*ImportJob)(nil),                            // 0: platform.import.v1.ImportJob
-	(*ImportColumn)(nil),                         // 1: platform.import.v1.ImportColumn
-	(*ImportDatasetDescriptor)(nil),              // 2: platform.import.v1.ImportDatasetDescriptor
-	(*RowIssue)(nil),                             // 3: platform.import.v1.RowIssue
-	(*CreateImportJobRequest)(nil),               // 4: platform.import.v1.CreateImportJobRequest
-	(*CreateImportJobResponse)(nil),              // 5: platform.import.v1.CreateImportJobResponse
-	(*CompleteUploadRequest)(nil),                // 6: platform.import.v1.CompleteUploadRequest
-	(*CompleteUploadResponse)(nil),               // 7: platform.import.v1.CompleteUploadResponse
-	(*GetImportJobRequest)(nil),                  // 8: platform.import.v1.GetImportJobRequest
-	(*GetImportJobResponse)(nil),                 // 9: platform.import.v1.GetImportJobResponse
-	(*ListImportJobsRequest)(nil),                // 10: platform.import.v1.ListImportJobsRequest
-	(*ListImportJobsResponse)(nil),               // 11: platform.import.v1.ListImportJobsResponse
-	(*CancelImportJobRequest)(nil),               // 12: platform.import.v1.CancelImportJobRequest
-	(*CancelImportJobResponse)(nil),              // 13: platform.import.v1.CancelImportJobResponse
-	(*RetryImportJobRequest)(nil),                // 14: platform.import.v1.RetryImportJobRequest
-	(*RetryImportJobResponse)(nil),               // 15: platform.import.v1.RetryImportJobResponse
-	(*ConfirmImportJobRequest)(nil),              // 16: platform.import.v1.ConfirmImportJobRequest
-	(*ConfirmImportJobResponse)(nil),             // 17: platform.import.v1.ConfirmImportJobResponse
-	(*CreateErrorReportDownloadURLRequest)(nil),  // 18: platform.import.v1.CreateErrorReportDownloadURLRequest
-	(*CreateErrorReportDownloadURLResponse)(nil), // 19: platform.import.v1.CreateErrorReportDownloadURLResponse
-	(*DescribeImportDatasetRequest)(nil),         // 20: platform.import.v1.DescribeImportDatasetRequest
-	(*DescribeImportDatasetResponse)(nil),        // 21: platform.import.v1.DescribeImportDatasetResponse
-	(*ValidateRowsRequest)(nil),                  // 22: platform.import.v1.ValidateRowsRequest
-	(*ValidateRowsResponse)(nil),                 // 23: platform.import.v1.ValidateRowsResponse
-	(*ApplyRowsRequest)(nil),                     // 24: platform.import.v1.ApplyRowsRequest
-	(*ApplyRowsResponse)(nil),                    // 25: platform.import.v1.ApplyRowsResponse
-	(*ImportJobChangedEvent)(nil),                // 26: platform.import.v1.ImportJobChangedEvent
-	nil,                                          // 27: platform.import.v1.CreateImportJobResponse.UploadHeadersEntry
-	nil,                                          // 28: platform.import.v1.RetryImportJobResponse.UploadHeadersEntry
-	(*timestamppb.Timestamp)(nil),                // 29: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                       // 30: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                        // 31: platform.common.v1.PageResult
-	(*structpb.Struct)(nil),                      // 32: google.protobuf.Struct
+	(*ImportJob)(nil),                              // 0: platform.import.v1.ImportJob
+	(*ImportColumn)(nil),                           // 1: platform.import.v1.ImportColumn
+	(*ImportDatasetDescriptor)(nil),                // 2: platform.import.v1.ImportDatasetDescriptor
+	(*ImportDatasetSummary)(nil),                   // 3: platform.import.v1.ImportDatasetSummary
+	(*ListImportDatasetsRequest)(nil),              // 4: platform.import.v1.ListImportDatasetsRequest
+	(*ListImportDatasetsResponse)(nil),             // 5: platform.import.v1.ListImportDatasetsResponse
+	(*DescribeAvailableImportDatasetRequest)(nil),  // 6: platform.import.v1.DescribeAvailableImportDatasetRequest
+	(*DescribeAvailableImportDatasetResponse)(nil), // 7: platform.import.v1.DescribeAvailableImportDatasetResponse
+	(*RowIssue)(nil),                               // 8: platform.import.v1.RowIssue
+	(*CreateImportJobRequest)(nil),                 // 9: platform.import.v1.CreateImportJobRequest
+	(*CreateImportJobResponse)(nil),                // 10: platform.import.v1.CreateImportJobResponse
+	(*CompleteUploadRequest)(nil),                  // 11: platform.import.v1.CompleteUploadRequest
+	(*CompleteUploadResponse)(nil),                 // 12: platform.import.v1.CompleteUploadResponse
+	(*GetImportJobRequest)(nil),                    // 13: platform.import.v1.GetImportJobRequest
+	(*GetImportJobResponse)(nil),                   // 14: platform.import.v1.GetImportJobResponse
+	(*ListImportJobsRequest)(nil),                  // 15: platform.import.v1.ListImportJobsRequest
+	(*ListImportJobsResponse)(nil),                 // 16: platform.import.v1.ListImportJobsResponse
+	(*CancelImportJobRequest)(nil),                 // 17: platform.import.v1.CancelImportJobRequest
+	(*CancelImportJobResponse)(nil),                // 18: platform.import.v1.CancelImportJobResponse
+	(*RetryImportJobRequest)(nil),                  // 19: platform.import.v1.RetryImportJobRequest
+	(*RetryImportJobResponse)(nil),                 // 20: platform.import.v1.RetryImportJobResponse
+	(*ConfirmImportJobRequest)(nil),                // 21: platform.import.v1.ConfirmImportJobRequest
+	(*ConfirmImportJobResponse)(nil),               // 22: platform.import.v1.ConfirmImportJobResponse
+	(*CreateErrorReportDownloadURLRequest)(nil),    // 23: platform.import.v1.CreateErrorReportDownloadURLRequest
+	(*CreateErrorReportDownloadURLResponse)(nil),   // 24: platform.import.v1.CreateErrorReportDownloadURLResponse
+	(*DescribeImportDatasetRequest)(nil),           // 25: platform.import.v1.DescribeImportDatasetRequest
+	(*DescribeImportDatasetResponse)(nil),          // 26: platform.import.v1.DescribeImportDatasetResponse
+	(*ValidateRowsRequest)(nil),                    // 27: platform.import.v1.ValidateRowsRequest
+	(*ValidateRowsResponse)(nil),                   // 28: platform.import.v1.ValidateRowsResponse
+	(*ApplyRowsRequest)(nil),                       // 29: platform.import.v1.ApplyRowsRequest
+	(*ApplyRowsResponse)(nil),                      // 30: platform.import.v1.ApplyRowsResponse
+	(*ImportJobChangedEvent)(nil),                  // 31: platform.import.v1.ImportJobChangedEvent
+	nil,                                            // 32: platform.import.v1.CreateImportJobResponse.UploadHeadersEntry
+	nil,                                            // 33: platform.import.v1.RetryImportJobResponse.UploadHeadersEntry
+	(*timestamppb.Timestamp)(nil),                  // 34: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                         // 35: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                          // 36: platform.common.v1.PageResult
+	(*structpb.Struct)(nil),                        // 37: google.protobuf.Struct
 }
 var file_platform_import_v1_import_proto_depIdxs = []int32{
-	29, // 0: platform.import.v1.ImportJob.upload_expires_at:type_name -> google.protobuf.Timestamp
-	29, // 1: platform.import.v1.ImportJob.started_at:type_name -> google.protobuf.Timestamp
-	29, // 2: platform.import.v1.ImportJob.completed_at:type_name -> google.protobuf.Timestamp
-	29, // 3: platform.import.v1.ImportJob.result_expires_at:type_name -> google.protobuf.Timestamp
-	29, // 4: platform.import.v1.ImportJob.created_at:type_name -> google.protobuf.Timestamp
-	29, // 5: platform.import.v1.ImportJob.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 0: platform.import.v1.ImportJob.upload_expires_at:type_name -> google.protobuf.Timestamp
+	34, // 1: platform.import.v1.ImportJob.started_at:type_name -> google.protobuf.Timestamp
+	34, // 2: platform.import.v1.ImportJob.completed_at:type_name -> google.protobuf.Timestamp
+	34, // 3: platform.import.v1.ImportJob.result_expires_at:type_name -> google.protobuf.Timestamp
+	34, // 4: platform.import.v1.ImportJob.created_at:type_name -> google.protobuf.Timestamp
+	34, // 5: platform.import.v1.ImportJob.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 6: platform.import.v1.ImportDatasetDescriptor.columns:type_name -> platform.import.v1.ImportColumn
-	0,  // 7: platform.import.v1.CreateImportJobResponse.job:type_name -> platform.import.v1.ImportJob
-	27, // 8: platform.import.v1.CreateImportJobResponse.upload_headers:type_name -> platform.import.v1.CreateImportJobResponse.UploadHeadersEntry
-	29, // 9: platform.import.v1.CreateImportJobResponse.upload_url_expires_at:type_name -> google.protobuf.Timestamp
-	0,  // 10: platform.import.v1.CompleteUploadResponse.job:type_name -> platform.import.v1.ImportJob
-	0,  // 11: platform.import.v1.GetImportJobResponse.job:type_name -> platform.import.v1.ImportJob
-	29, // 12: platform.import.v1.ListImportJobsRequest.created_from:type_name -> google.protobuf.Timestamp
-	29, // 13: platform.import.v1.ListImportJobsRequest.created_to:type_name -> google.protobuf.Timestamp
-	30, // 14: platform.import.v1.ListImportJobsRequest.page:type_name -> platform.common.v1.PageRequest
-	0,  // 15: platform.import.v1.ListImportJobsResponse.jobs:type_name -> platform.import.v1.ImportJob
-	31, // 16: platform.import.v1.ListImportJobsResponse.page:type_name -> platform.common.v1.PageResult
-	0,  // 17: platform.import.v1.CancelImportJobResponse.job:type_name -> platform.import.v1.ImportJob
-	0,  // 18: platform.import.v1.RetryImportJobResponse.job:type_name -> platform.import.v1.ImportJob
-	28, // 19: platform.import.v1.RetryImportJobResponse.upload_headers:type_name -> platform.import.v1.RetryImportJobResponse.UploadHeadersEntry
-	29, // 20: platform.import.v1.RetryImportJobResponse.upload_url_expires_at:type_name -> google.protobuf.Timestamp
-	0,  // 21: platform.import.v1.ConfirmImportJobResponse.job:type_name -> platform.import.v1.ImportJob
-	29, // 22: platform.import.v1.CreateErrorReportDownloadURLResponse.expires_at:type_name -> google.protobuf.Timestamp
-	2,  // 23: platform.import.v1.DescribeImportDatasetResponse.dataset:type_name -> platform.import.v1.ImportDatasetDescriptor
-	32, // 24: platform.import.v1.ValidateRowsRequest.rows:type_name -> google.protobuf.Struct
-	32, // 25: platform.import.v1.ValidateRowsResponse.normalized_rows:type_name -> google.protobuf.Struct
-	3,  // 26: platform.import.v1.ValidateRowsResponse.issues:type_name -> platform.import.v1.RowIssue
-	32, // 27: platform.import.v1.ApplyRowsRequest.rows:type_name -> google.protobuf.Struct
-	3,  // 28: platform.import.v1.ApplyRowsResponse.issues:type_name -> platform.import.v1.RowIssue
-	0,  // 29: platform.import.v1.ImportJobChangedEvent.job:type_name -> platform.import.v1.ImportJob
-	4,  // 30: platform.import.v1.ImportService.CreateImportJob:input_type -> platform.import.v1.CreateImportJobRequest
-	6,  // 31: platform.import.v1.ImportService.CompleteUpload:input_type -> platform.import.v1.CompleteUploadRequest
-	8,  // 32: platform.import.v1.ImportService.GetImportJob:input_type -> platform.import.v1.GetImportJobRequest
-	10, // 33: platform.import.v1.ImportService.ListImportJobs:input_type -> platform.import.v1.ListImportJobsRequest
-	12, // 34: platform.import.v1.ImportService.CancelImportJob:input_type -> platform.import.v1.CancelImportJobRequest
-	14, // 35: platform.import.v1.ImportService.RetryImportJob:input_type -> platform.import.v1.RetryImportJobRequest
-	16, // 36: platform.import.v1.ImportService.ConfirmImportJob:input_type -> platform.import.v1.ConfirmImportJobRequest
-	18, // 37: platform.import.v1.ImportService.CreateErrorReportDownloadURL:input_type -> platform.import.v1.CreateErrorReportDownloadURLRequest
-	20, // 38: platform.import.v1.ImportProviderService.DescribeImportDataset:input_type -> platform.import.v1.DescribeImportDatasetRequest
-	22, // 39: platform.import.v1.ImportProviderService.ValidateRows:input_type -> platform.import.v1.ValidateRowsRequest
-	24, // 40: platform.import.v1.ImportProviderService.ApplyRows:input_type -> platform.import.v1.ApplyRowsRequest
-	5,  // 41: platform.import.v1.ImportService.CreateImportJob:output_type -> platform.import.v1.CreateImportJobResponse
-	7,  // 42: platform.import.v1.ImportService.CompleteUpload:output_type -> platform.import.v1.CompleteUploadResponse
-	9,  // 43: platform.import.v1.ImportService.GetImportJob:output_type -> platform.import.v1.GetImportJobResponse
-	11, // 44: platform.import.v1.ImportService.ListImportJobs:output_type -> platform.import.v1.ListImportJobsResponse
-	13, // 45: platform.import.v1.ImportService.CancelImportJob:output_type -> platform.import.v1.CancelImportJobResponse
-	15, // 46: platform.import.v1.ImportService.RetryImportJob:output_type -> platform.import.v1.RetryImportJobResponse
-	17, // 47: platform.import.v1.ImportService.ConfirmImportJob:output_type -> platform.import.v1.ConfirmImportJobResponse
-	19, // 48: platform.import.v1.ImportService.CreateErrorReportDownloadURL:output_type -> platform.import.v1.CreateErrorReportDownloadURLResponse
-	21, // 49: platform.import.v1.ImportProviderService.DescribeImportDataset:output_type -> platform.import.v1.DescribeImportDatasetResponse
-	23, // 50: platform.import.v1.ImportProviderService.ValidateRows:output_type -> platform.import.v1.ValidateRowsResponse
-	25, // 51: platform.import.v1.ImportProviderService.ApplyRows:output_type -> platform.import.v1.ApplyRowsResponse
-	41, // [41:52] is the sub-list for method output_type
-	30, // [30:41] is the sub-list for method input_type
-	30, // [30:30] is the sub-list for extension type_name
-	30, // [30:30] is the sub-list for extension extendee
-	0,  // [0:30] is the sub-list for field type_name
+	35, // 7: platform.import.v1.ListImportDatasetsRequest.page:type_name -> platform.common.v1.PageRequest
+	3,  // 8: platform.import.v1.ListImportDatasetsResponse.datasets:type_name -> platform.import.v1.ImportDatasetSummary
+	36, // 9: platform.import.v1.ListImportDatasetsResponse.page:type_name -> platform.common.v1.PageResult
+	2,  // 10: platform.import.v1.DescribeAvailableImportDatasetResponse.dataset:type_name -> platform.import.v1.ImportDatasetDescriptor
+	0,  // 11: platform.import.v1.CreateImportJobResponse.job:type_name -> platform.import.v1.ImportJob
+	32, // 12: platform.import.v1.CreateImportJobResponse.upload_headers:type_name -> platform.import.v1.CreateImportJobResponse.UploadHeadersEntry
+	34, // 13: platform.import.v1.CreateImportJobResponse.upload_url_expires_at:type_name -> google.protobuf.Timestamp
+	0,  // 14: platform.import.v1.CompleteUploadResponse.job:type_name -> platform.import.v1.ImportJob
+	0,  // 15: platform.import.v1.GetImportJobResponse.job:type_name -> platform.import.v1.ImportJob
+	34, // 16: platform.import.v1.ListImportJobsRequest.created_from:type_name -> google.protobuf.Timestamp
+	34, // 17: platform.import.v1.ListImportJobsRequest.created_to:type_name -> google.protobuf.Timestamp
+	35, // 18: platform.import.v1.ListImportJobsRequest.page:type_name -> platform.common.v1.PageRequest
+	0,  // 19: platform.import.v1.ListImportJobsResponse.jobs:type_name -> platform.import.v1.ImportJob
+	36, // 20: platform.import.v1.ListImportJobsResponse.page:type_name -> platform.common.v1.PageResult
+	0,  // 21: platform.import.v1.CancelImportJobResponse.job:type_name -> platform.import.v1.ImportJob
+	0,  // 22: platform.import.v1.RetryImportJobResponse.job:type_name -> platform.import.v1.ImportJob
+	33, // 23: platform.import.v1.RetryImportJobResponse.upload_headers:type_name -> platform.import.v1.RetryImportJobResponse.UploadHeadersEntry
+	34, // 24: platform.import.v1.RetryImportJobResponse.upload_url_expires_at:type_name -> google.protobuf.Timestamp
+	0,  // 25: platform.import.v1.ConfirmImportJobResponse.job:type_name -> platform.import.v1.ImportJob
+	34, // 26: platform.import.v1.CreateErrorReportDownloadURLResponse.expires_at:type_name -> google.protobuf.Timestamp
+	2,  // 27: platform.import.v1.DescribeImportDatasetResponse.dataset:type_name -> platform.import.v1.ImportDatasetDescriptor
+	37, // 28: platform.import.v1.ValidateRowsRequest.rows:type_name -> google.protobuf.Struct
+	37, // 29: platform.import.v1.ValidateRowsResponse.normalized_rows:type_name -> google.protobuf.Struct
+	8,  // 30: platform.import.v1.ValidateRowsResponse.issues:type_name -> platform.import.v1.RowIssue
+	37, // 31: platform.import.v1.ApplyRowsRequest.rows:type_name -> google.protobuf.Struct
+	8,  // 32: platform.import.v1.ApplyRowsResponse.issues:type_name -> platform.import.v1.RowIssue
+	0,  // 33: platform.import.v1.ImportJobChangedEvent.job:type_name -> platform.import.v1.ImportJob
+	4,  // 34: platform.import.v1.ImportService.ListImportDatasets:input_type -> platform.import.v1.ListImportDatasetsRequest
+	6,  // 35: platform.import.v1.ImportService.DescribeAvailableImportDataset:input_type -> platform.import.v1.DescribeAvailableImportDatasetRequest
+	9,  // 36: platform.import.v1.ImportService.CreateImportJob:input_type -> platform.import.v1.CreateImportJobRequest
+	11, // 37: platform.import.v1.ImportService.CompleteUpload:input_type -> platform.import.v1.CompleteUploadRequest
+	13, // 38: platform.import.v1.ImportService.GetImportJob:input_type -> platform.import.v1.GetImportJobRequest
+	15, // 39: platform.import.v1.ImportService.ListImportJobs:input_type -> platform.import.v1.ListImportJobsRequest
+	17, // 40: platform.import.v1.ImportService.CancelImportJob:input_type -> platform.import.v1.CancelImportJobRequest
+	19, // 41: platform.import.v1.ImportService.RetryImportJob:input_type -> platform.import.v1.RetryImportJobRequest
+	21, // 42: platform.import.v1.ImportService.ConfirmImportJob:input_type -> platform.import.v1.ConfirmImportJobRequest
+	23, // 43: platform.import.v1.ImportService.CreateErrorReportDownloadURL:input_type -> platform.import.v1.CreateErrorReportDownloadURLRequest
+	25, // 44: platform.import.v1.ImportProviderService.DescribeImportDataset:input_type -> platform.import.v1.DescribeImportDatasetRequest
+	27, // 45: platform.import.v1.ImportProviderService.ValidateRows:input_type -> platform.import.v1.ValidateRowsRequest
+	29, // 46: platform.import.v1.ImportProviderService.ApplyRows:input_type -> platform.import.v1.ApplyRowsRequest
+	5,  // 47: platform.import.v1.ImportService.ListImportDatasets:output_type -> platform.import.v1.ListImportDatasetsResponse
+	7,  // 48: platform.import.v1.ImportService.DescribeAvailableImportDataset:output_type -> platform.import.v1.DescribeAvailableImportDatasetResponse
+	10, // 49: platform.import.v1.ImportService.CreateImportJob:output_type -> platform.import.v1.CreateImportJobResponse
+	12, // 50: platform.import.v1.ImportService.CompleteUpload:output_type -> platform.import.v1.CompleteUploadResponse
+	14, // 51: platform.import.v1.ImportService.GetImportJob:output_type -> platform.import.v1.GetImportJobResponse
+	16, // 52: platform.import.v1.ImportService.ListImportJobs:output_type -> platform.import.v1.ListImportJobsResponse
+	18, // 53: platform.import.v1.ImportService.CancelImportJob:output_type -> platform.import.v1.CancelImportJobResponse
+	20, // 54: platform.import.v1.ImportService.RetryImportJob:output_type -> platform.import.v1.RetryImportJobResponse
+	22, // 55: platform.import.v1.ImportService.ConfirmImportJob:output_type -> platform.import.v1.ConfirmImportJobResponse
+	24, // 56: platform.import.v1.ImportService.CreateErrorReportDownloadURL:output_type -> platform.import.v1.CreateErrorReportDownloadURLResponse
+	26, // 57: platform.import.v1.ImportProviderService.DescribeImportDataset:output_type -> platform.import.v1.DescribeImportDatasetResponse
+	28, // 58: platform.import.v1.ImportProviderService.ValidateRows:output_type -> platform.import.v1.ValidateRowsResponse
+	30, // 59: platform.import.v1.ImportProviderService.ApplyRows:output_type -> platform.import.v1.ApplyRowsResponse
+	47, // [47:60] is the sub-list for method output_type
+	34, // [34:47] is the sub-list for method input_type
+	34, // [34:34] is the sub-list for extension type_name
+	34, // [34:34] is the sub-list for extension extendee
+	0,  // [0:34] is the sub-list for field type_name
 }
 
 func init() { file_platform_import_v1_import_proto_init() }
@@ -2282,7 +2626,7 @@ func file_platform_import_v1_import_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_import_v1_import_proto_rawDesc), len(file_platform_import_v1_import_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
