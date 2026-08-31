@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+package platform.rule.v1;
+
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/rule/v1;rulev1";
+
+// RuleService owns rule-set drafts, immutable published versions, validation,
+// and deterministic evaluation. Callers provide facts; the service never reads
+// another service's database to assemble evaluation input.
+service RuleService {
+  rpc CreateRuleSet(CreateRuleSetRequest) returns (CreateRuleSetResponse);
+  rpc UpdateRuleSet(UpdateRuleSetRequest) returns (UpdateRuleSetResponse);
+  rpc GetRuleSet(GetRuleSetRequest) returns (GetRuleSetResponse);
+  rpc ListRuleSets(ListRuleSetsRequest) returns (ListRuleSetsResponse);
+  rpc CreateRuleVersion(CreateRuleVersionRequest) returns (CreateRuleVersionResponse);
+  rpc ValidateRuleVersion(ValidateRuleVersionRequest) returns (ValidateRuleVersionResponse);
+  rpc PublishRuleVersion(PublishRuleVersionRequest) returns (PublishRuleVersionResponse);
+  rpc ListRuleVersions(ListRuleVersionsRequest) returns (ListRuleVersionsResponse);
+  rpc Evaluate(EvaluateRequest) returns (EvaluateResponse);
+  rpc BatchEvaluate(BatchEvaluateRequest) returns (BatchEvaluateResponse);
+}
+
+message RuleSet {
+  string id = 1;
+  string tenant_id = 2;
+  string code = 3;
+  string name = 4;
+  string description = 5;
+  string status = 6;
+  int64 published_version_number = 7;
+  int64 version = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+  string created_by = 11;
+  string updated_by = 12;
+}
+
+message RuleVersion {
+  string id = 1;
+  string tenant_id = 2;
+  string rule_set_id = 3;
+  int64 version_number = 4;
+  string status = 5;
+  string definition_json = 6;
+  string checksum = 7;
+  google.protobuf.Timestamp published_at = 8;
+  int64 version = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message ValidationIssue {
+  string path = 1;
+  string code = 2;
+  string message = 3;
+}
+
+message CreateRuleSetRequest {
+  string tenant_id = 1;
+  string code = 2;
+  string name = 3;
+  string description = 4;
+}
+message CreateRuleSetResponse {
+  RuleSet rule_set = 1;
+}
+
+message UpdateRuleSetRequest {
+  string tenant_id = 1;
+  string id = 2;
+  string name = 3;
+  string description = 4;
+  string status = 5;
+  int64 version = 6;
+}
+message UpdateRuleSetResponse {
+  RuleSet rule_set = 1;
+}
+
+message GetRuleSetRequest {
+  string tenant_id = 1;
+  string id = 2;
+  string code = 3;
+}
+message GetRuleSetResponse {
+  RuleSet rule_set = 1;
+  RuleVersion published_version = 2;
+}
+
+message ListRuleSetsRequest {
+  string tenant_id = 1;
+  string status = 2;
+  string keyword = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListRuleSetsResponse {
+  repeated RuleSet rule_sets = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message CreateRuleVersionRequest {
+  string tenant_id = 1;
+  string rule_set_id = 2;
+  string definition_json = 3;
+  string idempotency_key = 4;
+}
+message CreateRuleVersionResponse {
+  RuleVersion rule_version = 1;
+}
+
+message ValidateRuleVersionRequest {
+  string tenant_id = 1;
+  string rule_set_id = 2;
+  string definition_json = 3;
+}
+message ValidateRuleVersionResponse {
+  bool valid = 1;
+  repeated ValidationIssue issues = 2;
+  string checksum = 3;
+}
+
+message PublishRuleVersionRequest {
+  string tenant_id = 1;
+  string rule_set_id = 2;
+  string rule_version_id = 3;
+  int64 rule_set_version = 4;
+  int64 rule_version_version = 5;
+}
+message PublishRuleVersionResponse {
+  RuleSet rule_set = 1;
+  RuleVersion rule_version = 2;
+}
+
+message ListRuleVersionsRequest {
+  string tenant_id = 1;
+  string rule_set_id = 2;
+  string status = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListRuleVersionsResponse {
+  repeated RuleVersion rule_versions = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message EvaluateRequest {
+  string tenant_id = 1;
+  string rule_set_id = 2;
+  string rule_set_code = 3;
+  int64 version_number = 4;
+  string facts_json = 5;
+  string request_id = 6;
+}
+message EvaluateResponse {
+  bool matched = 1;
+  string matched_rule = 2;
+  string result_json = 3;
+  int64 evaluated_version_number = 4;
+  string checksum = 5;
+}
+
+message BatchEvaluateRequest {
+  repeated EvaluateRequest requests = 1;
+}
+message BatchEvaluateResult {
+  int32 index = 1;
+  EvaluateResponse response = 2;
+  string error_code = 3;
+  string error_message = 4;
+}
+message BatchEvaluateResponse {
+  repeated BatchEvaluateResult results = 1;
+}
+
+message RuleVersionPublishedEvent {
+  RuleSet rule_set = 1;
+  RuleVersion rule_version = 2;
+}
