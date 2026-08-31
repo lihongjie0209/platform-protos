@@ -25,6 +25,7 @@ const (
 	TenantService_UpdateTenant_FullMethodName             = "/platform.tenant.v1.TenantService/UpdateTenant"
 	TenantService_AddMembership_FullMethodName            = "/platform.tenant.v1.TenantService/AddMembership"
 	TenantService_UpdateMembership_FullMethodName         = "/platform.tenant.v1.TenantService/UpdateMembership"
+	TenantService_ListMemberships_FullMethodName          = "/platform.tenant.v1.TenantService/ListMemberships"
 	TenantService_CreateOrganizationUnit_FullMethodName   = "/platform.tenant.v1.TenantService/CreateOrganizationUnit"
 	TenantService_GetOrganizationUnit_FullMethodName      = "/platform.tenant.v1.TenantService/GetOrganizationUnit"
 	TenantService_UpdateOrganizationUnit_FullMethodName   = "/platform.tenant.v1.TenantService/UpdateOrganizationUnit"
@@ -57,6 +58,7 @@ type TenantServiceClient interface {
 	UpdateTenant(ctx context.Context, in *UpdateTenantRequest, opts ...grpc.CallOption) (*UpdateTenantResponse, error)
 	AddMembership(ctx context.Context, in *AddMembershipRequest, opts ...grpc.CallOption) (*AddMembershipResponse, error)
 	UpdateMembership(ctx context.Context, in *UpdateMembershipRequest, opts ...grpc.CallOption) (*UpdateMembershipResponse, error)
+	ListMemberships(ctx context.Context, in *ListMembershipsRequest, opts ...grpc.CallOption) (*ListMembershipsResponse, error)
 	CreateOrganizationUnit(ctx context.Context, in *CreateOrganizationUnitRequest, opts ...grpc.CallOption) (*CreateOrganizationUnitResponse, error)
 	GetOrganizationUnit(ctx context.Context, in *GetOrganizationUnitRequest, opts ...grpc.CallOption) (*GetOrganizationUnitResponse, error)
 	UpdateOrganizationUnit(ctx context.Context, in *UpdateOrganizationUnitRequest, opts ...grpc.CallOption) (*UpdateOrganizationUnitResponse, error)
@@ -141,6 +143,16 @@ func (c *tenantServiceClient) UpdateMembership(ctx context.Context, in *UpdateMe
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpdateMembershipResponse)
 	err := c.cc.Invoke(ctx, TenantService_UpdateMembership_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantServiceClient) ListMemberships(ctx context.Context, in *ListMembershipsRequest, opts ...grpc.CallOption) (*ListMembershipsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListMembershipsResponse)
+	err := c.cc.Invoke(ctx, TenantService_ListMemberships_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -357,6 +369,7 @@ type TenantServiceServer interface {
 	UpdateTenant(context.Context, *UpdateTenantRequest) (*UpdateTenantResponse, error)
 	AddMembership(context.Context, *AddMembershipRequest) (*AddMembershipResponse, error)
 	UpdateMembership(context.Context, *UpdateMembershipRequest) (*UpdateMembershipResponse, error)
+	ListMemberships(context.Context, *ListMembershipsRequest) (*ListMembershipsResponse, error)
 	CreateOrganizationUnit(context.Context, *CreateOrganizationUnitRequest) (*CreateOrganizationUnitResponse, error)
 	GetOrganizationUnit(context.Context, *GetOrganizationUnitRequest) (*GetOrganizationUnitResponse, error)
 	UpdateOrganizationUnit(context.Context, *UpdateOrganizationUnitRequest) (*UpdateOrganizationUnitResponse, error)
@@ -404,6 +417,9 @@ func (UnimplementedTenantServiceServer) AddMembership(context.Context, *AddMembe
 }
 func (UnimplementedTenantServiceServer) UpdateMembership(context.Context, *UpdateMembershipRequest) (*UpdateMembershipResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMembership not implemented")
+}
+func (UnimplementedTenantServiceServer) ListMemberships(context.Context, *ListMembershipsRequest) (*ListMembershipsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMemberships not implemented")
 }
 func (UnimplementedTenantServiceServer) CreateOrganizationUnit(context.Context, *CreateOrganizationUnitRequest) (*CreateOrganizationUnitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrganizationUnit not implemented")
@@ -590,6 +606,24 @@ func _TenantService_UpdateMembership_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TenantServiceServer).UpdateMembership(ctx, req.(*UpdateMembershipRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantService_ListMemberships_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListMembershipsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).ListMemberships(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_ListMemberships_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).ListMemberships(ctx, req.(*ListMembershipsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -984,6 +1018,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateMembership",
 			Handler:    _TenantService_UpdateMembership_Handler,
+		},
+		{
+			MethodName: "ListMemberships",
+			Handler:    _TenantService_ListMemberships_Handler,
 		},
 		{
 			MethodName: "CreateOrganizationUnit",

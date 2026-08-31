@@ -14,6 +14,7 @@ service TenantService {
   rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse);
   rpc AddMembership(AddMembershipRequest) returns (AddMembershipResponse);
   rpc UpdateMembership(UpdateMembershipRequest) returns (UpdateMembershipResponse);
+  rpc ListMemberships(ListMembershipsRequest) returns (ListMembershipsResponse);
   rpc CreateOrganizationUnit(CreateOrganizationUnitRequest) returns (CreateOrganizationUnitResponse);
   rpc GetOrganizationUnit(GetOrganizationUnitRequest) returns (GetOrganizationUnitResponse);
   rpc UpdateOrganizationUnit(UpdateOrganizationUnitRequest) returns (UpdateOrganizationUnitResponse);
@@ -186,6 +187,16 @@ message UpdateMembershipRequest {
 }
 message UpdateMembershipResponse {
   Membership membership = 1;
+}
+message ListMembershipsRequest {
+  string tenant_id = 1;
+  string user_id = 2;
+  MembershipStatus status = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListMembershipsResponse {
+  repeated Membership memberships = 1;
+  platform.common.v1.PageResult page = 2;
 }
 message CreateOrganizationUnitRequest {
   string tenant_id = 1;
