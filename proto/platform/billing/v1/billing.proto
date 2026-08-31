@@ -86,6 +86,8 @@ message Subscription {
   google.protobuf.Timestamp updated_at = 12;
   string created_by = 13;
   string updated_by = 14;
+  string pending_plan_id = 15;
+  google.protobuf.Timestamp pending_change_at = 16;
 }
 
 message Invoice {

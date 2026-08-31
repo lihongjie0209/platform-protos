@@ -335,6 +335,8 @@ type Subscription struct {
 	UpdatedAt          *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy          string                 `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy          string                 `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	PendingPlanId      string                 `protobuf:"bytes,15,opt,name=pending_plan_id,json=pendingPlanId,proto3" json:"pending_plan_id,omitempty"`
+	PendingChangeAt    *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=pending_change_at,json=pendingChangeAt,proto3" json:"pending_change_at,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -465,6 +467,20 @@ func (x *Subscription) GetUpdatedBy() string {
 		return x.UpdatedBy
 	}
 	return ""
+}
+
+func (x *Subscription) GetPendingPlanId() string {
+	if x != nil {
+		return x.PendingPlanId
+	}
+	return ""
+}
+
+func (x *Subscription) GetPendingChangeAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PendingChangeAt
+	}
+	return nil
 }
 
 type Invoice struct {
@@ -4091,7 +4107,7 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\r \x01(\tR\tupdatedBy\"\xef\x04\n" +
+	"updated_by\x18\r \x01(\tR\tupdatedBy\"\xdf\x05\n" +
 	"\fSubscription\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x17\n" +
@@ -4112,7 +4128,9 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\r \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tR\tupdatedBy\"\xec\x06\n" +
+	"updated_by\x18\x0e \x01(\tR\tupdatedBy\x12&\n" +
+	"\x0fpending_plan_id\x18\x0f \x01(\tR\rpendingPlanId\x12F\n" +
+	"\x11pending_change_at\x18\x10 \x01(\v2\x1a.google.protobuf.TimestampR\x0fpendingChangeAt\"\xec\x06\n" +
 	"\aInvoice\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06number\x18\x02 \x01(\tR\x06number\x12\x1b\n" +
@@ -4531,119 +4549,120 @@ var file_platform_billing_v1_billing_proto_depIdxs = []int32{
 	55, // 6: platform.billing.v1.Subscription.canceled_at:type_name -> google.protobuf.Timestamp
 	55, // 7: platform.billing.v1.Subscription.created_at:type_name -> google.protobuf.Timestamp
 	55, // 8: platform.billing.v1.Subscription.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 9: platform.billing.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
-	55, // 10: platform.billing.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
-	55, // 11: platform.billing.v1.Invoice.due_at:type_name -> google.protobuf.Timestamp
-	55, // 12: platform.billing.v1.Invoice.finalized_at:type_name -> google.protobuf.Timestamp
-	55, // 13: platform.billing.v1.Invoice.paid_at:type_name -> google.protobuf.Timestamp
-	55, // 14: platform.billing.v1.Invoice.created_at:type_name -> google.protobuf.Timestamp
-	55, // 15: platform.billing.v1.Invoice.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 16: platform.billing.v1.InvoiceLine.created_at:type_name -> google.protobuf.Timestamp
-	55, // 17: platform.billing.v1.InvoiceLine.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 18: platform.billing.v1.PaymentAttempt.processed_at:type_name -> google.protobuf.Timestamp
-	55, // 19: platform.billing.v1.PaymentAttempt.created_at:type_name -> google.protobuf.Timestamp
-	55, // 20: platform.billing.v1.PaymentAttempt.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 21: platform.billing.v1.Refund.created_at:type_name -> google.protobuf.Timestamp
-	55, // 22: platform.billing.v1.Refund.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 23: platform.billing.v1.CreatePlanResponse.plan:type_name -> platform.billing.v1.Plan
-	0,  // 24: platform.billing.v1.UpdatePlanResponse.plan:type_name -> platform.billing.v1.Plan
-	0,  // 25: platform.billing.v1.GetPlanResponse.plan:type_name -> platform.billing.v1.Plan
-	1,  // 26: platform.billing.v1.GetPlanResponse.usage_prices:type_name -> platform.billing.v1.UsagePrice
-	56, // 27: platform.billing.v1.ListPlansRequest.page:type_name -> platform.common.v1.PageRequest
-	0,  // 28: platform.billing.v1.ListPlansResponse.plans:type_name -> platform.billing.v1.Plan
-	57, // 29: platform.billing.v1.ListPlansResponse.page:type_name -> platform.common.v1.PageResult
-	1,  // 30: platform.billing.v1.UpsertUsagePriceResponse.usage_price:type_name -> platform.billing.v1.UsagePrice
-	55, // 31: platform.billing.v1.CreateSubscriptionRequest.starts_at:type_name -> google.protobuf.Timestamp
-	2,  // 32: platform.billing.v1.CreateSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
-	2,  // 33: platform.billing.v1.ChangeSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
-	2,  // 34: platform.billing.v1.CancelSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
-	2,  // 35: platform.billing.v1.GetSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
-	0,  // 36: platform.billing.v1.GetSubscriptionResponse.plan:type_name -> platform.billing.v1.Plan
-	56, // 37: platform.billing.v1.ListSubscriptionsRequest.page:type_name -> platform.common.v1.PageRequest
-	2,  // 38: platform.billing.v1.ListSubscriptionsResponse.subscriptions:type_name -> platform.billing.v1.Subscription
-	57, // 39: platform.billing.v1.ListSubscriptionsResponse.page:type_name -> platform.common.v1.PageResult
-	55, // 40: platform.billing.v1.PreviewInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
-	55, // 41: platform.billing.v1.PreviewInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
-	3,  // 42: platform.billing.v1.PreviewInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
-	4,  // 43: platform.billing.v1.PreviewInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 44: platform.billing.v1.GenerateInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
-	55, // 45: platform.billing.v1.GenerateInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
-	3,  // 46: platform.billing.v1.GenerateInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
-	4,  // 47: platform.billing.v1.GenerateInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 48: platform.billing.v1.FinalizeInvoiceRequest.due_at:type_name -> google.protobuf.Timestamp
-	3,  // 49: platform.billing.v1.FinalizeInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
-	3,  // 50: platform.billing.v1.VoidInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
-	3,  // 51: platform.billing.v1.GetInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
-	4,  // 52: platform.billing.v1.GetInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 53: platform.billing.v1.ListInvoicesRequest.created_from:type_name -> google.protobuf.Timestamp
-	55, // 54: platform.billing.v1.ListInvoicesRequest.created_to:type_name -> google.protobuf.Timestamp
-	56, // 55: platform.billing.v1.ListInvoicesRequest.page:type_name -> platform.common.v1.PageRequest
-	3,  // 56: platform.billing.v1.ListInvoicesResponse.invoices:type_name -> platform.billing.v1.Invoice
-	57, // 57: platform.billing.v1.ListInvoicesResponse.page:type_name -> platform.common.v1.PageResult
-	5,  // 58: platform.billing.v1.CreatePaymentAttemptResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	55, // 59: platform.billing.v1.ApplyPaymentResultRequest.processed_at:type_name -> google.protobuf.Timestamp
-	5,  // 60: platform.billing.v1.ApplyPaymentResultResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	3,  // 61: platform.billing.v1.ApplyPaymentResultResponse.invoice:type_name -> platform.billing.v1.Invoice
-	6,  // 62: platform.billing.v1.RecordRefundResponse.refund:type_name -> platform.billing.v1.Refund
-	3,  // 63: platform.billing.v1.RecordRefundResponse.invoice:type_name -> platform.billing.v1.Invoice
-	55, // 64: platform.billing.v1.ReconcilePaymentRequest.from:type_name -> google.protobuf.Timestamp
-	55, // 65: platform.billing.v1.ReconcilePaymentRequest.to:type_name -> google.protobuf.Timestamp
-	48, // 66: platform.billing.v1.ReconcilePaymentResponse.mismatches:type_name -> platform.billing.v1.ReconciliationMismatch
-	0,  // 67: platform.billing.v1.PlanChangedEvent.plan:type_name -> platform.billing.v1.Plan
-	2,  // 68: platform.billing.v1.SubscriptionChangedEvent.subscription:type_name -> platform.billing.v1.Subscription
-	3,  // 69: platform.billing.v1.InvoiceChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	4,  // 70: platform.billing.v1.InvoiceChangedEvent.lines:type_name -> platform.billing.v1.InvoiceLine
-	5,  // 71: platform.billing.v1.PaymentChangedEvent.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	3,  // 72: platform.billing.v1.PaymentChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	6,  // 73: platform.billing.v1.RefundChangedEvent.refund:type_name -> platform.billing.v1.Refund
-	3,  // 74: platform.billing.v1.RefundChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	7,  // 75: platform.billing.v1.BillingService.CreatePlan:input_type -> platform.billing.v1.CreatePlanRequest
-	9,  // 76: platform.billing.v1.BillingService.UpdatePlan:input_type -> platform.billing.v1.UpdatePlanRequest
-	11, // 77: platform.billing.v1.BillingService.GetPlan:input_type -> platform.billing.v1.GetPlanRequest
-	13, // 78: platform.billing.v1.BillingService.ListPlans:input_type -> platform.billing.v1.ListPlansRequest
-	15, // 79: platform.billing.v1.BillingService.UpsertUsagePrice:input_type -> platform.billing.v1.UpsertUsagePriceRequest
-	17, // 80: platform.billing.v1.BillingService.DeleteUsagePrice:input_type -> platform.billing.v1.DeleteUsagePriceRequest
-	19, // 81: platform.billing.v1.BillingService.CreateSubscription:input_type -> platform.billing.v1.CreateSubscriptionRequest
-	21, // 82: platform.billing.v1.BillingService.ChangeSubscription:input_type -> platform.billing.v1.ChangeSubscriptionRequest
-	23, // 83: platform.billing.v1.BillingService.CancelSubscription:input_type -> platform.billing.v1.CancelSubscriptionRequest
-	25, // 84: platform.billing.v1.BillingService.GetSubscription:input_type -> platform.billing.v1.GetSubscriptionRequest
-	27, // 85: platform.billing.v1.BillingService.ListSubscriptions:input_type -> platform.billing.v1.ListSubscriptionsRequest
-	29, // 86: platform.billing.v1.BillingService.PreviewInvoice:input_type -> platform.billing.v1.PreviewInvoiceRequest
-	31, // 87: platform.billing.v1.BillingService.GenerateInvoice:input_type -> platform.billing.v1.GenerateInvoiceRequest
-	33, // 88: platform.billing.v1.BillingService.FinalizeInvoice:input_type -> platform.billing.v1.FinalizeInvoiceRequest
-	35, // 89: platform.billing.v1.BillingService.VoidInvoice:input_type -> platform.billing.v1.VoidInvoiceRequest
-	37, // 90: platform.billing.v1.BillingService.GetInvoice:input_type -> platform.billing.v1.GetInvoiceRequest
-	39, // 91: platform.billing.v1.BillingService.ListInvoices:input_type -> platform.billing.v1.ListInvoicesRequest
-	41, // 92: platform.billing.v1.BillingService.CreatePaymentAttempt:input_type -> platform.billing.v1.CreatePaymentAttemptRequest
-	43, // 93: platform.billing.v1.BillingService.ApplyPaymentResult:input_type -> platform.billing.v1.ApplyPaymentResultRequest
-	45, // 94: platform.billing.v1.BillingService.RecordRefund:input_type -> platform.billing.v1.RecordRefundRequest
-	47, // 95: platform.billing.v1.BillingService.ReconcilePayment:input_type -> platform.billing.v1.ReconcilePaymentRequest
-	8,  // 96: platform.billing.v1.BillingService.CreatePlan:output_type -> platform.billing.v1.CreatePlanResponse
-	10, // 97: platform.billing.v1.BillingService.UpdatePlan:output_type -> platform.billing.v1.UpdatePlanResponse
-	12, // 98: platform.billing.v1.BillingService.GetPlan:output_type -> platform.billing.v1.GetPlanResponse
-	14, // 99: platform.billing.v1.BillingService.ListPlans:output_type -> platform.billing.v1.ListPlansResponse
-	16, // 100: platform.billing.v1.BillingService.UpsertUsagePrice:output_type -> platform.billing.v1.UpsertUsagePriceResponse
-	18, // 101: platform.billing.v1.BillingService.DeleteUsagePrice:output_type -> platform.billing.v1.DeleteUsagePriceResponse
-	20, // 102: platform.billing.v1.BillingService.CreateSubscription:output_type -> platform.billing.v1.CreateSubscriptionResponse
-	22, // 103: platform.billing.v1.BillingService.ChangeSubscription:output_type -> platform.billing.v1.ChangeSubscriptionResponse
-	24, // 104: platform.billing.v1.BillingService.CancelSubscription:output_type -> platform.billing.v1.CancelSubscriptionResponse
-	26, // 105: platform.billing.v1.BillingService.GetSubscription:output_type -> platform.billing.v1.GetSubscriptionResponse
-	28, // 106: platform.billing.v1.BillingService.ListSubscriptions:output_type -> platform.billing.v1.ListSubscriptionsResponse
-	30, // 107: platform.billing.v1.BillingService.PreviewInvoice:output_type -> platform.billing.v1.PreviewInvoiceResponse
-	32, // 108: platform.billing.v1.BillingService.GenerateInvoice:output_type -> platform.billing.v1.GenerateInvoiceResponse
-	34, // 109: platform.billing.v1.BillingService.FinalizeInvoice:output_type -> platform.billing.v1.FinalizeInvoiceResponse
-	36, // 110: platform.billing.v1.BillingService.VoidInvoice:output_type -> platform.billing.v1.VoidInvoiceResponse
-	38, // 111: platform.billing.v1.BillingService.GetInvoice:output_type -> platform.billing.v1.GetInvoiceResponse
-	40, // 112: platform.billing.v1.BillingService.ListInvoices:output_type -> platform.billing.v1.ListInvoicesResponse
-	42, // 113: platform.billing.v1.BillingService.CreatePaymentAttempt:output_type -> platform.billing.v1.CreatePaymentAttemptResponse
-	44, // 114: platform.billing.v1.BillingService.ApplyPaymentResult:output_type -> platform.billing.v1.ApplyPaymentResultResponse
-	46, // 115: platform.billing.v1.BillingService.RecordRefund:output_type -> platform.billing.v1.RecordRefundResponse
-	49, // 116: platform.billing.v1.BillingService.ReconcilePayment:output_type -> platform.billing.v1.ReconcilePaymentResponse
-	96, // [96:117] is the sub-list for method output_type
-	75, // [75:96] is the sub-list for method input_type
-	75, // [75:75] is the sub-list for extension type_name
-	75, // [75:75] is the sub-list for extension extendee
-	0,  // [0:75] is the sub-list for field type_name
+	55, // 9: platform.billing.v1.Subscription.pending_change_at:type_name -> google.protobuf.Timestamp
+	55, // 10: platform.billing.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
+	55, // 11: platform.billing.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
+	55, // 12: platform.billing.v1.Invoice.due_at:type_name -> google.protobuf.Timestamp
+	55, // 13: platform.billing.v1.Invoice.finalized_at:type_name -> google.protobuf.Timestamp
+	55, // 14: platform.billing.v1.Invoice.paid_at:type_name -> google.protobuf.Timestamp
+	55, // 15: platform.billing.v1.Invoice.created_at:type_name -> google.protobuf.Timestamp
+	55, // 16: platform.billing.v1.Invoice.updated_at:type_name -> google.protobuf.Timestamp
+	55, // 17: platform.billing.v1.InvoiceLine.created_at:type_name -> google.protobuf.Timestamp
+	55, // 18: platform.billing.v1.InvoiceLine.updated_at:type_name -> google.protobuf.Timestamp
+	55, // 19: platform.billing.v1.PaymentAttempt.processed_at:type_name -> google.protobuf.Timestamp
+	55, // 20: platform.billing.v1.PaymentAttempt.created_at:type_name -> google.protobuf.Timestamp
+	55, // 21: platform.billing.v1.PaymentAttempt.updated_at:type_name -> google.protobuf.Timestamp
+	55, // 22: platform.billing.v1.Refund.created_at:type_name -> google.protobuf.Timestamp
+	55, // 23: platform.billing.v1.Refund.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 24: platform.billing.v1.CreatePlanResponse.plan:type_name -> platform.billing.v1.Plan
+	0,  // 25: platform.billing.v1.UpdatePlanResponse.plan:type_name -> platform.billing.v1.Plan
+	0,  // 26: platform.billing.v1.GetPlanResponse.plan:type_name -> platform.billing.v1.Plan
+	1,  // 27: platform.billing.v1.GetPlanResponse.usage_prices:type_name -> platform.billing.v1.UsagePrice
+	56, // 28: platform.billing.v1.ListPlansRequest.page:type_name -> platform.common.v1.PageRequest
+	0,  // 29: platform.billing.v1.ListPlansResponse.plans:type_name -> platform.billing.v1.Plan
+	57, // 30: platform.billing.v1.ListPlansResponse.page:type_name -> platform.common.v1.PageResult
+	1,  // 31: platform.billing.v1.UpsertUsagePriceResponse.usage_price:type_name -> platform.billing.v1.UsagePrice
+	55, // 32: platform.billing.v1.CreateSubscriptionRequest.starts_at:type_name -> google.protobuf.Timestamp
+	2,  // 33: platform.billing.v1.CreateSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
+	2,  // 34: platform.billing.v1.ChangeSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
+	2,  // 35: platform.billing.v1.CancelSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
+	2,  // 36: platform.billing.v1.GetSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
+	0,  // 37: platform.billing.v1.GetSubscriptionResponse.plan:type_name -> platform.billing.v1.Plan
+	56, // 38: platform.billing.v1.ListSubscriptionsRequest.page:type_name -> platform.common.v1.PageRequest
+	2,  // 39: platform.billing.v1.ListSubscriptionsResponse.subscriptions:type_name -> platform.billing.v1.Subscription
+	57, // 40: platform.billing.v1.ListSubscriptionsResponse.page:type_name -> platform.common.v1.PageResult
+	55, // 41: platform.billing.v1.PreviewInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
+	55, // 42: platform.billing.v1.PreviewInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
+	3,  // 43: platform.billing.v1.PreviewInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
+	4,  // 44: platform.billing.v1.PreviewInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
+	55, // 45: platform.billing.v1.GenerateInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
+	55, // 46: platform.billing.v1.GenerateInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
+	3,  // 47: platform.billing.v1.GenerateInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
+	4,  // 48: platform.billing.v1.GenerateInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
+	55, // 49: platform.billing.v1.FinalizeInvoiceRequest.due_at:type_name -> google.protobuf.Timestamp
+	3,  // 50: platform.billing.v1.FinalizeInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
+	3,  // 51: platform.billing.v1.VoidInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
+	3,  // 52: platform.billing.v1.GetInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
+	4,  // 53: platform.billing.v1.GetInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
+	55, // 54: platform.billing.v1.ListInvoicesRequest.created_from:type_name -> google.protobuf.Timestamp
+	55, // 55: platform.billing.v1.ListInvoicesRequest.created_to:type_name -> google.protobuf.Timestamp
+	56, // 56: platform.billing.v1.ListInvoicesRequest.page:type_name -> platform.common.v1.PageRequest
+	3,  // 57: platform.billing.v1.ListInvoicesResponse.invoices:type_name -> platform.billing.v1.Invoice
+	57, // 58: platform.billing.v1.ListInvoicesResponse.page:type_name -> platform.common.v1.PageResult
+	5,  // 59: platform.billing.v1.CreatePaymentAttemptResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	55, // 60: platform.billing.v1.ApplyPaymentResultRequest.processed_at:type_name -> google.protobuf.Timestamp
+	5,  // 61: platform.billing.v1.ApplyPaymentResultResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	3,  // 62: platform.billing.v1.ApplyPaymentResultResponse.invoice:type_name -> platform.billing.v1.Invoice
+	6,  // 63: platform.billing.v1.RecordRefundResponse.refund:type_name -> platform.billing.v1.Refund
+	3,  // 64: platform.billing.v1.RecordRefundResponse.invoice:type_name -> platform.billing.v1.Invoice
+	55, // 65: platform.billing.v1.ReconcilePaymentRequest.from:type_name -> google.protobuf.Timestamp
+	55, // 66: platform.billing.v1.ReconcilePaymentRequest.to:type_name -> google.protobuf.Timestamp
+	48, // 67: platform.billing.v1.ReconcilePaymentResponse.mismatches:type_name -> platform.billing.v1.ReconciliationMismatch
+	0,  // 68: platform.billing.v1.PlanChangedEvent.plan:type_name -> platform.billing.v1.Plan
+	2,  // 69: platform.billing.v1.SubscriptionChangedEvent.subscription:type_name -> platform.billing.v1.Subscription
+	3,  // 70: platform.billing.v1.InvoiceChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	4,  // 71: platform.billing.v1.InvoiceChangedEvent.lines:type_name -> platform.billing.v1.InvoiceLine
+	5,  // 72: platform.billing.v1.PaymentChangedEvent.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	3,  // 73: platform.billing.v1.PaymentChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	6,  // 74: platform.billing.v1.RefundChangedEvent.refund:type_name -> platform.billing.v1.Refund
+	3,  // 75: platform.billing.v1.RefundChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	7,  // 76: platform.billing.v1.BillingService.CreatePlan:input_type -> platform.billing.v1.CreatePlanRequest
+	9,  // 77: platform.billing.v1.BillingService.UpdatePlan:input_type -> platform.billing.v1.UpdatePlanRequest
+	11, // 78: platform.billing.v1.BillingService.GetPlan:input_type -> platform.billing.v1.GetPlanRequest
+	13, // 79: platform.billing.v1.BillingService.ListPlans:input_type -> platform.billing.v1.ListPlansRequest
+	15, // 80: platform.billing.v1.BillingService.UpsertUsagePrice:input_type -> platform.billing.v1.UpsertUsagePriceRequest
+	17, // 81: platform.billing.v1.BillingService.DeleteUsagePrice:input_type -> platform.billing.v1.DeleteUsagePriceRequest
+	19, // 82: platform.billing.v1.BillingService.CreateSubscription:input_type -> platform.billing.v1.CreateSubscriptionRequest
+	21, // 83: platform.billing.v1.BillingService.ChangeSubscription:input_type -> platform.billing.v1.ChangeSubscriptionRequest
+	23, // 84: platform.billing.v1.BillingService.CancelSubscription:input_type -> platform.billing.v1.CancelSubscriptionRequest
+	25, // 85: platform.billing.v1.BillingService.GetSubscription:input_type -> platform.billing.v1.GetSubscriptionRequest
+	27, // 86: platform.billing.v1.BillingService.ListSubscriptions:input_type -> platform.billing.v1.ListSubscriptionsRequest
+	29, // 87: platform.billing.v1.BillingService.PreviewInvoice:input_type -> platform.billing.v1.PreviewInvoiceRequest
+	31, // 88: platform.billing.v1.BillingService.GenerateInvoice:input_type -> platform.billing.v1.GenerateInvoiceRequest
+	33, // 89: platform.billing.v1.BillingService.FinalizeInvoice:input_type -> platform.billing.v1.FinalizeInvoiceRequest
+	35, // 90: platform.billing.v1.BillingService.VoidInvoice:input_type -> platform.billing.v1.VoidInvoiceRequest
+	37, // 91: platform.billing.v1.BillingService.GetInvoice:input_type -> platform.billing.v1.GetInvoiceRequest
+	39, // 92: platform.billing.v1.BillingService.ListInvoices:input_type -> platform.billing.v1.ListInvoicesRequest
+	41, // 93: platform.billing.v1.BillingService.CreatePaymentAttempt:input_type -> platform.billing.v1.CreatePaymentAttemptRequest
+	43, // 94: platform.billing.v1.BillingService.ApplyPaymentResult:input_type -> platform.billing.v1.ApplyPaymentResultRequest
+	45, // 95: platform.billing.v1.BillingService.RecordRefund:input_type -> platform.billing.v1.RecordRefundRequest
+	47, // 96: platform.billing.v1.BillingService.ReconcilePayment:input_type -> platform.billing.v1.ReconcilePaymentRequest
+	8,  // 97: platform.billing.v1.BillingService.CreatePlan:output_type -> platform.billing.v1.CreatePlanResponse
+	10, // 98: platform.billing.v1.BillingService.UpdatePlan:output_type -> platform.billing.v1.UpdatePlanResponse
+	12, // 99: platform.billing.v1.BillingService.GetPlan:output_type -> platform.billing.v1.GetPlanResponse
+	14, // 100: platform.billing.v1.BillingService.ListPlans:output_type -> platform.billing.v1.ListPlansResponse
+	16, // 101: platform.billing.v1.BillingService.UpsertUsagePrice:output_type -> platform.billing.v1.UpsertUsagePriceResponse
+	18, // 102: platform.billing.v1.BillingService.DeleteUsagePrice:output_type -> platform.billing.v1.DeleteUsagePriceResponse
+	20, // 103: platform.billing.v1.BillingService.CreateSubscription:output_type -> platform.billing.v1.CreateSubscriptionResponse
+	22, // 104: platform.billing.v1.BillingService.ChangeSubscription:output_type -> platform.billing.v1.ChangeSubscriptionResponse
+	24, // 105: platform.billing.v1.BillingService.CancelSubscription:output_type -> platform.billing.v1.CancelSubscriptionResponse
+	26, // 106: platform.billing.v1.BillingService.GetSubscription:output_type -> platform.billing.v1.GetSubscriptionResponse
+	28, // 107: platform.billing.v1.BillingService.ListSubscriptions:output_type -> platform.billing.v1.ListSubscriptionsResponse
+	30, // 108: platform.billing.v1.BillingService.PreviewInvoice:output_type -> platform.billing.v1.PreviewInvoiceResponse
+	32, // 109: platform.billing.v1.BillingService.GenerateInvoice:output_type -> platform.billing.v1.GenerateInvoiceResponse
+	34, // 110: platform.billing.v1.BillingService.FinalizeInvoice:output_type -> platform.billing.v1.FinalizeInvoiceResponse
+	36, // 111: platform.billing.v1.BillingService.VoidInvoice:output_type -> platform.billing.v1.VoidInvoiceResponse
+	38, // 112: platform.billing.v1.BillingService.GetInvoice:output_type -> platform.billing.v1.GetInvoiceResponse
+	40, // 113: platform.billing.v1.BillingService.ListInvoices:output_type -> platform.billing.v1.ListInvoicesResponse
+	42, // 114: platform.billing.v1.BillingService.CreatePaymentAttempt:output_type -> platform.billing.v1.CreatePaymentAttemptResponse
+	44, // 115: platform.billing.v1.BillingService.ApplyPaymentResult:output_type -> platform.billing.v1.ApplyPaymentResultResponse
+	46, // 116: platform.billing.v1.BillingService.RecordRefund:output_type -> platform.billing.v1.RecordRefundResponse
+	49, // 117: platform.billing.v1.BillingService.ReconcilePayment:output_type -> platform.billing.v1.ReconcilePaymentResponse
+	97, // [97:118] is the sub-list for method output_type
+	76, // [76:97] is the sub-list for method input_type
+	76, // [76:76] is the sub-list for extension type_name
+	76, // [76:76] is the sub-list for extension extendee
+	0,  // [0:76] is the sub-list for field type_name
 }
 
 func init() { file_platform_billing_v1_billing_proto_init() }
