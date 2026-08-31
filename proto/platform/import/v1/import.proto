@@ -1,0 +1,223 @@
+syntax = "proto3";
+
+package platform.import.v1;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/import/v1;importv1";
+
+// ImportService owns asynchronous import jobs, validation reports, and the
+// explicit confirmation boundary before writes reach a business service.
+service ImportService {
+  rpc CreateImportJob(CreateImportJobRequest) returns (CreateImportJobResponse);
+  rpc CompleteUpload(CompleteUploadRequest) returns (CompleteUploadResponse);
+  rpc GetImportJob(GetImportJobRequest) returns (GetImportJobResponse);
+  rpc ListImportJobs(ListImportJobsRequest) returns (ListImportJobsResponse);
+  rpc CancelImportJob(CancelImportJobRequest) returns (CancelImportJobResponse);
+  rpc RetryImportJob(RetryImportJobRequest) returns (RetryImportJobResponse);
+  rpc ConfirmImportJob(ConfirmImportJobRequest) returns (ConfirmImportJobResponse);
+  rpc CreateErrorReportDownloadURL(CreateErrorReportDownloadURLRequest) returns (CreateErrorReportDownloadURLResponse);
+}
+
+// ImportProviderService is implemented by a business service that owns an
+// importable dataset. Both streams acknowledge bounded batches so providers
+// can enforce tenant authorization, validation, and idempotent writes.
+service ImportProviderService {
+  rpc DescribeImportDataset(DescribeImportDatasetRequest) returns (DescribeImportDatasetResponse);
+  rpc ValidateRows(stream ValidateRowsRequest) returns (stream ValidateRowsResponse);
+  rpc ApplyRows(stream ApplyRowsRequest) returns (stream ApplyRowsResponse);
+}
+
+message ImportJob {
+  string id = 1;
+  string tenant_id = 2;
+  string dataset_code = 3;
+  string provider_service = 4;
+  string format = 5;
+  string filename = 6;
+  string status = 7;
+  string source_object_key = 8;
+  string normalized_object_key = 9;
+  string error_report_object_key = 10;
+  string source_checksum = 11;
+  int64 source_bytes = 12;
+  int64 total_rows = 13;
+  int64 valid_rows = 14;
+  int64 invalid_rows = 15;
+  int64 applied_rows = 16;
+  int32 progress_percent = 17;
+  string error_code = 18;
+  string error_message = 19;
+  google.protobuf.Timestamp upload_expires_at = 20;
+  google.protobuf.Timestamp started_at = 21;
+  google.protobuf.Timestamp completed_at = 22;
+  google.protobuf.Timestamp result_expires_at = 23;
+  int64 version = 24;
+  google.protobuf.Timestamp created_at = 25;
+  google.protobuf.Timestamp updated_at = 26;
+  string created_by = 27;
+  string updated_by = 28;
+}
+
+message ImportColumn {
+  string key = 1;
+  string title = 2;
+  string type = 3;
+  bool required = 4;
+  string description = 5;
+  string example = 6;
+  bool sensitive = 7;
+}
+
+message ImportDatasetDescriptor {
+  string code = 1;
+  string title = 2;
+  repeated ImportColumn columns = 3;
+  repeated string formats = 4;
+  int32 max_batch_size = 5;
+  bool supports_dry_run = 6;
+}
+
+message RowIssue {
+  int64 row_number = 1;
+  string column_key = 2;
+  string code = 3;
+  string message = 4;
+}
+
+message CreateImportJobRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+  string provider_service = 3;
+  string format = 4;
+  string filename = 5;
+  string idempotency_key = 6;
+}
+message CreateImportJobResponse {
+  ImportJob job = 1;
+  string upload_url = 2;
+  map<string, string> upload_headers = 3;
+  google.protobuf.Timestamp upload_url_expires_at = 4;
+  bool duplicate = 5;
+}
+
+message CompleteUploadRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+  int64 source_bytes = 4;
+  string source_checksum = 5;
+}
+message CompleteUploadResponse {
+  ImportJob job = 1;
+}
+
+message GetImportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+}
+message GetImportJobResponse {
+  ImportJob job = 1;
+}
+
+message ListImportJobsRequest {
+  string tenant_id = 1;
+  string status = 2;
+  string dataset_code = 3;
+  google.protobuf.Timestamp created_from = 4;
+  google.protobuf.Timestamp created_to = 5;
+  platform.common.v1.PageRequest page = 6;
+}
+message ListImportJobsResponse {
+  repeated ImportJob jobs = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message CancelImportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+}
+message CancelImportJobResponse {
+  ImportJob job = 1;
+}
+
+message RetryImportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+  string idempotency_key = 4;
+}
+message RetryImportJobResponse {
+  ImportJob job = 1;
+  string upload_url = 2;
+  map<string, string> upload_headers = 3;
+  google.protobuf.Timestamp upload_url_expires_at = 4;
+  bool duplicate = 5;
+}
+
+message ConfirmImportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+  string idempotency_key = 4;
+}
+message ConfirmImportJobResponse {
+  ImportJob job = 1;
+  bool duplicate = 2;
+}
+
+message CreateErrorReportDownloadURLRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int32 ttl_seconds = 3;
+}
+message CreateErrorReportDownloadURLResponse {
+  string url = 1;
+  google.protobuf.Timestamp expires_at = 2;
+  string filename = 3;
+  string content_type = 4;
+}
+
+message DescribeImportDatasetRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+}
+message DescribeImportDatasetResponse {
+  ImportDatasetDescriptor dataset = 1;
+}
+
+message ValidateRowsRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+  string job_id = 3;
+  int64 batch_number = 4;
+  int64 first_row_number = 5;
+  repeated google.protobuf.Struct rows = 6;
+}
+message ValidateRowsResponse {
+  int64 batch_number = 1;
+  repeated google.protobuf.Struct normalized_rows = 2;
+  repeated RowIssue issues = 3;
+}
+
+message ApplyRowsRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+  string job_id = 3;
+  int64 batch_number = 4;
+  repeated google.protobuf.Struct rows = 5;
+  string idempotency_key = 6;
+}
+message ApplyRowsResponse {
+  int64 batch_number = 1;
+  int64 applied_rows = 2;
+  repeated RowIssue issues = 3;
+}
+
+message ImportJobChangedEvent {
+  ImportJob job = 1;
+  string change_type = 2;
+}
