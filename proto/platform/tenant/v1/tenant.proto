@@ -27,6 +27,7 @@ service TenantService {
   rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse);
   rpc AddGroupMember(AddGroupMemberRequest) returns (AddGroupMemberResponse);
   rpc RemoveGroupMember(RemoveGroupMemberRequest) returns (RemoveGroupMemberResponse);
+  rpc ListGroupMembers(ListGroupMembersRequest) returns (ListGroupMembersResponse);
   rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse);
   rpc GetQuota(GetQuotaRequest) returns (GetQuotaResponse);
   rpc ListQuotas(ListQuotasRequest) returns (ListQuotasResponse);
@@ -126,6 +127,19 @@ message Group {
   string tenant_id = 2;
   string code = 3;
   string name = 4;
+  string status = 5;
+  int64 version = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  string created_by = 9;
+  string updated_by = 10;
+}
+
+message GroupMember {
+  string id = 1;
+  string tenant_id = 2;
+  string group_id = 3;
+  string membership_id = 4;
   string status = 5;
   int64 version = 6;
   google.protobuf.Timestamp created_at = 7;
@@ -293,6 +307,12 @@ message RemoveGroupMemberRequest {
 }
 message RemoveGroupMemberResponse {
   bool removed = 1;
+}
+message ListGroupMembersRequest {
+  string group_id = 1;
+}
+message ListGroupMembersResponse {
+  repeated GroupMember group_members = 1;
 }
 message ListGroupsRequest {
   string tenant_id = 1;

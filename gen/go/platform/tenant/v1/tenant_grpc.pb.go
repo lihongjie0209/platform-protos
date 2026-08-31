@@ -38,6 +38,7 @@ const (
 	TenantService_UpdateGroup_FullMethodName              = "/platform.tenant.v1.TenantService/UpdateGroup"
 	TenantService_AddGroupMember_FullMethodName           = "/platform.tenant.v1.TenantService/AddGroupMember"
 	TenantService_RemoveGroupMember_FullMethodName        = "/platform.tenant.v1.TenantService/RemoveGroupMember"
+	TenantService_ListGroupMembers_FullMethodName         = "/platform.tenant.v1.TenantService/ListGroupMembers"
 	TenantService_ListGroups_FullMethodName               = "/platform.tenant.v1.TenantService/ListGroups"
 	TenantService_GetQuota_FullMethodName                 = "/platform.tenant.v1.TenantService/GetQuota"
 	TenantService_ListQuotas_FullMethodName               = "/platform.tenant.v1.TenantService/ListQuotas"
@@ -72,6 +73,7 @@ type TenantServiceClient interface {
 	UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*UpdateGroupResponse, error)
 	AddGroupMember(ctx context.Context, in *AddGroupMemberRequest, opts ...grpc.CallOption) (*AddGroupMemberResponse, error)
 	RemoveGroupMember(ctx context.Context, in *RemoveGroupMemberRequest, opts ...grpc.CallOption) (*RemoveGroupMemberResponse, error)
+	ListGroupMembers(ctx context.Context, in *ListGroupMembersRequest, opts ...grpc.CallOption) (*ListGroupMembersResponse, error)
 	ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error)
 	GetQuota(ctx context.Context, in *GetQuotaRequest, opts ...grpc.CallOption) (*GetQuotaResponse, error)
 	ListQuotas(ctx context.Context, in *ListQuotasRequest, opts ...grpc.CallOption) (*ListQuotasResponse, error)
@@ -281,6 +283,16 @@ func (c *tenantServiceClient) RemoveGroupMember(ctx context.Context, in *RemoveG
 	return out, nil
 }
 
+func (c *tenantServiceClient) ListGroupMembers(ctx context.Context, in *ListGroupMembersRequest, opts ...grpc.CallOption) (*ListGroupMembersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListGroupMembersResponse)
+	err := c.cc.Invoke(ctx, TenantService_ListGroupMembers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tenantServiceClient) ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListGroupsResponse)
@@ -394,6 +406,7 @@ type TenantServiceServer interface {
 	UpdateGroup(context.Context, *UpdateGroupRequest) (*UpdateGroupResponse, error)
 	AddGroupMember(context.Context, *AddGroupMemberRequest) (*AddGroupMemberResponse, error)
 	RemoveGroupMember(context.Context, *RemoveGroupMemberRequest) (*RemoveGroupMemberResponse, error)
+	ListGroupMembers(context.Context, *ListGroupMembersRequest) (*ListGroupMembersResponse, error)
 	ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error)
 	GetQuota(context.Context, *GetQuotaRequest) (*GetQuotaResponse, error)
 	ListQuotas(context.Context, *ListQuotasRequest) (*ListQuotasResponse, error)
@@ -469,6 +482,9 @@ func (UnimplementedTenantServiceServer) AddGroupMember(context.Context, *AddGrou
 }
 func (UnimplementedTenantServiceServer) RemoveGroupMember(context.Context, *RemoveGroupMemberRequest) (*RemoveGroupMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveGroupMember not implemented")
+}
+func (UnimplementedTenantServiceServer) ListGroupMembers(context.Context, *ListGroupMembersRequest) (*ListGroupMembersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroupMembers not implemented")
 }
 func (UnimplementedTenantServiceServer) ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListGroups not implemented")
@@ -860,6 +876,24 @@ func _TenantService_RemoveGroupMember_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TenantService_ListGroupMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGroupMembersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).ListGroupMembers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_ListGroupMembers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).ListGroupMembers(ctx, req.(*ListGroupMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TenantService_ListGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListGroupsRequest)
 	if err := dec(in); err != nil {
@@ -1104,6 +1138,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveGroupMember",
 			Handler:    _TenantService_RemoveGroupMember_Handler,
+		},
+		{
+			MethodName: "ListGroupMembers",
+			Handler:    _TenantService_ListGroupMembers_Handler,
 		},
 		{
 			MethodName: "ListGroups",
