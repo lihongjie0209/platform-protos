@@ -3,12 +3,14 @@ syntax = "proto3";
 package platform.identity.v1;
 
 import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
 
 option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/identity/v1;identityv1";
 
 service IdentityService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc BatchGetUsers(BatchGetUsersRequest) returns (BatchGetUsersResponse);
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
   rpc ValidateSession(ValidateSessionRequest) returns (ValidateSessionResponse);
   rpc RevokeTenantSessions(RevokeTenantSessionsRequest) returns (RevokeTenantSessionsResponse);
   rpc IssueTenantToken(IssueTenantTokenRequest) returns (IssueTenantTokenResponse);
@@ -48,6 +50,15 @@ message BatchGetUsersRequest {
 }
 message BatchGetUsersResponse {
   repeated User users = 1;
+}
+message ListUsersRequest {
+  string keyword = 1;
+  UserStatus status = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+message ListUsersResponse {
+  repeated User users = 1;
+  platform.common.v1.PageResult page = 2;
 }
 message ValidateSessionRequest {
   string session_id = 1;
