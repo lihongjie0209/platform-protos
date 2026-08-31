@@ -2033,6 +2033,7 @@ type ChangeSubscriptionRequest struct {
 	PlanId        string                 `protobuf:"bytes,2,opt,name=plan_id,json=planId,proto3" json:"plan_id,omitempty"`
 	EffectiveMode string                 `protobuf:"bytes,3,opt,name=effective_mode,json=effectiveMode,proto3" json:"effective_mode,omitempty"`
 	Version       int64                  `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+	TenantId      string                 `protobuf:"bytes,5,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2095,6 +2096,13 @@ func (x *ChangeSubscriptionRequest) GetVersion() int64 {
 	return 0
 }
 
+func (x *ChangeSubscriptionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
 type ChangeSubscriptionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Subscription  *Subscription          `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
@@ -2144,6 +2152,7 @@ type CancelSubscriptionRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	AtPeriodEnd   bool                   `protobuf:"varint,2,opt,name=at_period_end,json=atPeriodEnd,proto3" json:"at_period_end,omitempty"`
 	Version       int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2197,6 +2206,13 @@ func (x *CancelSubscriptionRequest) GetVersion() int64 {
 		return x.Version
 	}
 	return 0
+}
+
+func (x *CancelSubscriptionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type CancelSubscriptionResponse struct {
@@ -2720,6 +2736,7 @@ type FinalizeInvoiceRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	DueAt         *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=due_at,json=dueAt,proto3" json:"due_at,omitempty"`
 	Version       int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2775,6 +2792,13 @@ func (x *FinalizeInvoiceRequest) GetVersion() int64 {
 	return 0
 }
 
+func (x *FinalizeInvoiceRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
 type FinalizeInvoiceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Invoice       *Invoice               `protobuf:"bytes,1,opt,name=invoice,proto3" json:"invoice,omitempty"`
@@ -2824,6 +2848,7 @@ type VoidInvoiceRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
 	Version       int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2877,6 +2902,13 @@ func (x *VoidInvoiceRequest) GetVersion() int64 {
 		return x.Version
 	}
 	return 0
+}
+
+func (x *VoidInvoiceRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type VoidInvoiceResponse struct {
@@ -3161,6 +3193,7 @@ type CreatePaymentAttemptRequest struct {
 	Provider               string                 `protobuf:"bytes,2,opt,name=provider,proto3" json:"provider,omitempty"`
 	PaymentMethodReference string                 `protobuf:"bytes,3,opt,name=payment_method_reference,json=paymentMethodReference,proto3" json:"payment_method_reference,omitempty"`
 	IdempotencyKey         string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	TenantId               string                 `protobuf:"bytes,5,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -3219,6 +3252,13 @@ func (x *CreatePaymentAttemptRequest) GetPaymentMethodReference() string {
 func (x *CreatePaymentAttemptRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *CreatePaymentAttemptRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -3435,6 +3475,7 @@ type RecordRefundRequest struct {
 	AmountMinor      int64                  `protobuf:"varint,4,opt,name=amount_minor,json=amountMinor,proto3" json:"amount_minor,omitempty"`
 	Reason           string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
 	Status           string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	TenantId         string                 `protobuf:"bytes,7,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -3507,6 +3548,13 @@ func (x *RecordRefundRequest) GetReason() string {
 func (x *RecordRefundRequest) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *RecordRefundRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -4292,18 +4340,20 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x12external_reference\x18\x04 \x01(\tR\x11externalReference\x12'\n" +
 	"\x0fidempotency_key\x18\x05 \x01(\tR\x0eidempotencyKey\"c\n" +
 	"\x1aCreateSubscriptionResponse\x12E\n" +
-	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\x85\x01\n" +
+	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\xa2\x01\n" +
 	"\x19ChangeSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\aplan_id\x18\x02 \x01(\tR\x06planId\x12%\n" +
 	"\x0eeffective_mode\x18\x03 \x01(\tR\reffectiveMode\x12\x18\n" +
-	"\aversion\x18\x04 \x01(\x03R\aversion\"c\n" +
+	"\aversion\x18\x04 \x01(\x03R\aversion\x12\x1b\n" +
+	"\ttenant_id\x18\x05 \x01(\tR\btenantId\"c\n" +
 	"\x1aChangeSubscriptionResponse\x12E\n" +
-	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"i\n" +
+	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\x86\x01\n" +
 	"\x19CancelSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\"\n" +
 	"\rat_period_end\x18\x02 \x01(\bR\vatPeriodEnd\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x03R\aversion\"c\n" +
+	"\aversion\x18\x03 \x01(\x03R\aversion\x12\x1b\n" +
+	"\ttenant_id\x18\x04 \x01(\tR\btenantId\"c\n" +
 	"\x1aCancelSubscriptionResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"E\n" +
 	"\x16GetSubscriptionRequest\x12\x1b\n" +
@@ -4338,17 +4388,19 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x17GenerateInvoiceResponse\x126\n" +
 	"\ainvoice\x18\x01 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x126\n" +
 	"\x05lines\x18\x02 \x03(\v2 .platform.billing.v1.InvoiceLineR\x05lines\x12\x1c\n" +
-	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"u\n" +
+	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"\x92\x01\n" +
 	"\x16FinalizeInvoiceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x121\n" +
 	"\x06due_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x05dueAt\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x03R\aversion\"Q\n" +
+	"\aversion\x18\x03 \x01(\x03R\aversion\x12\x1b\n" +
+	"\ttenant_id\x18\x04 \x01(\tR\btenantId\"Q\n" +
 	"\x17FinalizeInvoiceResponse\x126\n" +
-	"\ainvoice\x18\x01 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\"V\n" +
+	"\ainvoice\x18\x01 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\"s\n" +
 	"\x12VoidInvoiceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06reason\x18\x02 \x01(\tR\x06reason\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x03R\aversion\"M\n" +
+	"\aversion\x18\x03 \x01(\x03R\aversion\x12\x1b\n" +
+	"\ttenant_id\x18\x04 \x01(\tR\btenantId\"M\n" +
 	"\x13VoidInvoiceResponse\x126\n" +
 	"\ainvoice\x18\x01 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\"@\n" +
 	"\x11GetInvoiceRequest\x12\x1b\n" +
@@ -4366,13 +4418,14 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x84\x01\n" +
 	"\x14ListInvoicesResponse\x128\n" +
 	"\binvoices\x18\x01 \x03(\v2\x1c.platform.billing.v1.InvoiceR\binvoices\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xbb\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xd8\x01\n" +
 	"\x1bCreatePaymentAttemptRequest\x12\x1d\n" +
 	"\n" +
 	"invoice_id\x18\x01 \x01(\tR\tinvoiceId\x12\x1a\n" +
 	"\bprovider\x18\x02 \x01(\tR\bprovider\x128\n" +
 	"\x18payment_method_reference\x18\x03 \x01(\tR\x16paymentMethodReference\x12'\n" +
-	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\"\x8a\x01\n" +
+	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12\x1b\n" +
+	"\ttenant_id\x18\x05 \x01(\tR\btenantId\"\x8a\x01\n" +
 	"\x1cCreatePaymentAttemptResponse\x12L\n" +
 	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\x12\x1c\n" +
 	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"\xc8\x02\n" +
@@ -4387,14 +4440,15 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x1aApplyPaymentResultResponse\x12L\n" +
 	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\x126\n" +
 	"\ainvoice\x18\x02 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x12\x1c\n" +
-	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"\xed\x01\n" +
+	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"\x8a\x02\n" +
 	"\x13RecordRefundRequest\x12,\n" +
 	"\x12payment_attempt_id\x18\x01 \x01(\tR\x10paymentAttemptId\x12,\n" +
 	"\x12provider_refund_id\x18\x02 \x01(\tR\x10providerRefundId\x12'\n" +
 	"\x0fidempotency_key\x18\x03 \x01(\tR\x0eidempotencyKey\x12!\n" +
 	"\famount_minor\x18\x04 \x01(\x03R\vamountMinor\x12\x16\n" +
 	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x16\n" +
-	"\x06status\x18\x06 \x01(\tR\x06status\"\xa1\x01\n" +
+	"\x06status\x18\x06 \x01(\tR\x06status\x12\x1b\n" +
+	"\ttenant_id\x18\a \x01(\tR\btenantId\"\xa1\x01\n" +
 	"\x14RecordRefundResponse\x123\n" +
 	"\x06refund\x18\x01 \x01(\v2\x1b.platform.billing.v1.RefundR\x06refund\x126\n" +
 	"\ainvoice\x18\x02 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x12\x1c\n" +

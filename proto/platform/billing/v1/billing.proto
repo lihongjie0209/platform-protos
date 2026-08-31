@@ -247,6 +247,7 @@ message ChangeSubscriptionRequest {
   string plan_id = 2;
   string effective_mode = 3;
   int64 version = 4;
+  string tenant_id = 5;
 }
 message ChangeSubscriptionResponse {
   Subscription subscription = 1;
@@ -255,6 +256,7 @@ message CancelSubscriptionRequest {
   string id = 1;
   bool at_period_end = 2;
   int64 version = 3;
+  string tenant_id = 4;
 }
 message CancelSubscriptionResponse {
   Subscription subscription = 1;
@@ -303,6 +305,7 @@ message FinalizeInvoiceRequest {
   string id = 1;
   google.protobuf.Timestamp due_at = 2;
   int64 version = 3;
+  string tenant_id = 4;
 }
 message FinalizeInvoiceResponse {
   Invoice invoice = 1;
@@ -311,6 +314,7 @@ message VoidInvoiceRequest {
   string id = 1;
   string reason = 2;
   int64 version = 3;
+  string tenant_id = 4;
 }
 message VoidInvoiceResponse {
   Invoice invoice = 1;
@@ -340,6 +344,7 @@ message CreatePaymentAttemptRequest {
   string provider = 2;
   string payment_method_reference = 3;
   string idempotency_key = 4;
+  string tenant_id = 5;
 }
 message CreatePaymentAttemptResponse {
   PaymentAttempt payment_attempt = 1;
@@ -366,6 +371,7 @@ message RecordRefundRequest {
   int64 amount_minor = 4;
   string reason = 5;
   string status = 6;
+  string tenant_id = 7;
 }
 message RecordRefundResponse {
   Refund refund = 1;
