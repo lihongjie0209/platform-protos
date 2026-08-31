@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	NotificationService_PutTemplate_FullMethodName           = "/platform.notification.v1.NotificationService/PutTemplate"
+	NotificationService_ListTemplates_FullMethodName         = "/platform.notification.v1.NotificationService/ListTemplates"
 	NotificationService_Send_FullMethodName                  = "/platform.notification.v1.NotificationService/Send"
 	NotificationService_RecordProviderReceipt_FullMethodName = "/platform.notification.v1.NotificationService/RecordProviderReceipt"
 	NotificationService_GetDelivery_FullMethodName           = "/platform.notification.v1.NotificationService/GetDelivery"
@@ -31,6 +32,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type NotificationServiceClient interface {
 	PutTemplate(ctx context.Context, in *PutTemplateRequest, opts ...grpc.CallOption) (*PutTemplateResponse, error)
+	ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
 	RecordProviderReceipt(ctx context.Context, in *RecordProviderReceiptRequest, opts ...grpc.CallOption) (*RecordProviderReceiptResponse, error)
 	GetDelivery(ctx context.Context, in *GetDeliveryRequest, opts ...grpc.CallOption) (*GetDeliveryResponse, error)
@@ -49,6 +51,16 @@ func (c *notificationServiceClient) PutTemplate(ctx context.Context, in *PutTemp
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PutTemplateResponse)
 	err := c.cc.Invoke(ctx, NotificationService_PutTemplate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notificationServiceClient) ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTemplatesResponse)
+	err := c.cc.Invoke(ctx, NotificationService_ListTemplates_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,6 +112,7 @@ func (c *notificationServiceClient) ListDeliveries(ctx context.Context, in *List
 // for forward compatibility.
 type NotificationServiceServer interface {
 	PutTemplate(context.Context, *PutTemplateRequest) (*PutTemplateResponse, error)
+	ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
 	RecordProviderReceipt(context.Context, *RecordProviderReceiptRequest) (*RecordProviderReceiptResponse, error)
 	GetDelivery(context.Context, *GetDeliveryRequest) (*GetDeliveryResponse, error)
@@ -116,6 +129,9 @@ type UnimplementedNotificationServiceServer struct{}
 
 func (UnimplementedNotificationServiceServer) PutTemplate(context.Context, *PutTemplateRequest) (*PutTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PutTemplate not implemented")
+}
+func (UnimplementedNotificationServiceServer) ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTemplates not implemented")
 }
 func (UnimplementedNotificationServiceServer) Send(context.Context, *SendRequest) (*SendResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
@@ -164,6 +180,24 @@ func _NotificationService_PutTemplate_Handler(srv interface{}, ctx context.Conte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(NotificationServiceServer).PutTemplate(ctx, req.(*PutTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NotificationService_ListTemplates_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTemplatesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationServiceServer).ListTemplates(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotificationService_ListTemplates_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationServiceServer).ListTemplates(ctx, req.(*ListTemplatesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -250,6 +284,10 @@ var NotificationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PutTemplate",
 			Handler:    _NotificationService_PutTemplate_Handler,
+		},
+		{
+			MethodName: "ListTemplates",
+			Handler:    _NotificationService_ListTemplates_Handler,
 		},
 		{
 			MethodName: "Send",

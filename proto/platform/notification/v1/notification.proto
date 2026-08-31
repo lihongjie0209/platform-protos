@@ -9,6 +9,7 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/no
 
 service NotificationService {
   rpc PutTemplate(PutTemplateRequest) returns (PutTemplateResponse);
+  rpc ListTemplates(ListTemplatesRequest) returns (ListTemplatesResponse);
   rpc Send(SendRequest) returns (SendResponse);
   rpc RecordProviderReceipt(RecordProviderReceiptRequest) returns (RecordProviderReceiptResponse);
   rpc GetDelivery(GetDeliveryRequest) returns (GetDeliveryResponse);
@@ -54,6 +55,17 @@ message PutTemplateRequest {
 }
 message PutTemplateResponse {
   Template template = 1;
+}
+message ListTemplatesRequest {
+  string tenant_id = 1;
+  string keyword = 2;
+  string channel = 3;
+  string status = 4;
+  platform.common.v1.PageRequest page = 5;
+}
+message ListTemplatesResponse {
+  repeated Template templates = 1;
+  platform.common.v1.PageResult page = 2;
 }
 message SendRequest {
   string tenant_id = 1;
