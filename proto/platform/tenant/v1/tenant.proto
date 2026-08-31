@@ -10,6 +10,7 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/te
 service TenantService {
   rpc CreateTenant(CreateTenantRequest) returns (CreateTenantResponse);
   rpc GetTenant(GetTenantRequest) returns (GetTenantResponse);
+  rpc ListTenants(ListTenantsRequest) returns (ListTenantsResponse);
   rpc UpdateTenant(UpdateTenantRequest) returns (UpdateTenantResponse);
   rpc AddMembership(AddMembershipRequest) returns (AddMembershipResponse);
   rpc UpdateMembership(UpdateMembershipRequest) returns (UpdateMembershipResponse);
@@ -62,6 +63,17 @@ message Tenant {
   int64 version = 7;
   string created_by = 8;
   string updated_by = 9;
+}
+
+message ListTenantsRequest {
+  string keyword = 1;
+  TenantStatus status = 2;
+  platform.common.v1.PageRequest page = 3;
+}
+
+message ListTenantsResponse {
+  repeated Tenant tenants = 1;
+  platform.common.v1.PageResult page = 2;
 }
 
 message Membership {
