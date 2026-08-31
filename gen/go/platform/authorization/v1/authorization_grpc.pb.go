@@ -24,6 +24,7 @@ const (
 	AuthorizationService_ResolveDataScope_FullMethodName     = "/platform.authorization.v1.AuthorizationService/ResolveDataScope"
 	AuthorizationService_InvalidateSubject_FullMethodName    = "/platform.authorization.v1.AuthorizationService/InvalidateSubject"
 	AuthorizationService_CreatePermission_FullMethodName     = "/platform.authorization.v1.AuthorizationService/CreatePermission"
+	AuthorizationService_UpdatePermission_FullMethodName     = "/platform.authorization.v1.AuthorizationService/UpdatePermission"
 	AuthorizationService_ListPermissions_FullMethodName      = "/platform.authorization.v1.AuthorizationService/ListPermissions"
 	AuthorizationService_CreateRole_FullMethodName           = "/platform.authorization.v1.AuthorizationService/CreateRole"
 	AuthorizationService_UpdateRole_FullMethodName           = "/platform.authorization.v1.AuthorizationService/UpdateRole"
@@ -45,6 +46,7 @@ type AuthorizationServiceClient interface {
 	ResolveDataScope(ctx context.Context, in *ResolveDataScopeRequest, opts ...grpc.CallOption) (*ResolveDataScopeResponse, error)
 	InvalidateSubject(ctx context.Context, in *InvalidateSubjectRequest, opts ...grpc.CallOption) (*InvalidateSubjectResponse, error)
 	CreatePermission(ctx context.Context, in *CreatePermissionRequest, opts ...grpc.CallOption) (*CreatePermissionResponse, error)
+	UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error)
 	ListPermissions(ctx context.Context, in *ListPermissionsRequest, opts ...grpc.CallOption) (*ListPermissionsResponse, error)
 	CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*CreateRoleResponse, error)
 	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*UpdateRoleResponse, error)
@@ -109,6 +111,16 @@ func (c *authorizationServiceClient) CreatePermission(ctx context.Context, in *C
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreatePermissionResponse)
 	err := c.cc.Invoke(ctx, AuthorizationService_CreatePermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authorizationServiceClient) UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePermissionResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_UpdatePermission_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -224,6 +236,7 @@ type AuthorizationServiceServer interface {
 	ResolveDataScope(context.Context, *ResolveDataScopeRequest) (*ResolveDataScopeResponse, error)
 	InvalidateSubject(context.Context, *InvalidateSubjectRequest) (*InvalidateSubjectResponse, error)
 	CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error)
+	UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error)
 	ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error)
 	CreateRole(context.Context, *CreateRoleRequest) (*CreateRoleResponse, error)
 	UpdateRole(context.Context, *UpdateRoleRequest) (*UpdateRoleResponse, error)
@@ -258,6 +271,9 @@ func (UnimplementedAuthorizationServiceServer) InvalidateSubject(context.Context
 }
 func (UnimplementedAuthorizationServiceServer) CreatePermission(context.Context, *CreatePermissionRequest) (*CreatePermissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePermission not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePermission not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) ListPermissions(context.Context, *ListPermissionsRequest) (*ListPermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPermissions not implemented")
@@ -396,6 +412,24 @@ func _AuthorizationService_CreatePermission_Handler(srv interface{}, ctx context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthorizationServiceServer).CreatePermission(ctx, req.(*CreatePermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthorizationService_UpdatePermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).UpdatePermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_UpdatePermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).UpdatePermission(ctx, req.(*UpdatePermissionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -606,6 +640,10 @@ var AuthorizationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePermission",
 			Handler:    _AuthorizationService_CreatePermission_Handler,
+		},
+		{
+			MethodName: "UpdatePermission",
+			Handler:    _AuthorizationService_UpdatePermission_Handler,
 		},
 		{
 			MethodName: "ListPermissions",

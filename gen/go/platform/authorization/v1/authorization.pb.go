@@ -1265,6 +1265,126 @@ func (x *CreatePermissionResponse) GetPermission() *Permission {
 	return nil
 }
 
+type UpdatePermissionRequest struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	PermissionId        string                 `protobuf:"bytes,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	Name                string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	ConditionExpression string                 `protobuf:"bytes,3,opt,name=condition_expression,json=conditionExpression,proto3" json:"condition_expression,omitempty"`
+	Status              string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	ExpectedVersion     int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *UpdatePermissionRequest) Reset() {
+	*x = UpdatePermissionRequest{}
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePermissionRequest) ProtoMessage() {}
+
+func (x *UpdatePermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePermissionRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePermissionRequest) Descriptor() ([]byte, []int) {
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdatePermissionRequest) GetPermissionId() string {
+	if x != nil {
+		return x.PermissionId
+	}
+	return ""
+}
+
+func (x *UpdatePermissionRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdatePermissionRequest) GetConditionExpression() string {
+	if x != nil {
+		return x.ConditionExpression
+	}
+	return ""
+}
+
+func (x *UpdatePermissionRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdatePermissionRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
+}
+
+type UpdatePermissionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Permission    *Permission            `protobuf:"bytes,1,opt,name=permission,proto3" json:"permission,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdatePermissionResponse) Reset() {
+	*x = UpdatePermissionResponse{}
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePermissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePermissionResponse) ProtoMessage() {}
+
+func (x *UpdatePermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePermissionResponse.ProtoReflect.Descriptor instead.
+func (*UpdatePermissionResponse) Descriptor() ([]byte, []int) {
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdatePermissionResponse) GetPermission() *Permission {
+	if x != nil {
+		return x.Permission
+	}
+	return nil
+}
+
 type ListPermissionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -1275,7 +1395,7 @@ type ListPermissionsRequest struct {
 
 func (x *ListPermissionsRequest) Reset() {
 	*x = ListPermissionsRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[15]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1287,7 +1407,7 @@ func (x *ListPermissionsRequest) String() string {
 func (*ListPermissionsRequest) ProtoMessage() {}
 
 func (x *ListPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[15]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1300,7 +1420,7 @@ func (x *ListPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{15}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListPermissionsRequest) GetTenantId() string {
@@ -1327,7 +1447,7 @@ type ListPermissionsResponse struct {
 
 func (x *ListPermissionsResponse) Reset() {
 	*x = ListPermissionsResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[16]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1339,7 +1459,7 @@ func (x *ListPermissionsResponse) String() string {
 func (*ListPermissionsResponse) ProtoMessage() {}
 
 func (x *ListPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[16]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1352,7 +1472,7 @@ func (x *ListPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{16}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListPermissionsResponse) GetPermissions() []*Permission {
@@ -1382,7 +1502,7 @@ type CreateRoleRequest struct {
 
 func (x *CreateRoleRequest) Reset() {
 	*x = CreateRoleRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[17]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1394,7 +1514,7 @@ func (x *CreateRoleRequest) String() string {
 func (*CreateRoleRequest) ProtoMessage() {}
 
 func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[17]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1407,7 +1527,7 @@ func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleRequest.ProtoReflect.Descriptor instead.
 func (*CreateRoleRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{17}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CreateRoleRequest) GetTenantId() string {
@@ -1454,7 +1574,7 @@ type CreateRoleResponse struct {
 
 func (x *CreateRoleResponse) Reset() {
 	*x = CreateRoleResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[18]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1466,7 +1586,7 @@ func (x *CreateRoleResponse) String() string {
 func (*CreateRoleResponse) ProtoMessage() {}
 
 func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[18]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1479,7 +1599,7 @@ func (x *CreateRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRoleResponse.ProtoReflect.Descriptor instead.
 func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{18}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CreateRoleResponse) GetRole() *Role {
@@ -1503,7 +1623,7 @@ type UpdateRoleRequest struct {
 
 func (x *UpdateRoleRequest) Reset() {
 	*x = UpdateRoleRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[19]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1515,7 +1635,7 @@ func (x *UpdateRoleRequest) String() string {
 func (*UpdateRoleRequest) ProtoMessage() {}
 
 func (x *UpdateRoleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[19]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1528,7 +1648,7 @@ func (x *UpdateRoleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoleRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRoleRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{19}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateRoleRequest) GetRoleId() string {
@@ -1582,7 +1702,7 @@ type UpdateRoleResponse struct {
 
 func (x *UpdateRoleResponse) Reset() {
 	*x = UpdateRoleResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[20]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1594,7 +1714,7 @@ func (x *UpdateRoleResponse) String() string {
 func (*UpdateRoleResponse) ProtoMessage() {}
 
 func (x *UpdateRoleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[20]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1607,7 +1727,7 @@ func (x *UpdateRoleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRoleResponse.ProtoReflect.Descriptor instead.
 func (*UpdateRoleResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{20}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateRoleResponse) GetRole() *Role {
@@ -1627,7 +1747,7 @@ type ListRolesRequest struct {
 
 func (x *ListRolesRequest) Reset() {
 	*x = ListRolesRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[21]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1639,7 +1759,7 @@ func (x *ListRolesRequest) String() string {
 func (*ListRolesRequest) ProtoMessage() {}
 
 func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[21]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1652,7 +1772,7 @@ func (x *ListRolesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesRequest.ProtoReflect.Descriptor instead.
 func (*ListRolesRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{21}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListRolesRequest) GetTenantId() string {
@@ -1679,7 +1799,7 @@ type ListRolesResponse struct {
 
 func (x *ListRolesResponse) Reset() {
 	*x = ListRolesResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[22]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1691,7 +1811,7 @@ func (x *ListRolesResponse) String() string {
 func (*ListRolesResponse) ProtoMessage() {}
 
 func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[22]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1704,7 +1824,7 @@ func (x *ListRolesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolesResponse.ProtoReflect.Descriptor instead.
 func (*ListRolesResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{22}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListRolesResponse) GetRoles() []*Role {
@@ -1732,7 +1852,7 @@ type GrantRolePermissionRequest struct {
 
 func (x *GrantRolePermissionRequest) Reset() {
 	*x = GrantRolePermissionRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[23]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1744,7 +1864,7 @@ func (x *GrantRolePermissionRequest) String() string {
 func (*GrantRolePermissionRequest) ProtoMessage() {}
 
 func (x *GrantRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[23]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1757,7 +1877,7 @@ func (x *GrantRolePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantRolePermissionRequest.ProtoReflect.Descriptor instead.
 func (*GrantRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{23}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GrantRolePermissionRequest) GetTenantId() string {
@@ -1790,7 +1910,7 @@ type GrantRolePermissionResponse struct {
 
 func (x *GrantRolePermissionResponse) Reset() {
 	*x = GrantRolePermissionResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[24]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1802,7 +1922,7 @@ func (x *GrantRolePermissionResponse) String() string {
 func (*GrantRolePermissionResponse) ProtoMessage() {}
 
 func (x *GrantRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[24]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1815,7 +1935,7 @@ func (x *GrantRolePermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantRolePermissionResponse.ProtoReflect.Descriptor instead.
 func (*GrantRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{24}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *GrantRolePermissionResponse) GetRolePermission() *RolePermission {
@@ -1835,7 +1955,7 @@ type RevokeRolePermissionRequest struct {
 
 func (x *RevokeRolePermissionRequest) Reset() {
 	*x = RevokeRolePermissionRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[25]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1847,7 +1967,7 @@ func (x *RevokeRolePermissionRequest) String() string {
 func (*RevokeRolePermissionRequest) ProtoMessage() {}
 
 func (x *RevokeRolePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[25]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1860,7 +1980,7 @@ func (x *RevokeRolePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRolePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RevokeRolePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{25}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *RevokeRolePermissionRequest) GetRolePermissionId() string {
@@ -1886,7 +2006,7 @@ type RevokeRolePermissionResponse struct {
 
 func (x *RevokeRolePermissionResponse) Reset() {
 	*x = RevokeRolePermissionResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[26]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1898,7 +2018,7 @@ func (x *RevokeRolePermissionResponse) String() string {
 func (*RevokeRolePermissionResponse) ProtoMessage() {}
 
 func (x *RevokeRolePermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[26]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1911,7 +2031,7 @@ func (x *RevokeRolePermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRolePermissionResponse.ProtoReflect.Descriptor instead.
 func (*RevokeRolePermissionResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{26}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *RevokeRolePermissionResponse) GetRolePermission() *RolePermission {
@@ -1930,7 +2050,7 @@ type ListRolePermissionsRequest struct {
 
 func (x *ListRolePermissionsRequest) Reset() {
 	*x = ListRolePermissionsRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[27]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1942,7 +2062,7 @@ func (x *ListRolePermissionsRequest) String() string {
 func (*ListRolePermissionsRequest) ProtoMessage() {}
 
 func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[27]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1955,7 +2075,7 @@ func (x *ListRolePermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolePermissionsRequest.ProtoReflect.Descriptor instead.
 func (*ListRolePermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{27}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ListRolePermissionsRequest) GetRoleId() string {
@@ -1974,7 +2094,7 @@ type ListRolePermissionsResponse struct {
 
 func (x *ListRolePermissionsResponse) Reset() {
 	*x = ListRolePermissionsResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[28]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1986,7 +2106,7 @@ func (x *ListRolePermissionsResponse) String() string {
 func (*ListRolePermissionsResponse) ProtoMessage() {}
 
 func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[28]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1999,7 +2119,7 @@ func (x *ListRolePermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRolePermissionsResponse.ProtoReflect.Descriptor instead.
 func (*ListRolePermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{28}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListRolePermissionsResponse) GetRolePermissions() []*RolePermission {
@@ -2021,7 +2141,7 @@ type CreateBindingRequest struct {
 
 func (x *CreateBindingRequest) Reset() {
 	*x = CreateBindingRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[29]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2033,7 +2153,7 @@ func (x *CreateBindingRequest) String() string {
 func (*CreateBindingRequest) ProtoMessage() {}
 
 func (x *CreateBindingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[29]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2046,7 +2166,7 @@ func (x *CreateBindingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBindingRequest.ProtoReflect.Descriptor instead.
 func (*CreateBindingRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{29}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CreateBindingRequest) GetTenantId() string {
@@ -2086,7 +2206,7 @@ type CreateBindingResponse struct {
 
 func (x *CreateBindingResponse) Reset() {
 	*x = CreateBindingResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[30]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2098,7 +2218,7 @@ func (x *CreateBindingResponse) String() string {
 func (*CreateBindingResponse) ProtoMessage() {}
 
 func (x *CreateBindingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[30]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2111,7 +2231,7 @@ func (x *CreateBindingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateBindingResponse.ProtoReflect.Descriptor instead.
 func (*CreateBindingResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{30}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CreateBindingResponse) GetBinding() *Binding {
@@ -2131,7 +2251,7 @@ type RevokeBindingRequest struct {
 
 func (x *RevokeBindingRequest) Reset() {
 	*x = RevokeBindingRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[31]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2143,7 +2263,7 @@ func (x *RevokeBindingRequest) String() string {
 func (*RevokeBindingRequest) ProtoMessage() {}
 
 func (x *RevokeBindingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[31]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2156,7 +2276,7 @@ func (x *RevokeBindingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeBindingRequest.ProtoReflect.Descriptor instead.
 func (*RevokeBindingRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{31}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *RevokeBindingRequest) GetBindingId() string {
@@ -2182,7 +2302,7 @@ type RevokeBindingResponse struct {
 
 func (x *RevokeBindingResponse) Reset() {
 	*x = RevokeBindingResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[32]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2194,7 +2314,7 @@ func (x *RevokeBindingResponse) String() string {
 func (*RevokeBindingResponse) ProtoMessage() {}
 
 func (x *RevokeBindingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[32]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2207,7 +2327,7 @@ func (x *RevokeBindingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeBindingResponse.ProtoReflect.Descriptor instead.
 func (*RevokeBindingResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{32}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *RevokeBindingResponse) GetBinding() *Binding {
@@ -2228,7 +2348,7 @@ type ListBindingsRequest struct {
 
 func (x *ListBindingsRequest) Reset() {
 	*x = ListBindingsRequest{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[33]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2240,7 +2360,7 @@ func (x *ListBindingsRequest) String() string {
 func (*ListBindingsRequest) ProtoMessage() {}
 
 func (x *ListBindingsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[33]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2253,7 +2373,7 @@ func (x *ListBindingsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBindingsRequest.ProtoReflect.Descriptor instead.
 func (*ListBindingsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{33}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ListBindingsRequest) GetTenantId() string {
@@ -2287,7 +2407,7 @@ type ListBindingsResponse struct {
 
 func (x *ListBindingsResponse) Reset() {
 	*x = ListBindingsResponse{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[34]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2299,7 +2419,7 @@ func (x *ListBindingsResponse) String() string {
 func (*ListBindingsResponse) ProtoMessage() {}
 
 func (x *ListBindingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[34]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2312,7 +2432,7 @@ func (x *ListBindingsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListBindingsResponse.ProtoReflect.Descriptor instead.
 func (*ListBindingsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{34}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ListBindingsResponse) GetBindings() []*Binding {
@@ -2342,7 +2462,7 @@ type AuthorizationChangedEvent struct {
 
 func (x *AuthorizationChangedEvent) Reset() {
 	*x = AuthorizationChangedEvent{}
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[35]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2354,7 +2474,7 @@ func (x *AuthorizationChangedEvent) String() string {
 func (*AuthorizationChangedEvent) ProtoMessage() {}
 
 func (x *AuthorizationChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[35]
+	mi := &file_platform_authorization_v1_authorization_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2367,7 +2487,7 @@ func (x *AuthorizationChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuthorizationChangedEvent.ProtoReflect.Descriptor instead.
 func (*AuthorizationChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{35}
+	return file_platform_authorization_v1_authorization_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *AuthorizationChangedEvent) GetTenantId() string {
@@ -2530,6 +2650,16 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\x18CreatePermissionResponse\x12E\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2%.platform.authorization.v1.PermissionR\n" +
+	"permission\"\xc8\x01\n" +
+	"\x17UpdatePermissionRequest\x12#\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x121\n" +
+	"\x14condition_expression\x18\x03 \x01(\tR\x13conditionExpression\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12)\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"a\n" +
+	"\x18UpdatePermissionResponse\x12E\n" +
+	"\n" +
+	"permission\x18\x01 \x01(\v2%.platform.authorization.v1.PermissionR\n" +
 	"permission\"j\n" +
 	"\x16ListPermissionsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x123\n" +
@@ -2615,14 +2745,15 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\x14DATA_SCOPE_TYPE_SELF\x10\x02\x12 \n" +
 	"\x1cDATA_SCOPE_TYPE_ORGANIZATION\x10\x03\x12\x1a\n" +
 	"\x16DATA_SCOPE_TYPE_TENANT\x10\x04\x12\x17\n" +
-	"\x13DATA_SCOPE_TYPE_ALL\x10\x052\x80\x0e\n" +
+	"\x13DATA_SCOPE_TYPE_ALL\x10\x052\xfd\x0e\n" +
 	"\x14AuthorizationService\x12Z\n" +
 	"\x05Check\x12'.platform.authorization.v1.CheckRequest\x1a(.platform.authorization.v1.CheckResponse\x12i\n" +
 	"\n" +
 	"BatchCheck\x12,.platform.authorization.v1.BatchCheckRequest\x1a-.platform.authorization.v1.BatchCheckResponse\x12{\n" +
 	"\x10ResolveDataScope\x122.platform.authorization.v1.ResolveDataScopeRequest\x1a3.platform.authorization.v1.ResolveDataScopeResponse\x12~\n" +
 	"\x11InvalidateSubject\x123.platform.authorization.v1.InvalidateSubjectRequest\x1a4.platform.authorization.v1.InvalidateSubjectResponse\x12{\n" +
-	"\x10CreatePermission\x122.platform.authorization.v1.CreatePermissionRequest\x1a3.platform.authorization.v1.CreatePermissionResponse\x12x\n" +
+	"\x10CreatePermission\x122.platform.authorization.v1.CreatePermissionRequest\x1a3.platform.authorization.v1.CreatePermissionResponse\x12{\n" +
+	"\x10UpdatePermission\x122.platform.authorization.v1.UpdatePermissionRequest\x1a3.platform.authorization.v1.UpdatePermissionResponse\x12x\n" +
 	"\x0fListPermissions\x121.platform.authorization.v1.ListPermissionsRequest\x1a2.platform.authorization.v1.ListPermissionsResponse\x12i\n" +
 	"\n" +
 	"CreateRole\x12,.platform.authorization.v1.CreateRoleRequest\x1a-.platform.authorization.v1.CreateRoleResponse\x12i\n" +
@@ -2649,7 +2780,7 @@ func file_platform_authorization_v1_authorization_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_authorization_v1_authorization_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_platform_authorization_v1_authorization_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
+var file_platform_authorization_v1_authorization_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
 var file_platform_authorization_v1_authorization_proto_goTypes = []any{
 	(SubjectType)(0),                     // 0: platform.authorization.v1.SubjectType
 	(DataScopeType)(0),                   // 1: platform.authorization.v1.DataScopeType
@@ -2668,108 +2799,113 @@ var file_platform_authorization_v1_authorization_proto_goTypes = []any{
 	(*Binding)(nil),                      // 14: platform.authorization.v1.Binding
 	(*CreatePermissionRequest)(nil),      // 15: platform.authorization.v1.CreatePermissionRequest
 	(*CreatePermissionResponse)(nil),     // 16: platform.authorization.v1.CreatePermissionResponse
-	(*ListPermissionsRequest)(nil),       // 17: platform.authorization.v1.ListPermissionsRequest
-	(*ListPermissionsResponse)(nil),      // 18: platform.authorization.v1.ListPermissionsResponse
-	(*CreateRoleRequest)(nil),            // 19: platform.authorization.v1.CreateRoleRequest
-	(*CreateRoleResponse)(nil),           // 20: platform.authorization.v1.CreateRoleResponse
-	(*UpdateRoleRequest)(nil),            // 21: platform.authorization.v1.UpdateRoleRequest
-	(*UpdateRoleResponse)(nil),           // 22: platform.authorization.v1.UpdateRoleResponse
-	(*ListRolesRequest)(nil),             // 23: platform.authorization.v1.ListRolesRequest
-	(*ListRolesResponse)(nil),            // 24: platform.authorization.v1.ListRolesResponse
-	(*GrantRolePermissionRequest)(nil),   // 25: platform.authorization.v1.GrantRolePermissionRequest
-	(*GrantRolePermissionResponse)(nil),  // 26: platform.authorization.v1.GrantRolePermissionResponse
-	(*RevokeRolePermissionRequest)(nil),  // 27: platform.authorization.v1.RevokeRolePermissionRequest
-	(*RevokeRolePermissionResponse)(nil), // 28: platform.authorization.v1.RevokeRolePermissionResponse
-	(*ListRolePermissionsRequest)(nil),   // 29: platform.authorization.v1.ListRolePermissionsRequest
-	(*ListRolePermissionsResponse)(nil),  // 30: platform.authorization.v1.ListRolePermissionsResponse
-	(*CreateBindingRequest)(nil),         // 31: platform.authorization.v1.CreateBindingRequest
-	(*CreateBindingResponse)(nil),        // 32: platform.authorization.v1.CreateBindingResponse
-	(*RevokeBindingRequest)(nil),         // 33: platform.authorization.v1.RevokeBindingRequest
-	(*RevokeBindingResponse)(nil),        // 34: platform.authorization.v1.RevokeBindingResponse
-	(*ListBindingsRequest)(nil),          // 35: platform.authorization.v1.ListBindingsRequest
-	(*ListBindingsResponse)(nil),         // 36: platform.authorization.v1.ListBindingsResponse
-	(*AuthorizationChangedEvent)(nil),    // 37: platform.authorization.v1.AuthorizationChangedEvent
-	nil,                                  // 38: platform.authorization.v1.CheckRequest.AttributesEntry
-	(*v1.RequestContext)(nil),            // 39: platform.common.v1.RequestContext
-	(*timestamppb.Timestamp)(nil),        // 40: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),               // 41: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                // 42: platform.common.v1.PageResult
+	(*UpdatePermissionRequest)(nil),      // 17: platform.authorization.v1.UpdatePermissionRequest
+	(*UpdatePermissionResponse)(nil),     // 18: platform.authorization.v1.UpdatePermissionResponse
+	(*ListPermissionsRequest)(nil),       // 19: platform.authorization.v1.ListPermissionsRequest
+	(*ListPermissionsResponse)(nil),      // 20: platform.authorization.v1.ListPermissionsResponse
+	(*CreateRoleRequest)(nil),            // 21: platform.authorization.v1.CreateRoleRequest
+	(*CreateRoleResponse)(nil),           // 22: platform.authorization.v1.CreateRoleResponse
+	(*UpdateRoleRequest)(nil),            // 23: platform.authorization.v1.UpdateRoleRequest
+	(*UpdateRoleResponse)(nil),           // 24: platform.authorization.v1.UpdateRoleResponse
+	(*ListRolesRequest)(nil),             // 25: platform.authorization.v1.ListRolesRequest
+	(*ListRolesResponse)(nil),            // 26: platform.authorization.v1.ListRolesResponse
+	(*GrantRolePermissionRequest)(nil),   // 27: platform.authorization.v1.GrantRolePermissionRequest
+	(*GrantRolePermissionResponse)(nil),  // 28: platform.authorization.v1.GrantRolePermissionResponse
+	(*RevokeRolePermissionRequest)(nil),  // 29: platform.authorization.v1.RevokeRolePermissionRequest
+	(*RevokeRolePermissionResponse)(nil), // 30: platform.authorization.v1.RevokeRolePermissionResponse
+	(*ListRolePermissionsRequest)(nil),   // 31: platform.authorization.v1.ListRolePermissionsRequest
+	(*ListRolePermissionsResponse)(nil),  // 32: platform.authorization.v1.ListRolePermissionsResponse
+	(*CreateBindingRequest)(nil),         // 33: platform.authorization.v1.CreateBindingRequest
+	(*CreateBindingResponse)(nil),        // 34: platform.authorization.v1.CreateBindingResponse
+	(*RevokeBindingRequest)(nil),         // 35: platform.authorization.v1.RevokeBindingRequest
+	(*RevokeBindingResponse)(nil),        // 36: platform.authorization.v1.RevokeBindingResponse
+	(*ListBindingsRequest)(nil),          // 37: platform.authorization.v1.ListBindingsRequest
+	(*ListBindingsResponse)(nil),         // 38: platform.authorization.v1.ListBindingsResponse
+	(*AuthorizationChangedEvent)(nil),    // 39: platform.authorization.v1.AuthorizationChangedEvent
+	nil,                                  // 40: platform.authorization.v1.CheckRequest.AttributesEntry
+	(*v1.RequestContext)(nil),            // 41: platform.common.v1.RequestContext
+	(*timestamppb.Timestamp)(nil),        // 42: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),               // 43: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                // 44: platform.common.v1.PageResult
 }
 var file_platform_authorization_v1_authorization_proto_depIdxs = []int32{
 	0,  // 0: platform.authorization.v1.Subject.type:type_name -> platform.authorization.v1.SubjectType
 	2,  // 1: platform.authorization.v1.CheckRequest.subject:type_name -> platform.authorization.v1.Subject
-	38, // 2: platform.authorization.v1.CheckRequest.attributes:type_name -> platform.authorization.v1.CheckRequest.AttributesEntry
-	39, // 3: platform.authorization.v1.CheckRequest.context:type_name -> platform.common.v1.RequestContext
+	40, // 2: platform.authorization.v1.CheckRequest.attributes:type_name -> platform.authorization.v1.CheckRequest.AttributesEntry
+	41, // 3: platform.authorization.v1.CheckRequest.context:type_name -> platform.common.v1.RequestContext
 	1,  // 4: platform.authorization.v1.CheckResponse.data_scope:type_name -> platform.authorization.v1.DataScopeType
 	3,  // 5: platform.authorization.v1.BatchCheckRequest.checks:type_name -> platform.authorization.v1.CheckRequest
 	4,  // 6: platform.authorization.v1.BatchCheckResponse.decisions:type_name -> platform.authorization.v1.CheckResponse
 	3,  // 7: platform.authorization.v1.ResolveDataScopeRequest.check:type_name -> platform.authorization.v1.CheckRequest
 	4,  // 8: platform.authorization.v1.ResolveDataScopeResponse.decision:type_name -> platform.authorization.v1.CheckResponse
 	2,  // 9: platform.authorization.v1.InvalidateSubjectRequest.subject:type_name -> platform.authorization.v1.Subject
-	40, // 10: platform.authorization.v1.Permission.created_at:type_name -> google.protobuf.Timestamp
-	40, // 11: platform.authorization.v1.Permission.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 12: platform.authorization.v1.Role.created_at:type_name -> google.protobuf.Timestamp
-	40, // 13: platform.authorization.v1.Role.updated_at:type_name -> google.protobuf.Timestamp
-	40, // 14: platform.authorization.v1.RolePermission.created_at:type_name -> google.protobuf.Timestamp
-	40, // 15: platform.authorization.v1.RolePermission.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 10: platform.authorization.v1.Permission.created_at:type_name -> google.protobuf.Timestamp
+	42, // 11: platform.authorization.v1.Permission.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 12: platform.authorization.v1.Role.created_at:type_name -> google.protobuf.Timestamp
+	42, // 13: platform.authorization.v1.Role.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 14: platform.authorization.v1.RolePermission.created_at:type_name -> google.protobuf.Timestamp
+	42, // 15: platform.authorization.v1.RolePermission.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 16: platform.authorization.v1.Binding.subject:type_name -> platform.authorization.v1.Subject
-	40, // 17: platform.authorization.v1.Binding.created_at:type_name -> google.protobuf.Timestamp
-	40, // 18: platform.authorization.v1.Binding.updated_at:type_name -> google.protobuf.Timestamp
+	42, // 17: platform.authorization.v1.Binding.created_at:type_name -> google.protobuf.Timestamp
+	42, // 18: platform.authorization.v1.Binding.updated_at:type_name -> google.protobuf.Timestamp
 	11, // 19: platform.authorization.v1.CreatePermissionResponse.permission:type_name -> platform.authorization.v1.Permission
-	41, // 20: platform.authorization.v1.ListPermissionsRequest.page:type_name -> platform.common.v1.PageRequest
-	11, // 21: platform.authorization.v1.ListPermissionsResponse.permissions:type_name -> platform.authorization.v1.Permission
-	42, // 22: platform.authorization.v1.ListPermissionsResponse.page:type_name -> platform.common.v1.PageResult
-	12, // 23: platform.authorization.v1.CreateRoleResponse.role:type_name -> platform.authorization.v1.Role
-	12, // 24: platform.authorization.v1.UpdateRoleResponse.role:type_name -> platform.authorization.v1.Role
-	41, // 25: platform.authorization.v1.ListRolesRequest.page:type_name -> platform.common.v1.PageRequest
-	12, // 26: platform.authorization.v1.ListRolesResponse.roles:type_name -> platform.authorization.v1.Role
-	42, // 27: platform.authorization.v1.ListRolesResponse.page:type_name -> platform.common.v1.PageResult
-	13, // 28: platform.authorization.v1.GrantRolePermissionResponse.role_permission:type_name -> platform.authorization.v1.RolePermission
-	13, // 29: platform.authorization.v1.RevokeRolePermissionResponse.role_permission:type_name -> platform.authorization.v1.RolePermission
-	13, // 30: platform.authorization.v1.ListRolePermissionsResponse.role_permissions:type_name -> platform.authorization.v1.RolePermission
-	2,  // 31: platform.authorization.v1.CreateBindingRequest.subject:type_name -> platform.authorization.v1.Subject
-	14, // 32: platform.authorization.v1.CreateBindingResponse.binding:type_name -> platform.authorization.v1.Binding
-	14, // 33: platform.authorization.v1.RevokeBindingResponse.binding:type_name -> platform.authorization.v1.Binding
-	2,  // 34: platform.authorization.v1.ListBindingsRequest.subject:type_name -> platform.authorization.v1.Subject
-	41, // 35: platform.authorization.v1.ListBindingsRequest.page:type_name -> platform.common.v1.PageRequest
-	14, // 36: platform.authorization.v1.ListBindingsResponse.bindings:type_name -> platform.authorization.v1.Binding
-	42, // 37: platform.authorization.v1.ListBindingsResponse.page:type_name -> platform.common.v1.PageResult
-	0,  // 38: platform.authorization.v1.AuthorizationChangedEvent.subject_type:type_name -> platform.authorization.v1.SubjectType
-	3,  // 39: platform.authorization.v1.AuthorizationService.Check:input_type -> platform.authorization.v1.CheckRequest
-	5,  // 40: platform.authorization.v1.AuthorizationService.BatchCheck:input_type -> platform.authorization.v1.BatchCheckRequest
-	7,  // 41: platform.authorization.v1.AuthorizationService.ResolveDataScope:input_type -> platform.authorization.v1.ResolveDataScopeRequest
-	9,  // 42: platform.authorization.v1.AuthorizationService.InvalidateSubject:input_type -> platform.authorization.v1.InvalidateSubjectRequest
-	15, // 43: platform.authorization.v1.AuthorizationService.CreatePermission:input_type -> platform.authorization.v1.CreatePermissionRequest
-	17, // 44: platform.authorization.v1.AuthorizationService.ListPermissions:input_type -> platform.authorization.v1.ListPermissionsRequest
-	19, // 45: platform.authorization.v1.AuthorizationService.CreateRole:input_type -> platform.authorization.v1.CreateRoleRequest
-	21, // 46: platform.authorization.v1.AuthorizationService.UpdateRole:input_type -> platform.authorization.v1.UpdateRoleRequest
-	23, // 47: platform.authorization.v1.AuthorizationService.ListRoles:input_type -> platform.authorization.v1.ListRolesRequest
-	25, // 48: platform.authorization.v1.AuthorizationService.GrantRolePermission:input_type -> platform.authorization.v1.GrantRolePermissionRequest
-	27, // 49: platform.authorization.v1.AuthorizationService.RevokeRolePermission:input_type -> platform.authorization.v1.RevokeRolePermissionRequest
-	29, // 50: platform.authorization.v1.AuthorizationService.ListRolePermissions:input_type -> platform.authorization.v1.ListRolePermissionsRequest
-	31, // 51: platform.authorization.v1.AuthorizationService.CreateBinding:input_type -> platform.authorization.v1.CreateBindingRequest
-	33, // 52: platform.authorization.v1.AuthorizationService.RevokeBinding:input_type -> platform.authorization.v1.RevokeBindingRequest
-	35, // 53: platform.authorization.v1.AuthorizationService.ListBindings:input_type -> platform.authorization.v1.ListBindingsRequest
-	4,  // 54: platform.authorization.v1.AuthorizationService.Check:output_type -> platform.authorization.v1.CheckResponse
-	6,  // 55: platform.authorization.v1.AuthorizationService.BatchCheck:output_type -> platform.authorization.v1.BatchCheckResponse
-	8,  // 56: platform.authorization.v1.AuthorizationService.ResolveDataScope:output_type -> platform.authorization.v1.ResolveDataScopeResponse
-	10, // 57: platform.authorization.v1.AuthorizationService.InvalidateSubject:output_type -> platform.authorization.v1.InvalidateSubjectResponse
-	16, // 58: platform.authorization.v1.AuthorizationService.CreatePermission:output_type -> platform.authorization.v1.CreatePermissionResponse
-	18, // 59: platform.authorization.v1.AuthorizationService.ListPermissions:output_type -> platform.authorization.v1.ListPermissionsResponse
-	20, // 60: platform.authorization.v1.AuthorizationService.CreateRole:output_type -> platform.authorization.v1.CreateRoleResponse
-	22, // 61: platform.authorization.v1.AuthorizationService.UpdateRole:output_type -> platform.authorization.v1.UpdateRoleResponse
-	24, // 62: platform.authorization.v1.AuthorizationService.ListRoles:output_type -> platform.authorization.v1.ListRolesResponse
-	26, // 63: platform.authorization.v1.AuthorizationService.GrantRolePermission:output_type -> platform.authorization.v1.GrantRolePermissionResponse
-	28, // 64: platform.authorization.v1.AuthorizationService.RevokeRolePermission:output_type -> platform.authorization.v1.RevokeRolePermissionResponse
-	30, // 65: platform.authorization.v1.AuthorizationService.ListRolePermissions:output_type -> platform.authorization.v1.ListRolePermissionsResponse
-	32, // 66: platform.authorization.v1.AuthorizationService.CreateBinding:output_type -> platform.authorization.v1.CreateBindingResponse
-	34, // 67: platform.authorization.v1.AuthorizationService.RevokeBinding:output_type -> platform.authorization.v1.RevokeBindingResponse
-	36, // 68: platform.authorization.v1.AuthorizationService.ListBindings:output_type -> platform.authorization.v1.ListBindingsResponse
-	54, // [54:69] is the sub-list for method output_type
-	39, // [39:54] is the sub-list for method input_type
-	39, // [39:39] is the sub-list for extension type_name
-	39, // [39:39] is the sub-list for extension extendee
-	0,  // [0:39] is the sub-list for field type_name
+	11, // 20: platform.authorization.v1.UpdatePermissionResponse.permission:type_name -> platform.authorization.v1.Permission
+	43, // 21: platform.authorization.v1.ListPermissionsRequest.page:type_name -> platform.common.v1.PageRequest
+	11, // 22: platform.authorization.v1.ListPermissionsResponse.permissions:type_name -> platform.authorization.v1.Permission
+	44, // 23: platform.authorization.v1.ListPermissionsResponse.page:type_name -> platform.common.v1.PageResult
+	12, // 24: platform.authorization.v1.CreateRoleResponse.role:type_name -> platform.authorization.v1.Role
+	12, // 25: platform.authorization.v1.UpdateRoleResponse.role:type_name -> platform.authorization.v1.Role
+	43, // 26: platform.authorization.v1.ListRolesRequest.page:type_name -> platform.common.v1.PageRequest
+	12, // 27: platform.authorization.v1.ListRolesResponse.roles:type_name -> platform.authorization.v1.Role
+	44, // 28: platform.authorization.v1.ListRolesResponse.page:type_name -> platform.common.v1.PageResult
+	13, // 29: platform.authorization.v1.GrantRolePermissionResponse.role_permission:type_name -> platform.authorization.v1.RolePermission
+	13, // 30: platform.authorization.v1.RevokeRolePermissionResponse.role_permission:type_name -> platform.authorization.v1.RolePermission
+	13, // 31: platform.authorization.v1.ListRolePermissionsResponse.role_permissions:type_name -> platform.authorization.v1.RolePermission
+	2,  // 32: platform.authorization.v1.CreateBindingRequest.subject:type_name -> platform.authorization.v1.Subject
+	14, // 33: platform.authorization.v1.CreateBindingResponse.binding:type_name -> platform.authorization.v1.Binding
+	14, // 34: platform.authorization.v1.RevokeBindingResponse.binding:type_name -> platform.authorization.v1.Binding
+	2,  // 35: platform.authorization.v1.ListBindingsRequest.subject:type_name -> platform.authorization.v1.Subject
+	43, // 36: platform.authorization.v1.ListBindingsRequest.page:type_name -> platform.common.v1.PageRequest
+	14, // 37: platform.authorization.v1.ListBindingsResponse.bindings:type_name -> platform.authorization.v1.Binding
+	44, // 38: platform.authorization.v1.ListBindingsResponse.page:type_name -> platform.common.v1.PageResult
+	0,  // 39: platform.authorization.v1.AuthorizationChangedEvent.subject_type:type_name -> platform.authorization.v1.SubjectType
+	3,  // 40: platform.authorization.v1.AuthorizationService.Check:input_type -> platform.authorization.v1.CheckRequest
+	5,  // 41: platform.authorization.v1.AuthorizationService.BatchCheck:input_type -> platform.authorization.v1.BatchCheckRequest
+	7,  // 42: platform.authorization.v1.AuthorizationService.ResolveDataScope:input_type -> platform.authorization.v1.ResolveDataScopeRequest
+	9,  // 43: platform.authorization.v1.AuthorizationService.InvalidateSubject:input_type -> platform.authorization.v1.InvalidateSubjectRequest
+	15, // 44: platform.authorization.v1.AuthorizationService.CreatePermission:input_type -> platform.authorization.v1.CreatePermissionRequest
+	17, // 45: platform.authorization.v1.AuthorizationService.UpdatePermission:input_type -> platform.authorization.v1.UpdatePermissionRequest
+	19, // 46: platform.authorization.v1.AuthorizationService.ListPermissions:input_type -> platform.authorization.v1.ListPermissionsRequest
+	21, // 47: platform.authorization.v1.AuthorizationService.CreateRole:input_type -> platform.authorization.v1.CreateRoleRequest
+	23, // 48: platform.authorization.v1.AuthorizationService.UpdateRole:input_type -> platform.authorization.v1.UpdateRoleRequest
+	25, // 49: platform.authorization.v1.AuthorizationService.ListRoles:input_type -> platform.authorization.v1.ListRolesRequest
+	27, // 50: platform.authorization.v1.AuthorizationService.GrantRolePermission:input_type -> platform.authorization.v1.GrantRolePermissionRequest
+	29, // 51: platform.authorization.v1.AuthorizationService.RevokeRolePermission:input_type -> platform.authorization.v1.RevokeRolePermissionRequest
+	31, // 52: platform.authorization.v1.AuthorizationService.ListRolePermissions:input_type -> platform.authorization.v1.ListRolePermissionsRequest
+	33, // 53: platform.authorization.v1.AuthorizationService.CreateBinding:input_type -> platform.authorization.v1.CreateBindingRequest
+	35, // 54: platform.authorization.v1.AuthorizationService.RevokeBinding:input_type -> platform.authorization.v1.RevokeBindingRequest
+	37, // 55: platform.authorization.v1.AuthorizationService.ListBindings:input_type -> platform.authorization.v1.ListBindingsRequest
+	4,  // 56: platform.authorization.v1.AuthorizationService.Check:output_type -> platform.authorization.v1.CheckResponse
+	6,  // 57: platform.authorization.v1.AuthorizationService.BatchCheck:output_type -> platform.authorization.v1.BatchCheckResponse
+	8,  // 58: platform.authorization.v1.AuthorizationService.ResolveDataScope:output_type -> platform.authorization.v1.ResolveDataScopeResponse
+	10, // 59: platform.authorization.v1.AuthorizationService.InvalidateSubject:output_type -> platform.authorization.v1.InvalidateSubjectResponse
+	16, // 60: platform.authorization.v1.AuthorizationService.CreatePermission:output_type -> platform.authorization.v1.CreatePermissionResponse
+	18, // 61: platform.authorization.v1.AuthorizationService.UpdatePermission:output_type -> platform.authorization.v1.UpdatePermissionResponse
+	20, // 62: platform.authorization.v1.AuthorizationService.ListPermissions:output_type -> platform.authorization.v1.ListPermissionsResponse
+	22, // 63: platform.authorization.v1.AuthorizationService.CreateRole:output_type -> platform.authorization.v1.CreateRoleResponse
+	24, // 64: platform.authorization.v1.AuthorizationService.UpdateRole:output_type -> platform.authorization.v1.UpdateRoleResponse
+	26, // 65: platform.authorization.v1.AuthorizationService.ListRoles:output_type -> platform.authorization.v1.ListRolesResponse
+	28, // 66: platform.authorization.v1.AuthorizationService.GrantRolePermission:output_type -> platform.authorization.v1.GrantRolePermissionResponse
+	30, // 67: platform.authorization.v1.AuthorizationService.RevokeRolePermission:output_type -> platform.authorization.v1.RevokeRolePermissionResponse
+	32, // 68: platform.authorization.v1.AuthorizationService.ListRolePermissions:output_type -> platform.authorization.v1.ListRolePermissionsResponse
+	34, // 69: platform.authorization.v1.AuthorizationService.CreateBinding:output_type -> platform.authorization.v1.CreateBindingResponse
+	36, // 70: platform.authorization.v1.AuthorizationService.RevokeBinding:output_type -> platform.authorization.v1.RevokeBindingResponse
+	38, // 71: platform.authorization.v1.AuthorizationService.ListBindings:output_type -> platform.authorization.v1.ListBindingsResponse
+	56, // [56:72] is the sub-list for method output_type
+	40, // [40:56] is the sub-list for method input_type
+	40, // [40:40] is the sub-list for extension type_name
+	40, // [40:40] is the sub-list for extension extendee
+	0,  // [0:40] is the sub-list for field type_name
 }
 
 func init() { file_platform_authorization_v1_authorization_proto_init() }
@@ -2783,7 +2919,7 @@ func file_platform_authorization_v1_authorization_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_authorization_v1_authorization_proto_rawDesc), len(file_platform_authorization_v1_authorization_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   37,
+			NumMessages:   39,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

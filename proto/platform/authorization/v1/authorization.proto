@@ -13,6 +13,7 @@ service AuthorizationService {
   rpc ResolveDataScope(ResolveDataScopeRequest) returns (ResolveDataScopeResponse);
   rpc InvalidateSubject(InvalidateSubjectRequest) returns (InvalidateSubjectResponse);
   rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+  rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse);
   rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
   rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse);
@@ -150,6 +151,16 @@ message CreatePermissionRequest {
   string condition_expression = 6;
 }
 message CreatePermissionResponse {
+  Permission permission = 1;
+}
+message UpdatePermissionRequest {
+  string permission_id = 1;
+  string name = 2;
+  string condition_expression = 3;
+  string status = 4;
+  int64 expected_version = 5;
+}
+message UpdatePermissionResponse {
   Permission permission = 1;
 }
 message ListPermissionsRequest {
