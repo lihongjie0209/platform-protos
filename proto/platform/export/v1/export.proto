@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package platform.export.v1;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "platform/common/v1/common.proto";
+
+option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/export/v1;exportv1";
+
+// ExportService owns asynchronous export jobs and result delivery. It reads
+// source rows only through ExportProviderService and never from another
+// service's database.
+service ExportService {
+  rpc CreateExportJob(CreateExportJobRequest) returns (CreateExportJobResponse);
+  rpc GetExportJob(GetExportJobRequest) returns (GetExportJobResponse);
+  rpc ListExportJobs(ListExportJobsRequest) returns (ListExportJobsResponse);
+  rpc CancelExportJob(CancelExportJobRequest) returns (CancelExportJobResponse);
+  rpc RetryExportJob(RetryExportJobRequest) returns (RetryExportJobResponse);
+  rpc CreateDownloadURL(CreateDownloadURLRequest) returns (CreateDownloadURLResponse);
+}
+
+// ExportProviderService is implemented by each source service that exposes an
+// exportable dataset. The shared contract avoids generated clients per domain.
+service ExportProviderService {
+  rpc DescribeDataset(DescribeDatasetRequest) returns (DescribeDatasetResponse);
+  rpc StreamRows(StreamRowsRequest) returns (stream StreamRowsResponse);
+}
+
+message ExportJob {
+  string id = 1;
+  string tenant_id = 2;
+  string dataset_code = 3;
+  string provider_service = 4;
+  string format = 5;
+  string filename = 6;
+  string query_json = 7;
+  string selected_columns_json = 8;
+  string status = 9;
+  int64 rows_exported = 10;
+  int64 bytes_written = 11;
+  int32 progress_percent = 12;
+  string object_key = 13;
+  string content_type = 14;
+  string checksum = 15;
+  string error_code = 16;
+  string error_message = 17;
+  google.protobuf.Timestamp started_at = 18;
+  google.protobuf.Timestamp completed_at = 19;
+  google.protobuf.Timestamp expires_at = 20;
+  int64 version = 21;
+  google.protobuf.Timestamp created_at = 22;
+  google.protobuf.Timestamp updated_at = 23;
+  string created_by = 24;
+  string updated_by = 25;
+}
+
+message ExportColumn {
+  string key = 1;
+  string title = 2;
+  string type = 3;
+  string format = 4;
+  bool sensitive = 5;
+}
+
+message DatasetDescriptor {
+  string code = 1;
+  string title = 2;
+  repeated ExportColumn columns = 3;
+  repeated string formats = 4;
+  int64 estimated_rows = 5;
+  bool supports_snapshot = 6;
+}
+
+message CreateExportJobRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+  string provider_service = 3;
+  string format = 4;
+  string filename = 5;
+  string query_json = 6;
+  string selected_columns_json = 7;
+  string idempotency_key = 8;
+}
+message CreateExportJobResponse {
+  ExportJob job = 1;
+  bool duplicate = 2;
+}
+
+message GetExportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+}
+message GetExportJobResponse {
+  ExportJob job = 1;
+}
+
+message ListExportJobsRequest {
+  string tenant_id = 1;
+  string status = 2;
+  string dataset_code = 3;
+  google.protobuf.Timestamp created_from = 4;
+  google.protobuf.Timestamp created_to = 5;
+  platform.common.v1.PageRequest page = 6;
+}
+message ListExportJobsResponse {
+  repeated ExportJob jobs = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message CancelExportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+}
+message CancelExportJobResponse {
+  ExportJob job = 1;
+}
+
+message RetryExportJobRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int64 version = 3;
+  string idempotency_key = 4;
+}
+message RetryExportJobResponse {
+  ExportJob job = 1;
+  bool duplicate = 2;
+}
+
+message CreateDownloadURLRequest {
+  string tenant_id = 1;
+  string id = 2;
+  int32 ttl_seconds = 3;
+}
+message CreateDownloadURLResponse {
+  string url = 1;
+  google.protobuf.Timestamp expires_at = 2;
+  string filename = 3;
+  string content_type = 4;
+  string checksum = 5;
+}
+
+message DescribeDatasetRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+}
+message DescribeDatasetResponse {
+  DatasetDescriptor dataset = 1;
+}
+
+message StreamRowsRequest {
+  string tenant_id = 1;
+  string dataset_code = 2;
+  string query_json = 3;
+  repeated string selected_columns = 4;
+  int32 batch_size = 5;
+  string cursor = 6;
+  string snapshot_token = 7;
+}
+message StreamRowsResponse {
+  repeated ExportColumn columns = 1;
+  repeated google.protobuf.Struct rows = 2;
+  string next_cursor = 3;
+  string snapshot_token = 4;
+  int64 estimated_total_rows = 5;
+  bool done = 6;
+}
+
+message ExportJobChangedEvent {
+  ExportJob job = 1;
+  string change_type = 2;
+}
