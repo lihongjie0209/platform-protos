@@ -734,6 +734,7 @@ type WorkflowInstance struct {
 	UpdatedAt          *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy          string                 `protobuf:"bytes,19,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy          string                 `protobuf:"bytes,20,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId      string                 `protobuf:"bytes,21,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -908,6 +909,13 @@ func (x *WorkflowInstance) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *WorkflowInstance) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type WorkflowTask struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -930,6 +938,7 @@ type WorkflowTask struct {
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy     string                 `protobuf:"bytes,19,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy     string                 `protobuf:"bytes,20,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,21,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1100,6 +1109,13 @@ func (x *WorkflowTask) GetCreatedBy() string {
 func (x *WorkflowTask) GetUpdatedBy() string {
 	if x != nil {
 		return x.UpdatedBy
+	}
+	return ""
+}
+
+func (x *WorkflowTask) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1389,6 +1405,7 @@ type PublishDefinitionRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1444,6 +1461,13 @@ func (x *PublishDefinitionRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *PublishDefinitionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type PublishDefinitionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Definition    *WorkflowDefinition    `protobuf:"bytes,1,opt,name=definition,proto3" json:"definition,omitempty"`
@@ -1493,6 +1517,7 @@ type DisableDefinitionRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1548,6 +1573,13 @@ func (x *DisableDefinitionRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *DisableDefinitionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type DisableDefinitionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Definition    *WorkflowDefinition    `protobuf:"bytes,1,opt,name=definition,proto3" json:"definition,omitempty"`
@@ -1597,6 +1629,7 @@ type GetDefinitionRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Revision      uint32                 `protobuf:"varint,3,opt,name=revision,proto3" json:"revision,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1650,6 +1683,13 @@ func (x *GetDefinitionRequest) GetRevision() uint32 {
 		return x.Revision
 	}
 	return 0
+}
+
+func (x *GetDefinitionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type GetDefinitionResponse struct {
@@ -1832,6 +1872,7 @@ type StartInstanceRequest struct {
 	Title          string                 `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`
 	VariablesJson  string                 `protobuf:"bytes,5,opt,name=variables_json,json=variablesJson,proto3" json:"variables_json,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,6,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1908,6 +1949,13 @@ func (x *StartInstanceRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *StartInstanceRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type StartInstanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Instance      *WorkflowInstance      `protobuf:"bytes,1,opt,name=instance,proto3" json:"instance,omitempty"`
@@ -1958,6 +2006,7 @@ type CancelInstanceRequest struct {
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Reason          string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -2020,6 +2069,13 @@ func (x *CancelInstanceRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *CancelInstanceRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CancelInstanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Instance      *WorkflowInstance      `protobuf:"bytes,1,opt,name=instance,proto3" json:"instance,omitempty"`
@@ -2068,6 +2124,7 @@ type GetInstanceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2112,6 +2169,13 @@ func (x *GetInstanceRequest) GetId() string {
 func (x *GetInstanceRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetInstanceRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -2170,6 +2234,7 @@ type ListInstancesRequest struct {
 	StartedFrom   *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=started_from,json=startedFrom,proto3" json:"started_from,omitempty"`
 	StartedUntil  *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=started_until,json=startedUntil,proto3" json:"started_until,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,8,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2260,6 +2325,13 @@ func (x *ListInstancesRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListInstancesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListInstancesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Instances     []*WorkflowInstance    `protobuf:"bytes,1,rep,name=instances,proto3" json:"instances,omitempty"`
@@ -2317,6 +2389,7 @@ type ClaimTaskRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -2372,6 +2445,13 @@ func (x *ClaimTaskRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *ClaimTaskRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ClaimTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Task          *WorkflowTask          `protobuf:"bytes,1,opt,name=task,proto3" json:"task,omitempty"`
@@ -2424,6 +2504,7 @@ type CompleteTaskRequest struct {
 	Comment         string                 `protobuf:"bytes,4,opt,name=comment,proto3" json:"comment,omitempty"`
 	OutputJson      string                 `protobuf:"bytes,5,opt,name=output_json,json=outputJson,proto3" json:"output_json,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,6,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -2500,6 +2581,13 @@ func (x *CompleteTaskRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *CompleteTaskRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CompleteTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Task          *WorkflowTask          `protobuf:"bytes,1,opt,name=task,proto3" json:"task,omitempty"`
@@ -2559,6 +2647,7 @@ type DelegateTaskRequest struct {
 	DelegateTo      string                 `protobuf:"bytes,3,opt,name=delegate_to,json=delegateTo,proto3" json:"delegate_to,omitempty"`
 	Reason          string                 `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -2628,6 +2717,13 @@ func (x *DelegateTaskRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *DelegateTaskRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type DelegateTaskResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Task          *WorkflowTask          `protobuf:"bytes,1,opt,name=task,proto3" json:"task,omitempty"`
@@ -2676,6 +2772,7 @@ type GetTaskRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2720,6 +2817,13 @@ func (x *GetTaskRequest) GetId() string {
 func (x *GetTaskRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetTaskRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -2785,6 +2889,7 @@ type ListTasksRequest struct {
 	IncludeUnclaimed bool            `protobuf:"varint,6,opt,name=include_unclaimed,json=includeUnclaimed,proto3" json:"include_unclaimed,omitempty"`
 	Search           string          `protobuf:"bytes,7,opt,name=search,proto3" json:"search,omitempty"`
 	Page             *v1.PageRequest `protobuf:"bytes,8,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId    string          `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -2875,6 +2980,13 @@ func (x *ListTasksRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *ListTasksRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ListTasksResponse struct {
@@ -3270,7 +3382,7 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x0e \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x0f \x01(\tR\tupdatedBy\"\xa5\x06\n" +
+	"updated_by\x18\x0f \x01(\tR\tupdatedBy\"\xcc\x06\n" +
 	"\x10WorkflowInstance\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12#\n" +
@@ -3301,7 +3413,8 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x13 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x14 \x01(\tR\tupdatedBy\"\xa1\x06\n" +
+	"updated_by\x18\x14 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x15 \x01(\tR\rapplicationId\"\xc8\x06\n" +
 	"\fWorkflowTask\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1f\n" +
@@ -3331,7 +3444,8 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x13 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x14 \x01(\tR\tupdatedBy\"\x99\x02\n" +
+	"updated_by\x18\x14 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x15 \x01(\tR\rapplicationId\"\x99\x02\n" +
 	"\x17CreateDefinitionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
 	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x10\n" +
@@ -3356,27 +3470,30 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\x18UpdateDefinitionResponse\x12H\n" +
 	"\n" +
 	"definition\x18\x01 \x01(\v2(.platform.workflow.v1.WorkflowDefinitionR\n" +
-	"definition\"r\n" +
+	"definition\"\x99\x01\n" +
 	"\x18PublishDefinitionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"e\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"e\n" +
 	"\x19PublishDefinitionResponse\x12H\n" +
 	"\n" +
 	"definition\x18\x01 \x01(\v2(.platform.workflow.v1.WorkflowDefinitionR\n" +
-	"definition\"r\n" +
+	"definition\"\x99\x01\n" +
 	"\x18DisableDefinitionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"e\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"e\n" +
 	"\x19DisableDefinitionResponse\x12H\n" +
 	"\n" +
 	"definition\x18\x01 \x01(\v2(.platform.workflow.v1.WorkflowDefinitionR\n" +
-	"definition\"_\n" +
+	"definition\"\x86\x01\n" +
 	"\x14GetDefinitionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1a\n" +
-	"\brevision\x18\x03 \x01(\rR\brevision\"a\n" +
+	"\brevision\x18\x03 \x01(\rR\brevision\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"a\n" +
 	"\x15GetDefinitionResponse\x12H\n" +
 	"\n" +
 	"definition\x18\x01 \x01(\v2(.platform.workflow.v1.WorkflowDefinitionR\n" +
@@ -3389,28 +3506,31 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x99\x01\n" +
 	"\x17ListDefinitionsResponse\x12J\n" +
 	"\vdefinitions\x18\x01 \x03(\v2(.platform.workflow.v1.WorkflowDefinitionR\vdefinitions\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xe3\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x8a\x02\n" +
 	"\x14StartInstanceRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
 	"\x0edefinition_key\x18\x02 \x01(\tR\rdefinitionKey\x12!\n" +
 	"\fbusiness_key\x18\x03 \x01(\tR\vbusinessKey\x12\x14\n" +
 	"\x05title\x18\x04 \x01(\tR\x05title\x12%\n" +
 	"\x0evariables_json\x18\x05 \x01(\tR\rvariablesJson\x12'\n" +
-	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\"[\n" +
+	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"[\n" +
 	"\x15StartInstanceResponse\x12B\n" +
-	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\x87\x01\n" +
+	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\xae\x01\n" +
 	"\x15CancelInstanceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06reason\x18\x03 \x01(\tR\x06reason\x12)\n" +
-	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\"\\\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\\\n" +
 	"\x16CancelInstanceResponse\x12B\n" +
-	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"A\n" +
+	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"h\n" +
 	"\x12GetInstanceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"Y\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"Y\n" +
 	"\x13GetInstanceResponse\x12B\n" +
-	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\x82\x03\n" +
+	"\binstance\x18\x01 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\xa9\x03\n" +
 	"\x14ListInstancesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12#\n" +
 	"\rdefinition_id\x18\x02 \x01(\tR\fdefinitionId\x12<\n" +
@@ -3420,16 +3540,18 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\x06search\x18\x05 \x01(\tR\x06search\x12=\n" +
 	"\fstarted_from\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\vstartedFrom\x12?\n" +
 	"\rstarted_until\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\fstartedUntil\x123\n" +
-	"\x04page\x18\b \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x91\x01\n" +
+	"\x04page\x18\b \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\"\x91\x01\n" +
 	"\x15ListInstancesResponse\x12D\n" +
 	"\tinstances\x18\x01 \x03(\v2&.platform.workflow.v1.WorkflowInstanceR\tinstances\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"j\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x91\x01\n" +
 	"\x10ClaimTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"K\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"K\n" +
 	"\x11ClaimTaskResponse\x126\n" +
-	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"\xe8\x01\n" +
+	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"\x8f\x02\n" +
 	"\x13CompleteTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12>\n" +
@@ -3437,24 +3559,27 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\acomment\x18\x04 \x01(\tR\acomment\x12\x1f\n" +
 	"\voutput_json\x18\x05 \x01(\tR\n" +
 	"outputJson\x12)\n" +
-	"\x10expected_version\x18\x06 \x01(\x03R\x0fexpectedVersion\"\x92\x01\n" +
+	"\x10expected_version\x18\x06 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\x92\x01\n" +
 	"\x14CompleteTaskResponse\x126\n" +
 	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\x12B\n" +
-	"\binstance\x18\x02 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\xa6\x01\n" +
+	"\binstance\x18\x02 \x01(\v2&.platform.workflow.v1.WorkflowInstanceR\binstance\"\xcd\x01\n" +
 	"\x13DelegateTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1f\n" +
 	"\vdelegate_to\x18\x03 \x01(\tR\n" +
 	"delegateTo\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\x12)\n" +
-	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"N\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"N\n" +
 	"\x14DelegateTaskResponse\x126\n" +
-	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"=\n" +
+	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"d\n" +
 	"\x0eGetTaskRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"I\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"I\n" +
 	"\x0fGetTaskResponse\x126\n" +
-	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"\xd1\x02\n" +
+	"\x04task\x18\x01 \x01(\v2\".platform.workflow.v1.WorkflowTaskR\x04task\"\xf8\x02\n" +
 	"\x10ListTasksRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1f\n" +
 	"\vinstance_id\x18\x02 \x01(\tR\n" +
@@ -3464,7 +3589,8 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\brole_ids\x18\x05 \x03(\tB\x02\x18\x01R\aroleIds\x12/\n" +
 	"\x11include_unclaimed\x18\x06 \x01(\bB\x02\x18\x01R\x10includeUnclaimed\x12\x16\n" +
 	"\x06search\x18\a \x01(\tR\x06search\x123\n" +
-	"\x04page\x18\b \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x81\x01\n" +
+	"\x04page\x18\b \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\"\x81\x01\n" +
 	"\x11ListTasksResponse\x128\n" +
 	"\x05tasks\x18\x01 \x03(\v2\".platform.workflow.v1.WorkflowTaskR\x05tasks\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"d\n" +
