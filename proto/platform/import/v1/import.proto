@@ -61,6 +61,7 @@ message ImportJob {
   google.protobuf.Timestamp updated_at = 26;
   string created_by = 27;
   string updated_by = 28;
+  string application_id = 29;
 }
 
 message ImportColumn {
@@ -96,6 +97,7 @@ message ListImportDatasetsRequest {
   string tenant_id = 1;
   string search = 2;
   platform.common.v1.PageRequest page = 3;
+  string application_id = 4;
 }
 message ListImportDatasetsResponse {
   repeated ImportDatasetSummary datasets = 1;
@@ -106,6 +108,7 @@ message DescribeAvailableImportDatasetRequest {
   string tenant_id = 1;
   string provider_service = 2;
   string dataset_code = 3;
+  string application_id = 4;
 }
 message DescribeAvailableImportDatasetResponse {
   ImportDatasetDescriptor dataset = 1;
@@ -125,6 +128,7 @@ message CreateImportJobRequest {
   string format = 4;
   string filename = 5;
   string idempotency_key = 6;
+  string application_id = 7;
 }
 message CreateImportJobResponse {
   ImportJob job = 1;
@@ -140,6 +144,7 @@ message CompleteUploadRequest {
   int64 version = 3;
   int64 source_bytes = 4;
   string source_checksum = 5;
+  string application_id = 6;
 }
 message CompleteUploadResponse {
   ImportJob job = 1;
@@ -148,6 +153,7 @@ message CompleteUploadResponse {
 message GetImportJobRequest {
   string tenant_id = 1;
   string id = 2;
+  string application_id = 3;
 }
 message GetImportJobResponse {
   ImportJob job = 1;
@@ -160,6 +166,7 @@ message ListImportJobsRequest {
   google.protobuf.Timestamp created_from = 4;
   google.protobuf.Timestamp created_to = 5;
   platform.common.v1.PageRequest page = 6;
+  string application_id = 7;
 }
 message ListImportJobsResponse {
   repeated ImportJob jobs = 1;
@@ -170,6 +177,7 @@ message CancelImportJobRequest {
   string tenant_id = 1;
   string id = 2;
   int64 version = 3;
+  string application_id = 4;
 }
 message CancelImportJobResponse {
   ImportJob job = 1;
@@ -180,6 +188,7 @@ message RetryImportJobRequest {
   string id = 2;
   int64 version = 3;
   string idempotency_key = 4;
+  string application_id = 5;
 }
 message RetryImportJobResponse {
   ImportJob job = 1;
@@ -194,6 +203,7 @@ message ConfirmImportJobRequest {
   string id = 2;
   int64 version = 3;
   string idempotency_key = 4;
+  string application_id = 5;
 }
 message ConfirmImportJobResponse {
   ImportJob job = 1;
@@ -204,6 +214,7 @@ message CreateErrorReportDownloadURLRequest {
   string tenant_id = 1;
   string id = 2;
   int32 ttl_seconds = 3;
+  string application_id = 4;
 }
 message CreateErrorReportDownloadURLResponse {
   string url = 1;
@@ -215,6 +226,7 @@ message CreateErrorReportDownloadURLResponse {
 message DescribeImportDatasetRequest {
   string tenant_id = 1;
   string dataset_code = 2;
+  string application_id = 3;
 }
 message DescribeImportDatasetResponse {
   ImportDatasetDescriptor dataset = 1;
@@ -227,6 +239,7 @@ message ValidateRowsRequest {
   int64 batch_number = 4;
   int64 first_row_number = 5;
   repeated google.protobuf.Struct rows = 6;
+  string application_id = 7;
 }
 message ValidateRowsResponse {
   int64 batch_number = 1;
@@ -241,6 +254,7 @@ message ApplyRowsRequest {
   int64 batch_number = 4;
   repeated google.protobuf.Struct rows = 5;
   string idempotency_key = 6;
+  string application_id = 7;
 }
 message ApplyRowsResponse {
   int64 batch_number = 1;

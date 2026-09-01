@@ -54,6 +54,7 @@ type ImportJob struct {
 	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,26,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy            string                 `protobuf:"bytes,27,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy            string                 `protobuf:"bytes,28,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId        string                 `protobuf:"bytes,29,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -280,6 +281,13 @@ func (x *ImportJob) GetCreatedBy() string {
 func (x *ImportJob) GetUpdatedBy() string {
 	if x != nil {
 		return x.UpdatedBy
+	}
+	return ""
+}
+
+func (x *ImportJob) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -557,6 +565,7 @@ type ListImportDatasetsRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Search        string                 `protobuf:"bytes,2,opt,name=search,proto3" json:"search,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,3,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -610,6 +619,13 @@ func (x *ListImportDatasetsRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *ListImportDatasetsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ListImportDatasetsResponse struct {
@@ -669,6 +685,7 @@ type DescribeAvailableImportDatasetRequest struct {
 	TenantId        string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ProviderService string                 `protobuf:"bytes,2,opt,name=provider_service,json=providerService,proto3" json:"provider_service,omitempty"`
 	DatasetCode     string                 `protobuf:"bytes,3,opt,name=dataset_code,json=datasetCode,proto3" json:"dataset_code,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -720,6 +737,13 @@ func (x *DescribeAvailableImportDatasetRequest) GetProviderService() string {
 func (x *DescribeAvailableImportDatasetRequest) GetDatasetCode() string {
 	if x != nil {
 		return x.DatasetCode
+	}
+	return ""
+}
+
+func (x *DescribeAvailableImportDatasetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -844,6 +868,7 @@ type CreateImportJobRequest struct {
 	Format          string                 `protobuf:"bytes,4,opt,name=format,proto3" json:"format,omitempty"`
 	Filename        string                 `protobuf:"bytes,5,opt,name=filename,proto3" json:"filename,omitempty"`
 	IdempotencyKey  string                 `protobuf:"bytes,6,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -916,6 +941,13 @@ func (x *CreateImportJobRequest) GetFilename() string {
 func (x *CreateImportJobRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *CreateImportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1003,6 +1035,7 @@ type CompleteUploadRequest struct {
 	Version        int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
 	SourceBytes    int64                  `protobuf:"varint,4,opt,name=source_bytes,json=sourceBytes,proto3" json:"source_bytes,omitempty"`
 	SourceChecksum string                 `protobuf:"bytes,5,opt,name=source_checksum,json=sourceChecksum,proto3" json:"source_checksum,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1072,6 +1105,13 @@ func (x *CompleteUploadRequest) GetSourceChecksum() string {
 	return ""
 }
 
+func (x *CompleteUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CompleteUploadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ImportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -1120,6 +1160,7 @@ type GetImportJobRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1164,6 +1205,13 @@ func (x *GetImportJobRequest) GetTenantId() string {
 func (x *GetImportJobRequest) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+func (x *GetImportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1220,6 +1268,7 @@ type ListImportJobsRequest struct {
 	CreatedFrom   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_from,json=createdFrom,proto3" json:"created_from,omitempty"`
 	CreatedTo     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_to,json=createdTo,proto3" json:"created_to,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1296,6 +1345,13 @@ func (x *ListImportJobsRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListImportJobsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListImportJobsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Jobs          []*ImportJob           `protobuf:"bytes,1,rep,name=jobs,proto3" json:"jobs,omitempty"`
@@ -1353,6 +1409,7 @@ type CancelImportJobRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Version       int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1408,6 +1465,13 @@ func (x *CancelImportJobRequest) GetVersion() int64 {
 	return 0
 }
 
+func (x *CancelImportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CancelImportJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ImportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -1458,6 +1522,7 @@ type RetryImportJobRequest struct {
 	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Version        int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1516,6 +1581,13 @@ func (x *RetryImportJobRequest) GetVersion() int64 {
 func (x *RetryImportJobRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *RetryImportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1602,6 +1674,7 @@ type ConfirmImportJobRequest struct {
 	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Version        int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1664,6 +1737,13 @@ func (x *ConfirmImportJobRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *ConfirmImportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ConfirmImportJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ImportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -1721,6 +1801,7 @@ type CreateErrorReportDownloadURLRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	TtlSeconds    int32                  `protobuf:"varint,3,opt,name=ttl_seconds,json=ttlSeconds,proto3" json:"ttl_seconds,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1774,6 +1855,13 @@ func (x *CreateErrorReportDownloadURLRequest) GetTtlSeconds() int32 {
 		return x.TtlSeconds
 	}
 	return 0
+}
+
+func (x *CreateErrorReportDownloadURLRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type CreateErrorReportDownloadURLResponse struct {
@@ -1848,6 +1936,7 @@ type DescribeImportDatasetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	DatasetCode   string                 `protobuf:"bytes,2,opt,name=dataset_code,json=datasetCode,proto3" json:"dataset_code,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1892,6 +1981,13 @@ func (x *DescribeImportDatasetRequest) GetTenantId() string {
 func (x *DescribeImportDatasetRequest) GetDatasetCode() string {
 	if x != nil {
 		return x.DatasetCode
+	}
+	return ""
+}
+
+func (x *DescribeImportDatasetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1948,6 +2044,7 @@ type ValidateRowsRequest struct {
 	BatchNumber    int64                  `protobuf:"varint,4,opt,name=batch_number,json=batchNumber,proto3" json:"batch_number,omitempty"`
 	FirstRowNumber int64                  `protobuf:"varint,5,opt,name=first_row_number,json=firstRowNumber,proto3" json:"first_row_number,omitempty"`
 	Rows           []*structpb.Struct     `protobuf:"bytes,6,rep,name=rows,proto3" json:"rows,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -2024,6 +2121,13 @@ func (x *ValidateRowsRequest) GetRows() []*structpb.Struct {
 	return nil
 }
 
+func (x *ValidateRowsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ValidateRowsResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	BatchNumber    int64                  `protobuf:"varint,1,opt,name=batch_number,json=batchNumber,proto3" json:"batch_number,omitempty"`
@@ -2092,6 +2196,7 @@ type ApplyRowsRequest struct {
 	BatchNumber    int64                  `protobuf:"varint,4,opt,name=batch_number,json=batchNumber,proto3" json:"batch_number,omitempty"`
 	Rows           []*structpb.Struct     `protobuf:"bytes,5,rep,name=rows,proto3" json:"rows,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,6,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -2164,6 +2269,13 @@ func (x *ApplyRowsRequest) GetRows() []*structpb.Struct {
 func (x *ApplyRowsRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *ApplyRowsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -2284,7 +2396,7 @@ var File_platform_import_v1_import_proto protoreflect.FileDescriptor
 
 const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\n" +
-	"\x1fplatform/import/v1/import.proto\x12\x12platform.import.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\x80\t\n" +
+	"\x1fplatform/import/v1/import.proto\x12\x12platform.import.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xa7\t\n" +
 	"\tImportJob\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12!\n" +
@@ -2322,7 +2434,8 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x1b \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x1c \x01(\tR\tupdatedBy\"\xc0\x01\n" +
+	"updated_by\x18\x1c \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x1d \x01(\tR\rapplicationId\"\xc0\x01\n" +
 	"\fImportColumn\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -2345,18 +2458,20 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\aformats\x18\x04 \x03(\tR\aformats\x12$\n" +
 	"\x0emax_batch_size\x18\x05 \x01(\x05R\fmaxBatchSize\x12(\n" +
 	"\x10supports_dry_run\x18\x06 \x01(\bR\x0esupportsDryRun\x12+\n" +
-	"\x11healthy_instances\x18\a \x01(\x05R\x10healthyInstances\"\x85\x01\n" +
+	"\x11healthy_instances\x18\a \x01(\x05R\x10healthyInstances\"\xac\x01\n" +
 	"\x19ListImportDatasetsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06search\x18\x02 \x01(\tR\x06search\x123\n" +
-	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x96\x01\n" +
+	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x96\x01\n" +
 	"\x1aListImportDatasetsResponse\x12D\n" +
 	"\bdatasets\x18\x01 \x03(\v2(.platform.import.v1.ImportDatasetSummaryR\bdatasets\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x92\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xb9\x01\n" +
 	"%DescribeAvailableImportDatasetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12)\n" +
 	"\x10provider_service\x18\x02 \x01(\tR\x0fproviderService\x12!\n" +
-	"\fdataset_code\x18\x03 \x01(\tR\vdatasetCode\"o\n" +
+	"\fdataset_code\x18\x03 \x01(\tR\vdatasetCode\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"o\n" +
 	"&DescribeAvailableImportDatasetResponse\x12E\n" +
 	"\adataset\x18\x01 \x01(\v2+.platform.import.v1.ImportDatasetDescriptorR\adataset\"v\n" +
 	"\bRowIssue\x12\x1d\n" +
@@ -2365,14 +2480,15 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\n" +
 	"column_key\x18\x02 \x01(\tR\tcolumnKey\x12\x12\n" +
 	"\x04code\x18\x03 \x01(\tR\x04code\x12\x18\n" +
-	"\amessage\x18\x04 \x01(\tR\amessage\"\xe0\x01\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\"\x87\x02\n" +
 	"\x16CreateImportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
 	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12)\n" +
 	"\x10provider_service\x18\x03 \x01(\tR\x0fproviderService\x12\x16\n" +
 	"\x06format\x18\x04 \x01(\tR\x06format\x12\x1a\n" +
 	"\bfilename\x18\x05 \x01(\tR\bfilename\x12'\n" +
-	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\"\xff\x02\n" +
+	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\xff\x02\n" +
 	"\x17CreateImportJobResponse\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\x12\x1d\n" +
 	"\n" +
@@ -2382,20 +2498,22 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\tduplicate\x18\x05 \x01(\bR\tduplicate\x1a@\n" +
 	"\x12UploadHeadersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xaa\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd1\x01\n" +
 	"\x15CompleteUploadRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\x03R\aversion\x12!\n" +
 	"\fsource_bytes\x18\x04 \x01(\x03R\vsourceBytes\x12'\n" +
-	"\x0fsource_checksum\x18\x05 \x01(\tR\x0esourceChecksum\"I\n" +
+	"\x0fsource_checksum\x18\x05 \x01(\tR\x0esourceChecksum\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"I\n" +
 	"\x16CompleteUploadResponse\x12/\n" +
-	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"B\n" +
+	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"i\n" +
 	"\x13GetImportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"G\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"G\n" +
 	"\x14GetImportJobResponse\x12/\n" +
-	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"\x9e\x02\n" +
+	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"\xc5\x02\n" +
 	"\x15ListImportJobsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12!\n" +
@@ -2403,21 +2521,24 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\fcreated_from\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vcreatedFrom\x129\n" +
 	"\n" +
 	"created_to\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedTo\x123\n" +
-	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x7f\n" +
+	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\x7f\n" +
 	"\x16ListImportJobsResponse\x121\n" +
 	"\x04jobs\x18\x01 \x03(\v2\x1d.platform.import.v1.ImportJobR\x04jobs\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"_\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x86\x01\n" +
 	"\x16CancelImportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x03R\aversion\"J\n" +
+	"\aversion\x18\x03 \x01(\x03R\aversion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"J\n" +
 	"\x17CancelImportJobResponse\x12/\n" +
-	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"\x87\x01\n" +
+	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\"\xae\x01\n" +
 	"\x15RetryImportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\x03R\aversion\x12'\n" +
-	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\"\xfd\x02\n" +
+	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\xfd\x02\n" +
 	"\x16RetryImportJobResponse\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\x12\x1d\n" +
 	"\n" +
@@ -2427,49 +2548,54 @@ const file_platform_import_v1_import_proto_rawDesc = "" +
 	"\tduplicate\x18\x05 \x01(\bR\tduplicate\x1a@\n" +
 	"\x12UploadHeadersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x89\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb0\x01\n" +
 	"\x17ConfirmImportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\x03R\aversion\x12'\n" +
-	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\"i\n" +
+	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"i\n" +
 	"\x18ConfirmImportJobResponse\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.import.v1.ImportJobR\x03job\x12\x1c\n" +
-	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"s\n" +
+	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"\x9a\x01\n" +
 	"#CreateErrorReportDownloadURLRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x1f\n" +
 	"\vttl_seconds\x18\x03 \x01(\x05R\n" +
-	"ttlSeconds\"\xb2\x01\n" +
+	"ttlSeconds\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\xb2\x01\n" +
 	"$CreateErrorReportDownloadURLResponse\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x129\n" +
 	"\n" +
 	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12\x1a\n" +
 	"\bfilename\x18\x03 \x01(\tR\bfilename\x12!\n" +
-	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\"^\n" +
+	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\"\x85\x01\n" +
 	"\x1cDescribeImportDatasetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
-	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\"f\n" +
+	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"f\n" +
 	"\x1dDescribeImportDatasetResponse\x12E\n" +
-	"\adataset\x18\x01 \x01(\v2+.platform.import.v1.ImportDatasetDescriptorR\adataset\"\xe6\x01\n" +
+	"\adataset\x18\x01 \x01(\v2+.platform.import.v1.ImportDatasetDescriptorR\adataset\"\x8d\x02\n" +
 	"\x13ValidateRowsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
 	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12\x15\n" +
 	"\x06job_id\x18\x03 \x01(\tR\x05jobId\x12!\n" +
 	"\fbatch_number\x18\x04 \x01(\x03R\vbatchNumber\x12(\n" +
 	"\x10first_row_number\x18\x05 \x01(\x03R\x0efirstRowNumber\x12+\n" +
-	"\x04rows\x18\x06 \x03(\v2\x17.google.protobuf.StructR\x04rows\"\xb1\x01\n" +
+	"\x04rows\x18\x06 \x03(\v2\x17.google.protobuf.StructR\x04rows\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\xb1\x01\n" +
 	"\x14ValidateRowsResponse\x12!\n" +
 	"\fbatch_number\x18\x01 \x01(\x03R\vbatchNumber\x12@\n" +
 	"\x0fnormalized_rows\x18\x02 \x03(\v2\x17.google.protobuf.StructR\x0enormalizedRows\x124\n" +
-	"\x06issues\x18\x03 \x03(\v2\x1c.platform.import.v1.RowIssueR\x06issues\"\xe2\x01\n" +
+	"\x06issues\x18\x03 \x03(\v2\x1c.platform.import.v1.RowIssueR\x06issues\"\x89\x02\n" +
 	"\x10ApplyRowsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
 	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12\x15\n" +
 	"\x06job_id\x18\x03 \x01(\tR\x05jobId\x12!\n" +
 	"\fbatch_number\x18\x04 \x01(\x03R\vbatchNumber\x12+\n" +
 	"\x04rows\x18\x05 \x03(\v2\x17.google.protobuf.StructR\x04rows\x12'\n" +
-	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\"\x8f\x01\n" +
+	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\x8f\x01\n" +
 	"\x11ApplyRowsResponse\x12!\n" +
 	"\fbatch_number\x18\x01 \x01(\x03R\vbatchNumber\x12!\n" +
 	"\fapplied_rows\x18\x02 \x01(\x03R\vappliedRows\x124\n" +
