@@ -33,6 +33,7 @@ message AuditRecord {
   google.protobuf.Timestamp updated_at = 16;
   string created_by = 17;
   string updated_by = 18;
+  string application_id = 19;
 }
 
 message RecordRequest {
@@ -59,6 +60,7 @@ message QueryRequest {
   google.protobuf.Timestamp occurred_from = 7;
   google.protobuf.Timestamp occurred_to = 8;
   platform.common.v1.PageRequest page = 9;
+  string application_id = 10;
 }
 message QueryResponse {
   repeated AuditRecord records = 1;

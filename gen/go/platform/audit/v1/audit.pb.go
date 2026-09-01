@@ -43,6 +43,7 @@ type AuditRecord struct {
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy     string                 `protobuf:"bytes,17,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy     string                 `protobuf:"bytes,18,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,19,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -199,6 +200,13 @@ func (x *AuditRecord) GetCreatedBy() string {
 func (x *AuditRecord) GetUpdatedBy() string {
 	if x != nil {
 		return x.UpdatedBy
+	}
+	return ""
+}
+
+func (x *AuditRecord) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -406,6 +414,7 @@ type QueryRequest struct {
 	OccurredFrom  *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=occurred_from,json=occurredFrom,proto3" json:"occurred_from,omitempty"`
 	OccurredTo    *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=occurred_to,json=occurredTo,proto3" json:"occurred_to,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,10,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -501,6 +510,13 @@ func (x *QueryRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *QueryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type QueryResponse struct {
@@ -723,7 +739,7 @@ var File_platform_audit_v1_audit_proto protoreflect.FileDescriptor
 
 const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x1dplatform/audit/v1/audit.proto\x12\x11platform.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\x8a\x05\n" +
+	"\x1dplatform/audit/v1/audit.proto\x12\x11platform.audit.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xb1\x05\n" +
 	"\vAuditRecord\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x19\n" +
@@ -751,7 +767,8 @@ const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x11 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x12 \x01(\tR\tupdatedBy\"p\n" +
+	"updated_by\x18\x12 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x13 \x01(\tR\rapplicationId\"p\n" +
 	"\rRecordRequest\x126\n" +
 	"\x06record\x18\x01 \x01(\v2\x1e.platform.audit.v1.AuditRecordR\x06record\x12'\n" +
 	"\x0fidempotency_key\x18\x02 \x01(\tR\x0eidempotencyKey\"H\n" +
@@ -762,7 +779,7 @@ const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"E\n" +
 	"\vGetResponse\x126\n" +
-	"\x06record\x18\x01 \x01(\v2\x1e.platform.audit.v1.AuditRecordR\x06record\"\xf6\x02\n" +
+	"\x06record\x18\x01 \x01(\v2\x1e.platform.audit.v1.AuditRecordR\x06record\"\x9d\x03\n" +
 	"\fQueryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
 	"\bactor_id\x18\x02 \x01(\tR\aactorId\x12\x16\n" +
@@ -775,7 +792,9 @@ const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"\roccurred_from\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\foccurredFrom\x12;\n" +
 	"\voccurred_to\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredTo\x123\n" +
-	"\x04page\x18\t \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"}\n" +
+	"\x04page\x18\t \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\n" +
+	" \x01(\tR\rapplicationId\"}\n" +
 	"\rQueryResponse\x128\n" +
 	"\arecords\x18\x01 \x03(\v2\x1e.platform.audit.v1.AuditRecordR\arecords\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"i\n" +
