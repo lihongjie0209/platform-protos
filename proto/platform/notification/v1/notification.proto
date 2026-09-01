@@ -29,6 +29,7 @@ message Template {
   google.protobuf.Timestamp updated_at = 11;
   string created_by = 12;
   string updated_by = 13;
+  string application_id = 14;
 }
 message Delivery {
   string id = 1;
@@ -48,6 +49,7 @@ message Delivery {
   google.protobuf.Timestamp updated_at = 15;
   string created_by = 16;
   string updated_by = 17;
+  string application_id = 18;
 }
 message PutTemplateRequest {
   Template template = 1;
@@ -62,6 +64,7 @@ message ListTemplatesRequest {
   string channel = 3;
   string status = 4;
   platform.common.v1.PageRequest page = 5;
+  string application_id = 6;
 }
 message ListTemplatesResponse {
   repeated Template templates = 1;
@@ -75,6 +78,7 @@ message SendRequest {
   string recipient = 5;
   map<string, string> variables = 6;
   string idempotency_key = 7;
+  string application_id = 8;
 }
 message SendResponse {
   Delivery delivery = 1;
@@ -85,6 +89,7 @@ message RecordProviderReceiptRequest {
   string provider_message_id = 3;
   string status = 4;
   string failure_reason = 5;
+  string application_id = 6;
 }
 message RecordProviderReceiptResponse {
   Delivery delivery = 1;
@@ -92,6 +97,7 @@ message RecordProviderReceiptResponse {
 message GetDeliveryRequest {
   string id = 1;
   string tenant_id = 2;
+  string application_id = 3;
 }
 message GetDeliveryResponse {
   Delivery delivery = 1;
@@ -100,6 +106,7 @@ message ListDeliveriesRequest {
   string tenant_id = 1;
   string status = 2;
   platform.common.v1.PageRequest page = 3;
+  string application_id = 4;
 }
 message ListDeliveriesResponse {
   repeated Delivery deliveries = 1;

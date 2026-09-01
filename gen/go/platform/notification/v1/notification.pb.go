@@ -38,6 +38,7 @@ type Template struct {
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy     string                 `protobuf:"bytes,12,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy     string                 `protobuf:"bytes,13,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,14,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -163,6 +164,13 @@ func (x *Template) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *Template) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type Delivery struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -182,6 +190,7 @@ type Delivery struct {
 	UpdatedAt         *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy         string                 `protobuf:"bytes,16,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy         string                 `protobuf:"bytes,17,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId     string                 `protobuf:"bytes,18,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -335,6 +344,13 @@ func (x *Delivery) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *Delivery) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type PutTemplateRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Template        *Template              `protobuf:"bytes,1,opt,name=template,proto3" json:"template,omitempty"`
@@ -438,6 +454,7 @@ type ListTemplatesRequest struct {
 	Channel       string                 `protobuf:"bytes,3,opt,name=channel,proto3" json:"channel,omitempty"`
 	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -507,6 +524,13 @@ func (x *ListTemplatesRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListTemplatesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListTemplatesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Templates     []*Template            `protobuf:"bytes,1,rep,name=templates,proto3" json:"templates,omitempty"`
@@ -568,6 +592,7 @@ type SendRequest struct {
 	Recipient      string                 `protobuf:"bytes,5,opt,name=recipient,proto3" json:"recipient,omitempty"`
 	Variables      map[string]string      `protobuf:"bytes,6,rep,name=variables,proto3" json:"variables,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	IdempotencyKey string                 `protobuf:"bytes,7,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,8,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -651,6 +676,13 @@ func (x *SendRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *SendRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type SendResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Delivery      *Delivery              `protobuf:"bytes,1,opt,name=delivery,proto3" json:"delivery,omitempty"`
@@ -702,6 +734,7 @@ type RecordProviderReceiptRequest struct {
 	ProviderMessageId string                 `protobuf:"bytes,3,opt,name=provider_message_id,json=providerMessageId,proto3" json:"provider_message_id,omitempty"`
 	Status            string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
 	FailureReason     string                 `protobuf:"bytes,5,opt,name=failure_reason,json=failureReason,proto3" json:"failure_reason,omitempty"`
+	ApplicationId     string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -771,6 +804,13 @@ func (x *RecordProviderReceiptRequest) GetFailureReason() string {
 	return ""
 }
 
+func (x *RecordProviderReceiptRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type RecordProviderReceiptResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Delivery      *Delivery              `protobuf:"bytes,1,opt,name=delivery,proto3" json:"delivery,omitempty"`
@@ -819,6 +859,7 @@ type GetDeliveryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -863,6 +904,13 @@ func (x *GetDeliveryRequest) GetId() string {
 func (x *GetDeliveryRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetDeliveryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -916,6 +964,7 @@ type ListDeliveriesRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,3,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -969,6 +1018,13 @@ func (x *ListDeliveriesRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *ListDeliveriesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ListDeliveriesResponse struct {
@@ -1115,7 +1171,7 @@ var File_platform_notification_v1_notification_proto protoreflect.FileDescriptor
 
 const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\n" +
-	"+platform/notification/v1/notification.proto\x12\x18platform.notification.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\x97\x03\n" +
+	"+platform/notification/v1/notification.proto\x12\x18platform.notification.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xbe\x03\n" +
 	"\bTemplate\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
@@ -1134,7 +1190,8 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\r \x01(\tR\tupdatedBy\"\xdc\x05\n" +
+	"updated_by\x18\r \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x0e \x01(\tR\rapplicationId\"\x83\x06\n" +
 	"\bDelivery\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12#\n" +
@@ -1157,7 +1214,8 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x10 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x11 \x01(\tR\tupdatedBy\x1a<\n" +
+	"updated_by\x18\x11 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x12 \x01(\tR\rapplicationId\x1a<\n" +
 	"\x0eVariablesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x7f\n" +
@@ -1165,16 +1223,17 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\x12)\n" +
 	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"U\n" +
 	"\x13PutTemplateResponse\x12>\n" +
-	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\"\xb4\x01\n" +
+	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\"\xdb\x01\n" +
 	"\x14ListTemplatesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x18\n" +
 	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x18\n" +
 	"\achannel\x18\x03 \x01(\tR\achannel\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x123\n" +
-	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x8d\x01\n" +
+	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x8d\x01\n" +
 	"\x15ListTemplatesResponse\x12@\n" +
 	"\ttemplates\x18\x01 \x03(\v2\".platform.notification.v1.TemplateR\ttemplates\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xda\x02\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x81\x03\n" +
 	"\vSendRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12#\n" +
 	"\rtemplate_code\x18\x02 \x01(\tR\ftemplateCode\x12\x18\n" +
@@ -1182,29 +1241,33 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\x06locale\x18\x04 \x01(\tR\x06locale\x12\x1c\n" +
 	"\trecipient\x18\x05 \x01(\tR\trecipient\x12R\n" +
 	"\tvariables\x18\x06 \x03(\v24.platform.notification.v1.SendRequest.VariablesEntryR\tvariables\x12'\n" +
-	"\x0fidempotency_key\x18\a \x01(\tR\x0eidempotencyKey\x1a<\n" +
+	"\x0fidempotency_key\x18\a \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\x1a<\n" +
 	"\x0eVariablesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"N\n" +
 	"\fSendResponse\x12>\n" +
-	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"\xc6\x01\n" +
+	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"\xed\x01\n" +
 	"\x1cRecordProviderReceiptRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1a\n" +
 	"\bprovider\x18\x02 \x01(\tR\bprovider\x12.\n" +
 	"\x13provider_message_id\x18\x03 \x01(\tR\x11providerMessageId\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x12%\n" +
-	"\x0efailure_reason\x18\x05 \x01(\tR\rfailureReason\"_\n" +
+	"\x0efailure_reason\x18\x05 \x01(\tR\rfailureReason\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"_\n" +
 	"\x1dRecordProviderReceiptResponse\x12>\n" +
-	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"A\n" +
+	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"h\n" +
 	"\x12GetDeliveryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"U\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"U\n" +
 	"\x13GetDeliveryResponse\x12>\n" +
-	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"\x81\x01\n" +
+	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"\xa8\x01\n" +
 	"\x15ListDeliveriesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x123\n" +
-	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x90\x01\n" +
+	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x90\x01\n" +
 	"\x16ListDeliveriesResponse\x12B\n" +
 	"\n" +
 	"deliveries\x18\x01 \x03(\v2\".platform.notification.v1.DeliveryR\n" +
