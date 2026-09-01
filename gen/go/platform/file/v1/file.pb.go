@@ -45,6 +45,7 @@ type FileMetadata struct {
 	PartSize          int64                  `protobuf:"varint,19,opt,name=part_size,json=partSize,proto3" json:"part_size,omitempty"`
 	PartCount         int32                  `protobuf:"varint,20,opt,name=part_count,json=partCount,proto3" json:"part_count,omitempty"`
 	UploadExpiresAt   *timestamppb.Timestamp `protobuf:"bytes,21,opt,name=upload_expires_at,json=uploadExpiresAt,proto3" json:"upload_expires_at,omitempty"`
+	ApplicationId     string                 `protobuf:"bytes,22,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -226,6 +227,13 @@ func (x *FileMetadata) GetUploadExpiresAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *FileMetadata) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type InitiateUploadRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -234,6 +242,7 @@ type InitiateUploadRequest struct {
 	Size           int64                  `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
 	ChecksumSha256 string                 `protobuf:"bytes,5,opt,name=checksum_sha256,json=checksumSha256,proto3" json:"checksum_sha256,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,6,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -306,6 +315,13 @@ func (x *InitiateUploadRequest) GetChecksumSha256() string {
 func (x *InitiateUploadRequest) GetIdempotencyKey() string {
 	if x != nil {
 		return x.IdempotencyKey
+	}
+	return ""
+}
+
+func (x *InitiateUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -387,6 +403,7 @@ type InitiateMultipartUploadRequest struct {
 	ChecksumSha256 string                 `protobuf:"bytes,5,opt,name=checksum_sha256,json=checksumSha256,proto3" json:"checksum_sha256,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,6,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
 	PartSize       int64                  `protobuf:"varint,7,opt,name=part_size,json=partSize,proto3" json:"part_size,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,8,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -470,6 +487,13 @@ func (x *InitiateMultipartUploadRequest) GetPartSize() int64 {
 	return 0
 }
 
+func (x *InitiateMultipartUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type InitiateMultipartUploadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	File          *FileMetadata          `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
@@ -551,6 +575,7 @@ type AuthorizeUploadPartRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	PartNumber    int32                  `protobuf:"varint,3,opt,name=part_number,json=partNumber,proto3" json:"part_number,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -604,6 +629,13 @@ func (x *AuthorizeUploadPartRequest) GetPartNumber() int32 {
 		return x.PartNumber
 	}
 	return 0
+}
+
+func (x *AuthorizeUploadPartRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type AuthorizeUploadPartResponse struct {
@@ -725,6 +757,7 @@ type CompleteMultipartUploadRequest struct {
 	Parts           []*CompletedPart       `protobuf:"bytes,3,rep,name=parts,proto3" json:"parts,omitempty"`
 	ChecksumSha256  string                 `protobuf:"bytes,4,opt,name=checksum_sha256,json=checksumSha256,proto3" json:"checksum_sha256,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -794,6 +827,13 @@ func (x *CompleteMultipartUploadRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *CompleteMultipartUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CompleteMultipartUploadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	File          *FileMetadata          `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
@@ -843,6 +883,7 @@ type AbortMultipartUploadRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -898,6 +939,13 @@ func (x *AbortMultipartUploadRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *AbortMultipartUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type AbortMultipartUploadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	File          *FileMetadata          `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
@@ -948,6 +996,7 @@ type CompleteUploadRequest struct {
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ChecksumSha256  string                 `protobuf:"bytes,3,opt,name=checksum_sha256,json=checksumSha256,proto3" json:"checksum_sha256,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1010,6 +1059,13 @@ func (x *CompleteUploadRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *CompleteUploadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CompleteUploadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	File          *FileMetadata          `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
@@ -1060,6 +1116,7 @@ type ReportScanResultRequest struct {
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ScanStatus      string                 `protobuf:"bytes,3,opt,name=scan_status,json=scanStatus,proto3" json:"scan_status,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,4,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1122,6 +1179,13 @@ func (x *ReportScanResultRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *ReportScanResultRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ReportScanResultResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	File          *FileMetadata          `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
@@ -1170,6 +1234,7 @@ type AuthorizeDownloadRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1214,6 +1279,13 @@ func (x *AuthorizeDownloadRequest) GetId() string {
 func (x *AuthorizeDownloadRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *AuthorizeDownloadRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1274,6 +1346,7 @@ type GetMetadataRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1318,6 +1391,13 @@ func (x *GetMetadataRequest) GetId() string {
 func (x *GetMetadataRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetMetadataRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1371,6 +1451,7 @@ type DeleteRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1424,6 +1505,13 @@ func (x *DeleteRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *DeleteRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type DeleteResponse struct {
@@ -1518,7 +1606,7 @@ var File_platform_file_v1_file_proto protoreflect.FileDescriptor
 
 const file_platform_file_v1_file_proto_rawDesc = "" +
 	"\n" +
-	"\x1bplatform/file/v1/file.proto\x12\x10platform.file.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe5\x05\n" +
+	"\x1bplatform/file/v1/file.proto\x12\x10platform.file.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x06\n" +
 	"\fFileMetadata\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x19\n" +
@@ -1549,14 +1637,16 @@ const file_platform_file_v1_file_proto_rawDesc = "" +
 	"\tpart_size\x18\x13 \x01(\x03R\bpartSize\x12\x1d\n" +
 	"\n" +
 	"part_count\x18\x14 \x01(\x05R\tpartCount\x12F\n" +
-	"\x11upload_expires_at\x18\x15 \x01(\v2\x1a.google.protobuf.TimestampR\x0fuploadExpiresAt\"\xd9\x01\n" +
+	"\x11upload_expires_at\x18\x15 \x01(\v2\x1a.google.protobuf.TimestampR\x0fuploadExpiresAt\x12%\n" +
+	"\x0eapplication_id\x18\x16 \x01(\tR\rapplicationId\"\x80\x02\n" +
 	"\x15InitiateUploadRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1a\n" +
 	"\bfilename\x18\x02 \x01(\tR\bfilename\x12!\n" +
 	"\fcontent_type\x18\x03 \x01(\tR\vcontentType\x12\x12\n" +
 	"\x04size\x18\x04 \x01(\x03R\x04size\x12'\n" +
 	"\x0fchecksum_sha256\x18\x05 \x01(\tR\x0echecksumSha256\x12'\n" +
-	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\"\xb3\x02\n" +
+	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\xb3\x02\n" +
 	"\x16InitiateUploadResponse\x122\n" +
 	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\x12\x1d\n" +
 	"\n" +
@@ -1566,7 +1656,7 @@ const file_platform_file_v1_file_proto_rawDesc = "" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x1a:\n" +
 	"\fHeadersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xff\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa6\x02\n" +
 	"\x1eInitiateMultipartUploadRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1a\n" +
 	"\bfilename\x18\x02 \x01(\tR\bfilename\x12!\n" +
@@ -1574,7 +1664,8 @@ const file_platform_file_v1_file_proto_rawDesc = "" +
 	"\x04size\x18\x04 \x01(\x03R\x04size\x12'\n" +
 	"\x0fchecksum_sha256\x18\x05 \x01(\tR\x0echecksumSha256\x12'\n" +
 	"\x0fidempotency_key\x18\x06 \x01(\tR\x0eidempotencyKey\x12\x1b\n" +
-	"\tpart_size\x18\a \x01(\x03R\bpartSize\"\xe9\x01\n" +
+	"\tpart_size\x18\a \x01(\x03R\bpartSize\x12%\n" +
+	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\"\xe9\x01\n" +
 	"\x1fInitiateMultipartUploadResponse\x122\n" +
 	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\x12\x1b\n" +
 	"\tupload_id\x18\x02 \x01(\tR\buploadId\x12\x1b\n" +
@@ -1582,12 +1673,13 @@ const file_platform_file_v1_file_proto_rawDesc = "" +
 	"\n" +
 	"part_count\x18\x04 \x01(\x05R\tpartCount\x129\n" +
 	"\n" +
-	"expires_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"j\n" +
+	"expires_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"\x91\x01\n" +
 	"\x1aAuthorizeUploadPartRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1f\n" +
 	"\vpart_number\x18\x03 \x01(\x05R\n" +
-	"partNumber\"\x89\x02\n" +
+	"partNumber\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x89\x02\n" +
 	"\x1bAuthorizeUploadPartResponse\x12\x1d\n" +
 	"\n" +
 	"upload_url\x18\x01 \x01(\tR\tuploadUrl\x12T\n" +
@@ -1600,52 +1692,59 @@ const file_platform_file_v1_file_proto_rawDesc = "" +
 	"\rCompletedPart\x12\x1f\n" +
 	"\vpart_number\x18\x01 \x01(\x05R\n" +
 	"partNumber\x12\x12\n" +
-	"\x04etag\x18\x02 \x01(\tR\x04etag\"\xd8\x01\n" +
+	"\x04etag\x18\x02 \x01(\tR\x04etag\"\xff\x01\n" +
 	"\x1eCompleteMultipartUploadRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x125\n" +
 	"\x05parts\x18\x03 \x03(\v2\x1f.platform.file.v1.CompletedPartR\x05parts\x12'\n" +
 	"\x0fchecksum_sha256\x18\x04 \x01(\tR\x0echecksumSha256\x12)\n" +
-	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"U\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"U\n" +
 	"\x1fCompleteMultipartUploadResponse\x122\n" +
-	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"u\n" +
+	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\x9c\x01\n" +
 	"\x1bAbortMultipartUploadRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"R\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"R\n" +
 	"\x1cAbortMultipartUploadResponse\x122\n" +
-	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\x98\x01\n" +
+	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\xbf\x01\n" +
 	"\x15CompleteUploadRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12'\n" +
 	"\x0fchecksum_sha256\x18\x03 \x01(\tR\x0echecksumSha256\x12)\n" +
-	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\"L\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"L\n" +
 	"\x16CompleteUploadResponse\x122\n" +
-	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\x92\x01\n" +
+	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\xb9\x01\n" +
 	"\x17ReportScanResultRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1f\n" +
 	"\vscan_status\x18\x03 \x01(\tR\n" +
 	"scanStatus\x12)\n" +
-	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\"N\n" +
+	"\x10expected_version\x18\x04 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"N\n" +
 	"\x18ReportScanResultResponse\x122\n" +
-	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"G\n" +
+	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"n\n" +
 	"\x18AuthorizeDownloadRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"y\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"y\n" +
 	"\x19AuthorizeDownloadResponse\x12!\n" +
 	"\fdownload_url\x18\x01 \x01(\tR\vdownloadUrl\x129\n" +
 	"\n" +
-	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"A\n" +
+	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"h\n" +
 	"\x12GetMetadataRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"I\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"I\n" +
 	"\x13GetMetadataResponse\x122\n" +
-	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"g\n" +
+	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"\x8e\x01\n" +
 	"\rDeleteRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"D\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"D\n" +
 	"\x0eDeleteResponse\x122\n" +
 	"\x04file\x18\x01 \x01(\v2\x1e.platform.file.v1.FileMetadataR\x04file\"L\n" +
 	"\x16FileStatusChangedEvent\x122\n" +
