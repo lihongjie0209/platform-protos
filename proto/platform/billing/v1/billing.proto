@@ -7,7 +7,7 @@ import "platform/common/v1/common.proto";
 
 option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/billing/v1;billingv1";
 
-// BillingService owns commercial plans, tenant subscriptions, invoices,
+// BillingService owns commercial plans, application-scoped subscriptions, invoices,
 // payments, refunds, and reconciliation. It reads usage through Metering APIs
 // or events and never reads another service's schema.
 service BillingService {
@@ -88,6 +88,7 @@ message Subscription {
   string updated_by = 14;
   string pending_plan_id = 15;
   google.protobuf.Timestamp pending_change_at = 16;
+  string application_id = 17;
 }
 
 message Invoice {
@@ -113,6 +114,7 @@ message Invoice {
   google.protobuf.Timestamp updated_at = 20;
   string created_by = 21;
   string updated_by = 22;
+  string application_id = 23;
 }
 
 message InvoiceLine {
@@ -151,6 +153,7 @@ message PaymentAttempt {
   google.protobuf.Timestamp updated_at = 15;
   string created_by = 16;
   string updated_by = 17;
+  string application_id = 18;
 }
 
 message Refund {
@@ -167,6 +170,8 @@ message Refund {
   google.protobuf.Timestamp updated_at = 11;
   string created_by = 12;
   string updated_by = 13;
+  string application_id = 14;
+  string tenant_id = 15;
 }
 
 message CreatePlanRequest {
@@ -238,6 +243,7 @@ message CreateSubscriptionRequest {
   google.protobuf.Timestamp starts_at = 3;
   string external_reference = 4;
   string idempotency_key = 5;
+  string application_id = 6;
 }
 message CreateSubscriptionResponse {
   Subscription subscription = 1;
@@ -248,6 +254,7 @@ message ChangeSubscriptionRequest {
   string effective_mode = 3;
   int64 version = 4;
   string tenant_id = 5;
+  string application_id = 6;
 }
 message ChangeSubscriptionResponse {
   Subscription subscription = 1;
@@ -257,6 +264,7 @@ message CancelSubscriptionRequest {
   bool at_period_end = 2;
   int64 version = 3;
   string tenant_id = 4;
+  string application_id = 5;
 }
 message CancelSubscriptionResponse {
   Subscription subscription = 1;
@@ -264,6 +272,7 @@ message CancelSubscriptionResponse {
 message GetSubscriptionRequest {
   string tenant_id = 1;
   string id = 2;
+  string application_id = 3;
 }
 message GetSubscriptionResponse {
   Subscription subscription = 1;
@@ -273,6 +282,7 @@ message ListSubscriptionsRequest {
   string tenant_id = 1;
   string status = 2;
   platform.common.v1.PageRequest page = 3;
+  string application_id = 4;
 }
 message ListSubscriptionsResponse {
   repeated Subscription subscriptions = 1;
@@ -284,6 +294,7 @@ message PreviewInvoiceRequest {
   string subscription_id = 2;
   google.protobuf.Timestamp period_start = 3;
   google.protobuf.Timestamp period_end = 4;
+  string application_id = 5;
 }
 message PreviewInvoiceResponse {
   Invoice invoice = 1;
@@ -295,6 +306,7 @@ message GenerateInvoiceRequest {
   google.protobuf.Timestamp period_start = 3;
   google.protobuf.Timestamp period_end = 4;
   string idempotency_key = 5;
+  string application_id = 6;
 }
 message GenerateInvoiceResponse {
   Invoice invoice = 1;
@@ -306,6 +318,7 @@ message FinalizeInvoiceRequest {
   google.protobuf.Timestamp due_at = 2;
   int64 version = 3;
   string tenant_id = 4;
+  string application_id = 5;
 }
 message FinalizeInvoiceResponse {
   Invoice invoice = 1;
@@ -315,6 +328,7 @@ message VoidInvoiceRequest {
   string reason = 2;
   int64 version = 3;
   string tenant_id = 4;
+  string application_id = 5;
 }
 message VoidInvoiceResponse {
   Invoice invoice = 1;
@@ -322,6 +336,7 @@ message VoidInvoiceResponse {
 message GetInvoiceRequest {
   string tenant_id = 1;
   string id = 2;
+  string application_id = 3;
 }
 message GetInvoiceResponse {
   Invoice invoice = 1;
@@ -333,6 +348,7 @@ message ListInvoicesRequest {
   google.protobuf.Timestamp created_from = 3;
   google.protobuf.Timestamp created_to = 4;
   platform.common.v1.PageRequest page = 5;
+  string application_id = 6;
 }
 message ListInvoicesResponse {
   repeated Invoice invoices = 1;
@@ -345,6 +361,7 @@ message CreatePaymentAttemptRequest {
   string payment_method_reference = 3;
   string idempotency_key = 4;
   string tenant_id = 5;
+  string application_id = 6;
 }
 message CreatePaymentAttemptResponse {
   PaymentAttempt payment_attempt = 1;
@@ -372,6 +389,7 @@ message RecordRefundRequest {
   string reason = 5;
   string status = 6;
   string tenant_id = 7;
+  string application_id = 8;
 }
 message RecordRefundResponse {
   Refund refund = 1;

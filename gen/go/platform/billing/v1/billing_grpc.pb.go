@@ -46,7 +46,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// BillingService owns commercial plans, tenant subscriptions, invoices,
+// BillingService owns commercial plans, application-scoped subscriptions, invoices,
 // payments, refunds, and reconciliation. It reads usage through Metering APIs
 // or events and never reads another service's schema.
 type BillingServiceClient interface {
@@ -295,7 +295,7 @@ func (c *billingServiceClient) ReconcilePayment(ctx context.Context, in *Reconci
 // All implementations must embed UnimplementedBillingServiceServer
 // for forward compatibility.
 //
-// BillingService owns commercial plans, tenant subscriptions, invoices,
+// BillingService owns commercial plans, application-scoped subscriptions, invoices,
 // payments, refunds, and reconciliation. It reads usage through Metering APIs
 // or events and never reads another service's schema.
 type BillingServiceServer interface {
