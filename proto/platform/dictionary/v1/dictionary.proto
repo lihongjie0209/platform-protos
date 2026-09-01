@@ -67,6 +67,7 @@ message Dictionary {
   int64 published_version = 9;
   google.protobuf.Struct metadata = 10;
   AuditFields audit = 11;
+  string application_id = 12;
 }
 
 message DictionaryItem {
@@ -106,6 +107,7 @@ message CreateDictionaryRequest {
   string name = 3;
   string description = 4;
   google.protobuf.Struct metadata = 5;
+  string application_id = 6;
 }
 message CreateDictionaryResponse {
   Dictionary dictionary = 1;
@@ -124,6 +126,7 @@ message UpdateDictionaryResponse {
 message GetDictionaryRequest {
   string tenant_id = 1;
   string code = 2;
+  string application_id = 3;
 }
 message GetDictionaryResponse {
   Dictionary dictionary = 1;
@@ -133,6 +136,7 @@ message ListDictionariesRequest {
   string status = 2;
   string keyword = 3;
   platform.common.v1.PageRequest page = 4;
+  string application_id = 5;
 }
 message ListDictionariesResponse {
   repeated Dictionary dictionaries = 1;
@@ -164,6 +168,7 @@ message QueryRequest {
   string tenant_id = 1;
   string dictionary_code = 2;
   SearchSpec search = 3;
+  string application_id = 4;
 }
 message QueryResponse {
   repeated DictionaryItem items = 1;
@@ -178,6 +183,7 @@ message TreeRequest {
   uint32 max_depth = 6;
   uint32 max_nodes = 7;
   map<string, string> filters = 8;
+  string application_id = 9;
 }
 message TreeNode {
   DictionaryItem item = 1;
@@ -191,6 +197,7 @@ message ResolveCodesRequest {
   string tenant_id = 1;
   string dictionary_code = 2;
   repeated string codes = 3;
+  string application_id = 4;
 }
 message ResolvedCode {
   string code = 1;

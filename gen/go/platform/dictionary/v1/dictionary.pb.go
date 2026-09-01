@@ -214,6 +214,7 @@ type Dictionary struct {
 	PublishedVersion int64                  `protobuf:"varint,9,opt,name=published_version,json=publishedVersion,proto3" json:"published_version,omitempty"`
 	Metadata         *structpb.Struct       `protobuf:"bytes,10,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	Audit            *AuditFields           `protobuf:"bytes,11,opt,name=audit,proto3" json:"audit,omitempty"`
+	ApplicationId    string                 `protobuf:"bytes,12,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -323,6 +324,13 @@ func (x *Dictionary) GetAudit() *AuditFields {
 		return x.Audit
 	}
 	return nil
+}
+
+func (x *Dictionary) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type DictionaryItem struct {
@@ -616,6 +624,7 @@ type CreateDictionaryRequest struct {
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Metadata      *structpb.Struct       `protobuf:"bytes,5,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -683,6 +692,13 @@ func (x *CreateDictionaryRequest) GetMetadata() *structpb.Struct {
 		return x.Metadata
 	}
 	return nil
+}
+
+func (x *CreateDictionaryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type CreateDictionaryResponse struct {
@@ -861,6 +877,7 @@ type GetDictionaryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -905,6 +922,13 @@ func (x *GetDictionaryRequest) GetTenantId() string {
 func (x *GetDictionaryRequest) GetCode() string {
 	if x != nil {
 		return x.Code
+	}
+	return ""
+}
+
+func (x *GetDictionaryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -959,6 +983,7 @@ type ListDictionariesRequest struct {
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 	Keyword       string                 `protobuf:"bytes,3,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1019,6 +1044,13 @@ func (x *ListDictionariesRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *ListDictionariesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ListDictionariesResponse struct {
@@ -1374,6 +1406,7 @@ type QueryRequest struct {
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	DictionaryCode string                 `protobuf:"bytes,2,opt,name=dictionary_code,json=dictionaryCode,proto3" json:"dictionary_code,omitempty"`
 	Search         *SearchSpec            `protobuf:"bytes,3,opt,name=search,proto3" json:"search,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1427,6 +1460,13 @@ func (x *QueryRequest) GetSearch() *SearchSpec {
 		return x.Search
 	}
 	return nil
+}
+
+func (x *QueryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type QueryResponse struct {
@@ -1491,6 +1531,7 @@ type TreeRequest struct {
 	MaxDepth       uint32                 `protobuf:"varint,6,opt,name=max_depth,json=maxDepth,proto3" json:"max_depth,omitempty"`
 	MaxNodes       uint32                 `protobuf:"varint,7,opt,name=max_nodes,json=maxNodes,proto3" json:"max_nodes,omitempty"`
 	Filters        map[string]string      `protobuf:"bytes,8,rep,name=filters,proto3" json:"filters,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ApplicationId  string                 `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1579,6 +1620,13 @@ func (x *TreeRequest) GetFilters() map[string]string {
 		return x.Filters
 	}
 	return nil
+}
+
+func (x *TreeRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type TreeNode struct {
@@ -1690,6 +1738,7 @@ type ResolveCodesRequest struct {
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	DictionaryCode string                 `protobuf:"bytes,2,opt,name=dictionary_code,json=dictionaryCode,proto3" json:"dictionary_code,omitempty"`
 	Codes          []string               `protobuf:"bytes,3,rep,name=codes,proto3" json:"codes,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1743,6 +1792,13 @@ func (x *ResolveCodesRequest) GetCodes() []string {
 		return x.Codes
 	}
 	return nil
+}
+
+func (x *ResolveCodesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ResolvedCode struct {
@@ -2967,7 +3023,7 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"created_by\x18\x03 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
 	"updated_by\x18\x04 \x01(\tR\tupdatedBy\x12\x18\n" +
-	"\aversion\x18\x05 \x01(\x03R\aversion\"\x95\x03\n" +
+	"\aversion\x18\x05 \x01(\x03R\aversion\"\xbc\x03\n" +
 	"\n" +
 	"Dictionary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
@@ -2982,7 +3038,8 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\x11published_version\x18\t \x01(\x03R\x10publishedVersion\x123\n" +
 	"\bmetadata\x18\n" +
 	" \x01(\v2\x17.google.protobuf.StructR\bmetadata\x129\n" +
-	"\x05audit\x18\v \x01(\v2#.platform.dictionary.v1.AuditFieldsR\x05audit\"\x86\x03\n" +
+	"\x05audit\x18\v \x01(\v2#.platform.dictionary.v1.AuditFieldsR\x05audit\x12%\n" +
+	"\x0eapplication_id\x18\f \x01(\tR\rapplicationId\"\x86\x03\n" +
 	"\x0eDictionaryItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
 	"\x0fdictionary_code\x18\x02 \x01(\tR\x0edictionaryCode\x12\x12\n" +
@@ -3018,13 +3075,14 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\x04page\x18\x01 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\x12\x1f\n" +
 	"\vnext_cursor\x18\x02 \x01(\tR\n" +
 	"nextCursor\x12\x19\n" +
-	"\bhas_more\x18\x03 \x01(\bR\ahasMore\"\xb5\x01\n" +
+	"\bhas_more\x18\x03 \x01(\bR\ahasMore\"\xdc\x01\n" +
 	"\x17CreateDictionaryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x123\n" +
-	"\bmetadata\x18\x05 \x01(\v2\x17.google.protobuf.StructR\bmetadata\"^\n" +
+	"\bmetadata\x18\x05 \x01(\v2\x17.google.protobuf.StructR\bmetadata\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"^\n" +
 	"\x18CreateDictionaryResponse\x12B\n" +
 	"\n" +
 	"dictionary\x18\x01 \x01(\v2\".platform.dictionary.v1.DictionaryR\n" +
@@ -3039,19 +3097,21 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\x18UpdateDictionaryResponse\x12B\n" +
 	"\n" +
 	"dictionary\x18\x01 \x01(\v2\".platform.dictionary.v1.DictionaryR\n" +
-	"dictionary\"G\n" +
+	"dictionary\"n\n" +
 	"\x14GetDictionaryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\"[\n" +
+	"\x04code\x18\x02 \x01(\tR\x04code\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"[\n" +
 	"\x15GetDictionaryResponse\x12B\n" +
 	"\n" +
 	"dictionary\x18\x01 \x01(\v2\".platform.dictionary.v1.DictionaryR\n" +
-	"dictionary\"\x9d\x01\n" +
+	"dictionary\"\xc4\x01\n" +
 	"\x17ListDictionariesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x18\n" +
 	"\akeyword\x18\x03 \x01(\tR\akeyword\x123\n" +
-	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x96\x01\n" +
+	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x96\x01\n" +
 	"\x18ListDictionariesResponse\x12F\n" +
 	"\fdictionaries\x18\x01 \x03(\v2\".platform.dictionary.v1.DictionaryR\fdictionaries\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"w\n" +
@@ -3070,14 +3130,15 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\acomment\x18\x03 \x01(\tR\acomment\"\x86\x01\n" +
 	"\x19PublishDictionaryResponse\x12+\n" +
 	"\x11published_version\x18\x01 \x01(\x03R\x10publishedVersion\x12<\n" +
-	"\x05items\x18\x02 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\"\x90\x01\n" +
+	"\x05items\x18\x02 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\"\xb7\x01\n" +
 	"\fQueryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12'\n" +
 	"\x0fdictionary_code\x18\x02 \x01(\tR\x0edictionaryCode\x12:\n" +
-	"\x06search\x18\x03 \x01(\v2\".platform.dictionary.v1.SearchSpecR\x06search\"\x89\x01\n" +
+	"\x06search\x18\x03 \x01(\v2\".platform.dictionary.v1.SearchSpecR\x06search\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x89\x01\n" +
 	"\rQueryResponse\x12<\n" +
 	"\x05items\x18\x01 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\x12:\n" +
-	"\x06result\x18\x02 \x01(\v2\".platform.dictionary.v1.ResultPageR\x06result\"\x82\x03\n" +
+	"\x06result\x18\x02 \x01(\v2\".platform.dictionary.v1.ResultPageR\x06result\"\xa9\x03\n" +
 	"\vTreeRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12'\n" +
 	"\x0fdictionary_code\x18\x02 \x01(\tR\x0edictionaryCode\x124\n" +
@@ -3086,7 +3147,8 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\akeyword\x18\x05 \x01(\tR\akeyword\x12\x1b\n" +
 	"\tmax_depth\x18\x06 \x01(\rR\bmaxDepth\x12\x1b\n" +
 	"\tmax_nodes\x18\a \x01(\rR\bmaxNodes\x12J\n" +
-	"\afilters\x18\b \x03(\v20.platform.dictionary.v1.TreeRequest.FiltersEntryR\afilters\x1a:\n" +
+	"\afilters\x18\b \x03(\v20.platform.dictionary.v1.TreeRequest.FiltersEntryR\afilters\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\x1a:\n" +
 	"\fFiltersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x84\x01\n" +
@@ -3095,11 +3157,12 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\bchildren\x18\x02 \x03(\v2 .platform.dictionary.v1.TreeNodeR\bchildren\"d\n" +
 	"\fTreeResponse\x126\n" +
 	"\x05roots\x18\x01 \x03(\v2 .platform.dictionary.v1.TreeNodeR\x05roots\x12\x1c\n" +
-	"\ttruncated\x18\x02 \x01(\bR\ttruncated\"q\n" +
+	"\ttruncated\x18\x02 \x01(\bR\ttruncated\"\x98\x01\n" +
 	"\x13ResolveCodesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12'\n" +
 	"\x0fdictionary_code\x18\x02 \x01(\tR\x0edictionaryCode\x12\x14\n" +
-	"\x05codes\x18\x03 \x03(\tR\x05codes\"t\n" +
+	"\x05codes\x18\x03 \x03(\tR\x05codes\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"t\n" +
 	"\fResolvedCode\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\tR\x04code\x12\x14\n" +
 	"\x05found\x18\x02 \x01(\bR\x05found\x12:\n" +
