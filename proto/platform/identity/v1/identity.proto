@@ -80,6 +80,10 @@ message IssueTenantTokenRequest {
   string user_id = 1;
   string tenant_id = 2;
   string membership_id = 3;
+  // Existing interactive session whose refresh-token scope must be updated.
+  // Required for user tenant selection; trusted service flows without a user
+  // session should use a separate service credential instead.
+  string session_id = 4;
 }
 message IssueTenantTokenResponse {
   string access_token = 1;

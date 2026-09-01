@@ -699,10 +699,14 @@ func (x *RevokeTenantSessionsResponse) GetRevokedCount() uint64 {
 }
 
 type IssueTenantTokenRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	MembershipId  string                 `protobuf:"bytes,3,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	UserId       string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TenantId     string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	MembershipId string                 `protobuf:"bytes,3,opt,name=membership_id,json=membershipId,proto3" json:"membership_id,omitempty"`
+	// Existing interactive session whose refresh-token scope must be updated.
+	// Required for user tenant selection; trusted service flows without a user
+	// session should use a separate service credential instead.
+	SessionId     string `protobuf:"bytes,4,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -754,6 +758,13 @@ func (x *IssueTenantTokenRequest) GetTenantId() string {
 func (x *IssueTenantTokenRequest) GetMembershipId() string {
 	if x != nil {
 		return x.MembershipId
+	}
+	return ""
+}
+
+func (x *IssueTenantTokenRequest) GetSessionId() string {
+	if x != nil {
+		return x.SessionId
 	}
 	return ""
 }
@@ -1220,11 +1231,13 @@ const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06reason\x18\x03 \x01(\tR\x06reason\"C\n" +
 	"\x1cRevokeTenantSessionsResponse\x12#\n" +
-	"\rrevoked_count\x18\x01 \x01(\x04R\frevokedCount\"t\n" +
+	"\rrevoked_count\x18\x01 \x01(\x04R\frevokedCount\"\x93\x01\n" +
 	"\x17IssueTenantTokenRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12#\n" +
-	"\rmembership_id\x18\x03 \x01(\tR\fmembershipId\"x\n" +
+	"\rmembership_id\x18\x03 \x01(\tR\fmembershipId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x04 \x01(\tR\tsessionId\"x\n" +
 	"\x18IssueTenantTokenResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x129\n" +
 	"\n" +
