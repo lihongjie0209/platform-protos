@@ -117,6 +117,11 @@ message SessionRevokedEvent {
   string reason = 4;
 }
 
+message PasswordChangedEvent {
+  string user_id = 1;
+  uint64 revoked_sessions = 2;
+}
+
 message ServiceAccountStatusChangedEvent {
   string service_account_id = 1;
   string previous_status = 2;
