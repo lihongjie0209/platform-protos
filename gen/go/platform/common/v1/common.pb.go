@@ -229,6 +229,7 @@ type EventEnvelope struct {
 	OccurredAt    *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=occurred_at,json=occurredAt,proto3" json:"occurred_at,omitempty"`
 	Context       *RequestContext        `protobuf:"bytes,8,opt,name=context,proto3" json:"context,omitempty"`
 	Payload       []byte                 `protobuf:"bytes,9,opt,name=payload,proto3" json:"payload,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,10,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -324,6 +325,13 @@ func (x *EventEnvelope) GetPayload() []byte {
 		return x.Payload
 	}
 	return nil
+}
+
+func (x *EventEnvelope) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 // DeadLetterEvent records an event that a durable consumer could not process.
@@ -458,7 +466,7 @@ const file_platform_common_v1_common_proto_rawDesc = "" +
 	"\n" +
 	"actor_type\x18\x04 \x01(\tR\tactorType\x12\x1b\n" +
 	"\ttenant_id\x18\x05 \x01(\tR\btenantId\x12#\n" +
-	"\rmembership_id\x18\x06 \x01(\tR\fmembershipId\"\xec\x02\n" +
+	"\rmembership_id\x18\x06 \x01(\tR\fmembershipId\"\x93\x03\n" +
 	"\rEventEnvelope\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12\x1d\n" +
 	"\n" +
@@ -470,7 +478,9 @@ const file_platform_common_v1_common_proto_rawDesc = "" +
 	"\voccurred_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12<\n" +
 	"\acontext\x18\b \x01(\v2\".platform.common.v1.RequestContextR\acontext\x12\x18\n" +
-	"\apayload\x18\t \x01(\fR\apayload\"\xad\x03\n" +
+	"\apayload\x18\t \x01(\fR\apayload\x12%\n" +
+	"\x0eapplication_id\x18\n" +
+	" \x01(\tR\rapplicationId\"\xad\x03\n" +
 	"\x0fDeadLetterEvent\x12H\n" +
 	"\x0eoriginal_event\x18\x01 \x01(\v2!.platform.common.v1.EventEnvelopeR\roriginalEvent\x12)\n" +
 	"\x10original_subject\x18\x02 \x01(\tR\x0foriginalSubject\x12\x1a\n" +

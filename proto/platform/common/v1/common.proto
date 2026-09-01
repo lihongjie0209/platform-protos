@@ -36,6 +36,7 @@ message EventEnvelope {
   google.protobuf.Timestamp occurred_at = 7;
   RequestContext context = 8;
   bytes payload = 9;
+  string application_id = 10;
 }
 
 // DeadLetterEvent records an event that a durable consumer could not process.
