@@ -38,6 +38,8 @@ type Job struct {
 	UpdatedAt           *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy           string                 `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy           string                 `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	TenantId            string                 `protobuf:"bytes,15,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId       string                 `protobuf:"bytes,16,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -170,6 +172,20 @@ func (x *Job) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *Job) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *Job) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type Execution struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	Id                   string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -187,6 +203,8 @@ type Execution struct {
 	UpdatedAt            *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy            string                 `protobuf:"bytes,14,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy            string                 `protobuf:"bytes,15,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	TenantId             string                 `protobuf:"bytes,16,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId        string                 `protobuf:"bytes,17,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -326,6 +344,20 @@ func (x *Execution) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *Execution) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *Execution) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CreateJobRequest struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	Name                string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -336,6 +368,8 @@ type CreateJobRequest struct {
 	RequestJson         string                 `protobuf:"bytes,6,opt,name=request_json,json=requestJson,proto3" json:"request_json,omitempty"`
 	TimeoutMilliseconds int64                  `protobuf:"varint,7,opt,name=timeout_milliseconds,json=timeoutMilliseconds,proto3" json:"timeout_milliseconds,omitempty"`
 	Enabled             bool                   `protobuf:"varint,8,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	TenantId            string                 `protobuf:"bytes,9,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId       string                 `protobuf:"bytes,10,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -424,6 +458,20 @@ func (x *CreateJobRequest) GetEnabled() bool {
 		return x.Enabled
 	}
 	return false
+}
+
+func (x *CreateJobRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CreateJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type CreateJobResponse struct {
@@ -811,6 +859,8 @@ type ListJobsRequest struct {
 	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
 	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -862,6 +912,20 @@ func (x *ListJobsRequest) GetPageSize() int32 {
 func (x *ListJobsRequest) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *ListJobsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ListJobsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1242,7 +1306,7 @@ var File_platform_scheduler_v1_scheduler_proto protoreflect.FileDescriptor
 
 const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\n" +
-	"%platform/scheduler/v1/scheduler.proto\x12\x15platform.scheduler.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe7\x03\n" +
+	"%platform/scheduler/v1/scheduler.proto\x12\x15platform.scheduler.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xab\x04\n" +
 	"\x03Job\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12'\n" +
@@ -1263,7 +1327,9 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\r \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tR\tupdatedBy\"\xd1\x04\n" +
+	"updated_by\x18\x0e \x01(\tR\tupdatedBy\x12\x1b\n" +
+	"\ttenant_id\x18\x0f \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x10 \x01(\tR\rapplicationId\"\x95\x05\n" +
 	"\tExecution\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x15\n" +
 	"\x06job_id\x18\x02 \x01(\tR\x05jobId\x12!\n" +
@@ -1287,7 +1353,9 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x0e \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x0f \x01(\tR\tupdatedBy\"\x98\x02\n" +
+	"updated_by\x18\x0f \x01(\tR\tupdatedBy\x12\x1b\n" +
+	"\ttenant_id\x18\x10 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x11 \x01(\tR\rapplicationId\"\xdc\x02\n" +
 	"\x10CreateJobRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
 	"\x0fcron_expression\x18\x02 \x01(\tR\x0ecronExpression\x12\x1a\n" +
@@ -1297,7 +1365,10 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"fullMethod\x12!\n" +
 	"\frequest_json\x18\x06 \x01(\tR\vrequestJson\x121\n" +
 	"\x14timeout_milliseconds\x18\a \x01(\x03R\x13timeoutMilliseconds\x12\x18\n" +
-	"\aenabled\x18\b \x01(\bR\aenabled\"A\n" +
+	"\aenabled\x18\b \x01(\bR\aenabled\x12\x1b\n" +
+	"\ttenant_id\x18\t \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\n" +
+	" \x01(\tR\rapplicationId\"A\n" +
 	"\x11CreateJobResponse\x12,\n" +
 	"\x03job\x18\x01 \x01(\v2\x1a.platform.scheduler.v1.JobR\x03job\"\xc2\x02\n" +
 	"\x10UpdateJobRequest\x12\x0e\n" +
@@ -1322,11 +1393,13 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\rGetJobRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\">\n" +
 	"\x0eGetJobResponse\x12,\n" +
-	"\x03job\x18\x01 \x01(\v2\x1a.platform.scheduler.v1.JobR\x03job\"Z\n" +
+	"\x03job\x18\x01 \x01(\v2\x1a.platform.scheduler.v1.JobR\x03job\"\x9e\x01\n" +
 	"\x0fListJobsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"\x8b\x01\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12\x1b\n" +
+	"\ttenant_id\x18\x04 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x8b\x01\n" +
 	"\x10ListJobsResponse\x120\n" +
 	"\x05items\x18\x01 \x03(\v2\x1a.platform.scheduler.v1.JobR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
