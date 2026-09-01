@@ -317,6 +317,7 @@ type Delivery struct {
 	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy      string                 `protobuf:"bytes,17,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy      string                 `protobuf:"bytes,18,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,19,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -473,6 +474,13 @@ func (x *Delivery) GetCreatedBy() string {
 func (x *Delivery) GetUpdatedBy() string {
 	if x != nil {
 		return x.UpdatedBy
+	}
+	return ""
+}
+
+func (x *Delivery) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -642,6 +650,7 @@ type UpdateSubscriptionRequest struct {
 	MaxAttempts         uint32                 `protobuf:"varint,8,opt,name=max_attempts,json=maxAttempts,proto3" json:"max_attempts,omitempty"`
 	RetryInitialSeconds uint32                 `protobuf:"varint,9,opt,name=retry_initial_seconds,json=retryInitialSeconds,proto3" json:"retry_initial_seconds,omitempty"`
 	ExpectedVersion     int64                  `protobuf:"varint,10,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId       string                 `protobuf:"bytes,11,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -746,6 +755,13 @@ func (x *UpdateSubscriptionRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *UpdateSubscriptionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type UpdateSubscriptionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Subscription  *Subscription          `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
@@ -794,6 +810,7 @@ type GetSubscriptionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -838,6 +855,13 @@ func (x *GetSubscriptionRequest) GetId() string {
 func (x *GetSubscriptionRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetSubscriptionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1019,6 +1043,7 @@ type RotateSubscriptionSecretRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1072,6 +1097,13 @@ func (x *RotateSubscriptionSecretRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *RotateSubscriptionSecretRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type RotateSubscriptionSecretResponse struct {
@@ -1131,6 +1163,7 @@ type DeleteSubscriptionRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1186,6 +1219,13 @@ func (x *DeleteSubscriptionRequest) GetExpectedVersion() int64 {
 	return 0
 }
 
+func (x *DeleteSubscriptionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type DeleteSubscriptionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1227,6 +1267,7 @@ type TestSubscriptionRequest struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	PayloadJson   string                 `protobuf:"bytes,3,opt,name=payload_json,json=payloadJson,proto3" json:"payload_json,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1282,6 +1323,13 @@ func (x *TestSubscriptionRequest) GetPayloadJson() string {
 	return ""
 }
 
+func (x *TestSubscriptionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type TestSubscriptionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Delivery      *Delivery              `protobuf:"bytes,1,opt,name=delivery,proto3" json:"delivery,omitempty"`
@@ -1330,6 +1378,7 @@ type GetDeliveryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1374,6 +1423,13 @@ func (x *GetDeliveryRequest) GetId() string {
 func (x *GetDeliveryRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetDeliveryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1430,6 +1486,7 @@ type ListDeliveriesRequest struct {
 	CreatedFrom    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_from,json=createdFrom,proto3" json:"created_from,omitempty"`
 	CreatedUntil   *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_until,json=createdUntil,proto3" json:"created_until,omitempty"`
 	Page           *v1.PageRequest        `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1506,6 +1563,13 @@ func (x *ListDeliveriesRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListDeliveriesRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListDeliveriesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Deliveries    []*Delivery            `protobuf:"bytes,1,rep,name=deliveries,proto3" json:"deliveries,omitempty"`
@@ -1563,6 +1627,7 @@ type ReplayDeliveryRequest struct {
 	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,3,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1616,6 +1681,13 @@ func (x *ReplayDeliveryRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *ReplayDeliveryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ReplayDeliveryResponse struct {
@@ -1793,7 +1865,7 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x0f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x10 \x01(\tR\tupdatedBy\"\x8a\x06\n" +
+	"updated_by\x18\x10 \x01(\tR\tupdatedBy\"\xb1\x06\n" +
 	"\bDelivery\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
 	"\x0fsubscription_id\x18\x02 \x01(\tR\x0esubscriptionId\x12\x1b\n" +
@@ -1817,7 +1889,8 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x11 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x12 \x01(\tR\tupdatedBy\"\xb3\x02\n" +
+	"updated_by\x18\x12 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x13 \x01(\tR\rapplicationId\"\xb3\x02\n" +
 	"\x19CreateSubscriptionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
 	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x12\n" +
@@ -1830,7 +1903,7 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\x15retry_initial_seconds\x18\b \x01(\rR\x13retryInitialSeconds\"\x8a\x01\n" +
 	"\x1aCreateSubscriptionResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.webhook.v1.SubscriptionR\fsubscription\x12%\n" +
-	"\x0esigning_secret\x18\x02 \x01(\tR\rsigningSecret\"\x88\x03\n" +
+	"\x0esigning_secret\x18\x02 \x01(\tR\rsigningSecret\"\xaf\x03\n" +
 	"\x19UpdateSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
@@ -1843,12 +1916,14 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\fmax_attempts\x18\b \x01(\rR\vmaxAttempts\x122\n" +
 	"\x15retry_initial_seconds\x18\t \x01(\rR\x13retryInitialSeconds\x12)\n" +
 	"\x10expected_version\x18\n" +
-	" \x01(\x03R\x0fexpectedVersion\"c\n" +
+	" \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\v \x01(\tR\rapplicationId\"c\n" +
 	"\x1aUpdateSubscriptionResponse\x12E\n" +
-	"\fsubscription\x18\x01 \x01(\v2!.platform.webhook.v1.SubscriptionR\fsubscription\"E\n" +
+	"\fsubscription\x18\x01 \x01(\v2!.platform.webhook.v1.SubscriptionR\fsubscription\"l\n" +
 	"\x16GetSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"`\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"`\n" +
 	"\x17GetSubscriptionResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.webhook.v1.SubscriptionR\fsubscription\"\xec\x01\n" +
 	"\x18ListSubscriptionsRequest\x12\x1b\n" +
@@ -1859,46 +1934,52 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x98\x01\n" +
 	"\x19ListSubscriptionsResponse\x12G\n" +
 	"\rsubscriptions\x18\x01 \x03(\v2!.platform.webhook.v1.SubscriptionR\rsubscriptions\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"y\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xa0\x01\n" +
 	"\x1fRotateSubscriptionSecretRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"\x90\x01\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x90\x01\n" +
 	" RotateSubscriptionSecretResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.webhook.v1.SubscriptionR\fsubscription\x12%\n" +
-	"\x0esigning_secret\x18\x02 \x01(\tR\rsigningSecret\"s\n" +
+	"\x0esigning_secret\x18\x02 \x01(\tR\rsigningSecret\"\x9a\x01\n" +
 	"\x19DeleteSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"\x1c\n" +
-	"\x1aDeleteSubscriptionResponse\"i\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x1c\n" +
+	"\x1aDeleteSubscriptionResponse\"\x90\x01\n" +
 	"\x17TestSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12!\n" +
-	"\fpayload_json\x18\x03 \x01(\tR\vpayloadJson\"U\n" +
+	"\fpayload_json\x18\x03 \x01(\tR\vpayloadJson\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"U\n" +
 	"\x18TestSubscriptionResponse\x129\n" +
-	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"A\n" +
+	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"h\n" +
 	"\x12GetDeliveryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"P\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"P\n" +
 	"\x13GetDeliveryResponse\x129\n" +
-	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"\xcf\x02\n" +
+	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"\xf6\x02\n" +
 	"\x15ListDeliveriesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12'\n" +
 	"\x0fsubscription_id\x18\x02 \x01(\tR\x0esubscriptionId\x12;\n" +
 	"\x06status\x18\x03 \x01(\x0e2#.platform.webhook.v1.DeliveryStatusR\x06status\x12=\n" +
 	"\fcreated_from\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vcreatedFrom\x12?\n" +
 	"\rcreated_until\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\fcreatedUntil\x123\n" +
-	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x8b\x01\n" +
+	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\x8b\x01\n" +
 	"\x16ListDeliveriesResponse\x12=\n" +
 	"\n" +
 	"deliveries\x18\x01 \x03(\v2\x1d.platform.webhook.v1.DeliveryR\n" +
 	"deliveries\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"o\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x96\x01\n" +
 	"\x15ReplayDeliveryRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
-	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"S\n" +
+	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"S\n" +
 	"\x16ReplayDeliveryResponse\x129\n" +
 	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"\x82\x01\n" +
 	"\x18SubscriptionChangedEvent\x12E\n" +

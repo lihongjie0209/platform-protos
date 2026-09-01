@@ -75,6 +75,7 @@ message Delivery {
   google.protobuf.Timestamp updated_at = 16;
   string created_by = 17;
   string updated_by = 18;
+  string application_id = 19;
 }
 
 message CreateSubscriptionRequest {
@@ -105,6 +106,7 @@ message UpdateSubscriptionRequest {
   uint32 max_attempts = 8;
   uint32 retry_initial_seconds = 9;
   int64 expected_version = 10;
+  string application_id = 11;
 }
 
 message UpdateSubscriptionResponse {
@@ -114,6 +116,7 @@ message UpdateSubscriptionResponse {
 message GetSubscriptionRequest {
   string id = 1;
   string tenant_id = 2;
+  string application_id = 3;
 }
 
 message GetSubscriptionResponse {
@@ -137,6 +140,7 @@ message RotateSubscriptionSecretRequest {
   string id = 1;
   string tenant_id = 2;
   int64 expected_version = 3;
+  string application_id = 4;
 }
 
 message RotateSubscriptionSecretResponse {
@@ -148,6 +152,7 @@ message DeleteSubscriptionRequest {
   string id = 1;
   string tenant_id = 2;
   int64 expected_version = 3;
+  string application_id = 4;
 }
 
 message DeleteSubscriptionResponse {}
@@ -156,6 +161,7 @@ message TestSubscriptionRequest {
   string id = 1;
   string tenant_id = 2;
   string payload_json = 3;
+  string application_id = 4;
 }
 
 message TestSubscriptionResponse {
@@ -165,6 +171,7 @@ message TestSubscriptionResponse {
 message GetDeliveryRequest {
   string id = 1;
   string tenant_id = 2;
+  string application_id = 3;
 }
 
 message GetDeliveryResponse {
@@ -178,6 +185,7 @@ message ListDeliveriesRequest {
   google.protobuf.Timestamp created_from = 4;
   google.protobuf.Timestamp created_until = 5;
   platform.common.v1.PageRequest page = 6;
+  string application_id = 7;
 }
 
 message ListDeliveriesResponse {
@@ -189,6 +197,7 @@ message ReplayDeliveryRequest {
   string id = 1;
   string tenant_id = 2;
   int64 expected_version = 3;
+  string application_id = 4;
 }
 
 message ReplayDeliveryResponse {
