@@ -41,6 +41,12 @@ message Application {
   string updated_by = 15;
 }
 
+enum MenuPermissionScope {
+  MENU_PERMISSION_SCOPE_UNSPECIFIED = 0;
+  MENU_PERMISSION_SCOPE_TENANT = 1;
+  MENU_PERMISSION_SCOPE_PLATFORM = 2;
+}
+
 message Menu {
   string id = 1;
   string application_id = 2;
@@ -63,6 +69,7 @@ message Menu {
   google.protobuf.Timestamp updated_at = 19;
   string created_by = 20;
   string updated_by = 21;
+  MenuPermissionScope permission_scope = 22;
 }
 
 message MenuRelease {

@@ -23,6 +23,55 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type MenuPermissionScope int32
+
+const (
+	MenuPermissionScope_MENU_PERMISSION_SCOPE_UNSPECIFIED MenuPermissionScope = 0
+	MenuPermissionScope_MENU_PERMISSION_SCOPE_TENANT      MenuPermissionScope = 1
+	MenuPermissionScope_MENU_PERMISSION_SCOPE_PLATFORM    MenuPermissionScope = 2
+)
+
+// Enum value maps for MenuPermissionScope.
+var (
+	MenuPermissionScope_name = map[int32]string{
+		0: "MENU_PERMISSION_SCOPE_UNSPECIFIED",
+		1: "MENU_PERMISSION_SCOPE_TENANT",
+		2: "MENU_PERMISSION_SCOPE_PLATFORM",
+	}
+	MenuPermissionScope_value = map[string]int32{
+		"MENU_PERMISSION_SCOPE_UNSPECIFIED": 0,
+		"MENU_PERMISSION_SCOPE_TENANT":      1,
+		"MENU_PERMISSION_SCOPE_PLATFORM":    2,
+	}
+)
+
+func (x MenuPermissionScope) Enum() *MenuPermissionScope {
+	p := new(MenuPermissionScope)
+	*p = x
+	return p
+}
+
+func (x MenuPermissionScope) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (MenuPermissionScope) Descriptor() protoreflect.EnumDescriptor {
+	return file_platform_application_v1_application_proto_enumTypes[0].Descriptor()
+}
+
+func (MenuPermissionScope) Type() protoreflect.EnumType {
+	return &file_platform_application_v1_application_proto_enumTypes[0]
+}
+
+func (x MenuPermissionScope) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use MenuPermissionScope.Descriptor instead.
+func (MenuPermissionScope) EnumDescriptor() ([]byte, []int) {
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{0}
+}
+
 type Application struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -180,30 +229,31 @@ func (x *Application) GetUpdatedBy() string {
 }
 
 type Menu struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	ApplicationId  string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
-	ReleaseNumber  int64                  `protobuf:"varint,3,opt,name=release_number,json=releaseNumber,proto3" json:"release_number,omitempty"`
-	ParentId       string                 `protobuf:"bytes,4,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
-	Code           string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
-	Type           string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	Name           string                 `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
-	I18NKey        string                 `protobuf:"bytes,8,opt,name=i18n_key,json=i18nKey,proto3" json:"i18n_key,omitempty"`
-	Route          string                 `protobuf:"bytes,9,opt,name=route,proto3" json:"route,omitempty"`
-	Component      string                 `protobuf:"bytes,10,opt,name=component,proto3" json:"component,omitempty"`
-	Icon           string                 `protobuf:"bytes,11,opt,name=icon,proto3" json:"icon,omitempty"`
-	ExternalUrl    string                 `protobuf:"bytes,12,opt,name=external_url,json=externalUrl,proto3" json:"external_url,omitempty"`
-	PermissionCode string                 `protobuf:"bytes,13,opt,name=permission_code,json=permissionCode,proto3" json:"permission_code,omitempty"`
-	SortOrder      int32                  `protobuf:"varint,14,opt,name=sort_order,json=sortOrder,proto3" json:"sort_order,omitempty"`
-	Visible        bool                   `protobuf:"varint,15,opt,name=visible,proto3" json:"visible,omitempty"`
-	Status         string                 `protobuf:"bytes,16,opt,name=status,proto3" json:"status,omitempty"`
-	Version        int64                  `protobuf:"varint,17,opt,name=version,proto3" json:"version,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedBy      string                 `protobuf:"bytes,20,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
-	UpdatedBy      string                 `protobuf:"bytes,21,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	ReleaseNumber   int64                  `protobuf:"varint,3,opt,name=release_number,json=releaseNumber,proto3" json:"release_number,omitempty"`
+	ParentId        string                 `protobuf:"bytes,4,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`
+	Code            string                 `protobuf:"bytes,5,opt,name=code,proto3" json:"code,omitempty"`
+	Type            string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	Name            string                 `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
+	I18NKey         string                 `protobuf:"bytes,8,opt,name=i18n_key,json=i18nKey,proto3" json:"i18n_key,omitempty"`
+	Route           string                 `protobuf:"bytes,9,opt,name=route,proto3" json:"route,omitempty"`
+	Component       string                 `protobuf:"bytes,10,opt,name=component,proto3" json:"component,omitempty"`
+	Icon            string                 `protobuf:"bytes,11,opt,name=icon,proto3" json:"icon,omitempty"`
+	ExternalUrl     string                 `protobuf:"bytes,12,opt,name=external_url,json=externalUrl,proto3" json:"external_url,omitempty"`
+	PermissionCode  string                 `protobuf:"bytes,13,opt,name=permission_code,json=permissionCode,proto3" json:"permission_code,omitempty"`
+	SortOrder       int32                  `protobuf:"varint,14,opt,name=sort_order,json=sortOrder,proto3" json:"sort_order,omitempty"`
+	Visible         bool                   `protobuf:"varint,15,opt,name=visible,proto3" json:"visible,omitempty"`
+	Status          string                 `protobuf:"bytes,16,opt,name=status,proto3" json:"status,omitempty"`
+	Version         int64                  `protobuf:"varint,17,opt,name=version,proto3" json:"version,omitempty"`
+	CreatedAt       *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt       *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy       string                 `protobuf:"bytes,20,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy       string                 `protobuf:"bytes,21,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	PermissionScope MenuPermissionScope    `protobuf:"varint,22,opt,name=permission_scope,json=permissionScope,proto3,enum=platform.application.v1.MenuPermissionScope" json:"permission_scope,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *Menu) Reset() {
@@ -381,6 +431,13 @@ func (x *Menu) GetUpdatedBy() string {
 		return x.UpdatedBy
 	}
 	return ""
+}
+
+func (x *Menu) GetPermissionScope() MenuPermissionScope {
+	if x != nil {
+		return x.PermissionScope
+	}
+	return MenuPermissionScope_MENU_PERMISSION_SCOPE_UNSPECIFIED
 }
 
 type MenuRelease struct {
@@ -2321,7 +2378,7 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x0e \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x0f \x01(\tR\tupdatedBy\"\x8b\x05\n" +
+	"updated_by\x18\x0f \x01(\tR\tupdatedBy\"\xe4\x05\n" +
 	"\x04Menu\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
 	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12%\n" +
@@ -2349,7 +2406,8 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x14 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x15 \x01(\tR\tupdatedBy\"\xeb\x02\n" +
+	"updated_by\x18\x15 \x01(\tR\tupdatedBy\x12W\n" +
+	"\x10permission_scope\x18\x16 \x01(\x0e2,.platform.application.v1.MenuPermissionScopeR\x0fpermissionScope\"\xeb\x02\n" +
 	"\vMenuRelease\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
 	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12%\n" +
@@ -2495,7 +2553,11 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\"TenantApplicationGrantChangedEvent\x12E\n" +
 	"\x05grant\x18\x01 \x01(\v2/.platform.application.v1.TenantApplicationGrantR\x05grant\x12\x1f\n" +
 	"\vchange_type\x18\x02 \x01(\tR\n" +
-	"changeType2\xf4\f\n" +
+	"changeType*\x82\x01\n" +
+	"\x13MenuPermissionScope\x12%\n" +
+	"!MENU_PERMISSION_SCOPE_UNSPECIFIED\x10\x00\x12 \n" +
+	"\x1cMENU_PERMISSION_SCOPE_TENANT\x10\x01\x12\"\n" +
+	"\x1eMENU_PERMISSION_SCOPE_PLATFORM\x10\x022\xf4\f\n" +
 	"\x12ApplicationService\x12z\n" +
 	"\x11CreateApplication\x121.platform.application.v1.CreateApplicationRequest\x1a2.platform.application.v1.CreateApplicationResponse\x12z\n" +
 	"\x11UpdateApplication\x121.platform.application.v1.UpdateApplicationRequest\x1a2.platform.application.v1.UpdateApplicationResponse\x12q\n" +
@@ -2525,115 +2587,118 @@ func file_platform_application_v1_application_proto_rawDescGZIP() []byte {
 	return file_platform_application_v1_application_proto_rawDescData
 }
 
+var file_platform_application_v1_application_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_platform_application_v1_application_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_platform_application_v1_application_proto_goTypes = []any{
-	(*Application)(nil),                          // 0: platform.application.v1.Application
-	(*Menu)(nil),                                 // 1: platform.application.v1.Menu
-	(*MenuRelease)(nil),                          // 2: platform.application.v1.MenuRelease
-	(*TenantApplicationGrant)(nil),               // 3: platform.application.v1.TenantApplicationGrant
-	(*CreateApplicationRequest)(nil),             // 4: platform.application.v1.CreateApplicationRequest
-	(*CreateApplicationResponse)(nil),            // 5: platform.application.v1.CreateApplicationResponse
-	(*UpdateApplicationRequest)(nil),             // 6: platform.application.v1.UpdateApplicationRequest
-	(*UpdateApplicationResponse)(nil),            // 7: platform.application.v1.UpdateApplicationResponse
-	(*GetApplicationRequest)(nil),                // 8: platform.application.v1.GetApplicationRequest
-	(*GetApplicationResponse)(nil),               // 9: platform.application.v1.GetApplicationResponse
-	(*ListApplicationsRequest)(nil),              // 10: platform.application.v1.ListApplicationsRequest
-	(*ListApplicationsResponse)(nil),             // 11: platform.application.v1.ListApplicationsResponse
-	(*UpsertMenuRequest)(nil),                    // 12: platform.application.v1.UpsertMenuRequest
-	(*UpsertMenuResponse)(nil),                   // 13: platform.application.v1.UpsertMenuResponse
-	(*DeleteMenuRequest)(nil),                    // 14: platform.application.v1.DeleteMenuRequest
-	(*DeleteMenuResponse)(nil),                   // 15: platform.application.v1.DeleteMenuResponse
-	(*ListMenuDraftRequest)(nil),                 // 16: platform.application.v1.ListMenuDraftRequest
-	(*ListMenuDraftResponse)(nil),                // 17: platform.application.v1.ListMenuDraftResponse
-	(*PublishMenusRequest)(nil),                  // 18: platform.application.v1.PublishMenusRequest
-	(*PublishMenusResponse)(nil),                 // 19: platform.application.v1.PublishMenusResponse
-	(*GetPublishedNavigationRequest)(nil),        // 20: platform.application.v1.GetPublishedNavigationRequest
-	(*GetPublishedNavigationResponse)(nil),       // 21: platform.application.v1.GetPublishedNavigationResponse
-	(*GrantTenantApplicationRequest)(nil),        // 22: platform.application.v1.GrantTenantApplicationRequest
-	(*GrantTenantApplicationResponse)(nil),       // 23: platform.application.v1.GrantTenantApplicationResponse
-	(*RevokeTenantApplicationRequest)(nil),       // 24: platform.application.v1.RevokeTenantApplicationRequest
-	(*RevokeTenantApplicationResponse)(nil),      // 25: platform.application.v1.RevokeTenantApplicationResponse
-	(*ListTenantApplicationsRequest)(nil),        // 26: platform.application.v1.ListTenantApplicationsRequest
-	(*ListTenantApplicationsResponse)(nil),       // 27: platform.application.v1.ListTenantApplicationsResponse
-	(*BatchCheckTenantApplicationsRequest)(nil),  // 28: platform.application.v1.BatchCheckTenantApplicationsRequest
-	(*TenantApplicationDecision)(nil),            // 29: platform.application.v1.TenantApplicationDecision
-	(*BatchCheckTenantApplicationsResponse)(nil), // 30: platform.application.v1.BatchCheckTenantApplicationsResponse
-	(*ApplicationChangedEvent)(nil),              // 31: platform.application.v1.ApplicationChangedEvent
-	(*MenuPublishedEvent)(nil),                   // 32: platform.application.v1.MenuPublishedEvent
-	(*TenantApplicationGrantChangedEvent)(nil),   // 33: platform.application.v1.TenantApplicationGrantChangedEvent
-	(*timestamppb.Timestamp)(nil),                // 34: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                       // 35: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                        // 36: platform.common.v1.PageResult
+	(MenuPermissionScope)(0),                     // 0: platform.application.v1.MenuPermissionScope
+	(*Application)(nil),                          // 1: platform.application.v1.Application
+	(*Menu)(nil),                                 // 2: platform.application.v1.Menu
+	(*MenuRelease)(nil),                          // 3: platform.application.v1.MenuRelease
+	(*TenantApplicationGrant)(nil),               // 4: platform.application.v1.TenantApplicationGrant
+	(*CreateApplicationRequest)(nil),             // 5: platform.application.v1.CreateApplicationRequest
+	(*CreateApplicationResponse)(nil),            // 6: platform.application.v1.CreateApplicationResponse
+	(*UpdateApplicationRequest)(nil),             // 7: platform.application.v1.UpdateApplicationRequest
+	(*UpdateApplicationResponse)(nil),            // 8: platform.application.v1.UpdateApplicationResponse
+	(*GetApplicationRequest)(nil),                // 9: platform.application.v1.GetApplicationRequest
+	(*GetApplicationResponse)(nil),               // 10: platform.application.v1.GetApplicationResponse
+	(*ListApplicationsRequest)(nil),              // 11: platform.application.v1.ListApplicationsRequest
+	(*ListApplicationsResponse)(nil),             // 12: platform.application.v1.ListApplicationsResponse
+	(*UpsertMenuRequest)(nil),                    // 13: platform.application.v1.UpsertMenuRequest
+	(*UpsertMenuResponse)(nil),                   // 14: platform.application.v1.UpsertMenuResponse
+	(*DeleteMenuRequest)(nil),                    // 15: platform.application.v1.DeleteMenuRequest
+	(*DeleteMenuResponse)(nil),                   // 16: platform.application.v1.DeleteMenuResponse
+	(*ListMenuDraftRequest)(nil),                 // 17: platform.application.v1.ListMenuDraftRequest
+	(*ListMenuDraftResponse)(nil),                // 18: platform.application.v1.ListMenuDraftResponse
+	(*PublishMenusRequest)(nil),                  // 19: platform.application.v1.PublishMenusRequest
+	(*PublishMenusResponse)(nil),                 // 20: platform.application.v1.PublishMenusResponse
+	(*GetPublishedNavigationRequest)(nil),        // 21: platform.application.v1.GetPublishedNavigationRequest
+	(*GetPublishedNavigationResponse)(nil),       // 22: platform.application.v1.GetPublishedNavigationResponse
+	(*GrantTenantApplicationRequest)(nil),        // 23: platform.application.v1.GrantTenantApplicationRequest
+	(*GrantTenantApplicationResponse)(nil),       // 24: platform.application.v1.GrantTenantApplicationResponse
+	(*RevokeTenantApplicationRequest)(nil),       // 25: platform.application.v1.RevokeTenantApplicationRequest
+	(*RevokeTenantApplicationResponse)(nil),      // 26: platform.application.v1.RevokeTenantApplicationResponse
+	(*ListTenantApplicationsRequest)(nil),        // 27: platform.application.v1.ListTenantApplicationsRequest
+	(*ListTenantApplicationsResponse)(nil),       // 28: platform.application.v1.ListTenantApplicationsResponse
+	(*BatchCheckTenantApplicationsRequest)(nil),  // 29: platform.application.v1.BatchCheckTenantApplicationsRequest
+	(*TenantApplicationDecision)(nil),            // 30: platform.application.v1.TenantApplicationDecision
+	(*BatchCheckTenantApplicationsResponse)(nil), // 31: platform.application.v1.BatchCheckTenantApplicationsResponse
+	(*ApplicationChangedEvent)(nil),              // 32: platform.application.v1.ApplicationChangedEvent
+	(*MenuPublishedEvent)(nil),                   // 33: platform.application.v1.MenuPublishedEvent
+	(*TenantApplicationGrantChangedEvent)(nil),   // 34: platform.application.v1.TenantApplicationGrantChangedEvent
+	(*timestamppb.Timestamp)(nil),                // 35: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                       // 36: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                        // 37: platform.common.v1.PageResult
 }
 var file_platform_application_v1_application_proto_depIdxs = []int32{
-	34, // 0: platform.application.v1.Application.created_at:type_name -> google.protobuf.Timestamp
-	34, // 1: platform.application.v1.Application.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 2: platform.application.v1.Menu.created_at:type_name -> google.protobuf.Timestamp
-	34, // 3: platform.application.v1.Menu.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 4: platform.application.v1.MenuRelease.created_at:type_name -> google.protobuf.Timestamp
-	34, // 5: platform.application.v1.MenuRelease.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 6: platform.application.v1.TenantApplicationGrant.valid_from:type_name -> google.protobuf.Timestamp
-	34, // 7: platform.application.v1.TenantApplicationGrant.valid_until:type_name -> google.protobuf.Timestamp
-	34, // 8: platform.application.v1.TenantApplicationGrant.created_at:type_name -> google.protobuf.Timestamp
-	34, // 9: platform.application.v1.TenantApplicationGrant.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 10: platform.application.v1.CreateApplicationResponse.application:type_name -> platform.application.v1.Application
-	0,  // 11: platform.application.v1.UpdateApplicationResponse.application:type_name -> platform.application.v1.Application
-	0,  // 12: platform.application.v1.GetApplicationResponse.application:type_name -> platform.application.v1.Application
-	35, // 13: platform.application.v1.ListApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
-	0,  // 14: platform.application.v1.ListApplicationsResponse.applications:type_name -> platform.application.v1.Application
-	36, // 15: platform.application.v1.ListApplicationsResponse.page:type_name -> platform.common.v1.PageResult
-	1,  // 16: platform.application.v1.UpsertMenuRequest.menu:type_name -> platform.application.v1.Menu
-	1,  // 17: platform.application.v1.UpsertMenuResponse.menu:type_name -> platform.application.v1.Menu
-	1,  // 18: platform.application.v1.ListMenuDraftResponse.menus:type_name -> platform.application.v1.Menu
-	2,  // 19: platform.application.v1.PublishMenusResponse.release:type_name -> platform.application.v1.MenuRelease
-	1,  // 20: platform.application.v1.PublishMenusResponse.menus:type_name -> platform.application.v1.Menu
-	0,  // 21: platform.application.v1.GetPublishedNavigationResponse.application:type_name -> platform.application.v1.Application
-	2,  // 22: platform.application.v1.GetPublishedNavigationResponse.release:type_name -> platform.application.v1.MenuRelease
-	1,  // 23: platform.application.v1.GetPublishedNavigationResponse.menus:type_name -> platform.application.v1.Menu
-	34, // 24: platform.application.v1.GrantTenantApplicationRequest.valid_from:type_name -> google.protobuf.Timestamp
-	34, // 25: platform.application.v1.GrantTenantApplicationRequest.valid_until:type_name -> google.protobuf.Timestamp
-	3,  // 26: platform.application.v1.GrantTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	3,  // 27: platform.application.v1.RevokeTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	35, // 28: platform.application.v1.ListTenantApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
-	3,  // 29: platform.application.v1.ListTenantApplicationsResponse.grants:type_name -> platform.application.v1.TenantApplicationGrant
-	0,  // 30: platform.application.v1.ListTenantApplicationsResponse.applications:type_name -> platform.application.v1.Application
-	36, // 31: platform.application.v1.ListTenantApplicationsResponse.page:type_name -> platform.common.v1.PageResult
-	34, // 32: platform.application.v1.BatchCheckTenantApplicationsRequest.at:type_name -> google.protobuf.Timestamp
-	29, // 33: platform.application.v1.BatchCheckTenantApplicationsResponse.decisions:type_name -> platform.application.v1.TenantApplicationDecision
-	0,  // 34: platform.application.v1.ApplicationChangedEvent.application:type_name -> platform.application.v1.Application
-	2,  // 35: platform.application.v1.MenuPublishedEvent.release:type_name -> platform.application.v1.MenuRelease
-	3,  // 36: platform.application.v1.TenantApplicationGrantChangedEvent.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	4,  // 37: platform.application.v1.ApplicationService.CreateApplication:input_type -> platform.application.v1.CreateApplicationRequest
-	6,  // 38: platform.application.v1.ApplicationService.UpdateApplication:input_type -> platform.application.v1.UpdateApplicationRequest
-	8,  // 39: platform.application.v1.ApplicationService.GetApplication:input_type -> platform.application.v1.GetApplicationRequest
-	10, // 40: platform.application.v1.ApplicationService.ListApplications:input_type -> platform.application.v1.ListApplicationsRequest
-	12, // 41: platform.application.v1.ApplicationService.UpsertMenu:input_type -> platform.application.v1.UpsertMenuRequest
-	14, // 42: platform.application.v1.ApplicationService.DeleteMenu:input_type -> platform.application.v1.DeleteMenuRequest
-	16, // 43: platform.application.v1.ApplicationService.ListMenuDraft:input_type -> platform.application.v1.ListMenuDraftRequest
-	18, // 44: platform.application.v1.ApplicationService.PublishMenus:input_type -> platform.application.v1.PublishMenusRequest
-	20, // 45: platform.application.v1.ApplicationService.GetPublishedNavigation:input_type -> platform.application.v1.GetPublishedNavigationRequest
-	22, // 46: platform.application.v1.ApplicationService.GrantTenantApplication:input_type -> platform.application.v1.GrantTenantApplicationRequest
-	24, // 47: platform.application.v1.ApplicationService.RevokeTenantApplication:input_type -> platform.application.v1.RevokeTenantApplicationRequest
-	26, // 48: platform.application.v1.ApplicationService.ListTenantApplications:input_type -> platform.application.v1.ListTenantApplicationsRequest
-	28, // 49: platform.application.v1.ApplicationService.BatchCheckTenantApplications:input_type -> platform.application.v1.BatchCheckTenantApplicationsRequest
-	5,  // 50: platform.application.v1.ApplicationService.CreateApplication:output_type -> platform.application.v1.CreateApplicationResponse
-	7,  // 51: platform.application.v1.ApplicationService.UpdateApplication:output_type -> platform.application.v1.UpdateApplicationResponse
-	9,  // 52: platform.application.v1.ApplicationService.GetApplication:output_type -> platform.application.v1.GetApplicationResponse
-	11, // 53: platform.application.v1.ApplicationService.ListApplications:output_type -> platform.application.v1.ListApplicationsResponse
-	13, // 54: platform.application.v1.ApplicationService.UpsertMenu:output_type -> platform.application.v1.UpsertMenuResponse
-	15, // 55: platform.application.v1.ApplicationService.DeleteMenu:output_type -> platform.application.v1.DeleteMenuResponse
-	17, // 56: platform.application.v1.ApplicationService.ListMenuDraft:output_type -> platform.application.v1.ListMenuDraftResponse
-	19, // 57: platform.application.v1.ApplicationService.PublishMenus:output_type -> platform.application.v1.PublishMenusResponse
-	21, // 58: platform.application.v1.ApplicationService.GetPublishedNavigation:output_type -> platform.application.v1.GetPublishedNavigationResponse
-	23, // 59: platform.application.v1.ApplicationService.GrantTenantApplication:output_type -> platform.application.v1.GrantTenantApplicationResponse
-	25, // 60: platform.application.v1.ApplicationService.RevokeTenantApplication:output_type -> platform.application.v1.RevokeTenantApplicationResponse
-	27, // 61: platform.application.v1.ApplicationService.ListTenantApplications:output_type -> platform.application.v1.ListTenantApplicationsResponse
-	30, // 62: platform.application.v1.ApplicationService.BatchCheckTenantApplications:output_type -> platform.application.v1.BatchCheckTenantApplicationsResponse
-	50, // [50:63] is the sub-list for method output_type
-	37, // [37:50] is the sub-list for method input_type
-	37, // [37:37] is the sub-list for extension type_name
-	37, // [37:37] is the sub-list for extension extendee
-	0,  // [0:37] is the sub-list for field type_name
+	35, // 0: platform.application.v1.Application.created_at:type_name -> google.protobuf.Timestamp
+	35, // 1: platform.application.v1.Application.updated_at:type_name -> google.protobuf.Timestamp
+	35, // 2: platform.application.v1.Menu.created_at:type_name -> google.protobuf.Timestamp
+	35, // 3: platform.application.v1.Menu.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 4: platform.application.v1.Menu.permission_scope:type_name -> platform.application.v1.MenuPermissionScope
+	35, // 5: platform.application.v1.MenuRelease.created_at:type_name -> google.protobuf.Timestamp
+	35, // 6: platform.application.v1.MenuRelease.updated_at:type_name -> google.protobuf.Timestamp
+	35, // 7: platform.application.v1.TenantApplicationGrant.valid_from:type_name -> google.protobuf.Timestamp
+	35, // 8: platform.application.v1.TenantApplicationGrant.valid_until:type_name -> google.protobuf.Timestamp
+	35, // 9: platform.application.v1.TenantApplicationGrant.created_at:type_name -> google.protobuf.Timestamp
+	35, // 10: platform.application.v1.TenantApplicationGrant.updated_at:type_name -> google.protobuf.Timestamp
+	1,  // 11: platform.application.v1.CreateApplicationResponse.application:type_name -> platform.application.v1.Application
+	1,  // 12: platform.application.v1.UpdateApplicationResponse.application:type_name -> platform.application.v1.Application
+	1,  // 13: platform.application.v1.GetApplicationResponse.application:type_name -> platform.application.v1.Application
+	36, // 14: platform.application.v1.ListApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
+	1,  // 15: platform.application.v1.ListApplicationsResponse.applications:type_name -> platform.application.v1.Application
+	37, // 16: platform.application.v1.ListApplicationsResponse.page:type_name -> platform.common.v1.PageResult
+	2,  // 17: platform.application.v1.UpsertMenuRequest.menu:type_name -> platform.application.v1.Menu
+	2,  // 18: platform.application.v1.UpsertMenuResponse.menu:type_name -> platform.application.v1.Menu
+	2,  // 19: platform.application.v1.ListMenuDraftResponse.menus:type_name -> platform.application.v1.Menu
+	3,  // 20: platform.application.v1.PublishMenusResponse.release:type_name -> platform.application.v1.MenuRelease
+	2,  // 21: platform.application.v1.PublishMenusResponse.menus:type_name -> platform.application.v1.Menu
+	1,  // 22: platform.application.v1.GetPublishedNavigationResponse.application:type_name -> platform.application.v1.Application
+	3,  // 23: platform.application.v1.GetPublishedNavigationResponse.release:type_name -> platform.application.v1.MenuRelease
+	2,  // 24: platform.application.v1.GetPublishedNavigationResponse.menus:type_name -> platform.application.v1.Menu
+	35, // 25: platform.application.v1.GrantTenantApplicationRequest.valid_from:type_name -> google.protobuf.Timestamp
+	35, // 26: platform.application.v1.GrantTenantApplicationRequest.valid_until:type_name -> google.protobuf.Timestamp
+	4,  // 27: platform.application.v1.GrantTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	4,  // 28: platform.application.v1.RevokeTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	36, // 29: platform.application.v1.ListTenantApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
+	4,  // 30: platform.application.v1.ListTenantApplicationsResponse.grants:type_name -> platform.application.v1.TenantApplicationGrant
+	1,  // 31: platform.application.v1.ListTenantApplicationsResponse.applications:type_name -> platform.application.v1.Application
+	37, // 32: platform.application.v1.ListTenantApplicationsResponse.page:type_name -> platform.common.v1.PageResult
+	35, // 33: platform.application.v1.BatchCheckTenantApplicationsRequest.at:type_name -> google.protobuf.Timestamp
+	30, // 34: platform.application.v1.BatchCheckTenantApplicationsResponse.decisions:type_name -> platform.application.v1.TenantApplicationDecision
+	1,  // 35: platform.application.v1.ApplicationChangedEvent.application:type_name -> platform.application.v1.Application
+	3,  // 36: platform.application.v1.MenuPublishedEvent.release:type_name -> platform.application.v1.MenuRelease
+	4,  // 37: platform.application.v1.TenantApplicationGrantChangedEvent.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	5,  // 38: platform.application.v1.ApplicationService.CreateApplication:input_type -> platform.application.v1.CreateApplicationRequest
+	7,  // 39: platform.application.v1.ApplicationService.UpdateApplication:input_type -> platform.application.v1.UpdateApplicationRequest
+	9,  // 40: platform.application.v1.ApplicationService.GetApplication:input_type -> platform.application.v1.GetApplicationRequest
+	11, // 41: platform.application.v1.ApplicationService.ListApplications:input_type -> platform.application.v1.ListApplicationsRequest
+	13, // 42: platform.application.v1.ApplicationService.UpsertMenu:input_type -> platform.application.v1.UpsertMenuRequest
+	15, // 43: platform.application.v1.ApplicationService.DeleteMenu:input_type -> platform.application.v1.DeleteMenuRequest
+	17, // 44: platform.application.v1.ApplicationService.ListMenuDraft:input_type -> platform.application.v1.ListMenuDraftRequest
+	19, // 45: platform.application.v1.ApplicationService.PublishMenus:input_type -> platform.application.v1.PublishMenusRequest
+	21, // 46: platform.application.v1.ApplicationService.GetPublishedNavigation:input_type -> platform.application.v1.GetPublishedNavigationRequest
+	23, // 47: platform.application.v1.ApplicationService.GrantTenantApplication:input_type -> platform.application.v1.GrantTenantApplicationRequest
+	25, // 48: platform.application.v1.ApplicationService.RevokeTenantApplication:input_type -> platform.application.v1.RevokeTenantApplicationRequest
+	27, // 49: platform.application.v1.ApplicationService.ListTenantApplications:input_type -> platform.application.v1.ListTenantApplicationsRequest
+	29, // 50: platform.application.v1.ApplicationService.BatchCheckTenantApplications:input_type -> platform.application.v1.BatchCheckTenantApplicationsRequest
+	6,  // 51: platform.application.v1.ApplicationService.CreateApplication:output_type -> platform.application.v1.CreateApplicationResponse
+	8,  // 52: platform.application.v1.ApplicationService.UpdateApplication:output_type -> platform.application.v1.UpdateApplicationResponse
+	10, // 53: platform.application.v1.ApplicationService.GetApplication:output_type -> platform.application.v1.GetApplicationResponse
+	12, // 54: platform.application.v1.ApplicationService.ListApplications:output_type -> platform.application.v1.ListApplicationsResponse
+	14, // 55: platform.application.v1.ApplicationService.UpsertMenu:output_type -> platform.application.v1.UpsertMenuResponse
+	16, // 56: platform.application.v1.ApplicationService.DeleteMenu:output_type -> platform.application.v1.DeleteMenuResponse
+	18, // 57: platform.application.v1.ApplicationService.ListMenuDraft:output_type -> platform.application.v1.ListMenuDraftResponse
+	20, // 58: platform.application.v1.ApplicationService.PublishMenus:output_type -> platform.application.v1.PublishMenusResponse
+	22, // 59: platform.application.v1.ApplicationService.GetPublishedNavigation:output_type -> platform.application.v1.GetPublishedNavigationResponse
+	24, // 60: platform.application.v1.ApplicationService.GrantTenantApplication:output_type -> platform.application.v1.GrantTenantApplicationResponse
+	26, // 61: platform.application.v1.ApplicationService.RevokeTenantApplication:output_type -> platform.application.v1.RevokeTenantApplicationResponse
+	28, // 62: platform.application.v1.ApplicationService.ListTenantApplications:output_type -> platform.application.v1.ListTenantApplicationsResponse
+	31, // 63: platform.application.v1.ApplicationService.BatchCheckTenantApplications:output_type -> platform.application.v1.BatchCheckTenantApplicationsResponse
+	51, // [51:64] is the sub-list for method output_type
+	38, // [38:51] is the sub-list for method input_type
+	38, // [38:38] is the sub-list for extension type_name
+	38, // [38:38] is the sub-list for extension extendee
+	0,  // [0:38] is the sub-list for field type_name
 }
 
 func init() { file_platform_application_v1_application_proto_init() }
@@ -2646,13 +2711,14 @@ func file_platform_application_v1_application_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_application_v1_application_proto_rawDesc), len(file_platform_application_v1_application_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_platform_application_v1_application_proto_goTypes,
 		DependencyIndexes: file_platform_application_v1_application_proto_depIdxs,
+		EnumInfos:         file_platform_application_v1_application_proto_enumTypes,
 		MessageInfos:      file_platform_application_v1_application_proto_msgTypes,
 	}.Build()
 	File_platform_application_v1_application_proto = out.File
