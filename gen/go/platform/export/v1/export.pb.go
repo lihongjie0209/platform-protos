@@ -51,6 +51,7 @@ type ExportJob struct {
 	UpdatedAt           *timestamppb.Timestamp `protobuf:"bytes,23,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy           string                 `protobuf:"bytes,24,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy           string                 `protobuf:"bytes,25,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId       string                 `protobuf:"bytes,26,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -260,6 +261,13 @@ func (x *ExportJob) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *ExportJob) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ExportColumn struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
@@ -430,6 +438,7 @@ type CreateExportJobRequest struct {
 	QueryJson           string                 `protobuf:"bytes,6,opt,name=query_json,json=queryJson,proto3" json:"query_json,omitempty"`
 	SelectedColumnsJson string                 `protobuf:"bytes,7,opt,name=selected_columns_json,json=selectedColumnsJson,proto3" json:"selected_columns_json,omitempty"`
 	IdempotencyKey      string                 `protobuf:"bytes,8,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId       string                 `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -520,6 +529,13 @@ func (x *CreateExportJobRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *CreateExportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CreateExportJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ExportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -576,6 +592,7 @@ type GetExportJobRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -620,6 +637,13 @@ func (x *GetExportJobRequest) GetTenantId() string {
 func (x *GetExportJobRequest) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+func (x *GetExportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -676,6 +700,7 @@ type ListExportJobsRequest struct {
 	CreatedFrom   *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_from,json=createdFrom,proto3" json:"created_from,omitempty"`
 	CreatedTo     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_to,json=createdTo,proto3" json:"created_to,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,6,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -752,6 +777,13 @@ func (x *ListExportJobsRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListExportJobsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListExportJobsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Jobs          []*ExportJob           `protobuf:"bytes,1,rep,name=jobs,proto3" json:"jobs,omitempty"`
@@ -809,6 +841,7 @@ type CancelExportJobRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Version       int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -864,6 +897,13 @@ func (x *CancelExportJobRequest) GetVersion() int64 {
 	return 0
 }
 
+func (x *CancelExportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CancelExportJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ExportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -914,6 +954,7 @@ type RetryExportJobRequest struct {
 	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Version        int64                  `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -976,6 +1017,13 @@ func (x *RetryExportJobRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *RetryExportJobRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type RetryExportJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Job           *ExportJob             `protobuf:"bytes,1,opt,name=job,proto3" json:"job,omitempty"`
@@ -1033,6 +1081,7 @@ type CreateDownloadURLRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	TtlSeconds    int32                  `protobuf:"varint,3,opt,name=ttl_seconds,json=ttlSeconds,proto3" json:"ttl_seconds,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1086,6 +1135,13 @@ func (x *CreateDownloadURLRequest) GetTtlSeconds() int32 {
 		return x.TtlSeconds
 	}
 	return 0
+}
+
+func (x *CreateDownloadURLRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type CreateDownloadURLResponse struct {
@@ -1168,6 +1224,7 @@ type DescribeDatasetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	DatasetCode   string                 `protobuf:"bytes,2,opt,name=dataset_code,json=datasetCode,proto3" json:"dataset_code,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,3,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1212,6 +1269,13 @@ func (x *DescribeDatasetRequest) GetTenantId() string {
 func (x *DescribeDatasetRequest) GetDatasetCode() string {
 	if x != nil {
 		return x.DatasetCode
+	}
+	return ""
+}
+
+func (x *DescribeDatasetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1269,6 +1333,7 @@ type StreamRowsRequest struct {
 	BatchSize       int32                  `protobuf:"varint,5,opt,name=batch_size,json=batchSize,proto3" json:"batch_size,omitempty"`
 	Cursor          string                 `protobuf:"bytes,6,opt,name=cursor,proto3" json:"cursor,omitempty"`
 	SnapshotToken   string                 `protobuf:"bytes,7,opt,name=snapshot_token,json=snapshotToken,proto3" json:"snapshot_token,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,8,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1348,6 +1413,13 @@ func (x *StreamRowsRequest) GetCursor() string {
 func (x *StreamRowsRequest) GetSnapshotToken() string {
 	if x != nil {
 		return x.SnapshotToken
+	}
+	return ""
+}
+
+func (x *StreamRowsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1492,7 +1564,7 @@ var File_platform_export_v1_export_proto protoreflect.FileDescriptor
 
 const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\n" +
-	"\x1fplatform/export/v1/export.proto\x12\x12platform.export.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xbf\a\n" +
+	"\x1fplatform/export/v1/export.proto\x12\x12platform.export.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xe6\a\n" +
 	"\tExportJob\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12!\n" +
@@ -1528,7 +1600,8 @@ const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x18 \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x19 \x01(\tR\tupdatedBy\"\x80\x01\n" +
+	"updated_by\x18\x19 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x1a \x01(\tR\rapplicationId\"\x80\x01\n" +
 	"\fExportColumn\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x12\n" +
@@ -1541,7 +1614,7 @@ const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\acolumns\x18\x03 \x03(\v2 .platform.export.v1.ExportColumnR\acolumns\x12\x18\n" +
 	"\aformats\x18\x04 \x03(\tR\aformats\x12%\n" +
 	"\x0eestimated_rows\x18\x05 \x01(\x03R\restimatedRows\x12+\n" +
-	"\x11supports_snapshot\x18\x06 \x01(\bR\x10supportsSnapshot\"\xb3\x02\n" +
+	"\x11supports_snapshot\x18\x06 \x01(\bR\x10supportsSnapshot\"\xda\x02\n" +
 	"\x16CreateExportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
 	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12)\n" +
@@ -1551,15 +1624,17 @@ const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\n" +
 	"query_json\x18\x06 \x01(\tR\tqueryJson\x122\n" +
 	"\x15selected_columns_json\x18\a \x01(\tR\x13selectedColumnsJson\x12'\n" +
-	"\x0fidempotency_key\x18\b \x01(\tR\x0eidempotencyKey\"h\n" +
+	"\x0fidempotency_key\x18\b \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\"h\n" +
 	"\x17CreateExportJobResponse\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\x12\x1c\n" +
-	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"B\n" +
+	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"i\n" +
 	"\x13GetExportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"G\n" +
+	"\x02id\x18\x02 \x01(\tR\x02id\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"G\n" +
 	"\x14GetExportJobResponse\x12/\n" +
-	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\"\x9e\x02\n" +
+	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\"\xc5\x02\n" +
 	"\x15ListExportJobsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12!\n" +
@@ -1567,41 +1642,46 @@ const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\fcreated_from\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\vcreatedFrom\x129\n" +
 	"\n" +
 	"created_to\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedTo\x123\n" +
-	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x7f\n" +
+	"\x04page\x18\x06 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\x7f\n" +
 	"\x16ListExportJobsResponse\x121\n" +
 	"\x04jobs\x18\x01 \x03(\v2\x1d.platform.export.v1.ExportJobR\x04jobs\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"_\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x86\x01\n" +
 	"\x16CancelExportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x03R\aversion\"J\n" +
+	"\aversion\x18\x03 \x01(\x03R\aversion\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"J\n" +
 	"\x17CancelExportJobResponse\x12/\n" +
-	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\"\x87\x01\n" +
+	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\"\xae\x01\n" +
 	"\x15RetryExportJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x03 \x01(\x03R\aversion\x12'\n" +
-	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\"g\n" +
+	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"g\n" +
 	"\x16RetryExportJobResponse\x12/\n" +
 	"\x03job\x18\x01 \x01(\v2\x1d.platform.export.v1.ExportJobR\x03job\x12\x1c\n" +
-	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"h\n" +
+	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"\x8f\x01\n" +
 	"\x18CreateDownloadURLRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x1f\n" +
 	"\vttl_seconds\x18\x03 \x01(\x05R\n" +
-	"ttlSeconds\"\xc3\x01\n" +
+	"ttlSeconds\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\xc3\x01\n" +
 	"\x19CreateDownloadURLResponse\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x129\n" +
 	"\n" +
 	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12\x1a\n" +
 	"\bfilename\x18\x03 \x01(\tR\bfilename\x12!\n" +
 	"\fcontent_type\x18\x04 \x01(\tR\vcontentType\x12\x1a\n" +
-	"\bchecksum\x18\x05 \x01(\tR\bchecksum\"X\n" +
+	"\bchecksum\x18\x05 \x01(\tR\bchecksum\"\x7f\n" +
 	"\x16DescribeDatasetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
-	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\"Z\n" +
+	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12%\n" +
+	"\x0eapplication_id\x18\x03 \x01(\tR\rapplicationId\"Z\n" +
 	"\x17DescribeDatasetResponse\x12?\n" +
-	"\adataset\x18\x01 \x01(\v2%.platform.export.v1.DatasetDescriptorR\adataset\"\xfb\x01\n" +
+	"\adataset\x18\x01 \x01(\v2%.platform.export.v1.DatasetDescriptorR\adataset\"\xa2\x02\n" +
 	"\x11StreamRowsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
 	"\fdataset_code\x18\x02 \x01(\tR\vdatasetCode\x12\x1d\n" +
@@ -1611,7 +1691,8 @@ const file_platform_export_v1_export_proto_rawDesc = "" +
 	"\n" +
 	"batch_size\x18\x05 \x01(\x05R\tbatchSize\x12\x16\n" +
 	"\x06cursor\x18\x06 \x01(\tR\x06cursor\x12%\n" +
-	"\x0esnapshot_token\x18\a \x01(\tR\rsnapshotToken\"\x8b\x02\n" +
+	"\x0esnapshot_token\x18\a \x01(\tR\rsnapshotToken\x12%\n" +
+	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\"\x8b\x02\n" +
 	"\x12StreamRowsResponse\x12:\n" +
 	"\acolumns\x18\x01 \x03(\v2 .platform.export.v1.ExportColumnR\acolumns\x12+\n" +
 	"\x04rows\x18\x02 \x03(\v2\x17.google.protobuf.StructR\x04rows\x12\x1f\n" +

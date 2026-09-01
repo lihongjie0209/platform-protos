@@ -53,6 +53,7 @@ message ExportJob {
   google.protobuf.Timestamp updated_at = 23;
   string created_by = 24;
   string updated_by = 25;
+  string application_id = 26;
 }
 
 message ExportColumn {
@@ -81,6 +82,7 @@ message CreateExportJobRequest {
   string query_json = 6;
   string selected_columns_json = 7;
   string idempotency_key = 8;
+  string application_id = 9;
 }
 message CreateExportJobResponse {
   ExportJob job = 1;
@@ -90,6 +92,7 @@ message CreateExportJobResponse {
 message GetExportJobRequest {
   string tenant_id = 1;
   string id = 2;
+  string application_id = 3;
 }
 message GetExportJobResponse {
   ExportJob job = 1;
@@ -102,6 +105,7 @@ message ListExportJobsRequest {
   google.protobuf.Timestamp created_from = 4;
   google.protobuf.Timestamp created_to = 5;
   platform.common.v1.PageRequest page = 6;
+  string application_id = 7;
 }
 message ListExportJobsResponse {
   repeated ExportJob jobs = 1;
@@ -112,6 +116,7 @@ message CancelExportJobRequest {
   string tenant_id = 1;
   string id = 2;
   int64 version = 3;
+  string application_id = 4;
 }
 message CancelExportJobResponse {
   ExportJob job = 1;
@@ -122,6 +127,7 @@ message RetryExportJobRequest {
   string id = 2;
   int64 version = 3;
   string idempotency_key = 4;
+  string application_id = 5;
 }
 message RetryExportJobResponse {
   ExportJob job = 1;
@@ -132,6 +138,7 @@ message CreateDownloadURLRequest {
   string tenant_id = 1;
   string id = 2;
   int32 ttl_seconds = 3;
+  string application_id = 4;
 }
 message CreateDownloadURLResponse {
   string url = 1;
@@ -144,6 +151,7 @@ message CreateDownloadURLResponse {
 message DescribeDatasetRequest {
   string tenant_id = 1;
   string dataset_code = 2;
+  string application_id = 3;
 }
 message DescribeDatasetResponse {
   DatasetDescriptor dataset = 1;
@@ -157,6 +165,7 @@ message StreamRowsRequest {
   int32 batch_size = 5;
   string cursor = 6;
   string snapshot_token = 7;
+  string application_id = 8;
 }
 message StreamRowsResponse {
   repeated ExportColumn columns = 1;
