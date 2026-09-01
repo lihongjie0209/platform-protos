@@ -51,6 +51,7 @@ message UsageFact {
   google.protobuf.Timestamp updated_at = 14;
   string created_by = 15;
   string updated_by = 16;
+  string application_id = 17;
 }
 
 message UsagePoint {
@@ -107,6 +108,7 @@ message UsageInput {
   google.protobuf.Timestamp occurred_at = 6;
   string source_service = 7;
   string source_id = 8;
+  string application_id = 9;
 }
 message RecordUsageRequest {
   repeated UsageInput events = 1;
@@ -128,6 +130,7 @@ message QueryUsageRequest {
   map<string, string> dimensions = 5;
   string granularity = 6;
   platform.common.v1.PageRequest page = 7;
+  string application_id = 8;
 }
 message QueryUsageResponse {
   repeated UsagePoint points = 1;
@@ -144,6 +147,7 @@ message AdjustUsageRequest {
   google.protobuf.Timestamp occurred_at = 6;
   string source_id = 7;
   string reason = 8;
+  string application_id = 9;
 }
 message AdjustUsageResponse {
   UsageFact fact = 1;

@@ -181,6 +181,7 @@ type UsageFact struct {
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy     string                 `protobuf:"bytes,15,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy     string                 `protobuf:"bytes,16,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,17,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -323,6 +324,13 @@ func (x *UsageFact) GetCreatedBy() string {
 func (x *UsageFact) GetUpdatedBy() string {
 	if x != nil {
 		return x.UpdatedBy
+	}
+	return ""
+}
+
+func (x *UsageFact) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -861,6 +869,7 @@ type UsageInput struct {
 	OccurredAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=occurred_at,json=occurredAt,proto3" json:"occurred_at,omitempty"`
 	SourceService string                 `protobuf:"bytes,7,opt,name=source_service,json=sourceService,proto3" json:"source_service,omitempty"`
 	SourceId      string                 `protobuf:"bytes,8,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -947,6 +956,13 @@ func (x *UsageInput) GetSourceService() string {
 func (x *UsageInput) GetSourceId() string {
 	if x != nil {
 		return x.SourceId
+	}
+	return ""
+}
+
+func (x *UsageInput) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1108,6 +1124,7 @@ type QueryUsageRequest struct {
 	Dimensions    map[string]string      `protobuf:"bytes,5,rep,name=dimensions,proto3" json:"dimensions,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	Granularity   string                 `protobuf:"bytes,6,opt,name=granularity,proto3" json:"granularity,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,7,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,8,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1191,6 +1208,13 @@ func (x *QueryUsageRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *QueryUsageRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type QueryUsageResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Points        []*UsagePoint          `protobuf:"bytes,1,rep,name=points,proto3" json:"points,omitempty"`
@@ -1261,6 +1285,7 @@ type AdjustUsageRequest struct {
 	OccurredAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=occurred_at,json=occurredAt,proto3" json:"occurred_at,omitempty"`
 	SourceId      string                 `protobuf:"bytes,7,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
 	Reason        string                 `protobuf:"bytes,8,opt,name=reason,proto3" json:"reason,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,9,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1347,6 +1372,13 @@ func (x *AdjustUsageRequest) GetSourceId() string {
 func (x *AdjustUsageRequest) GetReason() string {
 	if x != nil {
 		return x.Reason
+	}
+	return ""
+}
+
+func (x *AdjustUsageRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1522,7 +1554,7 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\r \x01(\tR\tupdatedBy\"\xa5\x05\n" +
+	"updated_by\x18\r \x01(\tR\tupdatedBy\"\xcc\x05\n" +
 	"\tUsageFact\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
 	"\bevent_id\x18\x02 \x01(\tR\aeventId\x12\x1b\n" +
@@ -1550,7 +1582,8 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\x0f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\x10 \x01(\tR\tupdatedBy\x1a=\n" +
+	"updated_by\x18\x10 \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x11 \x01(\tR\rapplicationId\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb3\x02\n" +
@@ -1594,7 +1627,7 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"}\n" +
 	"\x12ListMetersResponse\x123\n" +
 	"\x06meters\x18\x01 \x03(\v2\x1b.platform.metering.v1.MeterR\x06meters\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x91\x03\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xb8\x03\n" +
 	"\n" +
 	"UsageInput\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12\x1b\n" +
@@ -1608,7 +1641,8 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\voccurred_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12%\n" +
 	"\x0esource_service\x18\a \x01(\tR\rsourceService\x12\x1b\n" +
-	"\tsource_id\x18\b \x01(\tR\bsourceId\x1a=\n" +
+	"\tsource_id\x18\b \x01(\tR\bsourceId\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"N\n" +
@@ -1619,7 +1653,7 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\afact_id\x18\x02 \x01(\tR\x06factId\x12\x1c\n" +
 	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"X\n" +
 	"\x13RecordUsageResponse\x12A\n" +
-	"\aresults\x18\x01 \x03(\v2'.platform.metering.v1.RecordUsageResultR\aresults\"\xa8\x03\n" +
+	"\aresults\x18\x01 \x03(\v2'.platform.metering.v1.RecordUsageResultR\aresults\"\xcf\x03\n" +
 	"\x11QueryUsageRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1d\n" +
 	"\n" +
@@ -1630,14 +1664,15 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"dimensions\x18\x05 \x03(\v27.platform.metering.v1.QueryUsageRequest.DimensionsEntryR\n" +
 	"dimensions\x12 \n" +
 	"\vgranularity\x18\x06 \x01(\tR\vgranularity\x123\n" +
-	"\x04page\x18\a \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x1a=\n" +
+	"\x04page\x18\a \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa9\x01\n" +
 	"\x12QueryUsageResponse\x128\n" +
 	"\x06points\x18\x01 \x03(\v2 .platform.metering.v1.UsagePointR\x06points\x12%\n" +
 	"\x0etotal_quantity\x18\x02 \x01(\x03R\rtotalQuantity\x122\n" +
-	"\x04page\x18\x03 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x92\x03\n" +
+	"\x04page\x18\x03 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xb9\x03\n" +
 	"\x12AdjustUsageRequest\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1d\n" +
@@ -1650,7 +1685,8 @@ const file_platform_metering_v1_metering_proto_rawDesc = "" +
 	"\voccurred_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12\x1b\n" +
 	"\tsource_id\x18\a \x01(\tR\bsourceId\x12\x16\n" +
-	"\x06reason\x18\b \x01(\tR\x06reason\x1a=\n" +
+	"\x06reason\x18\b \x01(\tR\x06reason\x12%\n" +
+	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\x1a=\n" +
 	"\x0fDimensionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"h\n" +
