@@ -44,6 +44,7 @@ type ConfigEntry struct {
 	ReviewComment     string                 `protobuf:"bytes,17,opt,name=review_comment,json=reviewComment,proto3" json:"review_comment,omitempty"`
 	ReviewedBy        string                 `protobuf:"bytes,18,opt,name=reviewed_by,json=reviewedBy,proto3" json:"reviewed_by,omitempty"`
 	ReviewedAt        *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=reviewed_at,json=reviewedAt,proto3" json:"reviewed_at,omitempty"`
+	ApplicationId     string                 `protobuf:"bytes,20,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -209,6 +210,13 @@ func (x *ConfigEntry) GetReviewedAt() *timestamppb.Timestamp {
 		return x.ReviewedAt
 	}
 	return nil
+}
+
+func (x *ConfigEntry) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type PutDraftRequest struct {
@@ -818,6 +826,7 @@ type ResolveRequest struct {
 	Service       string                 `protobuf:"bytes,3,opt,name=service,proto3" json:"service,omitempty"`
 	Keys          []string               `protobuf:"bytes,4,rep,name=keys,proto3" json:"keys,omitempty"`
 	SubjectId     string                 `protobuf:"bytes,5,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -887,6 +896,13 @@ func (x *ResolveRequest) GetSubjectId() string {
 	return ""
 }
 
+func (x *ResolveRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ResolveResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Entries       []*ConfigEntry         `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
@@ -945,6 +961,7 @@ type ListRequest struct {
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Service       string                 `protobuf:"bytes,3,opt,name=service,proto3" json:"service,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1005,6 +1022,13 @@ func (x *ListRequest) GetPage() *v1.PageRequest {
 		return x.Page
 	}
 	return nil
+}
+
+func (x *ListRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
 }
 
 type ListResponse struct {
@@ -1115,7 +1139,7 @@ var File_platform_config_v1_config_proto protoreflect.FileDescriptor
 
 const file_platform_config_v1_config_proto_rawDesc = "" +
 	"\n" +
-	"\x1fplatform/config/v1/config.proto\x12\x12platform.config.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xa2\x05\n" +
+	"\x1fplatform/config/v1/config.proto\x12\x12platform.config.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xc9\x05\n" +
 	"\vConfigEntry\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\venvironment\x18\x02 \x01(\tR\venvironment\x12\x1b\n" +
@@ -1143,7 +1167,8 @@ const file_platform_config_v1_config_proto_rawDesc = "" +
 	"\vreviewed_by\x18\x12 \x01(\tR\n" +
 	"reviewedBy\x12;\n" +
 	"\vreviewed_at\x18\x13 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
-	"reviewedAt\"s\n" +
+	"reviewedAt\x12%\n" +
+	"\x0eapplication_id\x18\x14 \x01(\tR\rapplicationId\"s\n" +
 	"\x0fPutDraftRequest\x125\n" +
 	"\x05entry\x18\x01 \x01(\v2\x1f.platform.config.v1.ConfigEntryR\x05entry\x12)\n" +
 	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"I\n" +
@@ -1176,22 +1201,24 @@ const file_platform_config_v1_config_proto_rawDesc = "" +
 	"\x0ftarget_revision\x18\x02 \x01(\x03R\x0etargetRevision\x12)\n" +
 	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\"I\n" +
 	"\x10RollbackResponse\x125\n" +
-	"\x05entry\x18\x01 \x01(\v2\x1f.platform.config.v1.ConfigEntryR\x05entry\"\x9c\x01\n" +
+	"\x05entry\x18\x01 \x01(\v2\x1f.platform.config.v1.ConfigEntryR\x05entry\"\xc3\x01\n" +
 	"\x0eResolveRequest\x12 \n" +
 	"\venvironment\x18\x01 \x01(\tR\venvironment\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x18\n" +
 	"\aservice\x18\x03 \x01(\tR\aservice\x12\x12\n" +
 	"\x04keys\x18\x04 \x03(\tR\x04keys\x12\x1d\n" +
 	"\n" +
-	"subject_id\x18\x05 \x01(\tR\tsubjectId\"`\n" +
+	"subject_id\x18\x05 \x01(\tR\tsubjectId\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"`\n" +
 	"\x0fResolveResponse\x129\n" +
 	"\aentries\x18\x01 \x03(\v2\x1f.platform.config.v1.ConfigEntryR\aentries\x12\x12\n" +
-	"\x04etag\x18\x02 \x01(\tR\x04etag\"\x9b\x01\n" +
+	"\x04etag\x18\x02 \x01(\tR\x04etag\"\xc2\x01\n" +
 	"\vListRequest\x12 \n" +
 	"\venvironment\x18\x01 \x01(\tR\venvironment\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x18\n" +
 	"\aservice\x18\x03 \x01(\tR\aservice\x123\n" +
-	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"}\n" +
+	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"}\n" +
 	"\fListResponse\x129\n" +
 	"\aentries\x18\x01 \x03(\v2\x1f.platform.config.v1.ConfigEntryR\aentries\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"l\n" +

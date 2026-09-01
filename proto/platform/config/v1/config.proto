@@ -38,6 +38,7 @@ message ConfigEntry {
   string review_comment = 17;
   string reviewed_by = 18;
   google.protobuf.Timestamp reviewed_at = 19;
+  string application_id = 20;
 }
 message PutDraftRequest {
   ConfigEntry entry = 1;
@@ -90,6 +91,7 @@ message ResolveRequest {
   string service = 3;
   repeated string keys = 4;
   string subject_id = 5;
+  string application_id = 6;
 }
 message ResolveResponse {
   repeated ConfigEntry entries = 1;
@@ -100,6 +102,7 @@ message ListRequest {
   string tenant_id = 2;
   string service = 3;
   platform.common.v1.PageRequest page = 4;
+  string application_id = 5;
 }
 message ListResponse {
   repeated ConfigEntry entries = 1;
