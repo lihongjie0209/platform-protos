@@ -710,13 +710,14 @@ func (x *SearchResponse) GetTookMilliseconds() uint64 {
 }
 
 type SuggestRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Prefix        string                 `protobuf:"bytes,2,opt,name=prefix,proto3" json:"prefix,omitempty"`
-	DocumentTypes []string               `protobuf:"bytes,3,rep,name=document_types,json=documentTypes,proto3" json:"document_types,omitempty"`
-	Limit         uint32                 `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Prefix         string                 `protobuf:"bytes,2,opt,name=prefix,proto3" json:"prefix,omitempty"`
+	DocumentTypes  []string               `protobuf:"bytes,3,rep,name=document_types,json=documentTypes,proto3" json:"document_types,omitempty"`
+	Limit          uint32                 `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
+	ApplicationIds []string               `protobuf:"bytes,5,rep,name=application_ids,json=applicationIds,proto3" json:"application_ids,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *SuggestRequest) Reset() {
@@ -775,6 +776,13 @@ func (x *SuggestRequest) GetLimit() uint32 {
 		return x.Limit
 	}
 	return 0
+}
+
+func (x *SuggestRequest) GetApplicationIds() []string {
+	if x != nil {
+		return x.ApplicationIds
+	}
+	return nil
 }
 
 type Suggestion struct {
@@ -1407,12 +1415,13 @@ const file_platform_search_v1_search_proto_rawDesc = "" +
 	"\x04page\x18\x03 \x01(\rR\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x04 \x01(\rR\bpageSize\x121\n" +
 	"\x06facets\x18\x05 \x03(\v2\x19.platform.search.v1.FacetR\x06facets\x12+\n" +
-	"\x11took_milliseconds\x18\x06 \x01(\x04R\x10tookMilliseconds\"\x82\x01\n" +
+	"\x11took_milliseconds\x18\x06 \x01(\x04R\x10tookMilliseconds\"\xab\x01\n" +
 	"\x0eSuggestRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06prefix\x18\x02 \x01(\tR\x06prefix\x12%\n" +
 	"\x0edocument_types\x18\x03 \x03(\tR\rdocumentTypes\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\rR\x05limit\"t\n" +
+	"\x05limit\x18\x04 \x01(\rR\x05limit\x12'\n" +
+	"\x0fapplication_ids\x18\x05 \x03(\tR\x0eapplicationIds\"t\n" +
 	"\n" +
 	"Suggestion\x12\x12\n" +
 	"\x04text\x18\x01 \x01(\tR\x04text\x12#\n" +

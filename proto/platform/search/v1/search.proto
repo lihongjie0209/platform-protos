@@ -99,6 +99,7 @@ message SuggestRequest {
   string prefix = 2;
   repeated string document_types = 3;
   uint32 limit = 4;
+  repeated string application_ids = 5;
 }
 
 message Suggestion {
