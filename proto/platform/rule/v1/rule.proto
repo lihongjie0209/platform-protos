@@ -36,6 +36,7 @@ message RuleSet {
   google.protobuf.Timestamp updated_at = 10;
   string created_by = 11;
   string updated_by = 12;
+  string application_id = 13;
 }
 
 message RuleVersion {
@@ -52,6 +53,7 @@ message RuleVersion {
   google.protobuf.Timestamp updated_at = 11;
   string created_by = 12;
   string updated_by = 13;
+  string application_id = 14;
 }
 
 message ValidationIssue {
@@ -65,6 +67,7 @@ message CreateRuleSetRequest {
   string code = 2;
   string name = 3;
   string description = 4;
+  string application_id = 5;
 }
 message CreateRuleSetResponse {
   RuleSet rule_set = 1;
@@ -77,6 +80,7 @@ message UpdateRuleSetRequest {
   string description = 4;
   string status = 5;
   int64 version = 6;
+  string application_id = 7;
 }
 message UpdateRuleSetResponse {
   RuleSet rule_set = 1;
@@ -86,6 +90,7 @@ message GetRuleSetRequest {
   string tenant_id = 1;
   string id = 2;
   string code = 3;
+  string application_id = 4;
 }
 message GetRuleSetResponse {
   RuleSet rule_set = 1;
@@ -97,6 +102,7 @@ message ListRuleSetsRequest {
   string status = 2;
   string keyword = 3;
   platform.common.v1.PageRequest page = 4;
+  string application_id = 5;
 }
 message ListRuleSetsResponse {
   repeated RuleSet rule_sets = 1;
@@ -108,6 +114,7 @@ message CreateRuleVersionRequest {
   string rule_set_id = 2;
   string definition_json = 3;
   string idempotency_key = 4;
+  string application_id = 5;
 }
 message CreateRuleVersionResponse {
   RuleVersion rule_version = 1;
@@ -117,6 +124,7 @@ message ValidateRuleVersionRequest {
   string tenant_id = 1;
   string rule_set_id = 2;
   string definition_json = 3;
+  string application_id = 4;
 }
 message ValidateRuleVersionResponse {
   bool valid = 1;
@@ -130,6 +138,7 @@ message PublishRuleVersionRequest {
   string rule_version_id = 3;
   int64 rule_set_version = 4;
   int64 rule_version_version = 5;
+  string application_id = 6;
 }
 message PublishRuleVersionResponse {
   RuleSet rule_set = 1;
@@ -141,6 +150,7 @@ message ListRuleVersionsRequest {
   string rule_set_id = 2;
   string status = 3;
   platform.common.v1.PageRequest page = 4;
+  string application_id = 5;
 }
 message ListRuleVersionsResponse {
   repeated RuleVersion rule_versions = 1;
@@ -154,6 +164,7 @@ message EvaluateRequest {
   int64 version_number = 4;
   string facts_json = 5;
   string request_id = 6;
+  string application_id = 7;
 }
 message EvaluateResponse {
   bool matched = 1;

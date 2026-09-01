@@ -37,6 +37,7 @@ type RuleSet struct {
 	UpdatedAt              *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy              string                 `protobuf:"bytes,11,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy              string                 `protobuf:"bytes,12,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId          string                 `protobuf:"bytes,13,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -155,6 +156,13 @@ func (x *RuleSet) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *RuleSet) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type RuleVersion struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -170,6 +178,7 @@ type RuleVersion struct {
 	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedBy      string                 `protobuf:"bytes,12,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	UpdatedBy      string                 `protobuf:"bytes,13,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,14,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -295,6 +304,13 @@ func (x *RuleVersion) GetUpdatedBy() string {
 	return ""
 }
 
+func (x *RuleVersion) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ValidationIssue struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
@@ -361,6 +377,7 @@ type CreateRuleSetRequest struct {
 	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -423,6 +440,13 @@ func (x *CreateRuleSetRequest) GetDescription() string {
 	return ""
 }
 
+func (x *CreateRuleSetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CreateRuleSetResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleSet       *RuleSet               `protobuf:"bytes,1,opt,name=rule_set,json=ruleSet,proto3" json:"rule_set,omitempty"`
@@ -475,6 +499,7 @@ type UpdateRuleSetRequest struct {
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
 	Version       int64                  `protobuf:"varint,6,opt,name=version,proto3" json:"version,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -551,6 +576,13 @@ func (x *UpdateRuleSetRequest) GetVersion() int64 {
 	return 0
 }
 
+func (x *UpdateRuleSetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type UpdateRuleSetResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleSet       *RuleSet               `protobuf:"bytes,1,opt,name=rule_set,json=ruleSet,proto3" json:"rule_set,omitempty"`
@@ -600,6 +632,7 @@ type GetRuleSetRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -651,6 +684,13 @@ func (x *GetRuleSetRequest) GetId() string {
 func (x *GetRuleSetRequest) GetCode() string {
 	if x != nil {
 		return x.Code
+	}
+	return ""
+}
+
+func (x *GetRuleSetRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -713,6 +753,7 @@ type ListRuleSetsRequest struct {
 	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 	Keyword       string                 `protobuf:"bytes,3,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -775,6 +816,13 @@ func (x *ListRuleSetsRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListRuleSetsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListRuleSetsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleSets      []*RuleSet             `protobuf:"bytes,1,rep,name=rule_sets,json=ruleSets,proto3" json:"rule_sets,omitempty"`
@@ -833,6 +881,7 @@ type CreateRuleVersionRequest struct {
 	RuleSetId      string                 `protobuf:"bytes,2,opt,name=rule_set_id,json=ruleSetId,proto3" json:"rule_set_id,omitempty"`
 	DefinitionJson string                 `protobuf:"bytes,3,opt,name=definition_json,json=definitionJson,proto3" json:"definition_json,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -895,6 +944,13 @@ func (x *CreateRuleVersionRequest) GetIdempotencyKey() string {
 	return ""
 }
 
+func (x *CreateRuleVersionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type CreateRuleVersionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleVersion   *RuleVersion           `protobuf:"bytes,1,opt,name=rule_version,json=ruleVersion,proto3" json:"rule_version,omitempty"`
@@ -944,6 +1000,7 @@ type ValidateRuleVersionRequest struct {
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	RuleSetId      string                 `protobuf:"bytes,2,opt,name=rule_set_id,json=ruleSetId,proto3" json:"rule_set_id,omitempty"`
 	DefinitionJson string                 `protobuf:"bytes,3,opt,name=definition_json,json=definitionJson,proto3" json:"definition_json,omitempty"`
+	ApplicationId  string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -995,6 +1052,13 @@ func (x *ValidateRuleVersionRequest) GetRuleSetId() string {
 func (x *ValidateRuleVersionRequest) GetDefinitionJson() string {
 	if x != nil {
 		return x.DefinitionJson
+	}
+	return ""
+}
+
+func (x *ValidateRuleVersionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1066,6 +1130,7 @@ type PublishRuleVersionRequest struct {
 	RuleVersionId      string                 `protobuf:"bytes,3,opt,name=rule_version_id,json=ruleVersionId,proto3" json:"rule_version_id,omitempty"`
 	RuleSetVersion     int64                  `protobuf:"varint,4,opt,name=rule_set_version,json=ruleSetVersion,proto3" json:"rule_set_version,omitempty"`
 	RuleVersionVersion int64                  `protobuf:"varint,5,opt,name=rule_version_version,json=ruleVersionVersion,proto3" json:"rule_version_version,omitempty"`
+	ApplicationId      string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -1135,6 +1200,13 @@ func (x *PublishRuleVersionRequest) GetRuleVersionVersion() int64 {
 	return 0
 }
 
+func (x *PublishRuleVersionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type PublishRuleVersionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleSet       *RuleSet               `protobuf:"bytes,1,opt,name=rule_set,json=ruleSet,proto3" json:"rule_set,omitempty"`
@@ -1193,6 +1265,7 @@ type ListRuleVersionsRequest struct {
 	RuleSetId     string                 `protobuf:"bytes,2,opt,name=rule_set_id,json=ruleSetId,proto3" json:"rule_set_id,omitempty"`
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1255,6 +1328,13 @@ func (x *ListRuleVersionsRequest) GetPage() *v1.PageRequest {
 	return nil
 }
 
+func (x *ListRuleVersionsRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
 type ListRuleVersionsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RuleVersions  []*RuleVersion         `protobuf:"bytes,1,rep,name=rule_versions,json=ruleVersions,proto3" json:"rule_versions,omitempty"`
@@ -1315,6 +1395,7 @@ type EvaluateRequest struct {
 	VersionNumber int64                  `protobuf:"varint,4,opt,name=version_number,json=versionNumber,proto3" json:"version_number,omitempty"`
 	FactsJson     string                 `protobuf:"bytes,5,opt,name=facts_json,json=factsJson,proto3" json:"facts_json,omitempty"`
 	RequestId     string                 `protobuf:"bytes,6,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,7,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1387,6 +1468,13 @@ func (x *EvaluateRequest) GetFactsJson() string {
 func (x *EvaluateRequest) GetRequestId() string {
 	if x != nil {
 		return x.RequestId
+	}
+	return ""
+}
+
+func (x *EvaluateRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
 	}
 	return ""
 }
@@ -1679,7 +1767,7 @@ var File_platform_rule_v1_rule_proto protoreflect.FileDescriptor
 
 const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\n" +
-	"\x1bplatform/rule/v1/rule.proto\x12\x10platform.rule.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xa0\x03\n" +
+	"\x1bplatform/rule/v1/rule.proto\x12\x10platform.rule.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xc7\x03\n" +
 	"\aRuleSet\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
@@ -1697,7 +1785,8 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\v \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\f \x01(\tR\tupdatedBy\"\xeb\x03\n" +
+	"updated_by\x18\f \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\r \x01(\tR\rapplicationId\"\x92\x04\n" +
 	"\vRuleVersion\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1e\n" +
@@ -1716,74 +1805,83 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\n" +
 	"created_by\x18\f \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\r \x01(\tR\tupdatedBy\"S\n" +
+	"updated_by\x18\r \x01(\tR\tupdatedBy\x12%\n" +
+	"\x0eapplication_id\x18\x0e \x01(\tR\rapplicationId\"S\n" +
 	"\x0fValidationIssue\x12\x12\n" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"}\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"\xa4\x01\n" +
 	"\x14CreateRuleSetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\tR\x04code\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\"M\n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"M\n" +
 	"\x15CreateRuleSetResponse\x124\n" +
-	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\"\xab\x01\n" +
+	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\"\xd2\x01\n" +
 	"\x14UpdateRuleSetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x16\n" +
 	"\x06status\x18\x05 \x01(\tR\x06status\x12\x18\n" +
-	"\aversion\x18\x06 \x01(\x03R\aversion\"M\n" +
+	"\aversion\x18\x06 \x01(\x03R\aversion\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"M\n" +
 	"\x15UpdateRuleSetResponse\x124\n" +
-	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\"T\n" +
+	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\"{\n" +
 	"\x11GetRuleSetRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12\x12\n" +
-	"\x04code\x18\x03 \x01(\tR\x04code\"\x96\x01\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x96\x01\n" +
 	"\x12GetRuleSetResponse\x124\n" +
 	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\x12J\n" +
-	"\x11published_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\x10publishedVersion\"\x99\x01\n" +
+	"\x11published_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\x10publishedVersion\"\xc0\x01\n" +
 	"\x13ListRuleSetsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06status\x18\x02 \x01(\tR\x06status\x12\x18\n" +
 	"\akeyword\x18\x03 \x01(\tR\akeyword\x123\n" +
-	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x82\x01\n" +
+	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x82\x01\n" +
 	"\x14ListRuleSetsResponse\x126\n" +
 	"\trule_sets\x18\x01 \x03(\v2\x19.platform.rule.v1.RuleSetR\bruleSets\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xa9\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xd0\x01\n" +
 	"\x18CreateRuleVersionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12'\n" +
 	"\x0fdefinition_json\x18\x03 \x01(\tR\x0edefinitionJson\x12'\n" +
-	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\"]\n" +
+	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"]\n" +
 	"\x19CreateRuleVersionResponse\x12@\n" +
-	"\frule_version\x18\x01 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\x82\x01\n" +
+	"\frule_version\x18\x01 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xa9\x01\n" +
 	"\x1aValidateRuleVersionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12'\n" +
-	"\x0fdefinition_json\x18\x03 \x01(\tR\x0edefinitionJson\"\x8a\x01\n" +
+	"\x0fdefinition_json\x18\x03 \x01(\tR\x0edefinitionJson\x12%\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x8a\x01\n" +
 	"\x1bValidateRuleVersionResponse\x12\x14\n" +
 	"\x05valid\x18\x01 \x01(\bR\x05valid\x129\n" +
 	"\x06issues\x18\x02 \x03(\v2!.platform.rule.v1.ValidationIssueR\x06issues\x12\x1a\n" +
-	"\bchecksum\x18\x03 \x01(\tR\bchecksum\"\xdc\x01\n" +
+	"\bchecksum\x18\x03 \x01(\tR\bchecksum\"\x83\x02\n" +
 	"\x19PublishRuleVersionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12&\n" +
 	"\x0frule_version_id\x18\x03 \x01(\tR\rruleVersionId\x12(\n" +
 	"\x10rule_set_version\x18\x04 \x01(\x03R\x0eruleSetVersion\x120\n" +
-	"\x14rule_version_version\x18\x05 \x01(\x03R\x12ruleVersionVersion\"\x94\x01\n" +
+	"\x14rule_version_version\x18\x05 \x01(\x03R\x12ruleVersionVersion\x12%\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x94\x01\n" +
 	"\x1aPublishRuleVersionResponse\x124\n" +
 	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\x12@\n" +
-	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xa3\x01\n" +
+	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xca\x01\n" +
 	"\x17ListRuleVersionsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x123\n" +
-	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x92\x01\n" +
+	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x92\x01\n" +
 	"\x18ListRuleVersionsResponse\x12B\n" +
 	"\rrule_versions\x18\x01 \x03(\v2\x1d.platform.rule.v1.RuleVersionR\fruleVersions\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xd7\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xfe\x01\n" +
 	"\x0fEvaluateRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12\"\n" +
@@ -1792,7 +1890,8 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\n" +
 	"facts_json\x18\x05 \x01(\tR\tfactsJson\x12\x1d\n" +
 	"\n" +
-	"request_id\x18\x06 \x01(\tR\trequestId\"\xc6\x01\n" +
+	"request_id\x18\x06 \x01(\tR\trequestId\x12%\n" +
+	"\x0eapplication_id\x18\a \x01(\tR\rapplicationId\"\xc6\x01\n" +
 	"\x10EvaluateResponse\x12\x18\n" +
 	"\amatched\x18\x01 \x01(\bR\amatched\x12!\n" +
 	"\fmatched_rule\x18\x02 \x01(\tR\vmatchedRule\x12\x1f\n" +
