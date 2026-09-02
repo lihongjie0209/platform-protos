@@ -122,10 +122,20 @@ message PasswordChangedEvent {
   uint64 revoked_sessions = 2;
 }
 
+enum MFAStatusChangeType {
+  MFA_STATUS_CHANGE_TYPE_UNSPECIFIED = 0;
+  MFA_STATUS_CHANGE_TYPE_ENABLED = 1;
+  MFA_STATUS_CHANGE_TYPE_DISABLED = 2;
+  MFA_STATUS_CHANGE_TYPE_RECOVERY_CODES_ROTATED = 3;
+  MFA_STATUS_CHANGE_TYPE_ADMINISTRATIVE_RESET = 4;
+}
+
 message MFAStatusChangedEvent {
   string user_id = 1;
   bool enabled = 2;
   uint32 recovery_codes_remaining = 3;
+  MFAStatusChangeType change_type = 4;
+  string reason = 5;
 }
 
 message ServiceAccountStatusChangedEvent {
