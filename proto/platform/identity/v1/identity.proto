@@ -117,9 +117,17 @@ message SessionRevokedEvent {
   string reason = 4;
 }
 
+enum PasswordChangeType {
+  PASSWORD_CHANGE_TYPE_UNSPECIFIED = 0;
+  PASSWORD_CHANGE_TYPE_SELF_SERVICE = 1;
+  PASSWORD_CHANGE_TYPE_ADMINISTRATIVE_RECOVERY = 2;
+}
+
 message PasswordChangedEvent {
   string user_id = 1;
   uint64 revoked_sessions = 2;
+  PasswordChangeType change_type = 3;
+  string reason = 4;
 }
 
 enum MFAStatusChangeType {
