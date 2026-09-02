@@ -18,6 +18,7 @@ service RuleService {
   rpc CreateRuleVersion(CreateRuleVersionRequest) returns (CreateRuleVersionResponse);
   rpc ValidateRuleVersion(ValidateRuleVersionRequest) returns (ValidateRuleVersionResponse);
   rpc PublishRuleVersion(PublishRuleVersionRequest) returns (PublishRuleVersionResponse);
+  rpc GetRuleVersion(GetRuleVersionRequest) returns (GetRuleVersionResponse);
   rpc ListRuleVersions(ListRuleVersionsRequest) returns (ListRuleVersionsResponse);
   rpc Evaluate(EvaluateRequest) returns (EvaluateResponse);
   rpc BatchEvaluate(BatchEvaluateRequest) returns (BatchEvaluateResponse);
@@ -143,6 +144,16 @@ message PublishRuleVersionRequest {
 message PublishRuleVersionResponse {
   RuleSet rule_set = 1;
   RuleVersion rule_version = 2;
+}
+
+message GetRuleVersionRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string rule_set_id = 3;
+  string id = 4;
+}
+message GetRuleVersionResponse {
+  RuleVersion rule_version = 1;
 }
 
 message ListRuleVersionsRequest {

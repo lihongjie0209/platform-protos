@@ -26,6 +26,7 @@ const (
 	RuleService_CreateRuleVersion_FullMethodName   = "/platform.rule.v1.RuleService/CreateRuleVersion"
 	RuleService_ValidateRuleVersion_FullMethodName = "/platform.rule.v1.RuleService/ValidateRuleVersion"
 	RuleService_PublishRuleVersion_FullMethodName  = "/platform.rule.v1.RuleService/PublishRuleVersion"
+	RuleService_GetRuleVersion_FullMethodName      = "/platform.rule.v1.RuleService/GetRuleVersion"
 	RuleService_ListRuleVersions_FullMethodName    = "/platform.rule.v1.RuleService/ListRuleVersions"
 	RuleService_Evaluate_FullMethodName            = "/platform.rule.v1.RuleService/Evaluate"
 	RuleService_BatchEvaluate_FullMethodName       = "/platform.rule.v1.RuleService/BatchEvaluate"
@@ -46,6 +47,7 @@ type RuleServiceClient interface {
 	CreateRuleVersion(ctx context.Context, in *CreateRuleVersionRequest, opts ...grpc.CallOption) (*CreateRuleVersionResponse, error)
 	ValidateRuleVersion(ctx context.Context, in *ValidateRuleVersionRequest, opts ...grpc.CallOption) (*ValidateRuleVersionResponse, error)
 	PublishRuleVersion(ctx context.Context, in *PublishRuleVersionRequest, opts ...grpc.CallOption) (*PublishRuleVersionResponse, error)
+	GetRuleVersion(ctx context.Context, in *GetRuleVersionRequest, opts ...grpc.CallOption) (*GetRuleVersionResponse, error)
 	ListRuleVersions(ctx context.Context, in *ListRuleVersionsRequest, opts ...grpc.CallOption) (*ListRuleVersionsResponse, error)
 	Evaluate(ctx context.Context, in *EvaluateRequest, opts ...grpc.CallOption) (*EvaluateResponse, error)
 	BatchEvaluate(ctx context.Context, in *BatchEvaluateRequest, opts ...grpc.CallOption) (*BatchEvaluateResponse, error)
@@ -129,6 +131,16 @@ func (c *ruleServiceClient) PublishRuleVersion(ctx context.Context, in *PublishR
 	return out, nil
 }
 
+func (c *ruleServiceClient) GetRuleVersion(ctx context.Context, in *GetRuleVersionRequest, opts ...grpc.CallOption) (*GetRuleVersionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetRuleVersionResponse)
+	err := c.cc.Invoke(ctx, RuleService_GetRuleVersion_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *ruleServiceClient) ListRuleVersions(ctx context.Context, in *ListRuleVersionsRequest, opts ...grpc.CallOption) (*ListRuleVersionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListRuleVersionsResponse)
@@ -174,6 +186,7 @@ type RuleServiceServer interface {
 	CreateRuleVersion(context.Context, *CreateRuleVersionRequest) (*CreateRuleVersionResponse, error)
 	ValidateRuleVersion(context.Context, *ValidateRuleVersionRequest) (*ValidateRuleVersionResponse, error)
 	PublishRuleVersion(context.Context, *PublishRuleVersionRequest) (*PublishRuleVersionResponse, error)
+	GetRuleVersion(context.Context, *GetRuleVersionRequest) (*GetRuleVersionResponse, error)
 	ListRuleVersions(context.Context, *ListRuleVersionsRequest) (*ListRuleVersionsResponse, error)
 	Evaluate(context.Context, *EvaluateRequest) (*EvaluateResponse, error)
 	BatchEvaluate(context.Context, *BatchEvaluateRequest) (*BatchEvaluateResponse, error)
@@ -207,6 +220,9 @@ func (UnimplementedRuleServiceServer) ValidateRuleVersion(context.Context, *Vali
 }
 func (UnimplementedRuleServiceServer) PublishRuleVersion(context.Context, *PublishRuleVersionRequest) (*PublishRuleVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PublishRuleVersion not implemented")
+}
+func (UnimplementedRuleServiceServer) GetRuleVersion(context.Context, *GetRuleVersionRequest) (*GetRuleVersionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRuleVersion not implemented")
 }
 func (UnimplementedRuleServiceServer) ListRuleVersions(context.Context, *ListRuleVersionsRequest) (*ListRuleVersionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListRuleVersions not implemented")
@@ -364,6 +380,24 @@ func _RuleService_PublishRuleVersion_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RuleService_GetRuleVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRuleVersionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RuleServiceServer).GetRuleVersion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RuleService_GetRuleVersion_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RuleServiceServer).GetRuleVersion(ctx, req.(*GetRuleVersionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RuleService_ListRuleVersions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListRuleVersionsRequest)
 	if err := dec(in); err != nil {
@@ -452,6 +486,10 @@ var RuleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PublishRuleVersion",
 			Handler:    _RuleService_PublishRuleVersion_Handler,
+		},
+		{
+			MethodName: "GetRuleVersion",
+			Handler:    _RuleService_GetRuleVersion_Handler,
 		},
 		{
 			MethodName: "ListRuleVersions",

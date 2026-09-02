@@ -1259,6 +1259,118 @@ func (x *PublishRuleVersionResponse) GetRuleVersion() *RuleVersion {
 	return nil
 }
 
+type GetRuleVersionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	RuleSetId     string                 `protobuf:"bytes,3,opt,name=rule_set_id,json=ruleSetId,proto3" json:"rule_set_id,omitempty"`
+	Id            string                 `protobuf:"bytes,4,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRuleVersionRequest) Reset() {
+	*x = GetRuleVersionRequest{}
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRuleVersionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRuleVersionRequest) ProtoMessage() {}
+
+func (x *GetRuleVersionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRuleVersionRequest.ProtoReflect.Descriptor instead.
+func (*GetRuleVersionRequest) Descriptor() ([]byte, []int) {
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *GetRuleVersionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetRuleVersionRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+func (x *GetRuleVersionRequest) GetRuleSetId() string {
+	if x != nil {
+		return x.RuleSetId
+	}
+	return ""
+}
+
+func (x *GetRuleVersionRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetRuleVersionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RuleVersion   *RuleVersion           `protobuf:"bytes,1,opt,name=rule_version,json=ruleVersion,proto3" json:"rule_version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRuleVersionResponse) Reset() {
+	*x = GetRuleVersionResponse{}
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRuleVersionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRuleVersionResponse) ProtoMessage() {}
+
+func (x *GetRuleVersionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRuleVersionResponse.ProtoReflect.Descriptor instead.
+func (*GetRuleVersionResponse) Descriptor() ([]byte, []int) {
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetRuleVersionResponse) GetRuleVersion() *RuleVersion {
+	if x != nil {
+		return x.RuleVersion
+	}
+	return nil
+}
+
 type ListRuleVersionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -1272,7 +1384,7 @@ type ListRuleVersionsRequest struct {
 
 func (x *ListRuleVersionsRequest) Reset() {
 	*x = ListRuleVersionsRequest{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[17]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1284,7 +1396,7 @@ func (x *ListRuleVersionsRequest) String() string {
 func (*ListRuleVersionsRequest) ProtoMessage() {}
 
 func (x *ListRuleVersionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[17]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1297,7 +1409,7 @@ func (x *ListRuleVersionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRuleVersionsRequest.ProtoReflect.Descriptor instead.
 func (*ListRuleVersionsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{17}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListRuleVersionsRequest) GetTenantId() string {
@@ -1345,7 +1457,7 @@ type ListRuleVersionsResponse struct {
 
 func (x *ListRuleVersionsResponse) Reset() {
 	*x = ListRuleVersionsResponse{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[18]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1357,7 +1469,7 @@ func (x *ListRuleVersionsResponse) String() string {
 func (*ListRuleVersionsResponse) ProtoMessage() {}
 
 func (x *ListRuleVersionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[18]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1370,7 +1482,7 @@ func (x *ListRuleVersionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRuleVersionsResponse.ProtoReflect.Descriptor instead.
 func (*ListRuleVersionsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{18}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListRuleVersionsResponse) GetRuleVersions() []*RuleVersion {
@@ -1402,7 +1514,7 @@ type EvaluateRequest struct {
 
 func (x *EvaluateRequest) Reset() {
 	*x = EvaluateRequest{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[19]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1414,7 +1526,7 @@ func (x *EvaluateRequest) String() string {
 func (*EvaluateRequest) ProtoMessage() {}
 
 func (x *EvaluateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[19]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1427,7 +1539,7 @@ func (x *EvaluateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvaluateRequest.ProtoReflect.Descriptor instead.
 func (*EvaluateRequest) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{19}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *EvaluateRequest) GetTenantId() string {
@@ -1492,7 +1604,7 @@ type EvaluateResponse struct {
 
 func (x *EvaluateResponse) Reset() {
 	*x = EvaluateResponse{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[20]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1504,7 +1616,7 @@ func (x *EvaluateResponse) String() string {
 func (*EvaluateResponse) ProtoMessage() {}
 
 func (x *EvaluateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[20]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1517,7 +1629,7 @@ func (x *EvaluateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvaluateResponse.ProtoReflect.Descriptor instead.
 func (*EvaluateResponse) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{20}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *EvaluateResponse) GetMatched() bool {
@@ -1564,7 +1676,7 @@ type BatchEvaluateRequest struct {
 
 func (x *BatchEvaluateRequest) Reset() {
 	*x = BatchEvaluateRequest{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[21]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1576,7 +1688,7 @@ func (x *BatchEvaluateRequest) String() string {
 func (*BatchEvaluateRequest) ProtoMessage() {}
 
 func (x *BatchEvaluateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[21]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1589,7 +1701,7 @@ func (x *BatchEvaluateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchEvaluateRequest.ProtoReflect.Descriptor instead.
 func (*BatchEvaluateRequest) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{21}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *BatchEvaluateRequest) GetRequests() []*EvaluateRequest {
@@ -1611,7 +1723,7 @@ type BatchEvaluateResult struct {
 
 func (x *BatchEvaluateResult) Reset() {
 	*x = BatchEvaluateResult{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[22]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1623,7 +1735,7 @@ func (x *BatchEvaluateResult) String() string {
 func (*BatchEvaluateResult) ProtoMessage() {}
 
 func (x *BatchEvaluateResult) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[22]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1636,7 +1748,7 @@ func (x *BatchEvaluateResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchEvaluateResult.ProtoReflect.Descriptor instead.
 func (*BatchEvaluateResult) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{22}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *BatchEvaluateResult) GetIndex() int32 {
@@ -1676,7 +1788,7 @@ type BatchEvaluateResponse struct {
 
 func (x *BatchEvaluateResponse) Reset() {
 	*x = BatchEvaluateResponse{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[23]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1688,7 +1800,7 @@ func (x *BatchEvaluateResponse) String() string {
 func (*BatchEvaluateResponse) ProtoMessage() {}
 
 func (x *BatchEvaluateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[23]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1701,7 +1813,7 @@ func (x *BatchEvaluateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchEvaluateResponse.ProtoReflect.Descriptor instead.
 func (*BatchEvaluateResponse) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{23}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *BatchEvaluateResponse) GetResults() []*BatchEvaluateResult {
@@ -1721,7 +1833,7 @@ type RuleVersionPublishedEvent struct {
 
 func (x *RuleVersionPublishedEvent) Reset() {
 	*x = RuleVersionPublishedEvent{}
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[24]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1733,7 +1845,7 @@ func (x *RuleVersionPublishedEvent) String() string {
 func (*RuleVersionPublishedEvent) ProtoMessage() {}
 
 func (x *RuleVersionPublishedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_rule_v1_rule_proto_msgTypes[24]
+	mi := &file_platform_rule_v1_rule_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1746,7 +1858,7 @@ func (x *RuleVersionPublishedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RuleVersionPublishedEvent.ProtoReflect.Descriptor instead.
 func (*RuleVersionPublishedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{24}
+	return file_platform_rule_v1_rule_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *RuleVersionPublishedEvent) GetRuleSet() *RuleSet {
@@ -1872,7 +1984,14 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x94\x01\n" +
 	"\x1aPublishRuleVersionResponse\x124\n" +
 	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\x12@\n" +
-	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xca\x01\n" +
+	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\x8b\x01\n" +
+	"\x15GetRuleVersionRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x1e\n" +
+	"\vrule_set_id\x18\x03 \x01(\tR\truleSetId\x12\x0e\n" +
+	"\x02id\x18\x04 \x01(\tR\x02id\"Z\n" +
+	"\x16GetRuleVersionResponse\x12@\n" +
+	"\frule_version\x18\x01 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xca\x01\n" +
 	"\x17ListRuleVersionsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12\x16\n" +
@@ -1911,7 +2030,7 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\aresults\x18\x01 \x03(\v2%.platform.rule.v1.BatchEvaluateResultR\aresults\"\x93\x01\n" +
 	"\x19RuleVersionPublishedEvent\x124\n" +
 	"\brule_set\x18\x01 \x01(\v2\x19.platform.rule.v1.RuleSetR\aruleSet\x12@\n" +
-	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion2\xfc\a\n" +
+	"\frule_version\x18\x02 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion2\xe1\b\n" +
 	"\vRuleService\x12`\n" +
 	"\rCreateRuleSet\x12&.platform.rule.v1.CreateRuleSetRequest\x1a'.platform.rule.v1.CreateRuleSetResponse\x12`\n" +
 	"\rUpdateRuleSet\x12&.platform.rule.v1.UpdateRuleSetRequest\x1a'.platform.rule.v1.UpdateRuleSetResponse\x12W\n" +
@@ -1920,7 +2039,8 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\fListRuleSets\x12%.platform.rule.v1.ListRuleSetsRequest\x1a&.platform.rule.v1.ListRuleSetsResponse\x12l\n" +
 	"\x11CreateRuleVersion\x12*.platform.rule.v1.CreateRuleVersionRequest\x1a+.platform.rule.v1.CreateRuleVersionResponse\x12r\n" +
 	"\x13ValidateRuleVersion\x12,.platform.rule.v1.ValidateRuleVersionRequest\x1a-.platform.rule.v1.ValidateRuleVersionResponse\x12o\n" +
-	"\x12PublishRuleVersion\x12+.platform.rule.v1.PublishRuleVersionRequest\x1a,.platform.rule.v1.PublishRuleVersionResponse\x12i\n" +
+	"\x12PublishRuleVersion\x12+.platform.rule.v1.PublishRuleVersionRequest\x1a,.platform.rule.v1.PublishRuleVersionResponse\x12c\n" +
+	"\x0eGetRuleVersion\x12'.platform.rule.v1.GetRuleVersionRequest\x1a(.platform.rule.v1.GetRuleVersionResponse\x12i\n" +
 	"\x10ListRuleVersions\x12).platform.rule.v1.ListRuleVersionsRequest\x1a*.platform.rule.v1.ListRuleVersionsResponse\x12Q\n" +
 	"\bEvaluate\x12!.platform.rule.v1.EvaluateRequest\x1a\".platform.rule.v1.EvaluateResponse\x12`\n" +
 	"\rBatchEvaluate\x12&.platform.rule.v1.BatchEvaluateRequest\x1a'.platform.rule.v1.BatchEvaluateResponseBIZGgithub.com/lihongjie0209/platform-protos/gen/go/platform/rule/v1;rulev1b\x06proto3"
@@ -1937,7 +2057,7 @@ func file_platform_rule_v1_rule_proto_rawDescGZIP() []byte {
 	return file_platform_rule_v1_rule_proto_rawDescData
 }
 
-var file_platform_rule_v1_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_platform_rule_v1_rule_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_platform_rule_v1_rule_proto_goTypes = []any{
 	(*RuleSet)(nil),                     // 0: platform.rule.v1.RuleSet
 	(*RuleVersion)(nil),                 // 1: platform.rule.v1.RuleVersion
@@ -1956,68 +2076,73 @@ var file_platform_rule_v1_rule_proto_goTypes = []any{
 	(*ValidateRuleVersionResponse)(nil), // 14: platform.rule.v1.ValidateRuleVersionResponse
 	(*PublishRuleVersionRequest)(nil),   // 15: platform.rule.v1.PublishRuleVersionRequest
 	(*PublishRuleVersionResponse)(nil),  // 16: platform.rule.v1.PublishRuleVersionResponse
-	(*ListRuleVersionsRequest)(nil),     // 17: platform.rule.v1.ListRuleVersionsRequest
-	(*ListRuleVersionsResponse)(nil),    // 18: platform.rule.v1.ListRuleVersionsResponse
-	(*EvaluateRequest)(nil),             // 19: platform.rule.v1.EvaluateRequest
-	(*EvaluateResponse)(nil),            // 20: platform.rule.v1.EvaluateResponse
-	(*BatchEvaluateRequest)(nil),        // 21: platform.rule.v1.BatchEvaluateRequest
-	(*BatchEvaluateResult)(nil),         // 22: platform.rule.v1.BatchEvaluateResult
-	(*BatchEvaluateResponse)(nil),       // 23: platform.rule.v1.BatchEvaluateResponse
-	(*RuleVersionPublishedEvent)(nil),   // 24: platform.rule.v1.RuleVersionPublishedEvent
-	(*timestamppb.Timestamp)(nil),       // 25: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),              // 26: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),               // 27: platform.common.v1.PageResult
+	(*GetRuleVersionRequest)(nil),       // 17: platform.rule.v1.GetRuleVersionRequest
+	(*GetRuleVersionResponse)(nil),      // 18: platform.rule.v1.GetRuleVersionResponse
+	(*ListRuleVersionsRequest)(nil),     // 19: platform.rule.v1.ListRuleVersionsRequest
+	(*ListRuleVersionsResponse)(nil),    // 20: platform.rule.v1.ListRuleVersionsResponse
+	(*EvaluateRequest)(nil),             // 21: platform.rule.v1.EvaluateRequest
+	(*EvaluateResponse)(nil),            // 22: platform.rule.v1.EvaluateResponse
+	(*BatchEvaluateRequest)(nil),        // 23: platform.rule.v1.BatchEvaluateRequest
+	(*BatchEvaluateResult)(nil),         // 24: platform.rule.v1.BatchEvaluateResult
+	(*BatchEvaluateResponse)(nil),       // 25: platform.rule.v1.BatchEvaluateResponse
+	(*RuleVersionPublishedEvent)(nil),   // 26: platform.rule.v1.RuleVersionPublishedEvent
+	(*timestamppb.Timestamp)(nil),       // 27: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),              // 28: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),               // 29: platform.common.v1.PageResult
 }
 var file_platform_rule_v1_rule_proto_depIdxs = []int32{
-	25, // 0: platform.rule.v1.RuleSet.created_at:type_name -> google.protobuf.Timestamp
-	25, // 1: platform.rule.v1.RuleSet.updated_at:type_name -> google.protobuf.Timestamp
-	25, // 2: platform.rule.v1.RuleVersion.published_at:type_name -> google.protobuf.Timestamp
-	25, // 3: platform.rule.v1.RuleVersion.created_at:type_name -> google.protobuf.Timestamp
-	25, // 4: platform.rule.v1.RuleVersion.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 0: platform.rule.v1.RuleSet.created_at:type_name -> google.protobuf.Timestamp
+	27, // 1: platform.rule.v1.RuleSet.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 2: platform.rule.v1.RuleVersion.published_at:type_name -> google.protobuf.Timestamp
+	27, // 3: platform.rule.v1.RuleVersion.created_at:type_name -> google.protobuf.Timestamp
+	27, // 4: platform.rule.v1.RuleVersion.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 5: platform.rule.v1.CreateRuleSetResponse.rule_set:type_name -> platform.rule.v1.RuleSet
 	0,  // 6: platform.rule.v1.UpdateRuleSetResponse.rule_set:type_name -> platform.rule.v1.RuleSet
 	0,  // 7: platform.rule.v1.GetRuleSetResponse.rule_set:type_name -> platform.rule.v1.RuleSet
 	1,  // 8: platform.rule.v1.GetRuleSetResponse.published_version:type_name -> platform.rule.v1.RuleVersion
-	26, // 9: platform.rule.v1.ListRuleSetsRequest.page:type_name -> platform.common.v1.PageRequest
+	28, // 9: platform.rule.v1.ListRuleSetsRequest.page:type_name -> platform.common.v1.PageRequest
 	0,  // 10: platform.rule.v1.ListRuleSetsResponse.rule_sets:type_name -> platform.rule.v1.RuleSet
-	27, // 11: platform.rule.v1.ListRuleSetsResponse.page:type_name -> platform.common.v1.PageResult
+	29, // 11: platform.rule.v1.ListRuleSetsResponse.page:type_name -> platform.common.v1.PageResult
 	1,  // 12: platform.rule.v1.CreateRuleVersionResponse.rule_version:type_name -> platform.rule.v1.RuleVersion
 	2,  // 13: platform.rule.v1.ValidateRuleVersionResponse.issues:type_name -> platform.rule.v1.ValidationIssue
 	0,  // 14: platform.rule.v1.PublishRuleVersionResponse.rule_set:type_name -> platform.rule.v1.RuleSet
 	1,  // 15: platform.rule.v1.PublishRuleVersionResponse.rule_version:type_name -> platform.rule.v1.RuleVersion
-	26, // 16: platform.rule.v1.ListRuleVersionsRequest.page:type_name -> platform.common.v1.PageRequest
-	1,  // 17: platform.rule.v1.ListRuleVersionsResponse.rule_versions:type_name -> platform.rule.v1.RuleVersion
-	27, // 18: platform.rule.v1.ListRuleVersionsResponse.page:type_name -> platform.common.v1.PageResult
-	19, // 19: platform.rule.v1.BatchEvaluateRequest.requests:type_name -> platform.rule.v1.EvaluateRequest
-	20, // 20: platform.rule.v1.BatchEvaluateResult.response:type_name -> platform.rule.v1.EvaluateResponse
-	22, // 21: platform.rule.v1.BatchEvaluateResponse.results:type_name -> platform.rule.v1.BatchEvaluateResult
-	0,  // 22: platform.rule.v1.RuleVersionPublishedEvent.rule_set:type_name -> platform.rule.v1.RuleSet
-	1,  // 23: platform.rule.v1.RuleVersionPublishedEvent.rule_version:type_name -> platform.rule.v1.RuleVersion
-	3,  // 24: platform.rule.v1.RuleService.CreateRuleSet:input_type -> platform.rule.v1.CreateRuleSetRequest
-	5,  // 25: platform.rule.v1.RuleService.UpdateRuleSet:input_type -> platform.rule.v1.UpdateRuleSetRequest
-	7,  // 26: platform.rule.v1.RuleService.GetRuleSet:input_type -> platform.rule.v1.GetRuleSetRequest
-	9,  // 27: platform.rule.v1.RuleService.ListRuleSets:input_type -> platform.rule.v1.ListRuleSetsRequest
-	11, // 28: platform.rule.v1.RuleService.CreateRuleVersion:input_type -> platform.rule.v1.CreateRuleVersionRequest
-	13, // 29: platform.rule.v1.RuleService.ValidateRuleVersion:input_type -> platform.rule.v1.ValidateRuleVersionRequest
-	15, // 30: platform.rule.v1.RuleService.PublishRuleVersion:input_type -> platform.rule.v1.PublishRuleVersionRequest
-	17, // 31: platform.rule.v1.RuleService.ListRuleVersions:input_type -> platform.rule.v1.ListRuleVersionsRequest
-	19, // 32: platform.rule.v1.RuleService.Evaluate:input_type -> platform.rule.v1.EvaluateRequest
-	21, // 33: platform.rule.v1.RuleService.BatchEvaluate:input_type -> platform.rule.v1.BatchEvaluateRequest
-	4,  // 34: platform.rule.v1.RuleService.CreateRuleSet:output_type -> platform.rule.v1.CreateRuleSetResponse
-	6,  // 35: platform.rule.v1.RuleService.UpdateRuleSet:output_type -> platform.rule.v1.UpdateRuleSetResponse
-	8,  // 36: platform.rule.v1.RuleService.GetRuleSet:output_type -> platform.rule.v1.GetRuleSetResponse
-	10, // 37: platform.rule.v1.RuleService.ListRuleSets:output_type -> platform.rule.v1.ListRuleSetsResponse
-	12, // 38: platform.rule.v1.RuleService.CreateRuleVersion:output_type -> platform.rule.v1.CreateRuleVersionResponse
-	14, // 39: platform.rule.v1.RuleService.ValidateRuleVersion:output_type -> platform.rule.v1.ValidateRuleVersionResponse
-	16, // 40: platform.rule.v1.RuleService.PublishRuleVersion:output_type -> platform.rule.v1.PublishRuleVersionResponse
-	18, // 41: platform.rule.v1.RuleService.ListRuleVersions:output_type -> platform.rule.v1.ListRuleVersionsResponse
-	20, // 42: platform.rule.v1.RuleService.Evaluate:output_type -> platform.rule.v1.EvaluateResponse
-	23, // 43: platform.rule.v1.RuleService.BatchEvaluate:output_type -> platform.rule.v1.BatchEvaluateResponse
-	34, // [34:44] is the sub-list for method output_type
-	24, // [24:34] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	1,  // 16: platform.rule.v1.GetRuleVersionResponse.rule_version:type_name -> platform.rule.v1.RuleVersion
+	28, // 17: platform.rule.v1.ListRuleVersionsRequest.page:type_name -> platform.common.v1.PageRequest
+	1,  // 18: platform.rule.v1.ListRuleVersionsResponse.rule_versions:type_name -> platform.rule.v1.RuleVersion
+	29, // 19: platform.rule.v1.ListRuleVersionsResponse.page:type_name -> platform.common.v1.PageResult
+	21, // 20: platform.rule.v1.BatchEvaluateRequest.requests:type_name -> platform.rule.v1.EvaluateRequest
+	22, // 21: platform.rule.v1.BatchEvaluateResult.response:type_name -> platform.rule.v1.EvaluateResponse
+	24, // 22: platform.rule.v1.BatchEvaluateResponse.results:type_name -> platform.rule.v1.BatchEvaluateResult
+	0,  // 23: platform.rule.v1.RuleVersionPublishedEvent.rule_set:type_name -> platform.rule.v1.RuleSet
+	1,  // 24: platform.rule.v1.RuleVersionPublishedEvent.rule_version:type_name -> platform.rule.v1.RuleVersion
+	3,  // 25: platform.rule.v1.RuleService.CreateRuleSet:input_type -> platform.rule.v1.CreateRuleSetRequest
+	5,  // 26: platform.rule.v1.RuleService.UpdateRuleSet:input_type -> platform.rule.v1.UpdateRuleSetRequest
+	7,  // 27: platform.rule.v1.RuleService.GetRuleSet:input_type -> platform.rule.v1.GetRuleSetRequest
+	9,  // 28: platform.rule.v1.RuleService.ListRuleSets:input_type -> platform.rule.v1.ListRuleSetsRequest
+	11, // 29: platform.rule.v1.RuleService.CreateRuleVersion:input_type -> platform.rule.v1.CreateRuleVersionRequest
+	13, // 30: platform.rule.v1.RuleService.ValidateRuleVersion:input_type -> platform.rule.v1.ValidateRuleVersionRequest
+	15, // 31: platform.rule.v1.RuleService.PublishRuleVersion:input_type -> platform.rule.v1.PublishRuleVersionRequest
+	17, // 32: platform.rule.v1.RuleService.GetRuleVersion:input_type -> platform.rule.v1.GetRuleVersionRequest
+	19, // 33: platform.rule.v1.RuleService.ListRuleVersions:input_type -> platform.rule.v1.ListRuleVersionsRequest
+	21, // 34: platform.rule.v1.RuleService.Evaluate:input_type -> platform.rule.v1.EvaluateRequest
+	23, // 35: platform.rule.v1.RuleService.BatchEvaluate:input_type -> platform.rule.v1.BatchEvaluateRequest
+	4,  // 36: platform.rule.v1.RuleService.CreateRuleSet:output_type -> platform.rule.v1.CreateRuleSetResponse
+	6,  // 37: platform.rule.v1.RuleService.UpdateRuleSet:output_type -> platform.rule.v1.UpdateRuleSetResponse
+	8,  // 38: platform.rule.v1.RuleService.GetRuleSet:output_type -> platform.rule.v1.GetRuleSetResponse
+	10, // 39: platform.rule.v1.RuleService.ListRuleSets:output_type -> platform.rule.v1.ListRuleSetsResponse
+	12, // 40: platform.rule.v1.RuleService.CreateRuleVersion:output_type -> platform.rule.v1.CreateRuleVersionResponse
+	14, // 41: platform.rule.v1.RuleService.ValidateRuleVersion:output_type -> platform.rule.v1.ValidateRuleVersionResponse
+	16, // 42: platform.rule.v1.RuleService.PublishRuleVersion:output_type -> platform.rule.v1.PublishRuleVersionResponse
+	18, // 43: platform.rule.v1.RuleService.GetRuleVersion:output_type -> platform.rule.v1.GetRuleVersionResponse
+	20, // 44: platform.rule.v1.RuleService.ListRuleVersions:output_type -> platform.rule.v1.ListRuleVersionsResponse
+	22, // 45: platform.rule.v1.RuleService.Evaluate:output_type -> platform.rule.v1.EvaluateResponse
+	25, // 46: platform.rule.v1.RuleService.BatchEvaluate:output_type -> platform.rule.v1.BatchEvaluateResponse
+	36, // [36:47] is the sub-list for method output_type
+	25, // [25:36] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_platform_rule_v1_rule_proto_init() }
@@ -2031,7 +2156,7 @@ func file_platform_rule_v1_rule_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_rule_v1_rule_proto_rawDesc), len(file_platform_rule_v1_rule_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
