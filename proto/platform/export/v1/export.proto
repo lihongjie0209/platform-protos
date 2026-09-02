@@ -66,6 +66,20 @@ message ExportColumn {
   bool sensitive = 5;
 }
 
+// ExportQueryField describes one provider-owned top-level query property.
+// Providers remain responsible for applying the declared semantics when rows
+// are streamed; consumers use this schema to validate requests and render
+// constrained query controls instead of accepting arbitrary JSON.
+message ExportQueryField {
+  string key = 1;
+  string title = 2;
+  string type = 3;
+  string format = 4;
+  string description = 5;
+  repeated string options = 6;
+  bool required = 7;
+}
+
 message DatasetDescriptor {
   string code = 1;
   string title = 2;
@@ -73,6 +87,7 @@ message DatasetDescriptor {
   repeated string formats = 4;
   int64 estimated_rows = 5;
   bool supports_snapshot = 6;
+  repeated ExportQueryField query_fields = 7;
 }
 
 message ExportDatasetSummary {
