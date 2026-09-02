@@ -112,6 +112,7 @@ message UserCreatedEvent {
 
 message UserProfileUpdatedEvent {
   User user = 1;
+  string reason = 2;
 }
 
 message SessionRevokedEvent {

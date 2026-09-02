@@ -1152,6 +1152,7 @@ func (x *UserCreatedEvent) GetUser() *User {
 type UserProfileUpdatedEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1191,6 +1192,13 @@ func (x *UserProfileUpdatedEvent) GetUser() *User {
 		return x.User
 	}
 	return nil
+}
+
+func (x *UserProfileUpdatedEvent) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
 }
 
 type SessionRevokedEvent struct {
@@ -1599,9 +1607,10 @@ const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\x0ecurrent_status\x18\x03 \x01(\x0e2 .platform.identity.v1.UserStatusR\rcurrentStatus\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\"B\n" +
 	"\x10UserCreatedEvent\x12.\n" +
-	"\x04user\x18\x01 \x01(\v2\x1a.platform.identity.v1.UserR\x04user\"I\n" +
+	"\x04user\x18\x01 \x01(\v2\x1a.platform.identity.v1.UserR\x04user\"a\n" +
 	"\x17UserProfileUpdatedEvent\x12.\n" +
-	"\x04user\x18\x01 \x01(\v2\x1a.platform.identity.v1.UserR\x04user\"\x82\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\x1a.platform.identity.v1.UserR\x04user\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"\x82\x01\n" +
 	"\x13SessionRevokedEvent\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\x12\x17\n" +
