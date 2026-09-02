@@ -12,6 +12,8 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/ex
 // source rows only through ExportProviderService and never from another
 // service's database.
 service ExportService {
+  rpc ListExportDatasets(ListExportDatasetsRequest) returns (ListExportDatasetsResponse);
+  rpc DescribeAvailableExportDataset(DescribeAvailableExportDatasetRequest) returns (DescribeAvailableExportDatasetResponse);
   rpc CreateExportJob(CreateExportJobRequest) returns (CreateExportJobResponse);
   rpc GetExportJob(GetExportJobRequest) returns (GetExportJobResponse);
   rpc ListExportJobs(ListExportJobsRequest) returns (ListExportJobsResponse);
@@ -71,6 +73,36 @@ message DatasetDescriptor {
   repeated string formats = 4;
   int64 estimated_rows = 5;
   bool supports_snapshot = 6;
+}
+
+message ExportDatasetSummary {
+  string provider_service = 1;
+  string code = 2;
+  string title = 3;
+  repeated string formats = 4;
+  bool supports_snapshot = 5;
+  int32 healthy_instances = 6;
+}
+
+message ListExportDatasetsRequest {
+  string tenant_id = 1;
+  string search = 2;
+  platform.common.v1.PageRequest page = 3;
+  string application_id = 4;
+}
+message ListExportDatasetsResponse {
+  repeated ExportDatasetSummary datasets = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message DescribeAvailableExportDatasetRequest {
+  string tenant_id = 1;
+  string provider_service = 2;
+  string dataset_code = 3;
+  string application_id = 4;
+}
+message DescribeAvailableExportDatasetResponse {
+  DatasetDescriptor dataset = 1;
 }
 
 message CreateExportJobRequest {

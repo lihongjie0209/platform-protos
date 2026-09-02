@@ -19,12 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ExportService_CreateExportJob_FullMethodName   = "/platform.export.v1.ExportService/CreateExportJob"
-	ExportService_GetExportJob_FullMethodName      = "/platform.export.v1.ExportService/GetExportJob"
-	ExportService_ListExportJobs_FullMethodName    = "/platform.export.v1.ExportService/ListExportJobs"
-	ExportService_CancelExportJob_FullMethodName   = "/platform.export.v1.ExportService/CancelExportJob"
-	ExportService_RetryExportJob_FullMethodName    = "/platform.export.v1.ExportService/RetryExportJob"
-	ExportService_CreateDownloadURL_FullMethodName = "/platform.export.v1.ExportService/CreateDownloadURL"
+	ExportService_ListExportDatasets_FullMethodName             = "/platform.export.v1.ExportService/ListExportDatasets"
+	ExportService_DescribeAvailableExportDataset_FullMethodName = "/platform.export.v1.ExportService/DescribeAvailableExportDataset"
+	ExportService_CreateExportJob_FullMethodName                = "/platform.export.v1.ExportService/CreateExportJob"
+	ExportService_GetExportJob_FullMethodName                   = "/platform.export.v1.ExportService/GetExportJob"
+	ExportService_ListExportJobs_FullMethodName                 = "/platform.export.v1.ExportService/ListExportJobs"
+	ExportService_CancelExportJob_FullMethodName                = "/platform.export.v1.ExportService/CancelExportJob"
+	ExportService_RetryExportJob_FullMethodName                 = "/platform.export.v1.ExportService/RetryExportJob"
+	ExportService_CreateDownloadURL_FullMethodName              = "/platform.export.v1.ExportService/CreateDownloadURL"
 )
 
 // ExportServiceClient is the client API for ExportService service.
@@ -35,6 +37,8 @@ const (
 // source rows only through ExportProviderService and never from another
 // service's database.
 type ExportServiceClient interface {
+	ListExportDatasets(ctx context.Context, in *ListExportDatasetsRequest, opts ...grpc.CallOption) (*ListExportDatasetsResponse, error)
+	DescribeAvailableExportDataset(ctx context.Context, in *DescribeAvailableExportDatasetRequest, opts ...grpc.CallOption) (*DescribeAvailableExportDatasetResponse, error)
 	CreateExportJob(ctx context.Context, in *CreateExportJobRequest, opts ...grpc.CallOption) (*CreateExportJobResponse, error)
 	GetExportJob(ctx context.Context, in *GetExportJobRequest, opts ...grpc.CallOption) (*GetExportJobResponse, error)
 	ListExportJobs(ctx context.Context, in *ListExportJobsRequest, opts ...grpc.CallOption) (*ListExportJobsResponse, error)
@@ -49,6 +53,26 @@ type exportServiceClient struct {
 
 func NewExportServiceClient(cc grpc.ClientConnInterface) ExportServiceClient {
 	return &exportServiceClient{cc}
+}
+
+func (c *exportServiceClient) ListExportDatasets(ctx context.Context, in *ListExportDatasetsRequest, opts ...grpc.CallOption) (*ListExportDatasetsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListExportDatasetsResponse)
+	err := c.cc.Invoke(ctx, ExportService_ListExportDatasets_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *exportServiceClient) DescribeAvailableExportDataset(ctx context.Context, in *DescribeAvailableExportDatasetRequest, opts ...grpc.CallOption) (*DescribeAvailableExportDatasetResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DescribeAvailableExportDatasetResponse)
+	err := c.cc.Invoke(ctx, ExportService_DescribeAvailableExportDataset_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *exportServiceClient) CreateExportJob(ctx context.Context, in *CreateExportJobRequest, opts ...grpc.CallOption) (*CreateExportJobResponse, error) {
@@ -119,6 +143,8 @@ func (c *exportServiceClient) CreateDownloadURL(ctx context.Context, in *CreateD
 // source rows only through ExportProviderService and never from another
 // service's database.
 type ExportServiceServer interface {
+	ListExportDatasets(context.Context, *ListExportDatasetsRequest) (*ListExportDatasetsResponse, error)
+	DescribeAvailableExportDataset(context.Context, *DescribeAvailableExportDatasetRequest) (*DescribeAvailableExportDatasetResponse, error)
 	CreateExportJob(context.Context, *CreateExportJobRequest) (*CreateExportJobResponse, error)
 	GetExportJob(context.Context, *GetExportJobRequest) (*GetExportJobResponse, error)
 	ListExportJobs(context.Context, *ListExportJobsRequest) (*ListExportJobsResponse, error)
@@ -135,6 +161,12 @@ type ExportServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedExportServiceServer struct{}
 
+func (UnimplementedExportServiceServer) ListExportDatasets(context.Context, *ListExportDatasetsRequest) (*ListExportDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListExportDatasets not implemented")
+}
+func (UnimplementedExportServiceServer) DescribeAvailableExportDataset(context.Context, *DescribeAvailableExportDatasetRequest) (*DescribeAvailableExportDatasetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DescribeAvailableExportDataset not implemented")
+}
 func (UnimplementedExportServiceServer) CreateExportJob(context.Context, *CreateExportJobRequest) (*CreateExportJobResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateExportJob not implemented")
 }
@@ -172,6 +204,42 @@ func RegisterExportServiceServer(s grpc.ServiceRegistrar, srv ExportServiceServe
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&ExportService_ServiceDesc, srv)
+}
+
+func _ExportService_ListExportDatasets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListExportDatasetsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExportServiceServer).ListExportDatasets(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExportService_ListExportDatasets_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExportServiceServer).ListExportDatasets(ctx, req.(*ListExportDatasetsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ExportService_DescribeAvailableExportDataset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DescribeAvailableExportDatasetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExportServiceServer).DescribeAvailableExportDataset(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExportService_DescribeAvailableExportDataset_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExportServiceServer).DescribeAvailableExportDataset(ctx, req.(*DescribeAvailableExportDatasetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ExportService_CreateExportJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -289,6 +357,14 @@ var ExportService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "platform.export.v1.ExportService",
 	HandlerType: (*ExportServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "ListExportDatasets",
+			Handler:    _ExportService_ListExportDatasets_Handler,
+		},
+		{
+			MethodName: "DescribeAvailableExportDataset",
+			Handler:    _ExportService_DescribeAvailableExportDataset_Handler,
+		},
 		{
 			MethodName: "CreateExportJob",
 			Handler:    _ExportService_CreateExportJob_Handler,
