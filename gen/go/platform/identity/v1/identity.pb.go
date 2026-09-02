@@ -1165,6 +1165,66 @@ func (x *PasswordChangedEvent) GetRevokedSessions() uint64 {
 	return 0
 }
 
+type MFAStatusChangedEvent struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	UserId                 string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Enabled                bool                   `protobuf:"varint,2,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	RecoveryCodesRemaining uint32                 `protobuf:"varint,3,opt,name=recovery_codes_remaining,json=recoveryCodesRemaining,proto3" json:"recovery_codes_remaining,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *MFAStatusChangedEvent) Reset() {
+	*x = MFAStatusChangedEvent{}
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MFAStatusChangedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MFAStatusChangedEvent) ProtoMessage() {}
+
+func (x *MFAStatusChangedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MFAStatusChangedEvent.ProtoReflect.Descriptor instead.
+func (*MFAStatusChangedEvent) Descriptor() ([]byte, []int) {
+	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *MFAStatusChangedEvent) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *MFAStatusChangedEvent) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
+func (x *MFAStatusChangedEvent) GetRecoveryCodesRemaining() uint32 {
+	if x != nil {
+		return x.RecoveryCodesRemaining
+	}
+	return 0
+}
+
 type ServiceAccountStatusChangedEvent struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	ServiceAccountId string                 `protobuf:"bytes,1,opt,name=service_account_id,json=serviceAccountId,proto3" json:"service_account_id,omitempty"`
@@ -1177,7 +1237,7 @@ type ServiceAccountStatusChangedEvent struct {
 
 func (x *ServiceAccountStatusChangedEvent) Reset() {
 	*x = ServiceAccountStatusChangedEvent{}
-	mi := &file_platform_identity_v1_identity_proto_msgTypes[19]
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1189,7 +1249,7 @@ func (x *ServiceAccountStatusChangedEvent) String() string {
 func (*ServiceAccountStatusChangedEvent) ProtoMessage() {}
 
 func (x *ServiceAccountStatusChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_identity_v1_identity_proto_msgTypes[19]
+	mi := &file_platform_identity_v1_identity_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1202,7 +1262,7 @@ func (x *ServiceAccountStatusChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ServiceAccountStatusChangedEvent.ProtoReflect.Descriptor instead.
 func (*ServiceAccountStatusChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{19}
+	return file_platform_identity_v1_identity_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ServiceAccountStatusChangedEvent) GetServiceAccountId() string {
@@ -1316,7 +1376,11 @@ const file_platform_identity_v1_identity_proto_rawDesc = "" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\"Z\n" +
 	"\x14PasswordChangedEvent\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12)\n" +
-	"\x10revoked_sessions\x18\x02 \x01(\x04R\x0frevokedSessions\"\xb8\x01\n" +
+	"\x10revoked_sessions\x18\x02 \x01(\x04R\x0frevokedSessions\"\x84\x01\n" +
+	"\x15MFAStatusChangedEvent\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x18\n" +
+	"\aenabled\x18\x02 \x01(\bR\aenabled\x128\n" +
+	"\x18recovery_codes_remaining\x18\x03 \x01(\rR\x16recoveryCodesRemaining\"\xb8\x01\n" +
 	" ServiceAccountStatusChangedEvent\x12,\n" +
 	"\x12service_account_id\x18\x01 \x01(\tR\x10serviceAccountId\x12'\n" +
 	"\x0fprevious_status\x18\x02 \x01(\tR\x0epreviousStatus\x12%\n" +
@@ -1351,7 +1415,7 @@ func file_platform_identity_v1_identity_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_identity_v1_identity_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_platform_identity_v1_identity_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_platform_identity_v1_identity_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_platform_identity_v1_identity_proto_goTypes = []any{
 	(UserStatus)(0),                          // 0: platform.identity.v1.UserStatus
 	(*User)(nil),                             // 1: platform.identity.v1.User
@@ -1373,23 +1437,24 @@ var file_platform_identity_v1_identity_proto_goTypes = []any{
 	(*UserCreatedEvent)(nil),                 // 17: platform.identity.v1.UserCreatedEvent
 	(*SessionRevokedEvent)(nil),              // 18: platform.identity.v1.SessionRevokedEvent
 	(*PasswordChangedEvent)(nil),             // 19: platform.identity.v1.PasswordChangedEvent
-	(*ServiceAccountStatusChangedEvent)(nil), // 20: platform.identity.v1.ServiceAccountStatusChangedEvent
-	(*timestamppb.Timestamp)(nil),            // 21: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                   // 22: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                    // 23: platform.common.v1.PageResult
+	(*MFAStatusChangedEvent)(nil),            // 20: platform.identity.v1.MFAStatusChangedEvent
+	(*ServiceAccountStatusChangedEvent)(nil), // 21: platform.identity.v1.ServiceAccountStatusChangedEvent
+	(*timestamppb.Timestamp)(nil),            // 22: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                   // 23: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                    // 24: platform.common.v1.PageResult
 }
 var file_platform_identity_v1_identity_proto_depIdxs = []int32{
 	0,  // 0: platform.identity.v1.User.status:type_name -> platform.identity.v1.UserStatus
-	21, // 1: platform.identity.v1.User.created_at:type_name -> google.protobuf.Timestamp
-	21, // 2: platform.identity.v1.User.updated_at:type_name -> google.protobuf.Timestamp
+	22, // 1: platform.identity.v1.User.created_at:type_name -> google.protobuf.Timestamp
+	22, // 2: platform.identity.v1.User.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 3: platform.identity.v1.GetUserResponse.user:type_name -> platform.identity.v1.User
 	1,  // 4: platform.identity.v1.BatchGetUsersResponse.users:type_name -> platform.identity.v1.User
 	0,  // 5: platform.identity.v1.ListUsersRequest.status:type_name -> platform.identity.v1.UserStatus
-	22, // 6: platform.identity.v1.ListUsersRequest.page:type_name -> platform.common.v1.PageRequest
+	23, // 6: platform.identity.v1.ListUsersRequest.page:type_name -> platform.common.v1.PageRequest
 	1,  // 7: platform.identity.v1.ListUsersResponse.users:type_name -> platform.identity.v1.User
-	23, // 8: platform.identity.v1.ListUsersResponse.page:type_name -> platform.common.v1.PageResult
-	21, // 9: platform.identity.v1.ValidateSessionResponse.expires_at:type_name -> google.protobuf.Timestamp
-	21, // 10: platform.identity.v1.IssueTenantTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
+	24, // 8: platform.identity.v1.ListUsersResponse.page:type_name -> platform.common.v1.PageResult
+	22, // 9: platform.identity.v1.ValidateSessionResponse.expires_at:type_name -> google.protobuf.Timestamp
+	22, // 10: platform.identity.v1.IssueTenantTokenResponse.expires_at:type_name -> google.protobuf.Timestamp
 	0,  // 11: platform.identity.v1.UserStatusChangedEvent.previous_status:type_name -> platform.identity.v1.UserStatus
 	0,  // 12: platform.identity.v1.UserStatusChangedEvent.current_status:type_name -> platform.identity.v1.UserStatus
 	1,  // 13: platform.identity.v1.UserCreatedEvent.user:type_name -> platform.identity.v1.User
@@ -1425,7 +1490,7 @@ func file_platform_identity_v1_identity_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_identity_v1_identity_proto_rawDesc), len(file_platform_identity_v1_identity_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   20,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

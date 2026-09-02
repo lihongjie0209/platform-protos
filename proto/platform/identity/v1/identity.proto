@@ -122,6 +122,12 @@ message PasswordChangedEvent {
   uint64 revoked_sessions = 2;
 }
 
+message MFAStatusChangedEvent {
+  string user_id = 1;
+  bool enabled = 2;
+  uint32 recovery_codes_remaining = 3;
+}
+
 message ServiceAccountStatusChangedEvent {
   string service_account_id = 1;
   string previous_status = 2;
