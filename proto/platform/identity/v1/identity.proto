@@ -110,6 +110,10 @@ message UserCreatedEvent {
   User user = 1;
 }
 
+message UserProfileUpdatedEvent {
+  User user = 1;
+}
+
 message SessionRevokedEvent {
   string session_id = 1;
   string user_id = 2;
