@@ -24,11 +24,13 @@ const (
 	ApplicationService_GetApplication_FullMethodName               = "/platform.application.v1.ApplicationService/GetApplication"
 	ApplicationService_ListApplications_FullMethodName             = "/platform.application.v1.ApplicationService/ListApplications"
 	ApplicationService_UpsertMenu_FullMethodName                   = "/platform.application.v1.ApplicationService/UpsertMenu"
+	ApplicationService_GetMenu_FullMethodName                      = "/platform.application.v1.ApplicationService/GetMenu"
 	ApplicationService_DeleteMenu_FullMethodName                   = "/platform.application.v1.ApplicationService/DeleteMenu"
 	ApplicationService_ListMenuDraft_FullMethodName                = "/platform.application.v1.ApplicationService/ListMenuDraft"
 	ApplicationService_PublishMenus_FullMethodName                 = "/platform.application.v1.ApplicationService/PublishMenus"
 	ApplicationService_GetPublishedNavigation_FullMethodName       = "/platform.application.v1.ApplicationService/GetPublishedNavigation"
 	ApplicationService_GrantTenantApplication_FullMethodName       = "/platform.application.v1.ApplicationService/GrantTenantApplication"
+	ApplicationService_GetTenantApplicationGrant_FullMethodName    = "/platform.application.v1.ApplicationService/GetTenantApplicationGrant"
 	ApplicationService_RevokeTenantApplication_FullMethodName      = "/platform.application.v1.ApplicationService/RevokeTenantApplication"
 	ApplicationService_ListTenantApplications_FullMethodName       = "/platform.application.v1.ApplicationService/ListTenantApplications"
 	ApplicationService_BatchCheckTenantApplications_FullMethodName = "/platform.application.v1.ApplicationService/BatchCheckTenantApplications"
@@ -43,11 +45,13 @@ type ApplicationServiceClient interface {
 	GetApplication(ctx context.Context, in *GetApplicationRequest, opts ...grpc.CallOption) (*GetApplicationResponse, error)
 	ListApplications(ctx context.Context, in *ListApplicationsRequest, opts ...grpc.CallOption) (*ListApplicationsResponse, error)
 	UpsertMenu(ctx context.Context, in *UpsertMenuRequest, opts ...grpc.CallOption) (*UpsertMenuResponse, error)
+	GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*GetMenuResponse, error)
 	DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error)
 	ListMenuDraft(ctx context.Context, in *ListMenuDraftRequest, opts ...grpc.CallOption) (*ListMenuDraftResponse, error)
 	PublishMenus(ctx context.Context, in *PublishMenusRequest, opts ...grpc.CallOption) (*PublishMenusResponse, error)
 	GetPublishedNavigation(ctx context.Context, in *GetPublishedNavigationRequest, opts ...grpc.CallOption) (*GetPublishedNavigationResponse, error)
 	GrantTenantApplication(ctx context.Context, in *GrantTenantApplicationRequest, opts ...grpc.CallOption) (*GrantTenantApplicationResponse, error)
+	GetTenantApplicationGrant(ctx context.Context, in *GetTenantApplicationGrantRequest, opts ...grpc.CallOption) (*GetTenantApplicationGrantResponse, error)
 	RevokeTenantApplication(ctx context.Context, in *RevokeTenantApplicationRequest, opts ...grpc.CallOption) (*RevokeTenantApplicationResponse, error)
 	ListTenantApplications(ctx context.Context, in *ListTenantApplicationsRequest, opts ...grpc.CallOption) (*ListTenantApplicationsResponse, error)
 	BatchCheckTenantApplications(ctx context.Context, in *BatchCheckTenantApplicationsRequest, opts ...grpc.CallOption) (*BatchCheckTenantApplicationsResponse, error)
@@ -111,6 +115,16 @@ func (c *applicationServiceClient) UpsertMenu(ctx context.Context, in *UpsertMen
 	return out, nil
 }
 
+func (c *applicationServiceClient) GetMenu(ctx context.Context, in *GetMenuRequest, opts ...grpc.CallOption) (*GetMenuResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetMenuResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetMenu_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *applicationServiceClient) DeleteMenu(ctx context.Context, in *DeleteMenuRequest, opts ...grpc.CallOption) (*DeleteMenuResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeleteMenuResponse)
@@ -161,6 +175,16 @@ func (c *applicationServiceClient) GrantTenantApplication(ctx context.Context, i
 	return out, nil
 }
 
+func (c *applicationServiceClient) GetTenantApplicationGrant(ctx context.Context, in *GetTenantApplicationGrantRequest, opts ...grpc.CallOption) (*GetTenantApplicationGrantResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTenantApplicationGrantResponse)
+	err := c.cc.Invoke(ctx, ApplicationService_GetTenantApplicationGrant_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *applicationServiceClient) RevokeTenantApplication(ctx context.Context, in *RevokeTenantApplicationRequest, opts ...grpc.CallOption) (*RevokeTenantApplicationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RevokeTenantApplicationResponse)
@@ -200,11 +224,13 @@ type ApplicationServiceServer interface {
 	GetApplication(context.Context, *GetApplicationRequest) (*GetApplicationResponse, error)
 	ListApplications(context.Context, *ListApplicationsRequest) (*ListApplicationsResponse, error)
 	UpsertMenu(context.Context, *UpsertMenuRequest) (*UpsertMenuResponse, error)
+	GetMenu(context.Context, *GetMenuRequest) (*GetMenuResponse, error)
 	DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error)
 	ListMenuDraft(context.Context, *ListMenuDraftRequest) (*ListMenuDraftResponse, error)
 	PublishMenus(context.Context, *PublishMenusRequest) (*PublishMenusResponse, error)
 	GetPublishedNavigation(context.Context, *GetPublishedNavigationRequest) (*GetPublishedNavigationResponse, error)
 	GrantTenantApplication(context.Context, *GrantTenantApplicationRequest) (*GrantTenantApplicationResponse, error)
+	GetTenantApplicationGrant(context.Context, *GetTenantApplicationGrantRequest) (*GetTenantApplicationGrantResponse, error)
 	RevokeTenantApplication(context.Context, *RevokeTenantApplicationRequest) (*RevokeTenantApplicationResponse, error)
 	ListTenantApplications(context.Context, *ListTenantApplicationsRequest) (*ListTenantApplicationsResponse, error)
 	BatchCheckTenantApplications(context.Context, *BatchCheckTenantApplicationsRequest) (*BatchCheckTenantApplicationsResponse, error)
@@ -233,6 +259,9 @@ func (UnimplementedApplicationServiceServer) ListApplications(context.Context, *
 func (UnimplementedApplicationServiceServer) UpsertMenu(context.Context, *UpsertMenuRequest) (*UpsertMenuResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpsertMenu not implemented")
 }
+func (UnimplementedApplicationServiceServer) GetMenu(context.Context, *GetMenuRequest) (*GetMenuResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMenu not implemented")
+}
 func (UnimplementedApplicationServiceServer) DeleteMenu(context.Context, *DeleteMenuRequest) (*DeleteMenuResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenu not implemented")
 }
@@ -247,6 +276,9 @@ func (UnimplementedApplicationServiceServer) GetPublishedNavigation(context.Cont
 }
 func (UnimplementedApplicationServiceServer) GrantTenantApplication(context.Context, *GrantTenantApplicationRequest) (*GrantTenantApplicationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GrantTenantApplication not implemented")
+}
+func (UnimplementedApplicationServiceServer) GetTenantApplicationGrant(context.Context, *GetTenantApplicationGrantRequest) (*GetTenantApplicationGrantResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTenantApplicationGrant not implemented")
 }
 func (UnimplementedApplicationServiceServer) RevokeTenantApplication(context.Context, *RevokeTenantApplicationRequest) (*RevokeTenantApplicationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeTenantApplication not implemented")
@@ -368,6 +400,24 @@ func _ApplicationService_UpsertMenu_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ApplicationService_GetMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetMenu_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetMenu(ctx, req.(*GetMenuRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ApplicationService_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteMenuRequest)
 	if err := dec(in); err != nil {
@@ -458,6 +508,24 @@ func _ApplicationService_GrantTenantApplication_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ApplicationService_GetTenantApplicationGrant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTenantApplicationGrantRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ApplicationServiceServer).GetTenantApplicationGrant(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ApplicationService_GetTenantApplicationGrant_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ApplicationServiceServer).GetTenantApplicationGrant(ctx, req.(*GetTenantApplicationGrantRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ApplicationService_RevokeTenantApplication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RevokeTenantApplicationRequest)
 	if err := dec(in); err != nil {
@@ -540,6 +608,10 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ApplicationService_UpsertMenu_Handler,
 		},
 		{
+			MethodName: "GetMenu",
+			Handler:    _ApplicationService_GetMenu_Handler,
+		},
+		{
 			MethodName: "DeleteMenu",
 			Handler:    _ApplicationService_DeleteMenu_Handler,
 		},
@@ -558,6 +630,10 @@ var ApplicationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GrantTenantApplication",
 			Handler:    _ApplicationService_GrantTenantApplication_Handler,
+		},
+		{
+			MethodName: "GetTenantApplicationGrant",
+			Handler:    _ApplicationService_GetTenantApplicationGrant_Handler,
 		},
 		{
 			MethodName: "RevokeTenantApplication",

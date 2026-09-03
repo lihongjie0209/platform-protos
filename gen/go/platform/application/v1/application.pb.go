@@ -1272,6 +1272,94 @@ func (x *UpsertMenuResponse) GetMenu() *Menu {
 	return nil
 }
 
+type GetMenuRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMenuRequest) Reset() {
+	*x = GetMenuRequest{}
+	mi := &file_platform_application_v1_application_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMenuRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMenuRequest) ProtoMessage() {}
+
+func (x *GetMenuRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_application_v1_application_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMenuRequest.ProtoReflect.Descriptor instead.
+func (*GetMenuRequest) Descriptor() ([]byte, []int) {
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetMenuRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetMenuResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Menu          *Menu                  `protobuf:"bytes,1,opt,name=menu,proto3" json:"menu,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMenuResponse) Reset() {
+	*x = GetMenuResponse{}
+	mi := &file_platform_application_v1_application_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMenuResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMenuResponse) ProtoMessage() {}
+
+func (x *GetMenuResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_application_v1_application_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMenuResponse.ProtoReflect.Descriptor instead.
+func (*GetMenuResponse) Descriptor() ([]byte, []int) {
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetMenuResponse) GetMenu() *Menu {
+	if x != nil {
+		return x.Menu
+	}
+	return nil
+}
+
 type DeleteMenuRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1282,7 +1370,7 @@ type DeleteMenuRequest struct {
 
 func (x *DeleteMenuRequest) Reset() {
 	*x = DeleteMenuRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[14]
+	mi := &file_platform_application_v1_application_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1294,7 +1382,7 @@ func (x *DeleteMenuRequest) String() string {
 func (*DeleteMenuRequest) ProtoMessage() {}
 
 func (x *DeleteMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[14]
+	mi := &file_platform_application_v1_application_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1307,7 +1395,7 @@ func (x *DeleteMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMenuRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{14}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *DeleteMenuRequest) GetId() string {
@@ -1332,7 +1420,7 @@ type DeleteMenuResponse struct {
 
 func (x *DeleteMenuResponse) Reset() {
 	*x = DeleteMenuResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[15]
+	mi := &file_platform_application_v1_application_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1344,7 +1432,7 @@ func (x *DeleteMenuResponse) String() string {
 func (*DeleteMenuResponse) ProtoMessage() {}
 
 func (x *DeleteMenuResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[15]
+	mi := &file_platform_application_v1_application_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1357,7 +1445,7 @@ func (x *DeleteMenuResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMenuResponse.ProtoReflect.Descriptor instead.
 func (*DeleteMenuResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{15}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{17}
 }
 
 type ListMenuDraftRequest struct {
@@ -1369,7 +1457,7 @@ type ListMenuDraftRequest struct {
 
 func (x *ListMenuDraftRequest) Reset() {
 	*x = ListMenuDraftRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[16]
+	mi := &file_platform_application_v1_application_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1381,7 +1469,7 @@ func (x *ListMenuDraftRequest) String() string {
 func (*ListMenuDraftRequest) ProtoMessage() {}
 
 func (x *ListMenuDraftRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[16]
+	mi := &file_platform_application_v1_application_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1394,7 +1482,7 @@ func (x *ListMenuDraftRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMenuDraftRequest.ProtoReflect.Descriptor instead.
 func (*ListMenuDraftRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{16}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListMenuDraftRequest) GetApplicationId() string {
@@ -1413,7 +1501,7 @@ type ListMenuDraftResponse struct {
 
 func (x *ListMenuDraftResponse) Reset() {
 	*x = ListMenuDraftResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[17]
+	mi := &file_platform_application_v1_application_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1425,7 +1513,7 @@ func (x *ListMenuDraftResponse) String() string {
 func (*ListMenuDraftResponse) ProtoMessage() {}
 
 func (x *ListMenuDraftResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[17]
+	mi := &file_platform_application_v1_application_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1438,7 +1526,7 @@ func (x *ListMenuDraftResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMenuDraftResponse.ProtoReflect.Descriptor instead.
 func (*ListMenuDraftResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{17}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListMenuDraftResponse) GetMenus() []*Menu {
@@ -1459,7 +1547,7 @@ type PublishMenusRequest struct {
 
 func (x *PublishMenusRequest) Reset() {
 	*x = PublishMenusRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[18]
+	mi := &file_platform_application_v1_application_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1471,7 +1559,7 @@ func (x *PublishMenusRequest) String() string {
 func (*PublishMenusRequest) ProtoMessage() {}
 
 func (x *PublishMenusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[18]
+	mi := &file_platform_application_v1_application_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1484,7 +1572,7 @@ func (x *PublishMenusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishMenusRequest.ProtoReflect.Descriptor instead.
 func (*PublishMenusRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{18}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PublishMenusRequest) GetApplicationId() string {
@@ -1518,7 +1606,7 @@ type PublishMenusResponse struct {
 
 func (x *PublishMenusResponse) Reset() {
 	*x = PublishMenusResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[19]
+	mi := &file_platform_application_v1_application_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1530,7 +1618,7 @@ func (x *PublishMenusResponse) String() string {
 func (*PublishMenusResponse) ProtoMessage() {}
 
 func (x *PublishMenusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[19]
+	mi := &file_platform_application_v1_application_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1543,7 +1631,7 @@ func (x *PublishMenusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishMenusResponse.ProtoReflect.Descriptor instead.
 func (*PublishMenusResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{19}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *PublishMenusResponse) GetRelease() *MenuRelease {
@@ -1570,7 +1658,7 @@ type GetPublishedNavigationRequest struct {
 
 func (x *GetPublishedNavigationRequest) Reset() {
 	*x = GetPublishedNavigationRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[20]
+	mi := &file_platform_application_v1_application_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1582,7 +1670,7 @@ func (x *GetPublishedNavigationRequest) String() string {
 func (*GetPublishedNavigationRequest) ProtoMessage() {}
 
 func (x *GetPublishedNavigationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[20]
+	mi := &file_platform_application_v1_application_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1595,7 +1683,7 @@ func (x *GetPublishedNavigationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPublishedNavigationRequest.ProtoReflect.Descriptor instead.
 func (*GetPublishedNavigationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{20}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetPublishedNavigationRequest) GetApplicationId() string {
@@ -1623,7 +1711,7 @@ type GetPublishedNavigationResponse struct {
 
 func (x *GetPublishedNavigationResponse) Reset() {
 	*x = GetPublishedNavigationResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[21]
+	mi := &file_platform_application_v1_application_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1635,7 +1723,7 @@ func (x *GetPublishedNavigationResponse) String() string {
 func (*GetPublishedNavigationResponse) ProtoMessage() {}
 
 func (x *GetPublishedNavigationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[21]
+	mi := &file_platform_application_v1_application_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1648,7 +1736,7 @@ func (x *GetPublishedNavigationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPublishedNavigationResponse.ProtoReflect.Descriptor instead.
 func (*GetPublishedNavigationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{21}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetPublishedNavigationResponse) GetApplication() *Application {
@@ -1687,7 +1775,7 @@ type GrantTenantApplicationRequest struct {
 
 func (x *GrantTenantApplicationRequest) Reset() {
 	*x = GrantTenantApplicationRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[22]
+	mi := &file_platform_application_v1_application_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1699,7 +1787,7 @@ func (x *GrantTenantApplicationRequest) String() string {
 func (*GrantTenantApplicationRequest) ProtoMessage() {}
 
 func (x *GrantTenantApplicationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[22]
+	mi := &file_platform_application_v1_application_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1712,7 +1800,7 @@ func (x *GrantTenantApplicationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantTenantApplicationRequest.ProtoReflect.Descriptor instead.
 func (*GrantTenantApplicationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{22}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GrantTenantApplicationRequest) GetTenantId() string {
@@ -1773,7 +1861,7 @@ type GrantTenantApplicationResponse struct {
 
 func (x *GrantTenantApplicationResponse) Reset() {
 	*x = GrantTenantApplicationResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[23]
+	mi := &file_platform_application_v1_application_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1785,7 +1873,7 @@ func (x *GrantTenantApplicationResponse) String() string {
 func (*GrantTenantApplicationResponse) ProtoMessage() {}
 
 func (x *GrantTenantApplicationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[23]
+	mi := &file_platform_application_v1_application_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1798,10 +1886,106 @@ func (x *GrantTenantApplicationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantTenantApplicationResponse.ProtoReflect.Descriptor instead.
 func (*GrantTenantApplicationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{23}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GrantTenantApplicationResponse) GetGrant() *TenantApplicationGrant {
+	if x != nil {
+		return x.Grant
+	}
+	return nil
+}
+
+type GetTenantApplicationGrantRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTenantApplicationGrantRequest) Reset() {
+	*x = GetTenantApplicationGrantRequest{}
+	mi := &file_platform_application_v1_application_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTenantApplicationGrantRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTenantApplicationGrantRequest) ProtoMessage() {}
+
+func (x *GetTenantApplicationGrantRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_application_v1_application_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTenantApplicationGrantRequest.ProtoReflect.Descriptor instead.
+func (*GetTenantApplicationGrantRequest) Descriptor() ([]byte, []int) {
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetTenantApplicationGrantRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetTenantApplicationGrantRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+type GetTenantApplicationGrantResponse struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Grant         *TenantApplicationGrant `protobuf:"bytes,1,opt,name=grant,proto3" json:"grant,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTenantApplicationGrantResponse) Reset() {
+	*x = GetTenantApplicationGrantResponse{}
+	mi := &file_platform_application_v1_application_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTenantApplicationGrantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTenantApplicationGrantResponse) ProtoMessage() {}
+
+func (x *GetTenantApplicationGrantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_application_v1_application_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTenantApplicationGrantResponse.ProtoReflect.Descriptor instead.
+func (*GetTenantApplicationGrantResponse) Descriptor() ([]byte, []int) {
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *GetTenantApplicationGrantResponse) GetGrant() *TenantApplicationGrant {
 	if x != nil {
 		return x.Grant
 	}
@@ -1819,7 +2003,7 @@ type RevokeTenantApplicationRequest struct {
 
 func (x *RevokeTenantApplicationRequest) Reset() {
 	*x = RevokeTenantApplicationRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[24]
+	mi := &file_platform_application_v1_application_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1831,7 +2015,7 @@ func (x *RevokeTenantApplicationRequest) String() string {
 func (*RevokeTenantApplicationRequest) ProtoMessage() {}
 
 func (x *RevokeTenantApplicationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[24]
+	mi := &file_platform_application_v1_application_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1844,7 +2028,7 @@ func (x *RevokeTenantApplicationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeTenantApplicationRequest.ProtoReflect.Descriptor instead.
 func (*RevokeTenantApplicationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{24}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *RevokeTenantApplicationRequest) GetTenantId() string {
@@ -1877,7 +2061,7 @@ type RevokeTenantApplicationResponse struct {
 
 func (x *RevokeTenantApplicationResponse) Reset() {
 	*x = RevokeTenantApplicationResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[25]
+	mi := &file_platform_application_v1_application_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1889,7 +2073,7 @@ func (x *RevokeTenantApplicationResponse) String() string {
 func (*RevokeTenantApplicationResponse) ProtoMessage() {}
 
 func (x *RevokeTenantApplicationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[25]
+	mi := &file_platform_application_v1_application_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1902,7 +2086,7 @@ func (x *RevokeTenantApplicationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeTenantApplicationResponse.ProtoReflect.Descriptor instead.
 func (*RevokeTenantApplicationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{25}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *RevokeTenantApplicationResponse) GetGrant() *TenantApplicationGrant {
@@ -1923,7 +2107,7 @@ type ListTenantApplicationsRequest struct {
 
 func (x *ListTenantApplicationsRequest) Reset() {
 	*x = ListTenantApplicationsRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[26]
+	mi := &file_platform_application_v1_application_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1935,7 +2119,7 @@ func (x *ListTenantApplicationsRequest) String() string {
 func (*ListTenantApplicationsRequest) ProtoMessage() {}
 
 func (x *ListTenantApplicationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[26]
+	mi := &file_platform_application_v1_application_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1948,7 +2132,7 @@ func (x *ListTenantApplicationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTenantApplicationsRequest.ProtoReflect.Descriptor instead.
 func (*ListTenantApplicationsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{26}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListTenantApplicationsRequest) GetTenantId() string {
@@ -1983,7 +2167,7 @@ type ListTenantApplicationsResponse struct {
 
 func (x *ListTenantApplicationsResponse) Reset() {
 	*x = ListTenantApplicationsResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[27]
+	mi := &file_platform_application_v1_application_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1995,7 +2179,7 @@ func (x *ListTenantApplicationsResponse) String() string {
 func (*ListTenantApplicationsResponse) ProtoMessage() {}
 
 func (x *ListTenantApplicationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[27]
+	mi := &file_platform_application_v1_application_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2008,7 +2192,7 @@ func (x *ListTenantApplicationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTenantApplicationsResponse.ProtoReflect.Descriptor instead.
 func (*ListTenantApplicationsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{27}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListTenantApplicationsResponse) GetGrants() []*TenantApplicationGrant {
@@ -2043,7 +2227,7 @@ type BatchCheckTenantApplicationsRequest struct {
 
 func (x *BatchCheckTenantApplicationsRequest) Reset() {
 	*x = BatchCheckTenantApplicationsRequest{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[28]
+	mi := &file_platform_application_v1_application_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2055,7 +2239,7 @@ func (x *BatchCheckTenantApplicationsRequest) String() string {
 func (*BatchCheckTenantApplicationsRequest) ProtoMessage() {}
 
 func (x *BatchCheckTenantApplicationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[28]
+	mi := &file_platform_application_v1_application_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2068,7 +2252,7 @@ func (x *BatchCheckTenantApplicationsRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use BatchCheckTenantApplicationsRequest.ProtoReflect.Descriptor instead.
 func (*BatchCheckTenantApplicationsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{28}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *BatchCheckTenantApplicationsRequest) GetTenantId() string {
@@ -2103,7 +2287,7 @@ type TenantApplicationDecision struct {
 
 func (x *TenantApplicationDecision) Reset() {
 	*x = TenantApplicationDecision{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[29]
+	mi := &file_platform_application_v1_application_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2115,7 +2299,7 @@ func (x *TenantApplicationDecision) String() string {
 func (*TenantApplicationDecision) ProtoMessage() {}
 
 func (x *TenantApplicationDecision) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[29]
+	mi := &file_platform_application_v1_application_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2128,7 +2312,7 @@ func (x *TenantApplicationDecision) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TenantApplicationDecision.ProtoReflect.Descriptor instead.
 func (*TenantApplicationDecision) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{29}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *TenantApplicationDecision) GetApplicationId() string {
@@ -2161,7 +2345,7 @@ type BatchCheckTenantApplicationsResponse struct {
 
 func (x *BatchCheckTenantApplicationsResponse) Reset() {
 	*x = BatchCheckTenantApplicationsResponse{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[30]
+	mi := &file_platform_application_v1_application_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2173,7 +2357,7 @@ func (x *BatchCheckTenantApplicationsResponse) String() string {
 func (*BatchCheckTenantApplicationsResponse) ProtoMessage() {}
 
 func (x *BatchCheckTenantApplicationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[30]
+	mi := &file_platform_application_v1_application_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2186,7 +2370,7 @@ func (x *BatchCheckTenantApplicationsResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use BatchCheckTenantApplicationsResponse.ProtoReflect.Descriptor instead.
 func (*BatchCheckTenantApplicationsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{30}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *BatchCheckTenantApplicationsResponse) GetDecisions() []*TenantApplicationDecision {
@@ -2206,7 +2390,7 @@ type ApplicationChangedEvent struct {
 
 func (x *ApplicationChangedEvent) Reset() {
 	*x = ApplicationChangedEvent{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[31]
+	mi := &file_platform_application_v1_application_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2218,7 +2402,7 @@ func (x *ApplicationChangedEvent) String() string {
 func (*ApplicationChangedEvent) ProtoMessage() {}
 
 func (x *ApplicationChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[31]
+	mi := &file_platform_application_v1_application_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2231,7 +2415,7 @@ func (x *ApplicationChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplicationChangedEvent.ProtoReflect.Descriptor instead.
 func (*ApplicationChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{31}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *ApplicationChangedEvent) GetApplication() *Application {
@@ -2258,7 +2442,7 @@ type MenuPublishedEvent struct {
 
 func (x *MenuPublishedEvent) Reset() {
 	*x = MenuPublishedEvent{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[32]
+	mi := &file_platform_application_v1_application_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2270,7 +2454,7 @@ func (x *MenuPublishedEvent) String() string {
 func (*MenuPublishedEvent) ProtoMessage() {}
 
 func (x *MenuPublishedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[32]
+	mi := &file_platform_application_v1_application_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2283,7 +2467,7 @@ func (x *MenuPublishedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MenuPublishedEvent.ProtoReflect.Descriptor instead.
 func (*MenuPublishedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{32}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *MenuPublishedEvent) GetRelease() *MenuRelease {
@@ -2310,7 +2494,7 @@ type TenantApplicationGrantChangedEvent struct {
 
 func (x *TenantApplicationGrantChangedEvent) Reset() {
 	*x = TenantApplicationGrantChangedEvent{}
-	mi := &file_platform_application_v1_application_proto_msgTypes[33]
+	mi := &file_platform_application_v1_application_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2322,7 +2506,7 @@ func (x *TenantApplicationGrantChangedEvent) String() string {
 func (*TenantApplicationGrantChangedEvent) ProtoMessage() {}
 
 func (x *TenantApplicationGrantChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_application_v1_application_proto_msgTypes[33]
+	mi := &file_platform_application_v1_application_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2335,7 +2519,7 @@ func (x *TenantApplicationGrantChangedEvent) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use TenantApplicationGrantChangedEvent.ProtoReflect.Descriptor instead.
 func (*TenantApplicationGrantChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{33}
+	return file_platform_application_v1_application_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *TenantApplicationGrantChangedEvent) GetGrant() *TenantApplicationGrant {
@@ -2483,6 +2667,10 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\x04menu\x18\x01 \x01(\v2\x1d.platform.application.v1.MenuR\x04menu\x12)\n" +
 	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"G\n" +
 	"\x12UpsertMenuResponse\x121\n" +
+	"\x04menu\x18\x01 \x01(\v2\x1d.platform.application.v1.MenuR\x04menu\" \n" +
+	"\x0eGetMenuRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"D\n" +
+	"\x0fGetMenuResponse\x121\n" +
 	"\x04menu\x18\x01 \x01(\v2\x1d.platform.application.v1.MenuR\x04menu\"=\n" +
 	"\x11DeleteMenuRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
@@ -2517,6 +2705,11 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\x11entitlements_json\x18\x06 \x01(\tR\x10entitlementsJson\x12)\n" +
 	"\x10expected_version\x18\a \x01(\x03R\x0fexpectedVersion\"g\n" +
 	"\x1eGrantTenantApplicationResponse\x12E\n" +
+	"\x05grant\x18\x01 \x01(\v2/.platform.application.v1.TenantApplicationGrantR\x05grant\"f\n" +
+	" GetTenantApplicationGrantRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\"j\n" +
+	"!GetTenantApplicationGrantResponse\x12E\n" +
 	"\x05grant\x18\x01 \x01(\v2/.platform.application.v1.TenantApplicationGrantR\x05grant\"~\n" +
 	"\x1eRevokeTenantApplicationRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
@@ -2557,20 +2750,22 @@ const file_platform_application_v1_application_proto_rawDesc = "" +
 	"\x13MenuPermissionScope\x12%\n" +
 	"!MENU_PERMISSION_SCOPE_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cMENU_PERMISSION_SCOPE_TENANT\x10\x01\x12\"\n" +
-	"\x1eMENU_PERMISSION_SCOPE_PLATFORM\x10\x022\xf4\f\n" +
+	"\x1eMENU_PERMISSION_SCOPE_PLATFORM\x10\x022\xe7\x0e\n" +
 	"\x12ApplicationService\x12z\n" +
 	"\x11CreateApplication\x121.platform.application.v1.CreateApplicationRequest\x1a2.platform.application.v1.CreateApplicationResponse\x12z\n" +
 	"\x11UpdateApplication\x121.platform.application.v1.UpdateApplicationRequest\x1a2.platform.application.v1.UpdateApplicationResponse\x12q\n" +
 	"\x0eGetApplication\x12..platform.application.v1.GetApplicationRequest\x1a/.platform.application.v1.GetApplicationResponse\x12w\n" +
 	"\x10ListApplications\x120.platform.application.v1.ListApplicationsRequest\x1a1.platform.application.v1.ListApplicationsResponse\x12e\n" +
 	"\n" +
-	"UpsertMenu\x12*.platform.application.v1.UpsertMenuRequest\x1a+.platform.application.v1.UpsertMenuResponse\x12e\n" +
+	"UpsertMenu\x12*.platform.application.v1.UpsertMenuRequest\x1a+.platform.application.v1.UpsertMenuResponse\x12\\\n" +
+	"\aGetMenu\x12'.platform.application.v1.GetMenuRequest\x1a(.platform.application.v1.GetMenuResponse\x12e\n" +
 	"\n" +
 	"DeleteMenu\x12*.platform.application.v1.DeleteMenuRequest\x1a+.platform.application.v1.DeleteMenuResponse\x12n\n" +
 	"\rListMenuDraft\x12-.platform.application.v1.ListMenuDraftRequest\x1a..platform.application.v1.ListMenuDraftResponse\x12k\n" +
 	"\fPublishMenus\x12,.platform.application.v1.PublishMenusRequest\x1a-.platform.application.v1.PublishMenusResponse\x12\x89\x01\n" +
 	"\x16GetPublishedNavigation\x126.platform.application.v1.GetPublishedNavigationRequest\x1a7.platform.application.v1.GetPublishedNavigationResponse\x12\x89\x01\n" +
-	"\x16GrantTenantApplication\x126.platform.application.v1.GrantTenantApplicationRequest\x1a7.platform.application.v1.GrantTenantApplicationResponse\x12\x8c\x01\n" +
+	"\x16GrantTenantApplication\x126.platform.application.v1.GrantTenantApplicationRequest\x1a7.platform.application.v1.GrantTenantApplicationResponse\x12\x92\x01\n" +
+	"\x19GetTenantApplicationGrant\x129.platform.application.v1.GetTenantApplicationGrantRequest\x1a:.platform.application.v1.GetTenantApplicationGrantResponse\x12\x8c\x01\n" +
 	"\x17RevokeTenantApplication\x127.platform.application.v1.RevokeTenantApplicationRequest\x1a8.platform.application.v1.RevokeTenantApplicationResponse\x12\x89\x01\n" +
 	"\x16ListTenantApplications\x126.platform.application.v1.ListTenantApplicationsRequest\x1a7.platform.application.v1.ListTenantApplicationsResponse\x12\x9b\x01\n" +
 	"\x1cBatchCheckTenantApplications\x12<.platform.application.v1.BatchCheckTenantApplicationsRequest\x1a=.platform.application.v1.BatchCheckTenantApplicationsResponseBWZUgithub.com/lihongjie0209/platform-protos/gen/go/platform/application/v1;applicationv1b\x06proto3"
@@ -2588,7 +2783,7 @@ func file_platform_application_v1_application_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_application_v1_application_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_platform_application_v1_application_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_platform_application_v1_application_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_platform_application_v1_application_proto_goTypes = []any{
 	(MenuPermissionScope)(0),                     // 0: platform.application.v1.MenuPermissionScope
 	(*Application)(nil),                          // 1: platform.application.v1.Application
@@ -2605,100 +2800,110 @@ var file_platform_application_v1_application_proto_goTypes = []any{
 	(*ListApplicationsResponse)(nil),             // 12: platform.application.v1.ListApplicationsResponse
 	(*UpsertMenuRequest)(nil),                    // 13: platform.application.v1.UpsertMenuRequest
 	(*UpsertMenuResponse)(nil),                   // 14: platform.application.v1.UpsertMenuResponse
-	(*DeleteMenuRequest)(nil),                    // 15: platform.application.v1.DeleteMenuRequest
-	(*DeleteMenuResponse)(nil),                   // 16: platform.application.v1.DeleteMenuResponse
-	(*ListMenuDraftRequest)(nil),                 // 17: platform.application.v1.ListMenuDraftRequest
-	(*ListMenuDraftResponse)(nil),                // 18: platform.application.v1.ListMenuDraftResponse
-	(*PublishMenusRequest)(nil),                  // 19: platform.application.v1.PublishMenusRequest
-	(*PublishMenusResponse)(nil),                 // 20: platform.application.v1.PublishMenusResponse
-	(*GetPublishedNavigationRequest)(nil),        // 21: platform.application.v1.GetPublishedNavigationRequest
-	(*GetPublishedNavigationResponse)(nil),       // 22: platform.application.v1.GetPublishedNavigationResponse
-	(*GrantTenantApplicationRequest)(nil),        // 23: platform.application.v1.GrantTenantApplicationRequest
-	(*GrantTenantApplicationResponse)(nil),       // 24: platform.application.v1.GrantTenantApplicationResponse
-	(*RevokeTenantApplicationRequest)(nil),       // 25: platform.application.v1.RevokeTenantApplicationRequest
-	(*RevokeTenantApplicationResponse)(nil),      // 26: platform.application.v1.RevokeTenantApplicationResponse
-	(*ListTenantApplicationsRequest)(nil),        // 27: platform.application.v1.ListTenantApplicationsRequest
-	(*ListTenantApplicationsResponse)(nil),       // 28: platform.application.v1.ListTenantApplicationsResponse
-	(*BatchCheckTenantApplicationsRequest)(nil),  // 29: platform.application.v1.BatchCheckTenantApplicationsRequest
-	(*TenantApplicationDecision)(nil),            // 30: platform.application.v1.TenantApplicationDecision
-	(*BatchCheckTenantApplicationsResponse)(nil), // 31: platform.application.v1.BatchCheckTenantApplicationsResponse
-	(*ApplicationChangedEvent)(nil),              // 32: platform.application.v1.ApplicationChangedEvent
-	(*MenuPublishedEvent)(nil),                   // 33: platform.application.v1.MenuPublishedEvent
-	(*TenantApplicationGrantChangedEvent)(nil),   // 34: platform.application.v1.TenantApplicationGrantChangedEvent
-	(*timestamppb.Timestamp)(nil),                // 35: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                       // 36: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                        // 37: platform.common.v1.PageResult
+	(*GetMenuRequest)(nil),                       // 15: platform.application.v1.GetMenuRequest
+	(*GetMenuResponse)(nil),                      // 16: platform.application.v1.GetMenuResponse
+	(*DeleteMenuRequest)(nil),                    // 17: platform.application.v1.DeleteMenuRequest
+	(*DeleteMenuResponse)(nil),                   // 18: platform.application.v1.DeleteMenuResponse
+	(*ListMenuDraftRequest)(nil),                 // 19: platform.application.v1.ListMenuDraftRequest
+	(*ListMenuDraftResponse)(nil),                // 20: platform.application.v1.ListMenuDraftResponse
+	(*PublishMenusRequest)(nil),                  // 21: platform.application.v1.PublishMenusRequest
+	(*PublishMenusResponse)(nil),                 // 22: platform.application.v1.PublishMenusResponse
+	(*GetPublishedNavigationRequest)(nil),        // 23: platform.application.v1.GetPublishedNavigationRequest
+	(*GetPublishedNavigationResponse)(nil),       // 24: platform.application.v1.GetPublishedNavigationResponse
+	(*GrantTenantApplicationRequest)(nil),        // 25: platform.application.v1.GrantTenantApplicationRequest
+	(*GrantTenantApplicationResponse)(nil),       // 26: platform.application.v1.GrantTenantApplicationResponse
+	(*GetTenantApplicationGrantRequest)(nil),     // 27: platform.application.v1.GetTenantApplicationGrantRequest
+	(*GetTenantApplicationGrantResponse)(nil),    // 28: platform.application.v1.GetTenantApplicationGrantResponse
+	(*RevokeTenantApplicationRequest)(nil),       // 29: platform.application.v1.RevokeTenantApplicationRequest
+	(*RevokeTenantApplicationResponse)(nil),      // 30: platform.application.v1.RevokeTenantApplicationResponse
+	(*ListTenantApplicationsRequest)(nil),        // 31: platform.application.v1.ListTenantApplicationsRequest
+	(*ListTenantApplicationsResponse)(nil),       // 32: platform.application.v1.ListTenantApplicationsResponse
+	(*BatchCheckTenantApplicationsRequest)(nil),  // 33: platform.application.v1.BatchCheckTenantApplicationsRequest
+	(*TenantApplicationDecision)(nil),            // 34: platform.application.v1.TenantApplicationDecision
+	(*BatchCheckTenantApplicationsResponse)(nil), // 35: platform.application.v1.BatchCheckTenantApplicationsResponse
+	(*ApplicationChangedEvent)(nil),              // 36: platform.application.v1.ApplicationChangedEvent
+	(*MenuPublishedEvent)(nil),                   // 37: platform.application.v1.MenuPublishedEvent
+	(*TenantApplicationGrantChangedEvent)(nil),   // 38: platform.application.v1.TenantApplicationGrantChangedEvent
+	(*timestamppb.Timestamp)(nil),                // 39: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                       // 40: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                        // 41: platform.common.v1.PageResult
 }
 var file_platform_application_v1_application_proto_depIdxs = []int32{
-	35, // 0: platform.application.v1.Application.created_at:type_name -> google.protobuf.Timestamp
-	35, // 1: platform.application.v1.Application.updated_at:type_name -> google.protobuf.Timestamp
-	35, // 2: platform.application.v1.Menu.created_at:type_name -> google.protobuf.Timestamp
-	35, // 3: platform.application.v1.Menu.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 0: platform.application.v1.Application.created_at:type_name -> google.protobuf.Timestamp
+	39, // 1: platform.application.v1.Application.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 2: platform.application.v1.Menu.created_at:type_name -> google.protobuf.Timestamp
+	39, // 3: platform.application.v1.Menu.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 4: platform.application.v1.Menu.permission_scope:type_name -> platform.application.v1.MenuPermissionScope
-	35, // 5: platform.application.v1.MenuRelease.created_at:type_name -> google.protobuf.Timestamp
-	35, // 6: platform.application.v1.MenuRelease.updated_at:type_name -> google.protobuf.Timestamp
-	35, // 7: platform.application.v1.TenantApplicationGrant.valid_from:type_name -> google.protobuf.Timestamp
-	35, // 8: platform.application.v1.TenantApplicationGrant.valid_until:type_name -> google.protobuf.Timestamp
-	35, // 9: platform.application.v1.TenantApplicationGrant.created_at:type_name -> google.protobuf.Timestamp
-	35, // 10: platform.application.v1.TenantApplicationGrant.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 5: platform.application.v1.MenuRelease.created_at:type_name -> google.protobuf.Timestamp
+	39, // 6: platform.application.v1.MenuRelease.updated_at:type_name -> google.protobuf.Timestamp
+	39, // 7: platform.application.v1.TenantApplicationGrant.valid_from:type_name -> google.protobuf.Timestamp
+	39, // 8: platform.application.v1.TenantApplicationGrant.valid_until:type_name -> google.protobuf.Timestamp
+	39, // 9: platform.application.v1.TenantApplicationGrant.created_at:type_name -> google.protobuf.Timestamp
+	39, // 10: platform.application.v1.TenantApplicationGrant.updated_at:type_name -> google.protobuf.Timestamp
 	1,  // 11: platform.application.v1.CreateApplicationResponse.application:type_name -> platform.application.v1.Application
 	1,  // 12: platform.application.v1.UpdateApplicationResponse.application:type_name -> platform.application.v1.Application
 	1,  // 13: platform.application.v1.GetApplicationResponse.application:type_name -> platform.application.v1.Application
-	36, // 14: platform.application.v1.ListApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
+	40, // 14: platform.application.v1.ListApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
 	1,  // 15: platform.application.v1.ListApplicationsResponse.applications:type_name -> platform.application.v1.Application
-	37, // 16: platform.application.v1.ListApplicationsResponse.page:type_name -> platform.common.v1.PageResult
+	41, // 16: platform.application.v1.ListApplicationsResponse.page:type_name -> platform.common.v1.PageResult
 	2,  // 17: platform.application.v1.UpsertMenuRequest.menu:type_name -> platform.application.v1.Menu
 	2,  // 18: platform.application.v1.UpsertMenuResponse.menu:type_name -> platform.application.v1.Menu
-	2,  // 19: platform.application.v1.ListMenuDraftResponse.menus:type_name -> platform.application.v1.Menu
-	3,  // 20: platform.application.v1.PublishMenusResponse.release:type_name -> platform.application.v1.MenuRelease
-	2,  // 21: platform.application.v1.PublishMenusResponse.menus:type_name -> platform.application.v1.Menu
-	1,  // 22: platform.application.v1.GetPublishedNavigationResponse.application:type_name -> platform.application.v1.Application
-	3,  // 23: platform.application.v1.GetPublishedNavigationResponse.release:type_name -> platform.application.v1.MenuRelease
-	2,  // 24: platform.application.v1.GetPublishedNavigationResponse.menus:type_name -> platform.application.v1.Menu
-	35, // 25: platform.application.v1.GrantTenantApplicationRequest.valid_from:type_name -> google.protobuf.Timestamp
-	35, // 26: platform.application.v1.GrantTenantApplicationRequest.valid_until:type_name -> google.protobuf.Timestamp
-	4,  // 27: platform.application.v1.GrantTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	4,  // 28: platform.application.v1.RevokeTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	36, // 29: platform.application.v1.ListTenantApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
-	4,  // 30: platform.application.v1.ListTenantApplicationsResponse.grants:type_name -> platform.application.v1.TenantApplicationGrant
-	1,  // 31: platform.application.v1.ListTenantApplicationsResponse.applications:type_name -> platform.application.v1.Application
-	37, // 32: platform.application.v1.ListTenantApplicationsResponse.page:type_name -> platform.common.v1.PageResult
-	35, // 33: platform.application.v1.BatchCheckTenantApplicationsRequest.at:type_name -> google.protobuf.Timestamp
-	30, // 34: platform.application.v1.BatchCheckTenantApplicationsResponse.decisions:type_name -> platform.application.v1.TenantApplicationDecision
-	1,  // 35: platform.application.v1.ApplicationChangedEvent.application:type_name -> platform.application.v1.Application
-	3,  // 36: platform.application.v1.MenuPublishedEvent.release:type_name -> platform.application.v1.MenuRelease
-	4,  // 37: platform.application.v1.TenantApplicationGrantChangedEvent.grant:type_name -> platform.application.v1.TenantApplicationGrant
-	5,  // 38: platform.application.v1.ApplicationService.CreateApplication:input_type -> platform.application.v1.CreateApplicationRequest
-	7,  // 39: platform.application.v1.ApplicationService.UpdateApplication:input_type -> platform.application.v1.UpdateApplicationRequest
-	9,  // 40: platform.application.v1.ApplicationService.GetApplication:input_type -> platform.application.v1.GetApplicationRequest
-	11, // 41: platform.application.v1.ApplicationService.ListApplications:input_type -> platform.application.v1.ListApplicationsRequest
-	13, // 42: platform.application.v1.ApplicationService.UpsertMenu:input_type -> platform.application.v1.UpsertMenuRequest
-	15, // 43: platform.application.v1.ApplicationService.DeleteMenu:input_type -> platform.application.v1.DeleteMenuRequest
-	17, // 44: platform.application.v1.ApplicationService.ListMenuDraft:input_type -> platform.application.v1.ListMenuDraftRequest
-	19, // 45: platform.application.v1.ApplicationService.PublishMenus:input_type -> platform.application.v1.PublishMenusRequest
-	21, // 46: platform.application.v1.ApplicationService.GetPublishedNavigation:input_type -> platform.application.v1.GetPublishedNavigationRequest
-	23, // 47: platform.application.v1.ApplicationService.GrantTenantApplication:input_type -> platform.application.v1.GrantTenantApplicationRequest
-	25, // 48: platform.application.v1.ApplicationService.RevokeTenantApplication:input_type -> platform.application.v1.RevokeTenantApplicationRequest
-	27, // 49: platform.application.v1.ApplicationService.ListTenantApplications:input_type -> platform.application.v1.ListTenantApplicationsRequest
-	29, // 50: platform.application.v1.ApplicationService.BatchCheckTenantApplications:input_type -> platform.application.v1.BatchCheckTenantApplicationsRequest
-	6,  // 51: platform.application.v1.ApplicationService.CreateApplication:output_type -> platform.application.v1.CreateApplicationResponse
-	8,  // 52: platform.application.v1.ApplicationService.UpdateApplication:output_type -> platform.application.v1.UpdateApplicationResponse
-	10, // 53: platform.application.v1.ApplicationService.GetApplication:output_type -> platform.application.v1.GetApplicationResponse
-	12, // 54: platform.application.v1.ApplicationService.ListApplications:output_type -> platform.application.v1.ListApplicationsResponse
-	14, // 55: platform.application.v1.ApplicationService.UpsertMenu:output_type -> platform.application.v1.UpsertMenuResponse
-	16, // 56: platform.application.v1.ApplicationService.DeleteMenu:output_type -> platform.application.v1.DeleteMenuResponse
-	18, // 57: platform.application.v1.ApplicationService.ListMenuDraft:output_type -> platform.application.v1.ListMenuDraftResponse
-	20, // 58: platform.application.v1.ApplicationService.PublishMenus:output_type -> platform.application.v1.PublishMenusResponse
-	22, // 59: platform.application.v1.ApplicationService.GetPublishedNavigation:output_type -> platform.application.v1.GetPublishedNavigationResponse
-	24, // 60: platform.application.v1.ApplicationService.GrantTenantApplication:output_type -> platform.application.v1.GrantTenantApplicationResponse
-	26, // 61: platform.application.v1.ApplicationService.RevokeTenantApplication:output_type -> platform.application.v1.RevokeTenantApplicationResponse
-	28, // 62: platform.application.v1.ApplicationService.ListTenantApplications:output_type -> platform.application.v1.ListTenantApplicationsResponse
-	31, // 63: platform.application.v1.ApplicationService.BatchCheckTenantApplications:output_type -> platform.application.v1.BatchCheckTenantApplicationsResponse
-	51, // [51:64] is the sub-list for method output_type
-	38, // [38:51] is the sub-list for method input_type
-	38, // [38:38] is the sub-list for extension type_name
-	38, // [38:38] is the sub-list for extension extendee
-	0,  // [0:38] is the sub-list for field type_name
+	2,  // 19: platform.application.v1.GetMenuResponse.menu:type_name -> platform.application.v1.Menu
+	2,  // 20: platform.application.v1.ListMenuDraftResponse.menus:type_name -> platform.application.v1.Menu
+	3,  // 21: platform.application.v1.PublishMenusResponse.release:type_name -> platform.application.v1.MenuRelease
+	2,  // 22: platform.application.v1.PublishMenusResponse.menus:type_name -> platform.application.v1.Menu
+	1,  // 23: platform.application.v1.GetPublishedNavigationResponse.application:type_name -> platform.application.v1.Application
+	3,  // 24: platform.application.v1.GetPublishedNavigationResponse.release:type_name -> platform.application.v1.MenuRelease
+	2,  // 25: platform.application.v1.GetPublishedNavigationResponse.menus:type_name -> platform.application.v1.Menu
+	39, // 26: platform.application.v1.GrantTenantApplicationRequest.valid_from:type_name -> google.protobuf.Timestamp
+	39, // 27: platform.application.v1.GrantTenantApplicationRequest.valid_until:type_name -> google.protobuf.Timestamp
+	4,  // 28: platform.application.v1.GrantTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	4,  // 29: platform.application.v1.GetTenantApplicationGrantResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	4,  // 30: platform.application.v1.RevokeTenantApplicationResponse.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	40, // 31: platform.application.v1.ListTenantApplicationsRequest.page:type_name -> platform.common.v1.PageRequest
+	4,  // 32: platform.application.v1.ListTenantApplicationsResponse.grants:type_name -> platform.application.v1.TenantApplicationGrant
+	1,  // 33: platform.application.v1.ListTenantApplicationsResponse.applications:type_name -> platform.application.v1.Application
+	41, // 34: platform.application.v1.ListTenantApplicationsResponse.page:type_name -> platform.common.v1.PageResult
+	39, // 35: platform.application.v1.BatchCheckTenantApplicationsRequest.at:type_name -> google.protobuf.Timestamp
+	34, // 36: platform.application.v1.BatchCheckTenantApplicationsResponse.decisions:type_name -> platform.application.v1.TenantApplicationDecision
+	1,  // 37: platform.application.v1.ApplicationChangedEvent.application:type_name -> platform.application.v1.Application
+	3,  // 38: platform.application.v1.MenuPublishedEvent.release:type_name -> platform.application.v1.MenuRelease
+	4,  // 39: platform.application.v1.TenantApplicationGrantChangedEvent.grant:type_name -> platform.application.v1.TenantApplicationGrant
+	5,  // 40: platform.application.v1.ApplicationService.CreateApplication:input_type -> platform.application.v1.CreateApplicationRequest
+	7,  // 41: platform.application.v1.ApplicationService.UpdateApplication:input_type -> platform.application.v1.UpdateApplicationRequest
+	9,  // 42: platform.application.v1.ApplicationService.GetApplication:input_type -> platform.application.v1.GetApplicationRequest
+	11, // 43: platform.application.v1.ApplicationService.ListApplications:input_type -> platform.application.v1.ListApplicationsRequest
+	13, // 44: platform.application.v1.ApplicationService.UpsertMenu:input_type -> platform.application.v1.UpsertMenuRequest
+	15, // 45: platform.application.v1.ApplicationService.GetMenu:input_type -> platform.application.v1.GetMenuRequest
+	17, // 46: platform.application.v1.ApplicationService.DeleteMenu:input_type -> platform.application.v1.DeleteMenuRequest
+	19, // 47: platform.application.v1.ApplicationService.ListMenuDraft:input_type -> platform.application.v1.ListMenuDraftRequest
+	21, // 48: platform.application.v1.ApplicationService.PublishMenus:input_type -> platform.application.v1.PublishMenusRequest
+	23, // 49: platform.application.v1.ApplicationService.GetPublishedNavigation:input_type -> platform.application.v1.GetPublishedNavigationRequest
+	25, // 50: platform.application.v1.ApplicationService.GrantTenantApplication:input_type -> platform.application.v1.GrantTenantApplicationRequest
+	27, // 51: platform.application.v1.ApplicationService.GetTenantApplicationGrant:input_type -> platform.application.v1.GetTenantApplicationGrantRequest
+	29, // 52: platform.application.v1.ApplicationService.RevokeTenantApplication:input_type -> platform.application.v1.RevokeTenantApplicationRequest
+	31, // 53: platform.application.v1.ApplicationService.ListTenantApplications:input_type -> platform.application.v1.ListTenantApplicationsRequest
+	33, // 54: platform.application.v1.ApplicationService.BatchCheckTenantApplications:input_type -> platform.application.v1.BatchCheckTenantApplicationsRequest
+	6,  // 55: platform.application.v1.ApplicationService.CreateApplication:output_type -> platform.application.v1.CreateApplicationResponse
+	8,  // 56: platform.application.v1.ApplicationService.UpdateApplication:output_type -> platform.application.v1.UpdateApplicationResponse
+	10, // 57: platform.application.v1.ApplicationService.GetApplication:output_type -> platform.application.v1.GetApplicationResponse
+	12, // 58: platform.application.v1.ApplicationService.ListApplications:output_type -> platform.application.v1.ListApplicationsResponse
+	14, // 59: platform.application.v1.ApplicationService.UpsertMenu:output_type -> platform.application.v1.UpsertMenuResponse
+	16, // 60: platform.application.v1.ApplicationService.GetMenu:output_type -> platform.application.v1.GetMenuResponse
+	18, // 61: platform.application.v1.ApplicationService.DeleteMenu:output_type -> platform.application.v1.DeleteMenuResponse
+	20, // 62: platform.application.v1.ApplicationService.ListMenuDraft:output_type -> platform.application.v1.ListMenuDraftResponse
+	22, // 63: platform.application.v1.ApplicationService.PublishMenus:output_type -> platform.application.v1.PublishMenusResponse
+	24, // 64: platform.application.v1.ApplicationService.GetPublishedNavigation:output_type -> platform.application.v1.GetPublishedNavigationResponse
+	26, // 65: platform.application.v1.ApplicationService.GrantTenantApplication:output_type -> platform.application.v1.GrantTenantApplicationResponse
+	28, // 66: platform.application.v1.ApplicationService.GetTenantApplicationGrant:output_type -> platform.application.v1.GetTenantApplicationGrantResponse
+	30, // 67: platform.application.v1.ApplicationService.RevokeTenantApplication:output_type -> platform.application.v1.RevokeTenantApplicationResponse
+	32, // 68: platform.application.v1.ApplicationService.ListTenantApplications:output_type -> platform.application.v1.ListTenantApplicationsResponse
+	35, // 69: platform.application.v1.ApplicationService.BatchCheckTenantApplications:output_type -> platform.application.v1.BatchCheckTenantApplicationsResponse
+	55, // [55:70] is the sub-list for method output_type
+	40, // [40:55] is the sub-list for method input_type
+	40, // [40:40] is the sub-list for extension type_name
+	40, // [40:40] is the sub-list for extension extendee
+	0,  // [0:40] is the sub-list for field type_name
 }
 
 func init() { file_platform_application_v1_application_proto_init() }
@@ -2712,7 +2917,7 @@ func file_platform_application_v1_application_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_application_v1_application_proto_rawDesc), len(file_platform_application_v1_application_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   34,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

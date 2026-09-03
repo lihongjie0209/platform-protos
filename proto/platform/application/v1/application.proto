@@ -13,11 +13,13 @@ service ApplicationService {
   rpc GetApplication(GetApplicationRequest) returns (GetApplicationResponse);
   rpc ListApplications(ListApplicationsRequest) returns (ListApplicationsResponse);
   rpc UpsertMenu(UpsertMenuRequest) returns (UpsertMenuResponse);
+  rpc GetMenu(GetMenuRequest) returns (GetMenuResponse);
   rpc DeleteMenu(DeleteMenuRequest) returns (DeleteMenuResponse);
   rpc ListMenuDraft(ListMenuDraftRequest) returns (ListMenuDraftResponse);
   rpc PublishMenus(PublishMenusRequest) returns (PublishMenusResponse);
   rpc GetPublishedNavigation(GetPublishedNavigationRequest) returns (GetPublishedNavigationResponse);
   rpc GrantTenantApplication(GrantTenantApplicationRequest) returns (GrantTenantApplicationResponse);
+  rpc GetTenantApplicationGrant(GetTenantApplicationGrantRequest) returns (GetTenantApplicationGrantResponse);
   rpc RevokeTenantApplication(RevokeTenantApplicationRequest) returns (RevokeTenantApplicationResponse);
   rpc ListTenantApplications(ListTenantApplicationsRequest) returns (ListTenantApplicationsResponse);
   rpc BatchCheckTenantApplications(BatchCheckTenantApplicationsRequest) returns (BatchCheckTenantApplicationsResponse);
@@ -149,6 +151,12 @@ message UpsertMenuRequest {
 message UpsertMenuResponse {
   Menu menu = 1;
 }
+message GetMenuRequest {
+  string id = 1;
+}
+message GetMenuResponse {
+  Menu menu = 1;
+}
 message DeleteMenuRequest {
   string id = 1;
   int64 version = 2;
@@ -189,6 +197,13 @@ message GrantTenantApplicationRequest {
   int64 expected_version = 7;
 }
 message GrantTenantApplicationResponse {
+  TenantApplicationGrant grant = 1;
+}
+message GetTenantApplicationGrantRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+}
+message GetTenantApplicationGrantResponse {
   TenantApplicationGrant grant = 1;
 }
 message RevokeTenantApplicationRequest {
