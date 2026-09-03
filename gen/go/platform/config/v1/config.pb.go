@@ -23,6 +23,94 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetRequest) Reset() {
+	*x = GetRequest{}
+	mi := &file_platform_config_v1_config_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetRequest) ProtoMessage() {}
+
+func (x *GetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_config_v1_config_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
+func (*GetRequest) Descriptor() ([]byte, []int) {
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Entry         *ConfigEntry           `protobuf:"bytes,1,opt,name=entry,proto3" json:"entry,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetResponse) Reset() {
+	*x = GetResponse{}
+	mi := &file_platform_config_v1_config_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetResponse) ProtoMessage() {}
+
+func (x *GetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_config_v1_config_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetResponse.ProtoReflect.Descriptor instead.
+func (*GetResponse) Descriptor() ([]byte, []int) {
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetResponse) GetEntry() *ConfigEntry {
+	if x != nil {
+		return x.Entry
+	}
+	return nil
+}
+
 type ConfigEntry struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -51,7 +139,7 @@ type ConfigEntry struct {
 
 func (x *ConfigEntry) Reset() {
 	*x = ConfigEntry{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[0]
+	mi := &file_platform_config_v1_config_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -63,7 +151,7 @@ func (x *ConfigEntry) String() string {
 func (*ConfigEntry) ProtoMessage() {}
 
 func (x *ConfigEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[0]
+	mi := &file_platform_config_v1_config_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -76,7 +164,7 @@ func (x *ConfigEntry) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigEntry.ProtoReflect.Descriptor instead.
 func (*ConfigEntry) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{0}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ConfigEntry) GetId() string {
@@ -229,7 +317,7 @@ type PutDraftRequest struct {
 
 func (x *PutDraftRequest) Reset() {
 	*x = PutDraftRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[1]
+	mi := &file_platform_config_v1_config_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -241,7 +329,7 @@ func (x *PutDraftRequest) String() string {
 func (*PutDraftRequest) ProtoMessage() {}
 
 func (x *PutDraftRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[1]
+	mi := &file_platform_config_v1_config_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -254,7 +342,7 @@ func (x *PutDraftRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutDraftRequest.ProtoReflect.Descriptor instead.
 func (*PutDraftRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{1}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *PutDraftRequest) GetEntry() *ConfigEntry {
@@ -280,7 +368,7 @@ type PutDraftResponse struct {
 
 func (x *PutDraftResponse) Reset() {
 	*x = PutDraftResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[2]
+	mi := &file_platform_config_v1_config_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -292,7 +380,7 @@ func (x *PutDraftResponse) String() string {
 func (*PutDraftResponse) ProtoMessage() {}
 
 func (x *PutDraftResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[2]
+	mi := &file_platform_config_v1_config_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -305,7 +393,7 @@ func (x *PutDraftResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutDraftResponse.ProtoReflect.Descriptor instead.
 func (*PutDraftResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{2}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *PutDraftResponse) GetEntry() *ConfigEntry {
@@ -325,7 +413,7 @@ type SubmitForApprovalRequest struct {
 
 func (x *SubmitForApprovalRequest) Reset() {
 	*x = SubmitForApprovalRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[3]
+	mi := &file_platform_config_v1_config_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -337,7 +425,7 @@ func (x *SubmitForApprovalRequest) String() string {
 func (*SubmitForApprovalRequest) ProtoMessage() {}
 
 func (x *SubmitForApprovalRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[3]
+	mi := &file_platform_config_v1_config_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -350,7 +438,7 @@ func (x *SubmitForApprovalRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitForApprovalRequest.ProtoReflect.Descriptor instead.
 func (*SubmitForApprovalRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{3}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SubmitForApprovalRequest) GetId() string {
@@ -376,7 +464,7 @@ type SubmitForApprovalResponse struct {
 
 func (x *SubmitForApprovalResponse) Reset() {
 	*x = SubmitForApprovalResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[4]
+	mi := &file_platform_config_v1_config_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -388,7 +476,7 @@ func (x *SubmitForApprovalResponse) String() string {
 func (*SubmitForApprovalResponse) ProtoMessage() {}
 
 func (x *SubmitForApprovalResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[4]
+	mi := &file_platform_config_v1_config_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -401,7 +489,7 @@ func (x *SubmitForApprovalResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitForApprovalResponse.ProtoReflect.Descriptor instead.
 func (*SubmitForApprovalResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{4}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SubmitForApprovalResponse) GetEntry() *ConfigEntry {
@@ -422,7 +510,7 @@ type ApproveRequest struct {
 
 func (x *ApproveRequest) Reset() {
 	*x = ApproveRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[5]
+	mi := &file_platform_config_v1_config_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -434,7 +522,7 @@ func (x *ApproveRequest) String() string {
 func (*ApproveRequest) ProtoMessage() {}
 
 func (x *ApproveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[5]
+	mi := &file_platform_config_v1_config_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -447,7 +535,7 @@ func (x *ApproveRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApproveRequest.ProtoReflect.Descriptor instead.
 func (*ApproveRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{5}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ApproveRequest) GetId() string {
@@ -480,7 +568,7 @@ type ApproveResponse struct {
 
 func (x *ApproveResponse) Reset() {
 	*x = ApproveResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[6]
+	mi := &file_platform_config_v1_config_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -492,7 +580,7 @@ func (x *ApproveResponse) String() string {
 func (*ApproveResponse) ProtoMessage() {}
 
 func (x *ApproveResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[6]
+	mi := &file_platform_config_v1_config_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -505,7 +593,7 @@ func (x *ApproveResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApproveResponse.ProtoReflect.Descriptor instead.
 func (*ApproveResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{6}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ApproveResponse) GetEntry() *ConfigEntry {
@@ -526,7 +614,7 @@ type RejectRequest struct {
 
 func (x *RejectRequest) Reset() {
 	*x = RejectRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[7]
+	mi := &file_platform_config_v1_config_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -538,7 +626,7 @@ func (x *RejectRequest) String() string {
 func (*RejectRequest) ProtoMessage() {}
 
 func (x *RejectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[7]
+	mi := &file_platform_config_v1_config_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -551,7 +639,7 @@ func (x *RejectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RejectRequest.ProtoReflect.Descriptor instead.
 func (*RejectRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{7}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RejectRequest) GetId() string {
@@ -584,7 +672,7 @@ type RejectResponse struct {
 
 func (x *RejectResponse) Reset() {
 	*x = RejectResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[8]
+	mi := &file_platform_config_v1_config_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -596,7 +684,7 @@ func (x *RejectResponse) String() string {
 func (*RejectResponse) ProtoMessage() {}
 
 func (x *RejectResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[8]
+	mi := &file_platform_config_v1_config_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -609,7 +697,7 @@ func (x *RejectResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RejectResponse.ProtoReflect.Descriptor instead.
 func (*RejectResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{8}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *RejectResponse) GetEntry() *ConfigEntry {
@@ -629,7 +717,7 @@ type PublishRequest struct {
 
 func (x *PublishRequest) Reset() {
 	*x = PublishRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[9]
+	mi := &file_platform_config_v1_config_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -641,7 +729,7 @@ func (x *PublishRequest) String() string {
 func (*PublishRequest) ProtoMessage() {}
 
 func (x *PublishRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[9]
+	mi := &file_platform_config_v1_config_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -654,7 +742,7 @@ func (x *PublishRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishRequest.ProtoReflect.Descriptor instead.
 func (*PublishRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{9}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *PublishRequest) GetId() string {
@@ -680,7 +768,7 @@ type PublishResponse struct {
 
 func (x *PublishResponse) Reset() {
 	*x = PublishResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[10]
+	mi := &file_platform_config_v1_config_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -692,7 +780,7 @@ func (x *PublishResponse) String() string {
 func (*PublishResponse) ProtoMessage() {}
 
 func (x *PublishResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[10]
+	mi := &file_platform_config_v1_config_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -705,7 +793,7 @@ func (x *PublishResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishResponse.ProtoReflect.Descriptor instead.
 func (*PublishResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{10}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *PublishResponse) GetEntry() *ConfigEntry {
@@ -726,7 +814,7 @@ type RollbackRequest struct {
 
 func (x *RollbackRequest) Reset() {
 	*x = RollbackRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[11]
+	mi := &file_platform_config_v1_config_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -738,7 +826,7 @@ func (x *RollbackRequest) String() string {
 func (*RollbackRequest) ProtoMessage() {}
 
 func (x *RollbackRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[11]
+	mi := &file_platform_config_v1_config_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -751,7 +839,7 @@ func (x *RollbackRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollbackRequest.ProtoReflect.Descriptor instead.
 func (*RollbackRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{11}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RollbackRequest) GetId() string {
@@ -784,7 +872,7 @@ type RollbackResponse struct {
 
 func (x *RollbackResponse) Reset() {
 	*x = RollbackResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[12]
+	mi := &file_platform_config_v1_config_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -796,7 +884,7 @@ func (x *RollbackResponse) String() string {
 func (*RollbackResponse) ProtoMessage() {}
 
 func (x *RollbackResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[12]
+	mi := &file_platform_config_v1_config_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -809,7 +897,7 @@ func (x *RollbackResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RollbackResponse.ProtoReflect.Descriptor instead.
 func (*RollbackResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{12}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RollbackResponse) GetEntry() *ConfigEntry {
@@ -833,7 +921,7 @@ type ResolveRequest struct {
 
 func (x *ResolveRequest) Reset() {
 	*x = ResolveRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[13]
+	mi := &file_platform_config_v1_config_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -845,7 +933,7 @@ func (x *ResolveRequest) String() string {
 func (*ResolveRequest) ProtoMessage() {}
 
 func (x *ResolveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[13]
+	mi := &file_platform_config_v1_config_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -858,7 +946,7 @@ func (x *ResolveRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveRequest.ProtoReflect.Descriptor instead.
 func (*ResolveRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{13}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ResolveRequest) GetEnvironment() string {
@@ -913,7 +1001,7 @@ type ResolveResponse struct {
 
 func (x *ResolveResponse) Reset() {
 	*x = ResolveResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[14]
+	mi := &file_platform_config_v1_config_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -925,7 +1013,7 @@ func (x *ResolveResponse) String() string {
 func (*ResolveResponse) ProtoMessage() {}
 
 func (x *ResolveResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[14]
+	mi := &file_platform_config_v1_config_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -938,7 +1026,7 @@ func (x *ResolveResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveResponse.ProtoReflect.Descriptor instead.
 func (*ResolveResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{14}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ResolveResponse) GetEntries() []*ConfigEntry {
@@ -968,7 +1056,7 @@ type ListRequest struct {
 
 func (x *ListRequest) Reset() {
 	*x = ListRequest{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[15]
+	mi := &file_platform_config_v1_config_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -980,7 +1068,7 @@ func (x *ListRequest) String() string {
 func (*ListRequest) ProtoMessage() {}
 
 func (x *ListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[15]
+	mi := &file_platform_config_v1_config_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -993,7 +1081,7 @@ func (x *ListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
 func (*ListRequest) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{15}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *ListRequest) GetEnvironment() string {
@@ -1041,7 +1129,7 @@ type ListResponse struct {
 
 func (x *ListResponse) Reset() {
 	*x = ListResponse{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[16]
+	mi := &file_platform_config_v1_config_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1053,7 +1141,7 @@ func (x *ListResponse) String() string {
 func (*ListResponse) ProtoMessage() {}
 
 func (x *ListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[16]
+	mi := &file_platform_config_v1_config_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1066,7 +1154,7 @@ func (x *ListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
 func (*ListResponse) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{16}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ListResponse) GetEntries() []*ConfigEntry {
@@ -1093,7 +1181,7 @@ type ConfigChangedEvent struct {
 
 func (x *ConfigChangedEvent) Reset() {
 	*x = ConfigChangedEvent{}
-	mi := &file_platform_config_v1_config_proto_msgTypes[17]
+	mi := &file_platform_config_v1_config_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1105,7 +1193,7 @@ func (x *ConfigChangedEvent) String() string {
 func (*ConfigChangedEvent) ProtoMessage() {}
 
 func (x *ConfigChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_config_v1_config_proto_msgTypes[17]
+	mi := &file_platform_config_v1_config_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1118,7 +1206,7 @@ func (x *ConfigChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfigChangedEvent.ProtoReflect.Descriptor instead.
 func (*ConfigChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{17}
+	return file_platform_config_v1_config_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ConfigChangedEvent) GetEntry() *ConfigEntry {
@@ -1139,7 +1227,12 @@ var File_platform_config_v1_config_proto protoreflect.FileDescriptor
 
 const file_platform_config_v1_config_proto_rawDesc = "" +
 	"\n" +
-	"\x1fplatform/config/v1/config.proto\x12\x12platform.config.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\xc9\x05\n" +
+	"\x1fplatform/config/v1/config.proto\x12\x12platform.config.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1fplatform/common/v1/common.proto\"\x1c\n" +
+	"\n" +
+	"GetRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"D\n" +
+	"\vGetResponse\x125\n" +
+	"\x05entry\x18\x01 \x01(\v2\x1f.platform.config.v1.ConfigEntryR\x05entry\"\xc9\x05\n" +
 	"\vConfigEntry\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\venvironment\x18\x02 \x01(\tR\venvironment\x12\x1b\n" +
@@ -1225,8 +1318,9 @@ const file_platform_config_v1_config_proto_rawDesc = "" +
 	"\x12ConfigChangedEvent\x125\n" +
 	"\x05entry\x18\x01 \x01(\v2\x1f.platform.config.v1.ConfigEntryR\x05entry\x12\x1f\n" +
 	"\vchange_type\x18\x02 \x01(\tR\n" +
-	"changeType2\xc7\x05\n" +
-	"\rConfigService\x12U\n" +
+	"changeType2\x8f\x06\n" +
+	"\rConfigService\x12F\n" +
+	"\x03Get\x12\x1e.platform.config.v1.GetRequest\x1a\x1f.platform.config.v1.GetResponse\x12U\n" +
 	"\bPutDraft\x12#.platform.config.v1.PutDraftRequest\x1a$.platform.config.v1.PutDraftResponse\x12p\n" +
 	"\x11SubmitForApproval\x12,.platform.config.v1.SubmitForApprovalRequest\x1a-.platform.config.v1.SubmitForApprovalResponse\x12R\n" +
 	"\aApprove\x12\".platform.config.v1.ApproveRequest\x1a#.platform.config.v1.ApproveResponse\x12O\n" +
@@ -1248,67 +1342,72 @@ func file_platform_config_v1_config_proto_rawDescGZIP() []byte {
 	return file_platform_config_v1_config_proto_rawDescData
 }
 
-var file_platform_config_v1_config_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_platform_config_v1_config_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_platform_config_v1_config_proto_goTypes = []any{
-	(*ConfigEntry)(nil),               // 0: platform.config.v1.ConfigEntry
-	(*PutDraftRequest)(nil),           // 1: platform.config.v1.PutDraftRequest
-	(*PutDraftResponse)(nil),          // 2: platform.config.v1.PutDraftResponse
-	(*SubmitForApprovalRequest)(nil),  // 3: platform.config.v1.SubmitForApprovalRequest
-	(*SubmitForApprovalResponse)(nil), // 4: platform.config.v1.SubmitForApprovalResponse
-	(*ApproveRequest)(nil),            // 5: platform.config.v1.ApproveRequest
-	(*ApproveResponse)(nil),           // 6: platform.config.v1.ApproveResponse
-	(*RejectRequest)(nil),             // 7: platform.config.v1.RejectRequest
-	(*RejectResponse)(nil),            // 8: platform.config.v1.RejectResponse
-	(*PublishRequest)(nil),            // 9: platform.config.v1.PublishRequest
-	(*PublishResponse)(nil),           // 10: platform.config.v1.PublishResponse
-	(*RollbackRequest)(nil),           // 11: platform.config.v1.RollbackRequest
-	(*RollbackResponse)(nil),          // 12: platform.config.v1.RollbackResponse
-	(*ResolveRequest)(nil),            // 13: platform.config.v1.ResolveRequest
-	(*ResolveResponse)(nil),           // 14: platform.config.v1.ResolveResponse
-	(*ListRequest)(nil),               // 15: platform.config.v1.ListRequest
-	(*ListResponse)(nil),              // 16: platform.config.v1.ListResponse
-	(*ConfigChangedEvent)(nil),        // 17: platform.config.v1.ConfigChangedEvent
-	(*timestamppb.Timestamp)(nil),     // 18: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),            // 19: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),             // 20: platform.common.v1.PageResult
+	(*GetRequest)(nil),                // 0: platform.config.v1.GetRequest
+	(*GetResponse)(nil),               // 1: platform.config.v1.GetResponse
+	(*ConfigEntry)(nil),               // 2: platform.config.v1.ConfigEntry
+	(*PutDraftRequest)(nil),           // 3: platform.config.v1.PutDraftRequest
+	(*PutDraftResponse)(nil),          // 4: platform.config.v1.PutDraftResponse
+	(*SubmitForApprovalRequest)(nil),  // 5: platform.config.v1.SubmitForApprovalRequest
+	(*SubmitForApprovalResponse)(nil), // 6: platform.config.v1.SubmitForApprovalResponse
+	(*ApproveRequest)(nil),            // 7: platform.config.v1.ApproveRequest
+	(*ApproveResponse)(nil),           // 8: platform.config.v1.ApproveResponse
+	(*RejectRequest)(nil),             // 9: platform.config.v1.RejectRequest
+	(*RejectResponse)(nil),            // 10: platform.config.v1.RejectResponse
+	(*PublishRequest)(nil),            // 11: platform.config.v1.PublishRequest
+	(*PublishResponse)(nil),           // 12: platform.config.v1.PublishResponse
+	(*RollbackRequest)(nil),           // 13: platform.config.v1.RollbackRequest
+	(*RollbackResponse)(nil),          // 14: platform.config.v1.RollbackResponse
+	(*ResolveRequest)(nil),            // 15: platform.config.v1.ResolveRequest
+	(*ResolveResponse)(nil),           // 16: platform.config.v1.ResolveResponse
+	(*ListRequest)(nil),               // 17: platform.config.v1.ListRequest
+	(*ListResponse)(nil),              // 18: platform.config.v1.ListResponse
+	(*ConfigChangedEvent)(nil),        // 19: platform.config.v1.ConfigChangedEvent
+	(*timestamppb.Timestamp)(nil),     // 20: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),            // 21: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),             // 22: platform.common.v1.PageResult
 }
 var file_platform_config_v1_config_proto_depIdxs = []int32{
-	18, // 0: platform.config.v1.ConfigEntry.created_at:type_name -> google.protobuf.Timestamp
-	18, // 1: platform.config.v1.ConfigEntry.updated_at:type_name -> google.protobuf.Timestamp
-	18, // 2: platform.config.v1.ConfigEntry.reviewed_at:type_name -> google.protobuf.Timestamp
-	0,  // 3: platform.config.v1.PutDraftRequest.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 4: platform.config.v1.PutDraftResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 5: platform.config.v1.SubmitForApprovalResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 6: platform.config.v1.ApproveResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 7: platform.config.v1.RejectResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 8: platform.config.v1.PublishResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 9: platform.config.v1.RollbackResponse.entry:type_name -> platform.config.v1.ConfigEntry
-	0,  // 10: platform.config.v1.ResolveResponse.entries:type_name -> platform.config.v1.ConfigEntry
-	19, // 11: platform.config.v1.ListRequest.page:type_name -> platform.common.v1.PageRequest
-	0,  // 12: platform.config.v1.ListResponse.entries:type_name -> platform.config.v1.ConfigEntry
-	20, // 13: platform.config.v1.ListResponse.page:type_name -> platform.common.v1.PageResult
-	0,  // 14: platform.config.v1.ConfigChangedEvent.entry:type_name -> platform.config.v1.ConfigEntry
-	1,  // 15: platform.config.v1.ConfigService.PutDraft:input_type -> platform.config.v1.PutDraftRequest
-	3,  // 16: platform.config.v1.ConfigService.SubmitForApproval:input_type -> platform.config.v1.SubmitForApprovalRequest
-	5,  // 17: platform.config.v1.ConfigService.Approve:input_type -> platform.config.v1.ApproveRequest
-	7,  // 18: platform.config.v1.ConfigService.Reject:input_type -> platform.config.v1.RejectRequest
-	9,  // 19: platform.config.v1.ConfigService.Publish:input_type -> platform.config.v1.PublishRequest
-	11, // 20: platform.config.v1.ConfigService.Rollback:input_type -> platform.config.v1.RollbackRequest
-	13, // 21: platform.config.v1.ConfigService.Resolve:input_type -> platform.config.v1.ResolveRequest
-	15, // 22: platform.config.v1.ConfigService.List:input_type -> platform.config.v1.ListRequest
-	2,  // 23: platform.config.v1.ConfigService.PutDraft:output_type -> platform.config.v1.PutDraftResponse
-	4,  // 24: platform.config.v1.ConfigService.SubmitForApproval:output_type -> platform.config.v1.SubmitForApprovalResponse
-	6,  // 25: platform.config.v1.ConfigService.Approve:output_type -> platform.config.v1.ApproveResponse
-	8,  // 26: platform.config.v1.ConfigService.Reject:output_type -> platform.config.v1.RejectResponse
-	10, // 27: platform.config.v1.ConfigService.Publish:output_type -> platform.config.v1.PublishResponse
-	12, // 28: platform.config.v1.ConfigService.Rollback:output_type -> platform.config.v1.RollbackResponse
-	14, // 29: platform.config.v1.ConfigService.Resolve:output_type -> platform.config.v1.ResolveResponse
-	16, // 30: platform.config.v1.ConfigService.List:output_type -> platform.config.v1.ListResponse
-	23, // [23:31] is the sub-list for method output_type
-	15, // [15:23] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	2,  // 0: platform.config.v1.GetResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	20, // 1: platform.config.v1.ConfigEntry.created_at:type_name -> google.protobuf.Timestamp
+	20, // 2: platform.config.v1.ConfigEntry.updated_at:type_name -> google.protobuf.Timestamp
+	20, // 3: platform.config.v1.ConfigEntry.reviewed_at:type_name -> google.protobuf.Timestamp
+	2,  // 4: platform.config.v1.PutDraftRequest.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 5: platform.config.v1.PutDraftResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 6: platform.config.v1.SubmitForApprovalResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 7: platform.config.v1.ApproveResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 8: platform.config.v1.RejectResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 9: platform.config.v1.PublishResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 10: platform.config.v1.RollbackResponse.entry:type_name -> platform.config.v1.ConfigEntry
+	2,  // 11: platform.config.v1.ResolveResponse.entries:type_name -> platform.config.v1.ConfigEntry
+	21, // 12: platform.config.v1.ListRequest.page:type_name -> platform.common.v1.PageRequest
+	2,  // 13: platform.config.v1.ListResponse.entries:type_name -> platform.config.v1.ConfigEntry
+	22, // 14: platform.config.v1.ListResponse.page:type_name -> platform.common.v1.PageResult
+	2,  // 15: platform.config.v1.ConfigChangedEvent.entry:type_name -> platform.config.v1.ConfigEntry
+	0,  // 16: platform.config.v1.ConfigService.Get:input_type -> platform.config.v1.GetRequest
+	3,  // 17: platform.config.v1.ConfigService.PutDraft:input_type -> platform.config.v1.PutDraftRequest
+	5,  // 18: platform.config.v1.ConfigService.SubmitForApproval:input_type -> platform.config.v1.SubmitForApprovalRequest
+	7,  // 19: platform.config.v1.ConfigService.Approve:input_type -> platform.config.v1.ApproveRequest
+	9,  // 20: platform.config.v1.ConfigService.Reject:input_type -> platform.config.v1.RejectRequest
+	11, // 21: platform.config.v1.ConfigService.Publish:input_type -> platform.config.v1.PublishRequest
+	13, // 22: platform.config.v1.ConfigService.Rollback:input_type -> platform.config.v1.RollbackRequest
+	15, // 23: platform.config.v1.ConfigService.Resolve:input_type -> platform.config.v1.ResolveRequest
+	17, // 24: platform.config.v1.ConfigService.List:input_type -> platform.config.v1.ListRequest
+	1,  // 25: platform.config.v1.ConfigService.Get:output_type -> platform.config.v1.GetResponse
+	4,  // 26: platform.config.v1.ConfigService.PutDraft:output_type -> platform.config.v1.PutDraftResponse
+	6,  // 27: platform.config.v1.ConfigService.SubmitForApproval:output_type -> platform.config.v1.SubmitForApprovalResponse
+	8,  // 28: platform.config.v1.ConfigService.Approve:output_type -> platform.config.v1.ApproveResponse
+	10, // 29: platform.config.v1.ConfigService.Reject:output_type -> platform.config.v1.RejectResponse
+	12, // 30: platform.config.v1.ConfigService.Publish:output_type -> platform.config.v1.PublishResponse
+	14, // 31: platform.config.v1.ConfigService.Rollback:output_type -> platform.config.v1.RollbackResponse
+	16, // 32: platform.config.v1.ConfigService.Resolve:output_type -> platform.config.v1.ResolveResponse
+	18, // 33: platform.config.v1.ConfigService.List:output_type -> platform.config.v1.ListResponse
+	25, // [25:34] is the sub-list for method output_type
+	16, // [16:25] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_platform_config_v1_config_proto_init() }
@@ -1322,7 +1421,7 @@ func file_platform_config_v1_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_config_v1_config_proto_rawDesc), len(file_platform_config_v1_config_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

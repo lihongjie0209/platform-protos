@@ -8,6 +8,7 @@ import "platform/common/v1/common.proto";
 option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/config/v1;configv1";
 
 service ConfigService {
+  rpc Get(GetRequest) returns (GetResponse);
   rpc PutDraft(PutDraftRequest) returns (PutDraftResponse);
   rpc SubmitForApproval(SubmitForApprovalRequest) returns (SubmitForApprovalResponse);
   rpc Approve(ApproveRequest) returns (ApproveResponse);
@@ -16,6 +17,13 @@ service ConfigService {
   rpc Rollback(RollbackRequest) returns (RollbackResponse);
   rpc Resolve(ResolveRequest) returns (ResolveResponse);
   rpc List(ListRequest) returns (ListResponse);
+}
+
+message GetRequest {
+  string id = 1;
+}
+message GetResponse {
+  ConfigEntry entry = 1;
 }
 
 message ConfigEntry {

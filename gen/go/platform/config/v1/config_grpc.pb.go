@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	ConfigService_Get_FullMethodName               = "/platform.config.v1.ConfigService/Get"
 	ConfigService_PutDraft_FullMethodName          = "/platform.config.v1.ConfigService/PutDraft"
 	ConfigService_SubmitForApproval_FullMethodName = "/platform.config.v1.ConfigService/SubmitForApproval"
 	ConfigService_Approve_FullMethodName           = "/platform.config.v1.ConfigService/Approve"
@@ -33,6 +34,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConfigServiceClient interface {
+	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	PutDraft(ctx context.Context, in *PutDraftRequest, opts ...grpc.CallOption) (*PutDraftResponse, error)
 	SubmitForApproval(ctx context.Context, in *SubmitForApprovalRequest, opts ...grpc.CallOption) (*SubmitForApprovalResponse, error)
 	Approve(ctx context.Context, in *ApproveRequest, opts ...grpc.CallOption) (*ApproveResponse, error)
@@ -49,6 +51,16 @@ type configServiceClient struct {
 
 func NewConfigServiceClient(cc grpc.ClientConnInterface) ConfigServiceClient {
 	return &configServiceClient{cc}
+}
+
+func (c *configServiceClient) Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetResponse)
+	err := c.cc.Invoke(ctx, ConfigService_Get_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *configServiceClient) PutDraft(ctx context.Context, in *PutDraftRequest, opts ...grpc.CallOption) (*PutDraftResponse, error) {
@@ -135,6 +147,7 @@ func (c *configServiceClient) List(ctx context.Context, in *ListRequest, opts ..
 // All implementations must embed UnimplementedConfigServiceServer
 // for forward compatibility.
 type ConfigServiceServer interface {
+	Get(context.Context, *GetRequest) (*GetResponse, error)
 	PutDraft(context.Context, *PutDraftRequest) (*PutDraftResponse, error)
 	SubmitForApproval(context.Context, *SubmitForApprovalRequest) (*SubmitForApprovalResponse, error)
 	Approve(context.Context, *ApproveRequest) (*ApproveResponse, error)
@@ -153,6 +166,9 @@ type ConfigServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedConfigServiceServer struct{}
 
+func (UnimplementedConfigServiceServer) Get(context.Context, *GetRequest) (*GetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+}
 func (UnimplementedConfigServiceServer) PutDraft(context.Context, *PutDraftRequest) (*PutDraftResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PutDraft not implemented")
 }
@@ -196,6 +212,24 @@ func RegisterConfigServiceServer(s grpc.ServiceRegistrar, srv ConfigServiceServe
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&ConfigService_ServiceDesc, srv)
+}
+
+func _ConfigService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConfigServiceServer).Get(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ConfigService_Get_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConfigServiceServer).Get(ctx, req.(*GetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ConfigService_PutDraft_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -349,6 +383,10 @@ var ConfigService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "platform.config.v1.ConfigService",
 	HandlerType: (*ConfigServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Get",
+			Handler:    _ConfigService_Get_Handler,
+		},
 		{
 			MethodName: "PutDraft",
 			Handler:    _ConfigService_PutDraft_Handler,
