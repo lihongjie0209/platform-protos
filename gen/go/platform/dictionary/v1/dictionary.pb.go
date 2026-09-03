@@ -1201,6 +1201,94 @@ func (x *UpsertItemsResponse) GetItems() []*DictionaryItem {
 	return nil
 }
 
+type GetItemRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemRequest) Reset() {
+	*x = GetItemRequest{}
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemRequest) ProtoMessage() {}
+
+func (x *GetItemRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemRequest.ProtoReflect.Descriptor instead.
+func (*GetItemRequest) Descriptor() ([]byte, []int) {
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetItemRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetItemResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Item          *DictionaryItem        `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetItemResponse) Reset() {
+	*x = GetItemResponse{}
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetItemResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetItemResponse) ProtoMessage() {}
+
+func (x *GetItemResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetItemResponse.ProtoReflect.Descriptor instead.
+func (*GetItemResponse) Descriptor() ([]byte, []int) {
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetItemResponse) GetItem() *DictionaryItem {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
 type DeleteItemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1211,7 +1299,7 @@ type DeleteItemRequest struct {
 
 func (x *DeleteItemRequest) Reset() {
 	*x = DeleteItemRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[15]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1223,7 +1311,7 @@ func (x *DeleteItemRequest) String() string {
 func (*DeleteItemRequest) ProtoMessage() {}
 
 func (x *DeleteItemRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[15]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1236,7 +1324,7 @@ func (x *DeleteItemRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteItemRequest.ProtoReflect.Descriptor instead.
 func (*DeleteItemRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{15}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *DeleteItemRequest) GetId() string {
@@ -1261,7 +1349,7 @@ type DeleteItemResponse struct {
 
 func (x *DeleteItemResponse) Reset() {
 	*x = DeleteItemResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[16]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1273,7 +1361,7 @@ func (x *DeleteItemResponse) String() string {
 func (*DeleteItemResponse) ProtoMessage() {}
 
 func (x *DeleteItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[16]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1286,7 +1374,7 @@ func (x *DeleteItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteItemResponse.ProtoReflect.Descriptor instead.
 func (*DeleteItemResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{16}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{18}
 }
 
 type PublishDictionaryRequest struct {
@@ -1300,7 +1388,7 @@ type PublishDictionaryRequest struct {
 
 func (x *PublishDictionaryRequest) Reset() {
 	*x = PublishDictionaryRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[17]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1312,7 +1400,7 @@ func (x *PublishDictionaryRequest) String() string {
 func (*PublishDictionaryRequest) ProtoMessage() {}
 
 func (x *PublishDictionaryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[17]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1325,7 +1413,7 @@ func (x *PublishDictionaryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishDictionaryRequest.ProtoReflect.Descriptor instead.
 func (*PublishDictionaryRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{17}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *PublishDictionaryRequest) GetDictionaryId() string {
@@ -1359,7 +1447,7 @@ type PublishDictionaryResponse struct {
 
 func (x *PublishDictionaryResponse) Reset() {
 	*x = PublishDictionaryResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[18]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1371,7 +1459,7 @@ func (x *PublishDictionaryResponse) String() string {
 func (*PublishDictionaryResponse) ProtoMessage() {}
 
 func (x *PublishDictionaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[18]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1384,7 +1472,7 @@ func (x *PublishDictionaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PublishDictionaryResponse.ProtoReflect.Descriptor instead.
 func (*PublishDictionaryResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{18}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *PublishDictionaryResponse) GetPublishedVersion() int64 {
@@ -1413,7 +1501,7 @@ type QueryRequest struct {
 
 func (x *QueryRequest) Reset() {
 	*x = QueryRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[19]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1425,7 +1513,7 @@ func (x *QueryRequest) String() string {
 func (*QueryRequest) ProtoMessage() {}
 
 func (x *QueryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[19]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1438,7 +1526,7 @@ func (x *QueryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryRequest.ProtoReflect.Descriptor instead.
 func (*QueryRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{19}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *QueryRequest) GetTenantId() string {
@@ -1479,7 +1567,7 @@ type QueryResponse struct {
 
 func (x *QueryResponse) Reset() {
 	*x = QueryResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[20]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1491,7 +1579,7 @@ func (x *QueryResponse) String() string {
 func (*QueryResponse) ProtoMessage() {}
 
 func (x *QueryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[20]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1504,7 +1592,7 @@ func (x *QueryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QueryResponse.ProtoReflect.Descriptor instead.
 func (*QueryResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{20}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *QueryResponse) GetItems() []*DictionaryItem {
@@ -1538,7 +1626,7 @@ type TreeRequest struct {
 
 func (x *TreeRequest) Reset() {
 	*x = TreeRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[21]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1550,7 +1638,7 @@ func (x *TreeRequest) String() string {
 func (*TreeRequest) ProtoMessage() {}
 
 func (x *TreeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[21]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1563,7 +1651,7 @@ func (x *TreeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TreeRequest.ProtoReflect.Descriptor instead.
 func (*TreeRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{21}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *TreeRequest) GetTenantId() string {
@@ -1639,7 +1727,7 @@ type TreeNode struct {
 
 func (x *TreeNode) Reset() {
 	*x = TreeNode{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[22]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1651,7 +1739,7 @@ func (x *TreeNode) String() string {
 func (*TreeNode) ProtoMessage() {}
 
 func (x *TreeNode) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[22]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1664,7 +1752,7 @@ func (x *TreeNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TreeNode.ProtoReflect.Descriptor instead.
 func (*TreeNode) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{22}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *TreeNode) GetItem() *DictionaryItem {
@@ -1691,7 +1779,7 @@ type TreeResponse struct {
 
 func (x *TreeResponse) Reset() {
 	*x = TreeResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[23]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1703,7 +1791,7 @@ func (x *TreeResponse) String() string {
 func (*TreeResponse) ProtoMessage() {}
 
 func (x *TreeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[23]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1716,7 +1804,7 @@ func (x *TreeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TreeResponse.ProtoReflect.Descriptor instead.
 func (*TreeResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{23}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *TreeResponse) GetRoots() []*TreeNode {
@@ -1745,7 +1833,7 @@ type ResolveCodesRequest struct {
 
 func (x *ResolveCodesRequest) Reset() {
 	*x = ResolveCodesRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[24]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1757,7 +1845,7 @@ func (x *ResolveCodesRequest) String() string {
 func (*ResolveCodesRequest) ProtoMessage() {}
 
 func (x *ResolveCodesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[24]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1770,7 +1858,7 @@ func (x *ResolveCodesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveCodesRequest.ProtoReflect.Descriptor instead.
 func (*ResolveCodesRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{24}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ResolveCodesRequest) GetTenantId() string {
@@ -1812,7 +1900,7 @@ type ResolvedCode struct {
 
 func (x *ResolvedCode) Reset() {
 	*x = ResolvedCode{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[25]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1824,7 +1912,7 @@ func (x *ResolvedCode) String() string {
 func (*ResolvedCode) ProtoMessage() {}
 
 func (x *ResolvedCode) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[25]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1837,7 +1925,7 @@ func (x *ResolvedCode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolvedCode.ProtoReflect.Descriptor instead.
 func (*ResolvedCode) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{25}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ResolvedCode) GetCode() string {
@@ -1870,7 +1958,7 @@ type ResolveCodesResponse struct {
 
 func (x *ResolveCodesResponse) Reset() {
 	*x = ResolveCodesResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[26]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1882,7 +1970,7 @@ func (x *ResolveCodesResponse) String() string {
 func (*ResolveCodesResponse) ProtoMessage() {}
 
 func (x *ResolveCodesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[26]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1895,7 +1983,7 @@ func (x *ResolveCodesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveCodesResponse.ProtoReflect.Descriptor instead.
 func (*ResolveCodesResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{26}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *ResolveCodesResponse) GetValues() []*ResolvedCode {
@@ -1922,7 +2010,7 @@ type ProviderCapability struct {
 
 func (x *ProviderCapability) Reset() {
 	*x = ProviderCapability{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[27]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1934,7 +2022,7 @@ func (x *ProviderCapability) String() string {
 func (*ProviderCapability) ProtoMessage() {}
 
 func (x *ProviderCapability) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[27]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1947,7 +2035,7 @@ func (x *ProviderCapability) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProviderCapability.ProtoReflect.Descriptor instead.
 func (*ProviderCapability) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{27}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *ProviderCapability) GetDictionaryCode() string {
@@ -2030,7 +2118,7 @@ type Provider struct {
 
 func (x *Provider) Reset() {
 	*x = Provider{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[28]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2042,7 +2130,7 @@ func (x *Provider) String() string {
 func (*Provider) ProtoMessage() {}
 
 func (x *Provider) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[28]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2055,7 +2143,7 @@ func (x *Provider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Provider.ProtoReflect.Descriptor instead.
 func (*Provider) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{28}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *Provider) GetId() string {
@@ -2135,7 +2223,7 @@ type RegisterProviderRequest struct {
 
 func (x *RegisterProviderRequest) Reset() {
 	*x = RegisterProviderRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[29]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2147,7 +2235,7 @@ func (x *RegisterProviderRequest) String() string {
 func (*RegisterProviderRequest) ProtoMessage() {}
 
 func (x *RegisterProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[29]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2160,7 +2248,7 @@ func (x *RegisterProviderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterProviderRequest.ProtoReflect.Descriptor instead.
 func (*RegisterProviderRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{29}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *RegisterProviderRequest) GetServiceName() string {
@@ -2215,7 +2303,7 @@ type RegisterProviderResponse struct {
 
 func (x *RegisterProviderResponse) Reset() {
 	*x = RegisterProviderResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[30]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2227,7 +2315,7 @@ func (x *RegisterProviderResponse) String() string {
 func (*RegisterProviderResponse) ProtoMessage() {}
 
 func (x *RegisterProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[30]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2240,7 +2328,7 @@ func (x *RegisterProviderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterProviderResponse.ProtoReflect.Descriptor instead.
 func (*RegisterProviderResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{30}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *RegisterProviderResponse) GetProvider() *Provider {
@@ -2268,7 +2356,7 @@ type HeartbeatProviderRequest struct {
 
 func (x *HeartbeatProviderRequest) Reset() {
 	*x = HeartbeatProviderRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[31]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2280,7 +2368,7 @@ func (x *HeartbeatProviderRequest) String() string {
 func (*HeartbeatProviderRequest) ProtoMessage() {}
 
 func (x *HeartbeatProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[31]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2293,7 +2381,7 @@ func (x *HeartbeatProviderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatProviderRequest.ProtoReflect.Descriptor instead.
 func (*HeartbeatProviderRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{31}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *HeartbeatProviderRequest) GetProviderId() string {
@@ -2326,7 +2414,7 @@ type HeartbeatProviderResponse struct {
 
 func (x *HeartbeatProviderResponse) Reset() {
 	*x = HeartbeatProviderResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[32]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2338,7 +2426,7 @@ func (x *HeartbeatProviderResponse) String() string {
 func (*HeartbeatProviderResponse) ProtoMessage() {}
 
 func (x *HeartbeatProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[32]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2351,7 +2439,7 @@ func (x *HeartbeatProviderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HeartbeatProviderResponse.ProtoReflect.Descriptor instead.
 func (*HeartbeatProviderResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{32}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *HeartbeatProviderResponse) GetLeaseExpiresAt() *timestamppb.Timestamp {
@@ -2371,7 +2459,7 @@ type UnregisterProviderRequest struct {
 
 func (x *UnregisterProviderRequest) Reset() {
 	*x = UnregisterProviderRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[33]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2383,7 +2471,7 @@ func (x *UnregisterProviderRequest) String() string {
 func (*UnregisterProviderRequest) ProtoMessage() {}
 
 func (x *UnregisterProviderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[33]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2396,7 +2484,7 @@ func (x *UnregisterProviderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterProviderRequest.ProtoReflect.Descriptor instead.
 func (*UnregisterProviderRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{33}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *UnregisterProviderRequest) GetProviderId() string {
@@ -2421,7 +2509,7 @@ type UnregisterProviderResponse struct {
 
 func (x *UnregisterProviderResponse) Reset() {
 	*x = UnregisterProviderResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[34]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2433,7 +2521,7 @@ func (x *UnregisterProviderResponse) String() string {
 func (*UnregisterProviderResponse) ProtoMessage() {}
 
 func (x *UnregisterProviderResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[34]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2446,7 +2534,7 @@ func (x *UnregisterProviderResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterProviderResponse.ProtoReflect.Descriptor instead.
 func (*UnregisterProviderResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{34}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{36}
 }
 
 type ListProvidersRequest struct {
@@ -2459,7 +2547,7 @@ type ListProvidersRequest struct {
 
 func (x *ListProvidersRequest) Reset() {
 	*x = ListProvidersRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[35]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2471,7 +2559,7 @@ func (x *ListProvidersRequest) String() string {
 func (*ListProvidersRequest) ProtoMessage() {}
 
 func (x *ListProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[35]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2484,7 +2572,7 @@ func (x *ListProvidersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProvidersRequest.ProtoReflect.Descriptor instead.
 func (*ListProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{35}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ListProvidersRequest) GetStatus() string {
@@ -2511,7 +2599,7 @@ type ListProvidersResponse struct {
 
 func (x *ListProvidersResponse) Reset() {
 	*x = ListProvidersResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[36]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2523,7 +2611,7 @@ func (x *ListProvidersResponse) String() string {
 func (*ListProvidersResponse) ProtoMessage() {}
 
 func (x *ListProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[36]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2536,7 +2624,7 @@ func (x *ListProvidersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProvidersResponse.ProtoReflect.Descriptor instead.
 func (*ListProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{36}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ListProvidersResponse) GetProviders() []*Provider {
@@ -2561,7 +2649,7 @@ type DictionaryProviderServiceDescribeRequest struct {
 
 func (x *DictionaryProviderServiceDescribeRequest) Reset() {
 	*x = DictionaryProviderServiceDescribeRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[37]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2573,7 +2661,7 @@ func (x *DictionaryProviderServiceDescribeRequest) String() string {
 func (*DictionaryProviderServiceDescribeRequest) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceDescribeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[37]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2586,7 +2674,7 @@ func (x *DictionaryProviderServiceDescribeRequest) ProtoReflect() protoreflect.M
 
 // Deprecated: Use DictionaryProviderServiceDescribeRequest.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceDescribeRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{37}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{39}
 }
 
 type DictionaryProviderServiceDescribeResponse struct {
@@ -2599,7 +2687,7 @@ type DictionaryProviderServiceDescribeResponse struct {
 
 func (x *DictionaryProviderServiceDescribeResponse) Reset() {
 	*x = DictionaryProviderServiceDescribeResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[38]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2611,7 +2699,7 @@ func (x *DictionaryProviderServiceDescribeResponse) String() string {
 func (*DictionaryProviderServiceDescribeResponse) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceDescribeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[38]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2624,7 +2712,7 @@ func (x *DictionaryProviderServiceDescribeResponse) ProtoReflect() protoreflect.
 
 // Deprecated: Use DictionaryProviderServiceDescribeResponse.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceDescribeResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{38}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DictionaryProviderServiceDescribeResponse) GetServiceName() string {
@@ -2650,7 +2738,7 @@ type DictionaryProviderServiceQueryRequest struct {
 
 func (x *DictionaryProviderServiceQueryRequest) Reset() {
 	*x = DictionaryProviderServiceQueryRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[39]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2662,7 +2750,7 @@ func (x *DictionaryProviderServiceQueryRequest) String() string {
 func (*DictionaryProviderServiceQueryRequest) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceQueryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[39]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2675,7 +2763,7 @@ func (x *DictionaryProviderServiceQueryRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use DictionaryProviderServiceQueryRequest.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceQueryRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{39}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DictionaryProviderServiceQueryRequest) GetQuery() *QueryRequest {
@@ -2694,7 +2782,7 @@ type DictionaryProviderServiceQueryResponse struct {
 
 func (x *DictionaryProviderServiceQueryResponse) Reset() {
 	*x = DictionaryProviderServiceQueryResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[40]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2706,7 +2794,7 @@ func (x *DictionaryProviderServiceQueryResponse) String() string {
 func (*DictionaryProviderServiceQueryResponse) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceQueryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[40]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2719,7 +2807,7 @@ func (x *DictionaryProviderServiceQueryResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use DictionaryProviderServiceQueryResponse.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceQueryResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{40}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *DictionaryProviderServiceQueryResponse) GetResult() *QueryResponse {
@@ -2738,7 +2826,7 @@ type DictionaryProviderServiceTreeRequest struct {
 
 func (x *DictionaryProviderServiceTreeRequest) Reset() {
 	*x = DictionaryProviderServiceTreeRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[41]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2750,7 +2838,7 @@ func (x *DictionaryProviderServiceTreeRequest) String() string {
 func (*DictionaryProviderServiceTreeRequest) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceTreeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[41]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2763,7 +2851,7 @@ func (x *DictionaryProviderServiceTreeRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use DictionaryProviderServiceTreeRequest.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceTreeRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{41}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *DictionaryProviderServiceTreeRequest) GetQuery() *TreeRequest {
@@ -2782,7 +2870,7 @@ type DictionaryProviderServiceTreeResponse struct {
 
 func (x *DictionaryProviderServiceTreeResponse) Reset() {
 	*x = DictionaryProviderServiceTreeResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[42]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2794,7 +2882,7 @@ func (x *DictionaryProviderServiceTreeResponse) String() string {
 func (*DictionaryProviderServiceTreeResponse) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceTreeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[42]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2807,7 +2895,7 @@ func (x *DictionaryProviderServiceTreeResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use DictionaryProviderServiceTreeResponse.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceTreeResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{42}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *DictionaryProviderServiceTreeResponse) GetResult() *TreeResponse {
@@ -2826,7 +2914,7 @@ type DictionaryProviderServiceResolveCodesRequest struct {
 
 func (x *DictionaryProviderServiceResolveCodesRequest) Reset() {
 	*x = DictionaryProviderServiceResolveCodesRequest{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[43]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2838,7 +2926,7 @@ func (x *DictionaryProviderServiceResolveCodesRequest) String() string {
 func (*DictionaryProviderServiceResolveCodesRequest) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceResolveCodesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[43]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2851,7 +2939,7 @@ func (x *DictionaryProviderServiceResolveCodesRequest) ProtoReflect() protorefle
 
 // Deprecated: Use DictionaryProviderServiceResolveCodesRequest.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceResolveCodesRequest) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{43}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *DictionaryProviderServiceResolveCodesRequest) GetQuery() *ResolveCodesRequest {
@@ -2870,7 +2958,7 @@ type DictionaryProviderServiceResolveCodesResponse struct {
 
 func (x *DictionaryProviderServiceResolveCodesResponse) Reset() {
 	*x = DictionaryProviderServiceResolveCodesResponse{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[44]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2882,7 +2970,7 @@ func (x *DictionaryProviderServiceResolveCodesResponse) String() string {
 func (*DictionaryProviderServiceResolveCodesResponse) ProtoMessage() {}
 
 func (x *DictionaryProviderServiceResolveCodesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[44]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2895,7 +2983,7 @@ func (x *DictionaryProviderServiceResolveCodesResponse) ProtoReflect() protorefl
 
 // Deprecated: Use DictionaryProviderServiceResolveCodesResponse.ProtoReflect.Descriptor instead.
 func (*DictionaryProviderServiceResolveCodesResponse) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{44}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *DictionaryProviderServiceResolveCodesResponse) GetResult() *ResolveCodesResponse {
@@ -2915,7 +3003,7 @@ type DictionaryPublishedEvent struct {
 
 func (x *DictionaryPublishedEvent) Reset() {
 	*x = DictionaryPublishedEvent{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[45]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2927,7 +3015,7 @@ func (x *DictionaryPublishedEvent) String() string {
 func (*DictionaryPublishedEvent) ProtoMessage() {}
 
 func (x *DictionaryPublishedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[45]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2940,7 +3028,7 @@ func (x *DictionaryPublishedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DictionaryPublishedEvent.ProtoReflect.Descriptor instead.
 func (*DictionaryPublishedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{45}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *DictionaryPublishedEvent) GetDictionary() *Dictionary {
@@ -2967,7 +3055,7 @@ type ProviderChangedEvent struct {
 
 func (x *ProviderChangedEvent) Reset() {
 	*x = ProviderChangedEvent{}
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[46]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2979,7 +3067,7 @@ func (x *ProviderChangedEvent) String() string {
 func (*ProviderChangedEvent) ProtoMessage() {}
 
 func (x *ProviderChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[46]
+	mi := &file_platform_dictionary_v1_dictionary_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2992,7 +3080,7 @@ func (x *ProviderChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProviderChangedEvent.ProtoReflect.Descriptor instead.
 func (*ProviderChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{46}
+	return file_platform_dictionary_v1_dictionary_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *ProviderChangedEvent) GetProvider() *Provider {
@@ -3119,7 +3207,11 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\rdictionary_id\x18\x01 \x01(\tR\fdictionaryId\x12<\n" +
 	"\x05items\x18\x02 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\"S\n" +
 	"\x13UpsertItemsResponse\x12<\n" +
-	"\x05items\x18\x01 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\"=\n" +
+	"\x05items\x18\x01 \x03(\v2&.platform.dictionary.v1.DictionaryItemR\x05items\" \n" +
+	"\x0eGetItemRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"M\n" +
+	"\x0fGetItemResponse\x12:\n" +
+	"\x04item\x18\x01 \x01(\v2&.platform.dictionary.v1.DictionaryItemR\x04item\"=\n" +
 	"\x11DeleteItemRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x02 \x01(\x03R\aversion\"\x14\n" +
@@ -3254,13 +3346,14 @@ const file_platform_dictionary_v1_dictionary_proto_rawDesc = "" +
 	"\x15TREE_MODE_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eTREE_MODE_FULL\x10\x01\x12\x16\n" +
 	"\x12TREE_MODE_CHILDREN\x10\x02\x12#\n" +
-	"\x1fTREE_MODE_SEARCH_WITH_ANCESTORS\x10\x032\x9d\f\n" +
+	"\x1fTREE_MODE_SEARCH_WITH_ANCESTORS\x10\x032\xf9\f\n" +
 	"\x11DictionaryService\x12u\n" +
 	"\x10CreateDictionary\x12/.platform.dictionary.v1.CreateDictionaryRequest\x1a0.platform.dictionary.v1.CreateDictionaryResponse\x12u\n" +
 	"\x10UpdateDictionary\x12/.platform.dictionary.v1.UpdateDictionaryRequest\x1a0.platform.dictionary.v1.UpdateDictionaryResponse\x12l\n" +
 	"\rGetDictionary\x12,.platform.dictionary.v1.GetDictionaryRequest\x1a-.platform.dictionary.v1.GetDictionaryResponse\x12u\n" +
 	"\x10ListDictionaries\x12/.platform.dictionary.v1.ListDictionariesRequest\x1a0.platform.dictionary.v1.ListDictionariesResponse\x12f\n" +
-	"\vUpsertItems\x12*.platform.dictionary.v1.UpsertItemsRequest\x1a+.platform.dictionary.v1.UpsertItemsResponse\x12c\n" +
+	"\vUpsertItems\x12*.platform.dictionary.v1.UpsertItemsRequest\x1a+.platform.dictionary.v1.UpsertItemsResponse\x12Z\n" +
+	"\aGetItem\x12&.platform.dictionary.v1.GetItemRequest\x1a'.platform.dictionary.v1.GetItemResponse\x12c\n" +
 	"\n" +
 	"DeleteItem\x12).platform.dictionary.v1.DeleteItemRequest\x1a*.platform.dictionary.v1.DeleteItemResponse\x12x\n" +
 	"\x11PublishDictionary\x120.platform.dictionary.v1.PublishDictionaryRequest\x1a1.platform.dictionary.v1.PublishDictionaryResponse\x12T\n" +
@@ -3290,7 +3383,7 @@ func file_platform_dictionary_v1_dictionary_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_dictionary_v1_dictionary_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_platform_dictionary_v1_dictionary_proto_msgTypes = make([]protoimpl.MessageInfo, 49)
+var file_platform_dictionary_v1_dictionary_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
 var file_platform_dictionary_v1_dictionary_proto_goTypes = []any{
 	(DictionaryKind)(0),                                   // 0: platform.dictionary.v1.DictionaryKind
 	(TreeMode)(0),                                         // 1: platform.dictionary.v1.TreeMode
@@ -3309,136 +3402,141 @@ var file_platform_dictionary_v1_dictionary_proto_goTypes = []any{
 	(*ListDictionariesResponse)(nil),                      // 14: platform.dictionary.v1.ListDictionariesResponse
 	(*UpsertItemsRequest)(nil),                            // 15: platform.dictionary.v1.UpsertItemsRequest
 	(*UpsertItemsResponse)(nil),                           // 16: platform.dictionary.v1.UpsertItemsResponse
-	(*DeleteItemRequest)(nil),                             // 17: platform.dictionary.v1.DeleteItemRequest
-	(*DeleteItemResponse)(nil),                            // 18: platform.dictionary.v1.DeleteItemResponse
-	(*PublishDictionaryRequest)(nil),                      // 19: platform.dictionary.v1.PublishDictionaryRequest
-	(*PublishDictionaryResponse)(nil),                     // 20: platform.dictionary.v1.PublishDictionaryResponse
-	(*QueryRequest)(nil),                                  // 21: platform.dictionary.v1.QueryRequest
-	(*QueryResponse)(nil),                                 // 22: platform.dictionary.v1.QueryResponse
-	(*TreeRequest)(nil),                                   // 23: platform.dictionary.v1.TreeRequest
-	(*TreeNode)(nil),                                      // 24: platform.dictionary.v1.TreeNode
-	(*TreeResponse)(nil),                                  // 25: platform.dictionary.v1.TreeResponse
-	(*ResolveCodesRequest)(nil),                           // 26: platform.dictionary.v1.ResolveCodesRequest
-	(*ResolvedCode)(nil),                                  // 27: platform.dictionary.v1.ResolvedCode
-	(*ResolveCodesResponse)(nil),                          // 28: platform.dictionary.v1.ResolveCodesResponse
-	(*ProviderCapability)(nil),                            // 29: platform.dictionary.v1.ProviderCapability
-	(*Provider)(nil),                                      // 30: platform.dictionary.v1.Provider
-	(*RegisterProviderRequest)(nil),                       // 31: platform.dictionary.v1.RegisterProviderRequest
-	(*RegisterProviderResponse)(nil),                      // 32: platform.dictionary.v1.RegisterProviderResponse
-	(*HeartbeatProviderRequest)(nil),                      // 33: platform.dictionary.v1.HeartbeatProviderRequest
-	(*HeartbeatProviderResponse)(nil),                     // 34: platform.dictionary.v1.HeartbeatProviderResponse
-	(*UnregisterProviderRequest)(nil),                     // 35: platform.dictionary.v1.UnregisterProviderRequest
-	(*UnregisterProviderResponse)(nil),                    // 36: platform.dictionary.v1.UnregisterProviderResponse
-	(*ListProvidersRequest)(nil),                          // 37: platform.dictionary.v1.ListProvidersRequest
-	(*ListProvidersResponse)(nil),                         // 38: platform.dictionary.v1.ListProvidersResponse
-	(*DictionaryProviderServiceDescribeRequest)(nil),      // 39: platform.dictionary.v1.DictionaryProviderServiceDescribeRequest
-	(*DictionaryProviderServiceDescribeResponse)(nil),     // 40: platform.dictionary.v1.DictionaryProviderServiceDescribeResponse
-	(*DictionaryProviderServiceQueryRequest)(nil),         // 41: platform.dictionary.v1.DictionaryProviderServiceQueryRequest
-	(*DictionaryProviderServiceQueryResponse)(nil),        // 42: platform.dictionary.v1.DictionaryProviderServiceQueryResponse
-	(*DictionaryProviderServiceTreeRequest)(nil),          // 43: platform.dictionary.v1.DictionaryProviderServiceTreeRequest
-	(*DictionaryProviderServiceTreeResponse)(nil),         // 44: platform.dictionary.v1.DictionaryProviderServiceTreeResponse
-	(*DictionaryProviderServiceResolveCodesRequest)(nil),  // 45: platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest
-	(*DictionaryProviderServiceResolveCodesResponse)(nil), // 46: platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse
-	(*DictionaryPublishedEvent)(nil),                      // 47: platform.dictionary.v1.DictionaryPublishedEvent
-	(*ProviderChangedEvent)(nil),                          // 48: platform.dictionary.v1.ProviderChangedEvent
-	nil,                                                   // 49: platform.dictionary.v1.SearchSpec.FiltersEntry
-	nil,                                                   // 50: platform.dictionary.v1.TreeRequest.FiltersEntry
-	(*timestamppb.Timestamp)(nil),                         // 51: google.protobuf.Timestamp
-	(*structpb.Struct)(nil),                               // 52: google.protobuf.Struct
-	(*v1.PageRequest)(nil),                                // 53: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                                 // 54: platform.common.v1.PageResult
+	(*GetItemRequest)(nil),                                // 17: platform.dictionary.v1.GetItemRequest
+	(*GetItemResponse)(nil),                               // 18: platform.dictionary.v1.GetItemResponse
+	(*DeleteItemRequest)(nil),                             // 19: platform.dictionary.v1.DeleteItemRequest
+	(*DeleteItemResponse)(nil),                            // 20: platform.dictionary.v1.DeleteItemResponse
+	(*PublishDictionaryRequest)(nil),                      // 21: platform.dictionary.v1.PublishDictionaryRequest
+	(*PublishDictionaryResponse)(nil),                     // 22: platform.dictionary.v1.PublishDictionaryResponse
+	(*QueryRequest)(nil),                                  // 23: platform.dictionary.v1.QueryRequest
+	(*QueryResponse)(nil),                                 // 24: platform.dictionary.v1.QueryResponse
+	(*TreeRequest)(nil),                                   // 25: platform.dictionary.v1.TreeRequest
+	(*TreeNode)(nil),                                      // 26: platform.dictionary.v1.TreeNode
+	(*TreeResponse)(nil),                                  // 27: platform.dictionary.v1.TreeResponse
+	(*ResolveCodesRequest)(nil),                           // 28: platform.dictionary.v1.ResolveCodesRequest
+	(*ResolvedCode)(nil),                                  // 29: platform.dictionary.v1.ResolvedCode
+	(*ResolveCodesResponse)(nil),                          // 30: platform.dictionary.v1.ResolveCodesResponse
+	(*ProviderCapability)(nil),                            // 31: platform.dictionary.v1.ProviderCapability
+	(*Provider)(nil),                                      // 32: platform.dictionary.v1.Provider
+	(*RegisterProviderRequest)(nil),                       // 33: platform.dictionary.v1.RegisterProviderRequest
+	(*RegisterProviderResponse)(nil),                      // 34: platform.dictionary.v1.RegisterProviderResponse
+	(*HeartbeatProviderRequest)(nil),                      // 35: platform.dictionary.v1.HeartbeatProviderRequest
+	(*HeartbeatProviderResponse)(nil),                     // 36: platform.dictionary.v1.HeartbeatProviderResponse
+	(*UnregisterProviderRequest)(nil),                     // 37: platform.dictionary.v1.UnregisterProviderRequest
+	(*UnregisterProviderResponse)(nil),                    // 38: platform.dictionary.v1.UnregisterProviderResponse
+	(*ListProvidersRequest)(nil),                          // 39: platform.dictionary.v1.ListProvidersRequest
+	(*ListProvidersResponse)(nil),                         // 40: platform.dictionary.v1.ListProvidersResponse
+	(*DictionaryProviderServiceDescribeRequest)(nil),      // 41: platform.dictionary.v1.DictionaryProviderServiceDescribeRequest
+	(*DictionaryProviderServiceDescribeResponse)(nil),     // 42: platform.dictionary.v1.DictionaryProviderServiceDescribeResponse
+	(*DictionaryProviderServiceQueryRequest)(nil),         // 43: platform.dictionary.v1.DictionaryProviderServiceQueryRequest
+	(*DictionaryProviderServiceQueryResponse)(nil),        // 44: platform.dictionary.v1.DictionaryProviderServiceQueryResponse
+	(*DictionaryProviderServiceTreeRequest)(nil),          // 45: platform.dictionary.v1.DictionaryProviderServiceTreeRequest
+	(*DictionaryProviderServiceTreeResponse)(nil),         // 46: platform.dictionary.v1.DictionaryProviderServiceTreeResponse
+	(*DictionaryProviderServiceResolveCodesRequest)(nil),  // 47: platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest
+	(*DictionaryProviderServiceResolveCodesResponse)(nil), // 48: platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse
+	(*DictionaryPublishedEvent)(nil),                      // 49: platform.dictionary.v1.DictionaryPublishedEvent
+	(*ProviderChangedEvent)(nil),                          // 50: platform.dictionary.v1.ProviderChangedEvent
+	nil,                                                   // 51: platform.dictionary.v1.SearchSpec.FiltersEntry
+	nil,                                                   // 52: platform.dictionary.v1.TreeRequest.FiltersEntry
+	(*timestamppb.Timestamp)(nil),                         // 53: google.protobuf.Timestamp
+	(*structpb.Struct)(nil),                               // 54: google.protobuf.Struct
+	(*v1.PageRequest)(nil),                                // 55: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                                 // 56: platform.common.v1.PageResult
 }
 var file_platform_dictionary_v1_dictionary_proto_depIdxs = []int32{
-	51, // 0: platform.dictionary.v1.AuditFields.created_at:type_name -> google.protobuf.Timestamp
-	51, // 1: platform.dictionary.v1.AuditFields.updated_at:type_name -> google.protobuf.Timestamp
+	53, // 0: platform.dictionary.v1.AuditFields.created_at:type_name -> google.protobuf.Timestamp
+	53, // 1: platform.dictionary.v1.AuditFields.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: platform.dictionary.v1.Dictionary.kind:type_name -> platform.dictionary.v1.DictionaryKind
-	52, // 3: platform.dictionary.v1.Dictionary.metadata:type_name -> google.protobuf.Struct
+	54, // 3: platform.dictionary.v1.Dictionary.metadata:type_name -> google.protobuf.Struct
 	2,  // 4: platform.dictionary.v1.Dictionary.audit:type_name -> platform.dictionary.v1.AuditFields
-	52, // 5: platform.dictionary.v1.DictionaryItem.metadata:type_name -> google.protobuf.Struct
+	54, // 5: platform.dictionary.v1.DictionaryItem.metadata:type_name -> google.protobuf.Struct
 	2,  // 6: platform.dictionary.v1.DictionaryItem.audit:type_name -> platform.dictionary.v1.AuditFields
-	49, // 7: platform.dictionary.v1.SearchSpec.filters:type_name -> platform.dictionary.v1.SearchSpec.FiltersEntry
-	53, // 8: platform.dictionary.v1.SearchSpec.page:type_name -> platform.common.v1.PageRequest
-	54, // 9: platform.dictionary.v1.ResultPage.page:type_name -> platform.common.v1.PageResult
-	52, // 10: platform.dictionary.v1.CreateDictionaryRequest.metadata:type_name -> google.protobuf.Struct
+	51, // 7: platform.dictionary.v1.SearchSpec.filters:type_name -> platform.dictionary.v1.SearchSpec.FiltersEntry
+	55, // 8: platform.dictionary.v1.SearchSpec.page:type_name -> platform.common.v1.PageRequest
+	56, // 9: platform.dictionary.v1.ResultPage.page:type_name -> platform.common.v1.PageResult
+	54, // 10: platform.dictionary.v1.CreateDictionaryRequest.metadata:type_name -> google.protobuf.Struct
 	3,  // 11: platform.dictionary.v1.CreateDictionaryResponse.dictionary:type_name -> platform.dictionary.v1.Dictionary
-	52, // 12: platform.dictionary.v1.UpdateDictionaryRequest.metadata:type_name -> google.protobuf.Struct
+	54, // 12: platform.dictionary.v1.UpdateDictionaryRequest.metadata:type_name -> google.protobuf.Struct
 	3,  // 13: platform.dictionary.v1.UpdateDictionaryResponse.dictionary:type_name -> platform.dictionary.v1.Dictionary
 	3,  // 14: platform.dictionary.v1.GetDictionaryResponse.dictionary:type_name -> platform.dictionary.v1.Dictionary
-	53, // 15: platform.dictionary.v1.ListDictionariesRequest.page:type_name -> platform.common.v1.PageRequest
+	55, // 15: platform.dictionary.v1.ListDictionariesRequest.page:type_name -> platform.common.v1.PageRequest
 	3,  // 16: platform.dictionary.v1.ListDictionariesResponse.dictionaries:type_name -> platform.dictionary.v1.Dictionary
-	54, // 17: platform.dictionary.v1.ListDictionariesResponse.page:type_name -> platform.common.v1.PageResult
+	56, // 17: platform.dictionary.v1.ListDictionariesResponse.page:type_name -> platform.common.v1.PageResult
 	4,  // 18: platform.dictionary.v1.UpsertItemsRequest.items:type_name -> platform.dictionary.v1.DictionaryItem
 	4,  // 19: platform.dictionary.v1.UpsertItemsResponse.items:type_name -> platform.dictionary.v1.DictionaryItem
-	4,  // 20: platform.dictionary.v1.PublishDictionaryResponse.items:type_name -> platform.dictionary.v1.DictionaryItem
-	5,  // 21: platform.dictionary.v1.QueryRequest.search:type_name -> platform.dictionary.v1.SearchSpec
-	4,  // 22: platform.dictionary.v1.QueryResponse.items:type_name -> platform.dictionary.v1.DictionaryItem
-	6,  // 23: platform.dictionary.v1.QueryResponse.result:type_name -> platform.dictionary.v1.ResultPage
-	1,  // 24: platform.dictionary.v1.TreeRequest.mode:type_name -> platform.dictionary.v1.TreeMode
-	50, // 25: platform.dictionary.v1.TreeRequest.filters:type_name -> platform.dictionary.v1.TreeRequest.FiltersEntry
-	4,  // 26: platform.dictionary.v1.TreeNode.item:type_name -> platform.dictionary.v1.DictionaryItem
-	24, // 27: platform.dictionary.v1.TreeNode.children:type_name -> platform.dictionary.v1.TreeNode
-	24, // 28: platform.dictionary.v1.TreeResponse.roots:type_name -> platform.dictionary.v1.TreeNode
-	4,  // 29: platform.dictionary.v1.ResolvedCode.item:type_name -> platform.dictionary.v1.DictionaryItem
-	27, // 30: platform.dictionary.v1.ResolveCodesResponse.values:type_name -> platform.dictionary.v1.ResolvedCode
-	29, // 31: platform.dictionary.v1.Provider.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
-	51, // 32: platform.dictionary.v1.Provider.lease_expires_at:type_name -> google.protobuf.Timestamp
-	2,  // 33: platform.dictionary.v1.Provider.audit:type_name -> platform.dictionary.v1.AuditFields
-	29, // 34: platform.dictionary.v1.RegisterProviderRequest.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
-	30, // 35: platform.dictionary.v1.RegisterProviderResponse.provider:type_name -> platform.dictionary.v1.Provider
-	51, // 36: platform.dictionary.v1.HeartbeatProviderResponse.lease_expires_at:type_name -> google.protobuf.Timestamp
-	53, // 37: platform.dictionary.v1.ListProvidersRequest.page:type_name -> platform.common.v1.PageRequest
-	30, // 38: platform.dictionary.v1.ListProvidersResponse.providers:type_name -> platform.dictionary.v1.Provider
-	54, // 39: platform.dictionary.v1.ListProvidersResponse.page:type_name -> platform.common.v1.PageResult
-	29, // 40: platform.dictionary.v1.DictionaryProviderServiceDescribeResponse.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
-	21, // 41: platform.dictionary.v1.DictionaryProviderServiceQueryRequest.query:type_name -> platform.dictionary.v1.QueryRequest
-	22, // 42: platform.dictionary.v1.DictionaryProviderServiceQueryResponse.result:type_name -> platform.dictionary.v1.QueryResponse
-	23, // 43: platform.dictionary.v1.DictionaryProviderServiceTreeRequest.query:type_name -> platform.dictionary.v1.TreeRequest
-	25, // 44: platform.dictionary.v1.DictionaryProviderServiceTreeResponse.result:type_name -> platform.dictionary.v1.TreeResponse
-	26, // 45: platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest.query:type_name -> platform.dictionary.v1.ResolveCodesRequest
-	28, // 46: platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse.result:type_name -> platform.dictionary.v1.ResolveCodesResponse
-	3,  // 47: platform.dictionary.v1.DictionaryPublishedEvent.dictionary:type_name -> platform.dictionary.v1.Dictionary
-	30, // 48: platform.dictionary.v1.ProviderChangedEvent.provider:type_name -> platform.dictionary.v1.Provider
-	7,  // 49: platform.dictionary.v1.DictionaryService.CreateDictionary:input_type -> platform.dictionary.v1.CreateDictionaryRequest
-	9,  // 50: platform.dictionary.v1.DictionaryService.UpdateDictionary:input_type -> platform.dictionary.v1.UpdateDictionaryRequest
-	11, // 51: platform.dictionary.v1.DictionaryService.GetDictionary:input_type -> platform.dictionary.v1.GetDictionaryRequest
-	13, // 52: platform.dictionary.v1.DictionaryService.ListDictionaries:input_type -> platform.dictionary.v1.ListDictionariesRequest
-	15, // 53: platform.dictionary.v1.DictionaryService.UpsertItems:input_type -> platform.dictionary.v1.UpsertItemsRequest
-	17, // 54: platform.dictionary.v1.DictionaryService.DeleteItem:input_type -> platform.dictionary.v1.DeleteItemRequest
-	19, // 55: platform.dictionary.v1.DictionaryService.PublishDictionary:input_type -> platform.dictionary.v1.PublishDictionaryRequest
-	21, // 56: platform.dictionary.v1.DictionaryService.Query:input_type -> platform.dictionary.v1.QueryRequest
-	23, // 57: platform.dictionary.v1.DictionaryService.Tree:input_type -> platform.dictionary.v1.TreeRequest
-	26, // 58: platform.dictionary.v1.DictionaryService.ResolveCodes:input_type -> platform.dictionary.v1.ResolveCodesRequest
-	31, // 59: platform.dictionary.v1.DictionaryService.RegisterProvider:input_type -> platform.dictionary.v1.RegisterProviderRequest
-	33, // 60: platform.dictionary.v1.DictionaryService.HeartbeatProvider:input_type -> platform.dictionary.v1.HeartbeatProviderRequest
-	35, // 61: platform.dictionary.v1.DictionaryService.UnregisterProvider:input_type -> platform.dictionary.v1.UnregisterProviderRequest
-	37, // 62: platform.dictionary.v1.DictionaryService.ListProviders:input_type -> platform.dictionary.v1.ListProvidersRequest
-	39, // 63: platform.dictionary.v1.DictionaryProviderService.Describe:input_type -> platform.dictionary.v1.DictionaryProviderServiceDescribeRequest
-	41, // 64: platform.dictionary.v1.DictionaryProviderService.Query:input_type -> platform.dictionary.v1.DictionaryProviderServiceQueryRequest
-	43, // 65: platform.dictionary.v1.DictionaryProviderService.Tree:input_type -> platform.dictionary.v1.DictionaryProviderServiceTreeRequest
-	45, // 66: platform.dictionary.v1.DictionaryProviderService.ResolveCodes:input_type -> platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest
-	8,  // 67: platform.dictionary.v1.DictionaryService.CreateDictionary:output_type -> platform.dictionary.v1.CreateDictionaryResponse
-	10, // 68: platform.dictionary.v1.DictionaryService.UpdateDictionary:output_type -> platform.dictionary.v1.UpdateDictionaryResponse
-	12, // 69: platform.dictionary.v1.DictionaryService.GetDictionary:output_type -> platform.dictionary.v1.GetDictionaryResponse
-	14, // 70: platform.dictionary.v1.DictionaryService.ListDictionaries:output_type -> platform.dictionary.v1.ListDictionariesResponse
-	16, // 71: platform.dictionary.v1.DictionaryService.UpsertItems:output_type -> platform.dictionary.v1.UpsertItemsResponse
-	18, // 72: platform.dictionary.v1.DictionaryService.DeleteItem:output_type -> platform.dictionary.v1.DeleteItemResponse
-	20, // 73: platform.dictionary.v1.DictionaryService.PublishDictionary:output_type -> platform.dictionary.v1.PublishDictionaryResponse
-	22, // 74: platform.dictionary.v1.DictionaryService.Query:output_type -> platform.dictionary.v1.QueryResponse
-	25, // 75: platform.dictionary.v1.DictionaryService.Tree:output_type -> platform.dictionary.v1.TreeResponse
-	28, // 76: platform.dictionary.v1.DictionaryService.ResolveCodes:output_type -> platform.dictionary.v1.ResolveCodesResponse
-	32, // 77: platform.dictionary.v1.DictionaryService.RegisterProvider:output_type -> platform.dictionary.v1.RegisterProviderResponse
-	34, // 78: platform.dictionary.v1.DictionaryService.HeartbeatProvider:output_type -> platform.dictionary.v1.HeartbeatProviderResponse
-	36, // 79: platform.dictionary.v1.DictionaryService.UnregisterProvider:output_type -> platform.dictionary.v1.UnregisterProviderResponse
-	38, // 80: platform.dictionary.v1.DictionaryService.ListProviders:output_type -> platform.dictionary.v1.ListProvidersResponse
-	40, // 81: platform.dictionary.v1.DictionaryProviderService.Describe:output_type -> platform.dictionary.v1.DictionaryProviderServiceDescribeResponse
-	42, // 82: platform.dictionary.v1.DictionaryProviderService.Query:output_type -> platform.dictionary.v1.DictionaryProviderServiceQueryResponse
-	44, // 83: platform.dictionary.v1.DictionaryProviderService.Tree:output_type -> platform.dictionary.v1.DictionaryProviderServiceTreeResponse
-	46, // 84: platform.dictionary.v1.DictionaryProviderService.ResolveCodes:output_type -> platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse
-	67, // [67:85] is the sub-list for method output_type
-	49, // [49:67] is the sub-list for method input_type
-	49, // [49:49] is the sub-list for extension type_name
-	49, // [49:49] is the sub-list for extension extendee
-	0,  // [0:49] is the sub-list for field type_name
+	4,  // 20: platform.dictionary.v1.GetItemResponse.item:type_name -> platform.dictionary.v1.DictionaryItem
+	4,  // 21: platform.dictionary.v1.PublishDictionaryResponse.items:type_name -> platform.dictionary.v1.DictionaryItem
+	5,  // 22: platform.dictionary.v1.QueryRequest.search:type_name -> platform.dictionary.v1.SearchSpec
+	4,  // 23: platform.dictionary.v1.QueryResponse.items:type_name -> platform.dictionary.v1.DictionaryItem
+	6,  // 24: platform.dictionary.v1.QueryResponse.result:type_name -> platform.dictionary.v1.ResultPage
+	1,  // 25: platform.dictionary.v1.TreeRequest.mode:type_name -> platform.dictionary.v1.TreeMode
+	52, // 26: platform.dictionary.v1.TreeRequest.filters:type_name -> platform.dictionary.v1.TreeRequest.FiltersEntry
+	4,  // 27: platform.dictionary.v1.TreeNode.item:type_name -> platform.dictionary.v1.DictionaryItem
+	26, // 28: platform.dictionary.v1.TreeNode.children:type_name -> platform.dictionary.v1.TreeNode
+	26, // 29: platform.dictionary.v1.TreeResponse.roots:type_name -> platform.dictionary.v1.TreeNode
+	4,  // 30: platform.dictionary.v1.ResolvedCode.item:type_name -> platform.dictionary.v1.DictionaryItem
+	29, // 31: platform.dictionary.v1.ResolveCodesResponse.values:type_name -> platform.dictionary.v1.ResolvedCode
+	31, // 32: platform.dictionary.v1.Provider.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
+	53, // 33: platform.dictionary.v1.Provider.lease_expires_at:type_name -> google.protobuf.Timestamp
+	2,  // 34: platform.dictionary.v1.Provider.audit:type_name -> platform.dictionary.v1.AuditFields
+	31, // 35: platform.dictionary.v1.RegisterProviderRequest.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
+	32, // 36: platform.dictionary.v1.RegisterProviderResponse.provider:type_name -> platform.dictionary.v1.Provider
+	53, // 37: platform.dictionary.v1.HeartbeatProviderResponse.lease_expires_at:type_name -> google.protobuf.Timestamp
+	55, // 38: platform.dictionary.v1.ListProvidersRequest.page:type_name -> platform.common.v1.PageRequest
+	32, // 39: platform.dictionary.v1.ListProvidersResponse.providers:type_name -> platform.dictionary.v1.Provider
+	56, // 40: platform.dictionary.v1.ListProvidersResponse.page:type_name -> platform.common.v1.PageResult
+	31, // 41: platform.dictionary.v1.DictionaryProviderServiceDescribeResponse.capabilities:type_name -> platform.dictionary.v1.ProviderCapability
+	23, // 42: platform.dictionary.v1.DictionaryProviderServiceQueryRequest.query:type_name -> platform.dictionary.v1.QueryRequest
+	24, // 43: platform.dictionary.v1.DictionaryProviderServiceQueryResponse.result:type_name -> platform.dictionary.v1.QueryResponse
+	25, // 44: platform.dictionary.v1.DictionaryProviderServiceTreeRequest.query:type_name -> platform.dictionary.v1.TreeRequest
+	27, // 45: platform.dictionary.v1.DictionaryProviderServiceTreeResponse.result:type_name -> platform.dictionary.v1.TreeResponse
+	28, // 46: platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest.query:type_name -> platform.dictionary.v1.ResolveCodesRequest
+	30, // 47: platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse.result:type_name -> platform.dictionary.v1.ResolveCodesResponse
+	3,  // 48: platform.dictionary.v1.DictionaryPublishedEvent.dictionary:type_name -> platform.dictionary.v1.Dictionary
+	32, // 49: platform.dictionary.v1.ProviderChangedEvent.provider:type_name -> platform.dictionary.v1.Provider
+	7,  // 50: platform.dictionary.v1.DictionaryService.CreateDictionary:input_type -> platform.dictionary.v1.CreateDictionaryRequest
+	9,  // 51: platform.dictionary.v1.DictionaryService.UpdateDictionary:input_type -> platform.dictionary.v1.UpdateDictionaryRequest
+	11, // 52: platform.dictionary.v1.DictionaryService.GetDictionary:input_type -> platform.dictionary.v1.GetDictionaryRequest
+	13, // 53: platform.dictionary.v1.DictionaryService.ListDictionaries:input_type -> platform.dictionary.v1.ListDictionariesRequest
+	15, // 54: platform.dictionary.v1.DictionaryService.UpsertItems:input_type -> platform.dictionary.v1.UpsertItemsRequest
+	17, // 55: platform.dictionary.v1.DictionaryService.GetItem:input_type -> platform.dictionary.v1.GetItemRequest
+	19, // 56: platform.dictionary.v1.DictionaryService.DeleteItem:input_type -> platform.dictionary.v1.DeleteItemRequest
+	21, // 57: platform.dictionary.v1.DictionaryService.PublishDictionary:input_type -> platform.dictionary.v1.PublishDictionaryRequest
+	23, // 58: platform.dictionary.v1.DictionaryService.Query:input_type -> platform.dictionary.v1.QueryRequest
+	25, // 59: platform.dictionary.v1.DictionaryService.Tree:input_type -> platform.dictionary.v1.TreeRequest
+	28, // 60: platform.dictionary.v1.DictionaryService.ResolveCodes:input_type -> platform.dictionary.v1.ResolveCodesRequest
+	33, // 61: platform.dictionary.v1.DictionaryService.RegisterProvider:input_type -> platform.dictionary.v1.RegisterProviderRequest
+	35, // 62: platform.dictionary.v1.DictionaryService.HeartbeatProvider:input_type -> platform.dictionary.v1.HeartbeatProviderRequest
+	37, // 63: platform.dictionary.v1.DictionaryService.UnregisterProvider:input_type -> platform.dictionary.v1.UnregisterProviderRequest
+	39, // 64: platform.dictionary.v1.DictionaryService.ListProviders:input_type -> platform.dictionary.v1.ListProvidersRequest
+	41, // 65: platform.dictionary.v1.DictionaryProviderService.Describe:input_type -> platform.dictionary.v1.DictionaryProviderServiceDescribeRequest
+	43, // 66: platform.dictionary.v1.DictionaryProviderService.Query:input_type -> platform.dictionary.v1.DictionaryProviderServiceQueryRequest
+	45, // 67: platform.dictionary.v1.DictionaryProviderService.Tree:input_type -> platform.dictionary.v1.DictionaryProviderServiceTreeRequest
+	47, // 68: platform.dictionary.v1.DictionaryProviderService.ResolveCodes:input_type -> platform.dictionary.v1.DictionaryProviderServiceResolveCodesRequest
+	8,  // 69: platform.dictionary.v1.DictionaryService.CreateDictionary:output_type -> platform.dictionary.v1.CreateDictionaryResponse
+	10, // 70: platform.dictionary.v1.DictionaryService.UpdateDictionary:output_type -> platform.dictionary.v1.UpdateDictionaryResponse
+	12, // 71: platform.dictionary.v1.DictionaryService.GetDictionary:output_type -> platform.dictionary.v1.GetDictionaryResponse
+	14, // 72: platform.dictionary.v1.DictionaryService.ListDictionaries:output_type -> platform.dictionary.v1.ListDictionariesResponse
+	16, // 73: platform.dictionary.v1.DictionaryService.UpsertItems:output_type -> platform.dictionary.v1.UpsertItemsResponse
+	18, // 74: platform.dictionary.v1.DictionaryService.GetItem:output_type -> platform.dictionary.v1.GetItemResponse
+	20, // 75: platform.dictionary.v1.DictionaryService.DeleteItem:output_type -> platform.dictionary.v1.DeleteItemResponse
+	22, // 76: platform.dictionary.v1.DictionaryService.PublishDictionary:output_type -> platform.dictionary.v1.PublishDictionaryResponse
+	24, // 77: platform.dictionary.v1.DictionaryService.Query:output_type -> platform.dictionary.v1.QueryResponse
+	27, // 78: platform.dictionary.v1.DictionaryService.Tree:output_type -> platform.dictionary.v1.TreeResponse
+	30, // 79: platform.dictionary.v1.DictionaryService.ResolveCodes:output_type -> platform.dictionary.v1.ResolveCodesResponse
+	34, // 80: platform.dictionary.v1.DictionaryService.RegisterProvider:output_type -> platform.dictionary.v1.RegisterProviderResponse
+	36, // 81: platform.dictionary.v1.DictionaryService.HeartbeatProvider:output_type -> platform.dictionary.v1.HeartbeatProviderResponse
+	38, // 82: platform.dictionary.v1.DictionaryService.UnregisterProvider:output_type -> platform.dictionary.v1.UnregisterProviderResponse
+	40, // 83: platform.dictionary.v1.DictionaryService.ListProviders:output_type -> platform.dictionary.v1.ListProvidersResponse
+	42, // 84: platform.dictionary.v1.DictionaryProviderService.Describe:output_type -> platform.dictionary.v1.DictionaryProviderServiceDescribeResponse
+	44, // 85: platform.dictionary.v1.DictionaryProviderService.Query:output_type -> platform.dictionary.v1.DictionaryProviderServiceQueryResponse
+	46, // 86: platform.dictionary.v1.DictionaryProviderService.Tree:output_type -> platform.dictionary.v1.DictionaryProviderServiceTreeResponse
+	48, // 87: platform.dictionary.v1.DictionaryProviderService.ResolveCodes:output_type -> platform.dictionary.v1.DictionaryProviderServiceResolveCodesResponse
+	69, // [69:88] is the sub-list for method output_type
+	50, // [50:69] is the sub-list for method input_type
+	50, // [50:50] is the sub-list for extension type_name
+	50, // [50:50] is the sub-list for extension extendee
+	0,  // [0:50] is the sub-list for field type_name
 }
 
 func init() { file_platform_dictionary_v1_dictionary_proto_init() }
@@ -3452,7 +3550,7 @@ func file_platform_dictionary_v1_dictionary_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_dictionary_v1_dictionary_proto_rawDesc), len(file_platform_dictionary_v1_dictionary_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   49,
+			NumMessages:   51,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

@@ -14,6 +14,7 @@ service DictionaryService {
   rpc GetDictionary(GetDictionaryRequest) returns (GetDictionaryResponse);
   rpc ListDictionaries(ListDictionariesRequest) returns (ListDictionariesResponse);
   rpc UpsertItems(UpsertItemsRequest) returns (UpsertItemsResponse);
+  rpc GetItem(GetItemRequest) returns (GetItemResponse);
   rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
   rpc PublishDictionary(PublishDictionaryRequest) returns (PublishDictionaryResponse);
   rpc Query(QueryRequest) returns (QueryResponse);
@@ -148,6 +149,12 @@ message UpsertItemsRequest {
 }
 message UpsertItemsResponse {
   repeated DictionaryItem items = 1;
+}
+message GetItemRequest {
+  string id = 1;
+}
+message GetItemResponse {
+  DictionaryItem item = 1;
 }
 message DeleteItemRequest {
   string id = 1;

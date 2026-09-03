@@ -24,6 +24,7 @@ const (
 	DictionaryService_GetDictionary_FullMethodName      = "/platform.dictionary.v1.DictionaryService/GetDictionary"
 	DictionaryService_ListDictionaries_FullMethodName   = "/platform.dictionary.v1.DictionaryService/ListDictionaries"
 	DictionaryService_UpsertItems_FullMethodName        = "/platform.dictionary.v1.DictionaryService/UpsertItems"
+	DictionaryService_GetItem_FullMethodName            = "/platform.dictionary.v1.DictionaryService/GetItem"
 	DictionaryService_DeleteItem_FullMethodName         = "/platform.dictionary.v1.DictionaryService/DeleteItem"
 	DictionaryService_PublishDictionary_FullMethodName  = "/platform.dictionary.v1.DictionaryService/PublishDictionary"
 	DictionaryService_Query_FullMethodName              = "/platform.dictionary.v1.DictionaryService/Query"
@@ -44,6 +45,7 @@ type DictionaryServiceClient interface {
 	GetDictionary(ctx context.Context, in *GetDictionaryRequest, opts ...grpc.CallOption) (*GetDictionaryResponse, error)
 	ListDictionaries(ctx context.Context, in *ListDictionariesRequest, opts ...grpc.CallOption) (*ListDictionariesResponse, error)
 	UpsertItems(ctx context.Context, in *UpsertItemsRequest, opts ...grpc.CallOption) (*UpsertItemsResponse, error)
+	GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error)
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
 	PublishDictionary(ctx context.Context, in *PublishDictionaryRequest, opts ...grpc.CallOption) (*PublishDictionaryResponse, error)
 	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
@@ -107,6 +109,16 @@ func (c *dictionaryServiceClient) UpsertItems(ctx context.Context, in *UpsertIte
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UpsertItemsResponse)
 	err := c.cc.Invoke(ctx, DictionaryService_UpsertItems_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dictionaryServiceClient) GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetItemResponse)
+	err := c.cc.Invoke(ctx, DictionaryService_GetItem_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -212,6 +224,7 @@ type DictionaryServiceServer interface {
 	GetDictionary(context.Context, *GetDictionaryRequest) (*GetDictionaryResponse, error)
 	ListDictionaries(context.Context, *ListDictionariesRequest) (*ListDictionariesResponse, error)
 	UpsertItems(context.Context, *UpsertItemsRequest) (*UpsertItemsResponse, error)
+	GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error)
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
 	PublishDictionary(context.Context, *PublishDictionaryRequest) (*PublishDictionaryResponse, error)
 	Query(context.Context, *QueryRequest) (*QueryResponse, error)
@@ -245,6 +258,9 @@ func (UnimplementedDictionaryServiceServer) ListDictionaries(context.Context, *L
 }
 func (UnimplementedDictionaryServiceServer) UpsertItems(context.Context, *UpsertItemsRequest) (*UpsertItemsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpsertItems not implemented")
+}
+func (UnimplementedDictionaryServiceServer) GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetItem not implemented")
 }
 func (UnimplementedDictionaryServiceServer) DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteItem not implemented")
@@ -380,6 +396,24 @@ func _DictionaryService_UpsertItems_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DictionaryServiceServer).UpsertItems(ctx, req.(*UpsertItemsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DictionaryService_GetItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetItemRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DictionaryServiceServer).GetItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DictionaryService_GetItem_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DictionaryServiceServer).GetItem(ctx, req.(*GetItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -572,6 +606,10 @@ var DictionaryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpsertItems",
 			Handler:    _DictionaryService_UpsertItems_Handler,
+		},
+		{
+			MethodName: "GetItem",
+			Handler:    _DictionaryService_GetItem_Handler,
 		},
 		{
 			MethodName: "DeleteItem",
