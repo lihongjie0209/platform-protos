@@ -32,11 +32,13 @@ const (
 	TenantService_ListOrganizationUnits_FullMethodName    = "/platform.tenant.v1.TenantService/ListOrganizationUnits"
 	TenantService_CreateInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/CreateInvitation"
 	TenantService_AcceptInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/AcceptInvitation"
+	TenantService_GetInvitation_FullMethodName            = "/platform.tenant.v1.TenantService/GetInvitation"
 	TenantService_RevokeInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/RevokeInvitation"
 	TenantService_ListInvitations_FullMethodName          = "/platform.tenant.v1.TenantService/ListInvitations"
 	TenantService_CreateGroup_FullMethodName              = "/platform.tenant.v1.TenantService/CreateGroup"
 	TenantService_UpdateGroup_FullMethodName              = "/platform.tenant.v1.TenantService/UpdateGroup"
 	TenantService_AddGroupMember_FullMethodName           = "/platform.tenant.v1.TenantService/AddGroupMember"
+	TenantService_GetGroupMember_FullMethodName           = "/platform.tenant.v1.TenantService/GetGroupMember"
 	TenantService_RemoveGroupMember_FullMethodName        = "/platform.tenant.v1.TenantService/RemoveGroupMember"
 	TenantService_ListGroupMembers_FullMethodName         = "/platform.tenant.v1.TenantService/ListGroupMembers"
 	TenantService_ListGroups_FullMethodName               = "/platform.tenant.v1.TenantService/ListGroups"
@@ -67,11 +69,13 @@ type TenantServiceClient interface {
 	ListOrganizationUnits(ctx context.Context, in *ListOrganizationUnitsRequest, opts ...grpc.CallOption) (*ListOrganizationUnitsResponse, error)
 	CreateInvitation(ctx context.Context, in *CreateInvitationRequest, opts ...grpc.CallOption) (*CreateInvitationResponse, error)
 	AcceptInvitation(ctx context.Context, in *AcceptInvitationRequest, opts ...grpc.CallOption) (*AcceptInvitationResponse, error)
+	GetInvitation(ctx context.Context, in *GetInvitationRequest, opts ...grpc.CallOption) (*GetInvitationResponse, error)
 	RevokeInvitation(ctx context.Context, in *RevokeInvitationRequest, opts ...grpc.CallOption) (*RevokeInvitationResponse, error)
 	ListInvitations(ctx context.Context, in *ListInvitationsRequest, opts ...grpc.CallOption) (*ListInvitationsResponse, error)
 	CreateGroup(ctx context.Context, in *CreateGroupRequest, opts ...grpc.CallOption) (*CreateGroupResponse, error)
 	UpdateGroup(ctx context.Context, in *UpdateGroupRequest, opts ...grpc.CallOption) (*UpdateGroupResponse, error)
 	AddGroupMember(ctx context.Context, in *AddGroupMemberRequest, opts ...grpc.CallOption) (*AddGroupMemberResponse, error)
+	GetGroupMember(ctx context.Context, in *GetGroupMemberRequest, opts ...grpc.CallOption) (*GetGroupMemberResponse, error)
 	RemoveGroupMember(ctx context.Context, in *RemoveGroupMemberRequest, opts ...grpc.CallOption) (*RemoveGroupMemberResponse, error)
 	ListGroupMembers(ctx context.Context, in *ListGroupMembersRequest, opts ...grpc.CallOption) (*ListGroupMembersResponse, error)
 	ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error)
@@ -223,6 +227,16 @@ func (c *tenantServiceClient) AcceptInvitation(ctx context.Context, in *AcceptIn
 	return out, nil
 }
 
+func (c *tenantServiceClient) GetInvitation(ctx context.Context, in *GetInvitationRequest, opts ...grpc.CallOption) (*GetInvitationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetInvitationResponse)
+	err := c.cc.Invoke(ctx, TenantService_GetInvitation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tenantServiceClient) RevokeInvitation(ctx context.Context, in *RevokeInvitationRequest, opts ...grpc.CallOption) (*RevokeInvitationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RevokeInvitationResponse)
@@ -267,6 +281,16 @@ func (c *tenantServiceClient) AddGroupMember(ctx context.Context, in *AddGroupMe
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AddGroupMemberResponse)
 	err := c.cc.Invoke(ctx, TenantService_AddGroupMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantServiceClient) GetGroupMember(ctx context.Context, in *GetGroupMemberRequest, opts ...grpc.CallOption) (*GetGroupMemberResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetGroupMemberResponse)
+	err := c.cc.Invoke(ctx, TenantService_GetGroupMember_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -400,11 +424,13 @@ type TenantServiceServer interface {
 	ListOrganizationUnits(context.Context, *ListOrganizationUnitsRequest) (*ListOrganizationUnitsResponse, error)
 	CreateInvitation(context.Context, *CreateInvitationRequest) (*CreateInvitationResponse, error)
 	AcceptInvitation(context.Context, *AcceptInvitationRequest) (*AcceptInvitationResponse, error)
+	GetInvitation(context.Context, *GetInvitationRequest) (*GetInvitationResponse, error)
 	RevokeInvitation(context.Context, *RevokeInvitationRequest) (*RevokeInvitationResponse, error)
 	ListInvitations(context.Context, *ListInvitationsRequest) (*ListInvitationsResponse, error)
 	CreateGroup(context.Context, *CreateGroupRequest) (*CreateGroupResponse, error)
 	UpdateGroup(context.Context, *UpdateGroupRequest) (*UpdateGroupResponse, error)
 	AddGroupMember(context.Context, *AddGroupMemberRequest) (*AddGroupMemberResponse, error)
+	GetGroupMember(context.Context, *GetGroupMemberRequest) (*GetGroupMemberResponse, error)
 	RemoveGroupMember(context.Context, *RemoveGroupMemberRequest) (*RemoveGroupMemberResponse, error)
 	ListGroupMembers(context.Context, *ListGroupMembersRequest) (*ListGroupMembersResponse, error)
 	ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error)
@@ -465,6 +491,9 @@ func (UnimplementedTenantServiceServer) CreateInvitation(context.Context, *Creat
 func (UnimplementedTenantServiceServer) AcceptInvitation(context.Context, *AcceptInvitationRequest) (*AcceptInvitationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AcceptInvitation not implemented")
 }
+func (UnimplementedTenantServiceServer) GetInvitation(context.Context, *GetInvitationRequest) (*GetInvitationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInvitation not implemented")
+}
 func (UnimplementedTenantServiceServer) RevokeInvitation(context.Context, *RevokeInvitationRequest) (*RevokeInvitationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeInvitation not implemented")
 }
@@ -479,6 +508,9 @@ func (UnimplementedTenantServiceServer) UpdateGroup(context.Context, *UpdateGrou
 }
 func (UnimplementedTenantServiceServer) AddGroupMember(context.Context, *AddGroupMemberRequest) (*AddGroupMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddGroupMember not implemented")
+}
+func (UnimplementedTenantServiceServer) GetGroupMember(context.Context, *GetGroupMemberRequest) (*GetGroupMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroupMember not implemented")
 }
 func (UnimplementedTenantServiceServer) RemoveGroupMember(context.Context, *RemoveGroupMemberRequest) (*RemoveGroupMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveGroupMember not implemented")
@@ -768,6 +800,24 @@ func _TenantService_AcceptInvitation_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TenantService_GetInvitation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInvitationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).GetInvitation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_GetInvitation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).GetInvitation(ctx, req.(*GetInvitationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TenantService_RevokeInvitation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RevokeInvitationRequest)
 	if err := dec(in); err != nil {
@@ -854,6 +904,24 @@ func _TenantService_AddGroupMember_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TenantServiceServer).AddGroupMember(ctx, req.(*AddGroupMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantService_GetGroupMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGroupMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).GetGroupMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_GetGroupMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).GetGroupMember(ctx, req.(*GetGroupMemberRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1116,6 +1184,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TenantService_AcceptInvitation_Handler,
 		},
 		{
+			MethodName: "GetInvitation",
+			Handler:    _TenantService_GetInvitation_Handler,
+		},
+		{
 			MethodName: "RevokeInvitation",
 			Handler:    _TenantService_RevokeInvitation_Handler,
 		},
@@ -1134,6 +1206,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddGroupMember",
 			Handler:    _TenantService_AddGroupMember_Handler,
+		},
+		{
+			MethodName: "GetGroupMember",
+			Handler:    _TenantService_GetGroupMember_Handler,
 		},
 		{
 			MethodName: "RemoveGroupMember",

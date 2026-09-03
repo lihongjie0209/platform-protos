@@ -21,11 +21,13 @@ service TenantService {
   rpc ListOrganizationUnits(ListOrganizationUnitsRequest) returns (ListOrganizationUnitsResponse);
   rpc CreateInvitation(CreateInvitationRequest) returns (CreateInvitationResponse);
   rpc AcceptInvitation(AcceptInvitationRequest) returns (AcceptInvitationResponse);
+  rpc GetInvitation(GetInvitationRequest) returns (GetInvitationResponse);
   rpc RevokeInvitation(RevokeInvitationRequest) returns (RevokeInvitationResponse);
   rpc ListInvitations(ListInvitationsRequest) returns (ListInvitationsResponse);
   rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse);
   rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse);
   rpc AddGroupMember(AddGroupMemberRequest) returns (AddGroupMemberResponse);
+  rpc GetGroupMember(GetGroupMemberRequest) returns (GetGroupMemberResponse);
   rpc RemoveGroupMember(RemoveGroupMemberRequest) returns (RemoveGroupMemberResponse);
   rpc ListGroupMembers(ListGroupMembersRequest) returns (ListGroupMembersResponse);
   rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse);
@@ -261,6 +263,12 @@ message AcceptInvitationResponse {
   Invitation invitation = 1;
   Membership membership = 2;
 }
+message GetInvitationRequest {
+  string invitation_id = 1;
+}
+message GetInvitationResponse {
+  Invitation invitation = 1;
+}
 message RevokeInvitationRequest {
   string invitation_id = 1;
   int64 expected_version = 2;
@@ -299,6 +307,13 @@ message AddGroupMemberRequest {
 }
 message AddGroupMemberResponse {
   bool added = 1;
+}
+message GetGroupMemberRequest {
+  string group_id = 1;
+  string membership_id = 2;
+}
+message GetGroupMemberResponse {
+  GroupMember group_member = 1;
 }
 message RemoveGroupMemberRequest {
   string group_id = 1;
