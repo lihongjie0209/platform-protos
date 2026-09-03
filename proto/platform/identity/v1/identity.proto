@@ -11,6 +11,7 @@ service IdentityService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc BatchGetUsers(BatchGetUsersRequest) returns (BatchGetUsersResponse);
   rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
   rpc ValidateSession(ValidateSessionRequest) returns (ValidateSessionResponse);
   rpc RevokeTenantSessions(RevokeTenantSessionsRequest) returns (RevokeTenantSessionsResponse);
   rpc IssueTenantToken(IssueTenantTokenRequest) returns (IssueTenantTokenResponse);
@@ -59,6 +60,32 @@ message ListUsersRequest {
 message ListUsersResponse {
   repeated User users = 1;
   platform.common.v1.PageResult page = 2;
+}
+message Session {
+  string id = 1;
+  string user_id = 2;
+  string username = 3;
+  string user_display_name = 4;
+  string tenant_id = 5;
+  string membership_id = 6;
+  string status = 7;
+  google.protobuf.Timestamp expires_at = 8;
+  google.protobuf.Timestamp revoked_at = 9;
+  string revoke_reason = 10;
+  google.protobuf.Timestamp last_used_at = 11;
+  string client_ip = 12;
+  string user_agent = 13;
+  int64 version = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
+  string created_by = 17;
+  string updated_by = 18;
+}
+message GetSessionRequest {
+  string session_id = 1;
+}
+message GetSessionResponse {
+  Session session = 1;
 }
 message ValidateSessionRequest {
   string session_id = 1;

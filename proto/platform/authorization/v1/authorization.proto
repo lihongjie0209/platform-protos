@@ -22,6 +22,7 @@ service AuthorizationService {
   rpc RevokeRolePermission(RevokeRolePermissionRequest) returns (RevokeRolePermissionResponse);
   rpc ListRolePermissions(ListRolePermissionsRequest) returns (ListRolePermissionsResponse);
   rpc CreateBinding(CreateBindingRequest) returns (CreateBindingResponse);
+  rpc GetBinding(GetBindingRequest) returns (GetBindingResponse);
   rpc RevokeBinding(RevokeBindingRequest) returns (RevokeBindingResponse);
   rpc ListBindings(ListBindingsRequest) returns (ListBindingsResponse);
 }
@@ -234,6 +235,12 @@ message CreateBindingRequest {
   string organization_unit_id = 4;
 }
 message CreateBindingResponse {
+  Binding binding = 1;
+}
+message GetBindingRequest {
+  string binding_id = 1;
+}
+message GetBindingResponse {
   Binding binding = 1;
 }
 message RevokeBindingRequest {

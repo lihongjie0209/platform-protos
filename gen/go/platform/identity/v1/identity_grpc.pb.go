@@ -22,6 +22,7 @@ const (
 	IdentityService_GetUser_FullMethodName              = "/platform.identity.v1.IdentityService/GetUser"
 	IdentityService_BatchGetUsers_FullMethodName        = "/platform.identity.v1.IdentityService/BatchGetUsers"
 	IdentityService_ListUsers_FullMethodName            = "/platform.identity.v1.IdentityService/ListUsers"
+	IdentityService_GetSession_FullMethodName           = "/platform.identity.v1.IdentityService/GetSession"
 	IdentityService_ValidateSession_FullMethodName      = "/platform.identity.v1.IdentityService/ValidateSession"
 	IdentityService_RevokeTenantSessions_FullMethodName = "/platform.identity.v1.IdentityService/RevokeTenantSessions"
 	IdentityService_IssueTenantToken_FullMethodName     = "/platform.identity.v1.IdentityService/IssueTenantToken"
@@ -35,6 +36,7 @@ type IdentityServiceClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	BatchGetUsers(ctx context.Context, in *BatchGetUsersRequest, opts ...grpc.CallOption) (*BatchGetUsersResponse, error)
 	ListUsers(ctx context.Context, in *ListUsersRequest, opts ...grpc.CallOption) (*ListUsersResponse, error)
+	GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
 	ValidateSession(ctx context.Context, in *ValidateSessionRequest, opts ...grpc.CallOption) (*ValidateSessionResponse, error)
 	RevokeTenantSessions(ctx context.Context, in *RevokeTenantSessionsRequest, opts ...grpc.CallOption) (*RevokeTenantSessionsResponse, error)
 	IssueTenantToken(ctx context.Context, in *IssueTenantTokenRequest, opts ...grpc.CallOption) (*IssueTenantTokenResponse, error)
@@ -73,6 +75,16 @@ func (c *identityServiceClient) ListUsers(ctx context.Context, in *ListUsersRequ
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListUsersResponse)
 	err := c.cc.Invoke(ctx, IdentityService_ListUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *identityServiceClient) GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSessionResponse)
+	err := c.cc.Invoke(ctx, IdentityService_GetSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,6 +138,7 @@ type IdentityServiceServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	BatchGetUsers(context.Context, *BatchGetUsersRequest) (*BatchGetUsersResponse, error)
 	ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error)
+	GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
 	ValidateSession(context.Context, *ValidateSessionRequest) (*ValidateSessionResponse, error)
 	RevokeTenantSessions(context.Context, *RevokeTenantSessionsRequest) (*RevokeTenantSessionsResponse, error)
 	IssueTenantToken(context.Context, *IssueTenantTokenRequest) (*IssueTenantTokenResponse, error)
@@ -148,6 +161,9 @@ func (UnimplementedIdentityServiceServer) BatchGetUsers(context.Context, *BatchG
 }
 func (UnimplementedIdentityServiceServer) ListUsers(context.Context, *ListUsersRequest) (*ListUsersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
+}
+func (UnimplementedIdentityServiceServer) GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSession not implemented")
 }
 func (UnimplementedIdentityServiceServer) ValidateSession(context.Context, *ValidateSessionRequest) (*ValidateSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateSession not implemented")
@@ -232,6 +248,24 @@ func _IdentityService_ListUsers_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IdentityServiceServer).ListUsers(ctx, req.(*ListUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IdentityService_GetSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSessionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IdentityServiceServer).GetSession(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IdentityService_GetSession_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IdentityServiceServer).GetSession(ctx, req.(*GetSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -326,6 +360,10 @@ var IdentityService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListUsers",
 			Handler:    _IdentityService_ListUsers_Handler,
+		},
+		{
+			MethodName: "GetSession",
+			Handler:    _IdentityService_GetSession_Handler,
 		},
 		{
 			MethodName: "ValidateSession",

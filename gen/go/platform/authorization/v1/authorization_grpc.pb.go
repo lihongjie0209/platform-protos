@@ -33,6 +33,7 @@ const (
 	AuthorizationService_RevokeRolePermission_FullMethodName = "/platform.authorization.v1.AuthorizationService/RevokeRolePermission"
 	AuthorizationService_ListRolePermissions_FullMethodName  = "/platform.authorization.v1.AuthorizationService/ListRolePermissions"
 	AuthorizationService_CreateBinding_FullMethodName        = "/platform.authorization.v1.AuthorizationService/CreateBinding"
+	AuthorizationService_GetBinding_FullMethodName           = "/platform.authorization.v1.AuthorizationService/GetBinding"
 	AuthorizationService_RevokeBinding_FullMethodName        = "/platform.authorization.v1.AuthorizationService/RevokeBinding"
 	AuthorizationService_ListBindings_FullMethodName         = "/platform.authorization.v1.AuthorizationService/ListBindings"
 )
@@ -55,6 +56,7 @@ type AuthorizationServiceClient interface {
 	RevokeRolePermission(ctx context.Context, in *RevokeRolePermissionRequest, opts ...grpc.CallOption) (*RevokeRolePermissionResponse, error)
 	ListRolePermissions(ctx context.Context, in *ListRolePermissionsRequest, opts ...grpc.CallOption) (*ListRolePermissionsResponse, error)
 	CreateBinding(ctx context.Context, in *CreateBindingRequest, opts ...grpc.CallOption) (*CreateBindingResponse, error)
+	GetBinding(ctx context.Context, in *GetBindingRequest, opts ...grpc.CallOption) (*GetBindingResponse, error)
 	RevokeBinding(ctx context.Context, in *RevokeBindingRequest, opts ...grpc.CallOption) (*RevokeBindingResponse, error)
 	ListBindings(ctx context.Context, in *ListBindingsRequest, opts ...grpc.CallOption) (*ListBindingsResponse, error)
 }
@@ -207,6 +209,16 @@ func (c *authorizationServiceClient) CreateBinding(ctx context.Context, in *Crea
 	return out, nil
 }
 
+func (c *authorizationServiceClient) GetBinding(ctx context.Context, in *GetBindingRequest, opts ...grpc.CallOption) (*GetBindingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBindingResponse)
+	err := c.cc.Invoke(ctx, AuthorizationService_GetBinding_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *authorizationServiceClient) RevokeBinding(ctx context.Context, in *RevokeBindingRequest, opts ...grpc.CallOption) (*RevokeBindingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RevokeBindingResponse)
@@ -245,6 +257,7 @@ type AuthorizationServiceServer interface {
 	RevokeRolePermission(context.Context, *RevokeRolePermissionRequest) (*RevokeRolePermissionResponse, error)
 	ListRolePermissions(context.Context, *ListRolePermissionsRequest) (*ListRolePermissionsResponse, error)
 	CreateBinding(context.Context, *CreateBindingRequest) (*CreateBindingResponse, error)
+	GetBinding(context.Context, *GetBindingRequest) (*GetBindingResponse, error)
 	RevokeBinding(context.Context, *RevokeBindingRequest) (*RevokeBindingResponse, error)
 	ListBindings(context.Context, *ListBindingsRequest) (*ListBindingsResponse, error)
 	mustEmbedUnimplementedAuthorizationServiceServer()
@@ -298,6 +311,9 @@ func (UnimplementedAuthorizationServiceServer) ListRolePermissions(context.Conte
 }
 func (UnimplementedAuthorizationServiceServer) CreateBinding(context.Context, *CreateBindingRequest) (*CreateBindingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateBinding not implemented")
+}
+func (UnimplementedAuthorizationServiceServer) GetBinding(context.Context, *GetBindingRequest) (*GetBindingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBinding not implemented")
 }
 func (UnimplementedAuthorizationServiceServer) RevokeBinding(context.Context, *RevokeBindingRequest) (*RevokeBindingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeBinding not implemented")
@@ -578,6 +594,24 @@ func _AuthorizationService_CreateBinding_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthorizationService_GetBinding_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBindingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthorizationServiceServer).GetBinding(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthorizationService_GetBinding_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthorizationServiceServer).GetBinding(ctx, req.(*GetBindingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AuthorizationService_RevokeBinding_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RevokeBindingRequest)
 	if err := dec(in); err != nil {
@@ -676,6 +710,10 @@ var AuthorizationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateBinding",
 			Handler:    _AuthorizationService_CreateBinding_Handler,
+		},
+		{
+			MethodName: "GetBinding",
+			Handler:    _AuthorizationService_GetBinding_Handler,
 		},
 		{
 			MethodName: "RevokeBinding",
