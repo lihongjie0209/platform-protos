@@ -3202,8 +3202,12 @@ type ListTaskHistoryRequest struct {
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
 	TaskId        string                 `protobuf:"bytes,3,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
-	InstanceId    string                 `protobuf:"bytes,4,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
-	Page          *v1.PageRequest        `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
+	// Deprecated: use ListInstanceTaskHistory for instance-scoped history so
+	// authorization can be evaluated against workflow.instance/read.
+	//
+	// Deprecated: Marked as deprecated in platform/workflow/v1/workflow.proto.
+	InstanceId    string          `protobuf:"bytes,4,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
+	Page          *v1.PageRequest `protobuf:"bytes,5,opt,name=page,proto3" json:"page,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3259,6 +3263,7 @@ func (x *ListTaskHistoryRequest) GetTaskId() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in platform/workflow/v1/workflow.proto.
 func (x *ListTaskHistoryRequest) GetInstanceId() string {
 	if x != nil {
 		return x.InstanceId
@@ -3267,6 +3272,126 @@ func (x *ListTaskHistoryRequest) GetInstanceId() string {
 }
 
 func (x *ListTaskHistoryRequest) GetPage() *v1.PageRequest {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type ListInstanceTaskHistoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	InstanceId    string                 `protobuf:"bytes,3,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
+	Page          *v1.PageRequest        `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListInstanceTaskHistoryRequest) Reset() {
+	*x = ListInstanceTaskHistoryRequest{}
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListInstanceTaskHistoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListInstanceTaskHistoryRequest) ProtoMessage() {}
+
+func (x *ListInstanceTaskHistoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListInstanceTaskHistoryRequest.ProtoReflect.Descriptor instead.
+func (*ListInstanceTaskHistoryRequest) Descriptor() ([]byte, []int) {
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *ListInstanceTaskHistoryRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ListInstanceTaskHistoryRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+func (x *ListInstanceTaskHistoryRequest) GetInstanceId() string {
+	if x != nil {
+		return x.InstanceId
+	}
+	return ""
+}
+
+func (x *ListInstanceTaskHistoryRequest) GetPage() *v1.PageRequest {
+	if x != nil {
+		return x.Page
+	}
+	return nil
+}
+
+type ListInstanceTaskHistoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Items         []*WorkflowTaskHistory `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
+	Page          *v1.PageResult         `protobuf:"bytes,2,opt,name=page,proto3" json:"page,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListInstanceTaskHistoryResponse) Reset() {
+	*x = ListInstanceTaskHistoryResponse{}
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListInstanceTaskHistoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListInstanceTaskHistoryResponse) ProtoMessage() {}
+
+func (x *ListInstanceTaskHistoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListInstanceTaskHistoryResponse.ProtoReflect.Descriptor instead.
+func (*ListInstanceTaskHistoryResponse) Descriptor() ([]byte, []int) {
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *ListInstanceTaskHistoryResponse) GetItems() []*WorkflowTaskHistory {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+func (x *ListInstanceTaskHistoryResponse) GetPage() *v1.PageResult {
 	if x != nil {
 		return x.Page
 	}
@@ -3283,7 +3408,7 @@ type ListTaskHistoryResponse struct {
 
 func (x *ListTaskHistoryResponse) Reset() {
 	*x = ListTaskHistoryResponse{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[37]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3295,7 +3420,7 @@ func (x *ListTaskHistoryResponse) String() string {
 func (*ListTaskHistoryResponse) ProtoMessage() {}
 
 func (x *ListTaskHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[37]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3308,7 +3433,7 @@ func (x *ListTaskHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTaskHistoryResponse.ProtoReflect.Descriptor instead.
 func (*ListTaskHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{37}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *ListTaskHistoryResponse) GetItems() []*WorkflowTaskHistory {
@@ -3334,7 +3459,7 @@ type DefinitionPublishedEvent struct {
 
 func (x *DefinitionPublishedEvent) Reset() {
 	*x = DefinitionPublishedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[38]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3346,7 +3471,7 @@ func (x *DefinitionPublishedEvent) String() string {
 func (*DefinitionPublishedEvent) ProtoMessage() {}
 
 func (x *DefinitionPublishedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[38]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3359,7 +3484,7 @@ func (x *DefinitionPublishedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DefinitionPublishedEvent.ProtoReflect.Descriptor instead.
 func (*DefinitionPublishedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{38}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *DefinitionPublishedEvent) GetDefinition() *WorkflowDefinition {
@@ -3382,7 +3507,7 @@ type InstanceStartRequestedEvent struct {
 
 func (x *InstanceStartRequestedEvent) Reset() {
 	*x = InstanceStartRequestedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[39]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3394,7 +3519,7 @@ func (x *InstanceStartRequestedEvent) String() string {
 func (*InstanceStartRequestedEvent) ProtoMessage() {}
 
 func (x *InstanceStartRequestedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[39]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3407,7 +3532,7 @@ func (x *InstanceStartRequestedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InstanceStartRequestedEvent.ProtoReflect.Descriptor instead.
 func (*InstanceStartRequestedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{39}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *InstanceStartRequestedEvent) GetInstance() *WorkflowInstance {
@@ -3436,7 +3561,7 @@ type InstanceCancellationRequestedEvent struct {
 
 func (x *InstanceCancellationRequestedEvent) Reset() {
 	*x = InstanceCancellationRequestedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[40]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3448,7 +3573,7 @@ func (x *InstanceCancellationRequestedEvent) String() string {
 func (*InstanceCancellationRequestedEvent) ProtoMessage() {}
 
 func (x *InstanceCancellationRequestedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[40]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3461,7 +3586,7 @@ func (x *InstanceCancellationRequestedEvent) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use InstanceCancellationRequestedEvent.ProtoReflect.Descriptor instead.
 func (*InstanceCancellationRequestedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{40}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *InstanceCancellationRequestedEvent) GetInstance() *WorkflowInstance {
@@ -3488,7 +3613,7 @@ type InstanceStatusChangedEvent struct {
 
 func (x *InstanceStatusChangedEvent) Reset() {
 	*x = InstanceStatusChangedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[41]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3500,7 +3625,7 @@ func (x *InstanceStatusChangedEvent) String() string {
 func (*InstanceStatusChangedEvent) ProtoMessage() {}
 
 func (x *InstanceStatusChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[41]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3513,7 +3638,7 @@ func (x *InstanceStatusChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InstanceStatusChangedEvent.ProtoReflect.Descriptor instead.
 func (*InstanceStatusChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{41}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *InstanceStatusChangedEvent) GetInstance() *WorkflowInstance {
@@ -3539,7 +3664,7 @@ type TaskCreatedEvent struct {
 
 func (x *TaskCreatedEvent) Reset() {
 	*x = TaskCreatedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[42]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3551,7 +3676,7 @@ func (x *TaskCreatedEvent) String() string {
 func (*TaskCreatedEvent) ProtoMessage() {}
 
 func (x *TaskCreatedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[42]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3564,7 +3689,7 @@ func (x *TaskCreatedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TaskCreatedEvent.ProtoReflect.Descriptor instead.
 func (*TaskCreatedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{42}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *TaskCreatedEvent) GetTask() *WorkflowTask {
@@ -3583,7 +3708,7 @@ type TaskCompletedEvent struct {
 
 func (x *TaskCompletedEvent) Reset() {
 	*x = TaskCompletedEvent{}
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[43]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3595,7 +3720,7 @@ func (x *TaskCompletedEvent) String() string {
 func (*TaskCompletedEvent) ProtoMessage() {}
 
 func (x *TaskCompletedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[43]
+	mi := &file_platform_workflow_v1_workflow_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3608,7 +3733,7 @@ func (x *TaskCompletedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TaskCompletedEvent.ProtoReflect.Descriptor instead.
 func (*TaskCompletedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{43}
+	return file_platform_workflow_v1_workflow_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *TaskCompletedEvent) GetTask() *WorkflowTask {
@@ -3901,14 +4026,23 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\t \x01(\tR\rapplicationId\"\x81\x01\n" +
 	"\x11ListTasksResponse\x128\n" +
 	"\x05tasks\x18\x01 \x03(\v2\".platform.workflow.v1.WorkflowTaskR\x05tasks\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xcb\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xcf\x01\n" +
 	"\x16ListTaskHistoryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
 	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x17\n" +
-	"\atask_id\x18\x03 \x01(\tR\x06taskId\x12\x1f\n" +
-	"\vinstance_id\x18\x04 \x01(\tR\n" +
+	"\atask_id\x18\x03 \x01(\tR\x06taskId\x12#\n" +
+	"\vinstance_id\x18\x04 \x01(\tB\x02\x18\x01R\n" +
 	"instanceId\x123\n" +
-	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x8e\x01\n" +
+	"\x04page\x18\x05 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\xba\x01\n" +
+	"\x1eListInstanceTaskHistoryRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x1f\n" +
+	"\vinstance_id\x18\x03 \x01(\tR\n" +
+	"instanceId\x123\n" +
+	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x96\x01\n" +
+	"\x1fListInstanceTaskHistoryResponse\x12?\n" +
+	"\x05items\x18\x01 \x03(\v2).platform.workflow.v1.WorkflowTaskHistoryR\x05items\x122\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x8e\x01\n" +
 	"\x17ListTaskHistoryResponse\x12?\n" +
 	"\x05items\x18\x01 \x03(\v2).platform.workflow.v1.WorkflowTaskHistoryR\x05items\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"d\n" +
@@ -3968,7 +4102,7 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\fTaskDecision\x12\x1d\n" +
 	"\x19TASK_DECISION_UNSPECIFIED\x10\x00\x12\x19\n" +
 	"\x15TASK_DECISION_APPROVE\x10\x01\x12\x18\n" +
-	"\x14TASK_DECISION_REJECT\x10\x022\xb4\r\n" +
+	"\x14TASK_DECISION_REJECT\x10\x022\xbd\x0e\n" +
 	"\x0fWorkflowService\x12q\n" +
 	"\x10CreateDefinition\x12-.platform.workflow.v1.CreateDefinitionRequest\x1a..platform.workflow.v1.CreateDefinitionResponse\x12q\n" +
 	"\x10UpdateDefinition\x12-.platform.workflow.v1.UpdateDefinitionRequest\x1a..platform.workflow.v1.UpdateDefinitionResponse\x12t\n" +
@@ -3985,7 +4119,8 @@ const file_platform_workflow_v1_workflow_proto_rawDesc = "" +
 	"\fDelegateTask\x12).platform.workflow.v1.DelegateTaskRequest\x1a*.platform.workflow.v1.DelegateTaskResponse\x12V\n" +
 	"\aGetTask\x12$.platform.workflow.v1.GetTaskRequest\x1a%.platform.workflow.v1.GetTaskResponse\x12\\\n" +
 	"\tListTasks\x12&.platform.workflow.v1.ListTasksRequest\x1a'.platform.workflow.v1.ListTasksResponse\x12n\n" +
-	"\x0fListTaskHistory\x12,.platform.workflow.v1.ListTaskHistoryRequest\x1a-.platform.workflow.v1.ListTaskHistoryResponseBQZOgithub.com/lihongjie0209/platform-protos/gen/go/platform/workflow/v1;workflowv1b\x06proto3"
+	"\x0fListTaskHistory\x12,.platform.workflow.v1.ListTaskHistoryRequest\x1a-.platform.workflow.v1.ListTaskHistoryResponse\x12\x86\x01\n" +
+	"\x17ListInstanceTaskHistory\x124.platform.workflow.v1.ListInstanceTaskHistoryRequest\x1a5.platform.workflow.v1.ListInstanceTaskHistoryResponseBQZOgithub.com/lihongjie0209/platform-protos/gen/go/platform/workflow/v1;workflowv1b\x06proto3"
 
 var (
 	file_platform_workflow_v1_workflow_proto_rawDescOnce sync.Once
@@ -4000,7 +4135,7 @@ func file_platform_workflow_v1_workflow_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_workflow_v1_workflow_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_platform_workflow_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 44)
+var file_platform_workflow_v1_workflow_proto_msgTypes = make([]protoimpl.MessageInfo, 46)
 var file_platform_workflow_v1_workflow_proto_goTypes = []any{
 	(DefinitionStatus)(0),                      // 0: platform.workflow.v1.DefinitionStatus
 	(NodeType)(0),                              // 1: platform.workflow.v1.NodeType
@@ -4045,16 +4180,18 @@ var file_platform_workflow_v1_workflow_proto_goTypes = []any{
 	(*ListTasksRequest)(nil),                   // 40: platform.workflow.v1.ListTasksRequest
 	(*ListTasksResponse)(nil),                  // 41: platform.workflow.v1.ListTasksResponse
 	(*ListTaskHistoryRequest)(nil),             // 42: platform.workflow.v1.ListTaskHistoryRequest
-	(*ListTaskHistoryResponse)(nil),            // 43: platform.workflow.v1.ListTaskHistoryResponse
-	(*DefinitionPublishedEvent)(nil),           // 44: platform.workflow.v1.DefinitionPublishedEvent
-	(*InstanceStartRequestedEvent)(nil),        // 45: platform.workflow.v1.InstanceStartRequestedEvent
-	(*InstanceCancellationRequestedEvent)(nil), // 46: platform.workflow.v1.InstanceCancellationRequestedEvent
-	(*InstanceStatusChangedEvent)(nil),         // 47: platform.workflow.v1.InstanceStatusChangedEvent
-	(*TaskCreatedEvent)(nil),                   // 48: platform.workflow.v1.TaskCreatedEvent
-	(*TaskCompletedEvent)(nil),                 // 49: platform.workflow.v1.TaskCompletedEvent
-	(*timestamppb.Timestamp)(nil),              // 50: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                     // 51: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                      // 52: platform.common.v1.PageResult
+	(*ListInstanceTaskHistoryRequest)(nil),     // 43: platform.workflow.v1.ListInstanceTaskHistoryRequest
+	(*ListInstanceTaskHistoryResponse)(nil),    // 44: platform.workflow.v1.ListInstanceTaskHistoryResponse
+	(*ListTaskHistoryResponse)(nil),            // 45: platform.workflow.v1.ListTaskHistoryResponse
+	(*DefinitionPublishedEvent)(nil),           // 46: platform.workflow.v1.DefinitionPublishedEvent
+	(*InstanceStartRequestedEvent)(nil),        // 47: platform.workflow.v1.InstanceStartRequestedEvent
+	(*InstanceCancellationRequestedEvent)(nil), // 48: platform.workflow.v1.InstanceCancellationRequestedEvent
+	(*InstanceStatusChangedEvent)(nil),         // 49: platform.workflow.v1.InstanceStatusChangedEvent
+	(*TaskCreatedEvent)(nil),                   // 50: platform.workflow.v1.TaskCreatedEvent
+	(*TaskCompletedEvent)(nil),                 // 51: platform.workflow.v1.TaskCompletedEvent
+	(*timestamppb.Timestamp)(nil),              // 52: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                     // 53: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                      // 54: platform.common.v1.PageResult
 }
 var file_platform_workflow_v1_workflow_proto_depIdxs = []int32{
 	1,  // 0: platform.workflow.v1.WorkflowNode.type:type_name -> platform.workflow.v1.NodeType
@@ -4062,22 +4199,22 @@ var file_platform_workflow_v1_workflow_proto_depIdxs = []int32{
 	0,  // 2: platform.workflow.v1.WorkflowDefinition.status:type_name -> platform.workflow.v1.DefinitionStatus
 	6,  // 3: platform.workflow.v1.WorkflowDefinition.nodes:type_name -> platform.workflow.v1.WorkflowNode
 	7,  // 4: platform.workflow.v1.WorkflowDefinition.edges:type_name -> platform.workflow.v1.WorkflowEdge
-	50, // 5: platform.workflow.v1.WorkflowDefinition.created_at:type_name -> google.protobuf.Timestamp
-	50, // 6: platform.workflow.v1.WorkflowDefinition.updated_at:type_name -> google.protobuf.Timestamp
+	52, // 5: platform.workflow.v1.WorkflowDefinition.created_at:type_name -> google.protobuf.Timestamp
+	52, // 6: platform.workflow.v1.WorkflowDefinition.updated_at:type_name -> google.protobuf.Timestamp
 	3,  // 7: platform.workflow.v1.WorkflowInstance.status:type_name -> platform.workflow.v1.InstanceStatus
-	50, // 8: platform.workflow.v1.WorkflowInstance.started_at:type_name -> google.protobuf.Timestamp
-	50, // 9: platform.workflow.v1.WorkflowInstance.finished_at:type_name -> google.protobuf.Timestamp
-	50, // 10: platform.workflow.v1.WorkflowInstance.created_at:type_name -> google.protobuf.Timestamp
-	50, // 11: platform.workflow.v1.WorkflowInstance.updated_at:type_name -> google.protobuf.Timestamp
+	52, // 8: platform.workflow.v1.WorkflowInstance.started_at:type_name -> google.protobuf.Timestamp
+	52, // 9: platform.workflow.v1.WorkflowInstance.finished_at:type_name -> google.protobuf.Timestamp
+	52, // 10: platform.workflow.v1.WorkflowInstance.created_at:type_name -> google.protobuf.Timestamp
+	52, // 11: platform.workflow.v1.WorkflowInstance.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 12: platform.workflow.v1.WorkflowTask.assignee_type:type_name -> platform.workflow.v1.AssigneeType
 	4,  // 13: platform.workflow.v1.WorkflowTask.status:type_name -> platform.workflow.v1.TaskStatus
 	5,  // 14: platform.workflow.v1.WorkflowTask.decision:type_name -> platform.workflow.v1.TaskDecision
-	50, // 15: platform.workflow.v1.WorkflowTask.due_at:type_name -> google.protobuf.Timestamp
-	50, // 16: platform.workflow.v1.WorkflowTask.completed_at:type_name -> google.protobuf.Timestamp
-	50, // 17: platform.workflow.v1.WorkflowTask.created_at:type_name -> google.protobuf.Timestamp
-	50, // 18: platform.workflow.v1.WorkflowTask.updated_at:type_name -> google.protobuf.Timestamp
-	50, // 19: platform.workflow.v1.WorkflowTaskHistory.created_at:type_name -> google.protobuf.Timestamp
-	50, // 20: platform.workflow.v1.WorkflowTaskHistory.updated_at:type_name -> google.protobuf.Timestamp
+	52, // 15: platform.workflow.v1.WorkflowTask.due_at:type_name -> google.protobuf.Timestamp
+	52, // 16: platform.workflow.v1.WorkflowTask.completed_at:type_name -> google.protobuf.Timestamp
+	52, // 17: platform.workflow.v1.WorkflowTask.created_at:type_name -> google.protobuf.Timestamp
+	52, // 18: platform.workflow.v1.WorkflowTask.updated_at:type_name -> google.protobuf.Timestamp
+	52, // 19: platform.workflow.v1.WorkflowTaskHistory.created_at:type_name -> google.protobuf.Timestamp
+	52, // 20: platform.workflow.v1.WorkflowTaskHistory.updated_at:type_name -> google.protobuf.Timestamp
 	6,  // 21: platform.workflow.v1.CreateDefinitionRequest.nodes:type_name -> platform.workflow.v1.WorkflowNode
 	7,  // 22: platform.workflow.v1.CreateDefinitionRequest.edges:type_name -> platform.workflow.v1.WorkflowEdge
 	8,  // 23: platform.workflow.v1.CreateDefinitionResponse.definition:type_name -> platform.workflow.v1.WorkflowDefinition
@@ -4088,18 +4225,18 @@ var file_platform_workflow_v1_workflow_proto_depIdxs = []int32{
 	8,  // 28: platform.workflow.v1.DisableDefinitionResponse.definition:type_name -> platform.workflow.v1.WorkflowDefinition
 	8,  // 29: platform.workflow.v1.GetDefinitionResponse.definition:type_name -> platform.workflow.v1.WorkflowDefinition
 	0,  // 30: platform.workflow.v1.ListDefinitionsRequest.status:type_name -> platform.workflow.v1.DefinitionStatus
-	51, // 31: platform.workflow.v1.ListDefinitionsRequest.page:type_name -> platform.common.v1.PageRequest
+	53, // 31: platform.workflow.v1.ListDefinitionsRequest.page:type_name -> platform.common.v1.PageRequest
 	8,  // 32: platform.workflow.v1.ListDefinitionsResponse.definitions:type_name -> platform.workflow.v1.WorkflowDefinition
-	52, // 33: platform.workflow.v1.ListDefinitionsResponse.page:type_name -> platform.common.v1.PageResult
+	54, // 33: platform.workflow.v1.ListDefinitionsResponse.page:type_name -> platform.common.v1.PageResult
 	9,  // 34: platform.workflow.v1.StartInstanceResponse.instance:type_name -> platform.workflow.v1.WorkflowInstance
 	9,  // 35: platform.workflow.v1.CancelInstanceResponse.instance:type_name -> platform.workflow.v1.WorkflowInstance
 	9,  // 36: platform.workflow.v1.GetInstanceResponse.instance:type_name -> platform.workflow.v1.WorkflowInstance
 	3,  // 37: platform.workflow.v1.ListInstancesRequest.status:type_name -> platform.workflow.v1.InstanceStatus
-	50, // 38: platform.workflow.v1.ListInstancesRequest.started_from:type_name -> google.protobuf.Timestamp
-	50, // 39: platform.workflow.v1.ListInstancesRequest.started_until:type_name -> google.protobuf.Timestamp
-	51, // 40: platform.workflow.v1.ListInstancesRequest.page:type_name -> platform.common.v1.PageRequest
+	52, // 38: platform.workflow.v1.ListInstancesRequest.started_from:type_name -> google.protobuf.Timestamp
+	52, // 39: platform.workflow.v1.ListInstancesRequest.started_until:type_name -> google.protobuf.Timestamp
+	53, // 40: platform.workflow.v1.ListInstancesRequest.page:type_name -> platform.common.v1.PageRequest
 	9,  // 41: platform.workflow.v1.ListInstancesResponse.instances:type_name -> platform.workflow.v1.WorkflowInstance
-	52, // 42: platform.workflow.v1.ListInstancesResponse.page:type_name -> platform.common.v1.PageResult
+	54, // 42: platform.workflow.v1.ListInstancesResponse.page:type_name -> platform.common.v1.PageResult
 	10, // 43: platform.workflow.v1.ClaimTaskResponse.task:type_name -> platform.workflow.v1.WorkflowTask
 	5,  // 44: platform.workflow.v1.CompleteTaskRequest.decision:type_name -> platform.workflow.v1.TaskDecision
 	10, // 45: platform.workflow.v1.CompleteTaskResponse.task:type_name -> platform.workflow.v1.WorkflowTask
@@ -4107,57 +4244,62 @@ var file_platform_workflow_v1_workflow_proto_depIdxs = []int32{
 	10, // 47: platform.workflow.v1.DelegateTaskResponse.task:type_name -> platform.workflow.v1.WorkflowTask
 	10, // 48: platform.workflow.v1.GetTaskResponse.task:type_name -> platform.workflow.v1.WorkflowTask
 	4,  // 49: platform.workflow.v1.ListTasksRequest.status:type_name -> platform.workflow.v1.TaskStatus
-	51, // 50: platform.workflow.v1.ListTasksRequest.page:type_name -> platform.common.v1.PageRequest
+	53, // 50: platform.workflow.v1.ListTasksRequest.page:type_name -> platform.common.v1.PageRequest
 	10, // 51: platform.workflow.v1.ListTasksResponse.tasks:type_name -> platform.workflow.v1.WorkflowTask
-	52, // 52: platform.workflow.v1.ListTasksResponse.page:type_name -> platform.common.v1.PageResult
-	51, // 53: platform.workflow.v1.ListTaskHistoryRequest.page:type_name -> platform.common.v1.PageRequest
-	11, // 54: platform.workflow.v1.ListTaskHistoryResponse.items:type_name -> platform.workflow.v1.WorkflowTaskHistory
-	52, // 55: platform.workflow.v1.ListTaskHistoryResponse.page:type_name -> platform.common.v1.PageResult
-	8,  // 56: platform.workflow.v1.DefinitionPublishedEvent.definition:type_name -> platform.workflow.v1.WorkflowDefinition
-	9,  // 57: platform.workflow.v1.InstanceStartRequestedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
-	8,  // 58: platform.workflow.v1.InstanceStartRequestedEvent.definition:type_name -> platform.workflow.v1.WorkflowDefinition
-	9,  // 59: platform.workflow.v1.InstanceCancellationRequestedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
-	9,  // 60: platform.workflow.v1.InstanceStatusChangedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
-	3,  // 61: platform.workflow.v1.InstanceStatusChangedEvent.previous_status:type_name -> platform.workflow.v1.InstanceStatus
-	10, // 62: platform.workflow.v1.TaskCreatedEvent.task:type_name -> platform.workflow.v1.WorkflowTask
-	10, // 63: platform.workflow.v1.TaskCompletedEvent.task:type_name -> platform.workflow.v1.WorkflowTask
-	12, // 64: platform.workflow.v1.WorkflowService.CreateDefinition:input_type -> platform.workflow.v1.CreateDefinitionRequest
-	14, // 65: platform.workflow.v1.WorkflowService.UpdateDefinition:input_type -> platform.workflow.v1.UpdateDefinitionRequest
-	16, // 66: platform.workflow.v1.WorkflowService.PublishDefinition:input_type -> platform.workflow.v1.PublishDefinitionRequest
-	18, // 67: platform.workflow.v1.WorkflowService.DisableDefinition:input_type -> platform.workflow.v1.DisableDefinitionRequest
-	20, // 68: platform.workflow.v1.WorkflowService.GetDefinition:input_type -> platform.workflow.v1.GetDefinitionRequest
-	22, // 69: platform.workflow.v1.WorkflowService.ListDefinitions:input_type -> platform.workflow.v1.ListDefinitionsRequest
-	24, // 70: platform.workflow.v1.WorkflowService.StartInstance:input_type -> platform.workflow.v1.StartInstanceRequest
-	26, // 71: platform.workflow.v1.WorkflowService.CancelInstance:input_type -> platform.workflow.v1.CancelInstanceRequest
-	28, // 72: platform.workflow.v1.WorkflowService.GetInstance:input_type -> platform.workflow.v1.GetInstanceRequest
-	30, // 73: platform.workflow.v1.WorkflowService.ListInstances:input_type -> platform.workflow.v1.ListInstancesRequest
-	32, // 74: platform.workflow.v1.WorkflowService.ClaimTask:input_type -> platform.workflow.v1.ClaimTaskRequest
-	34, // 75: platform.workflow.v1.WorkflowService.CompleteTask:input_type -> platform.workflow.v1.CompleteTaskRequest
-	36, // 76: platform.workflow.v1.WorkflowService.DelegateTask:input_type -> platform.workflow.v1.DelegateTaskRequest
-	38, // 77: platform.workflow.v1.WorkflowService.GetTask:input_type -> platform.workflow.v1.GetTaskRequest
-	40, // 78: platform.workflow.v1.WorkflowService.ListTasks:input_type -> platform.workflow.v1.ListTasksRequest
-	42, // 79: platform.workflow.v1.WorkflowService.ListTaskHistory:input_type -> platform.workflow.v1.ListTaskHistoryRequest
-	13, // 80: platform.workflow.v1.WorkflowService.CreateDefinition:output_type -> platform.workflow.v1.CreateDefinitionResponse
-	15, // 81: platform.workflow.v1.WorkflowService.UpdateDefinition:output_type -> platform.workflow.v1.UpdateDefinitionResponse
-	17, // 82: platform.workflow.v1.WorkflowService.PublishDefinition:output_type -> platform.workflow.v1.PublishDefinitionResponse
-	19, // 83: platform.workflow.v1.WorkflowService.DisableDefinition:output_type -> platform.workflow.v1.DisableDefinitionResponse
-	21, // 84: platform.workflow.v1.WorkflowService.GetDefinition:output_type -> platform.workflow.v1.GetDefinitionResponse
-	23, // 85: platform.workflow.v1.WorkflowService.ListDefinitions:output_type -> platform.workflow.v1.ListDefinitionsResponse
-	25, // 86: platform.workflow.v1.WorkflowService.StartInstance:output_type -> platform.workflow.v1.StartInstanceResponse
-	27, // 87: platform.workflow.v1.WorkflowService.CancelInstance:output_type -> platform.workflow.v1.CancelInstanceResponse
-	29, // 88: platform.workflow.v1.WorkflowService.GetInstance:output_type -> platform.workflow.v1.GetInstanceResponse
-	31, // 89: platform.workflow.v1.WorkflowService.ListInstances:output_type -> platform.workflow.v1.ListInstancesResponse
-	33, // 90: platform.workflow.v1.WorkflowService.ClaimTask:output_type -> platform.workflow.v1.ClaimTaskResponse
-	35, // 91: platform.workflow.v1.WorkflowService.CompleteTask:output_type -> platform.workflow.v1.CompleteTaskResponse
-	37, // 92: platform.workflow.v1.WorkflowService.DelegateTask:output_type -> platform.workflow.v1.DelegateTaskResponse
-	39, // 93: platform.workflow.v1.WorkflowService.GetTask:output_type -> platform.workflow.v1.GetTaskResponse
-	41, // 94: platform.workflow.v1.WorkflowService.ListTasks:output_type -> platform.workflow.v1.ListTasksResponse
-	43, // 95: platform.workflow.v1.WorkflowService.ListTaskHistory:output_type -> platform.workflow.v1.ListTaskHistoryResponse
-	80, // [80:96] is the sub-list for method output_type
-	64, // [64:80] is the sub-list for method input_type
-	64, // [64:64] is the sub-list for extension type_name
-	64, // [64:64] is the sub-list for extension extendee
-	0,  // [0:64] is the sub-list for field type_name
+	54, // 52: platform.workflow.v1.ListTasksResponse.page:type_name -> platform.common.v1.PageResult
+	53, // 53: platform.workflow.v1.ListTaskHistoryRequest.page:type_name -> platform.common.v1.PageRequest
+	53, // 54: platform.workflow.v1.ListInstanceTaskHistoryRequest.page:type_name -> platform.common.v1.PageRequest
+	11, // 55: platform.workflow.v1.ListInstanceTaskHistoryResponse.items:type_name -> platform.workflow.v1.WorkflowTaskHistory
+	54, // 56: platform.workflow.v1.ListInstanceTaskHistoryResponse.page:type_name -> platform.common.v1.PageResult
+	11, // 57: platform.workflow.v1.ListTaskHistoryResponse.items:type_name -> platform.workflow.v1.WorkflowTaskHistory
+	54, // 58: platform.workflow.v1.ListTaskHistoryResponse.page:type_name -> platform.common.v1.PageResult
+	8,  // 59: platform.workflow.v1.DefinitionPublishedEvent.definition:type_name -> platform.workflow.v1.WorkflowDefinition
+	9,  // 60: platform.workflow.v1.InstanceStartRequestedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
+	8,  // 61: platform.workflow.v1.InstanceStartRequestedEvent.definition:type_name -> platform.workflow.v1.WorkflowDefinition
+	9,  // 62: platform.workflow.v1.InstanceCancellationRequestedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
+	9,  // 63: platform.workflow.v1.InstanceStatusChangedEvent.instance:type_name -> platform.workflow.v1.WorkflowInstance
+	3,  // 64: platform.workflow.v1.InstanceStatusChangedEvent.previous_status:type_name -> platform.workflow.v1.InstanceStatus
+	10, // 65: platform.workflow.v1.TaskCreatedEvent.task:type_name -> platform.workflow.v1.WorkflowTask
+	10, // 66: platform.workflow.v1.TaskCompletedEvent.task:type_name -> platform.workflow.v1.WorkflowTask
+	12, // 67: platform.workflow.v1.WorkflowService.CreateDefinition:input_type -> platform.workflow.v1.CreateDefinitionRequest
+	14, // 68: platform.workflow.v1.WorkflowService.UpdateDefinition:input_type -> platform.workflow.v1.UpdateDefinitionRequest
+	16, // 69: platform.workflow.v1.WorkflowService.PublishDefinition:input_type -> platform.workflow.v1.PublishDefinitionRequest
+	18, // 70: platform.workflow.v1.WorkflowService.DisableDefinition:input_type -> platform.workflow.v1.DisableDefinitionRequest
+	20, // 71: platform.workflow.v1.WorkflowService.GetDefinition:input_type -> platform.workflow.v1.GetDefinitionRequest
+	22, // 72: platform.workflow.v1.WorkflowService.ListDefinitions:input_type -> platform.workflow.v1.ListDefinitionsRequest
+	24, // 73: platform.workflow.v1.WorkflowService.StartInstance:input_type -> platform.workflow.v1.StartInstanceRequest
+	26, // 74: platform.workflow.v1.WorkflowService.CancelInstance:input_type -> platform.workflow.v1.CancelInstanceRequest
+	28, // 75: platform.workflow.v1.WorkflowService.GetInstance:input_type -> platform.workflow.v1.GetInstanceRequest
+	30, // 76: platform.workflow.v1.WorkflowService.ListInstances:input_type -> platform.workflow.v1.ListInstancesRequest
+	32, // 77: platform.workflow.v1.WorkflowService.ClaimTask:input_type -> platform.workflow.v1.ClaimTaskRequest
+	34, // 78: platform.workflow.v1.WorkflowService.CompleteTask:input_type -> platform.workflow.v1.CompleteTaskRequest
+	36, // 79: platform.workflow.v1.WorkflowService.DelegateTask:input_type -> platform.workflow.v1.DelegateTaskRequest
+	38, // 80: platform.workflow.v1.WorkflowService.GetTask:input_type -> platform.workflow.v1.GetTaskRequest
+	40, // 81: platform.workflow.v1.WorkflowService.ListTasks:input_type -> platform.workflow.v1.ListTasksRequest
+	42, // 82: platform.workflow.v1.WorkflowService.ListTaskHistory:input_type -> platform.workflow.v1.ListTaskHistoryRequest
+	43, // 83: platform.workflow.v1.WorkflowService.ListInstanceTaskHistory:input_type -> platform.workflow.v1.ListInstanceTaskHistoryRequest
+	13, // 84: platform.workflow.v1.WorkflowService.CreateDefinition:output_type -> platform.workflow.v1.CreateDefinitionResponse
+	15, // 85: platform.workflow.v1.WorkflowService.UpdateDefinition:output_type -> platform.workflow.v1.UpdateDefinitionResponse
+	17, // 86: platform.workflow.v1.WorkflowService.PublishDefinition:output_type -> platform.workflow.v1.PublishDefinitionResponse
+	19, // 87: platform.workflow.v1.WorkflowService.DisableDefinition:output_type -> platform.workflow.v1.DisableDefinitionResponse
+	21, // 88: platform.workflow.v1.WorkflowService.GetDefinition:output_type -> platform.workflow.v1.GetDefinitionResponse
+	23, // 89: platform.workflow.v1.WorkflowService.ListDefinitions:output_type -> platform.workflow.v1.ListDefinitionsResponse
+	25, // 90: platform.workflow.v1.WorkflowService.StartInstance:output_type -> platform.workflow.v1.StartInstanceResponse
+	27, // 91: platform.workflow.v1.WorkflowService.CancelInstance:output_type -> platform.workflow.v1.CancelInstanceResponse
+	29, // 92: platform.workflow.v1.WorkflowService.GetInstance:output_type -> platform.workflow.v1.GetInstanceResponse
+	31, // 93: platform.workflow.v1.WorkflowService.ListInstances:output_type -> platform.workflow.v1.ListInstancesResponse
+	33, // 94: platform.workflow.v1.WorkflowService.ClaimTask:output_type -> platform.workflow.v1.ClaimTaskResponse
+	35, // 95: platform.workflow.v1.WorkflowService.CompleteTask:output_type -> platform.workflow.v1.CompleteTaskResponse
+	37, // 96: platform.workflow.v1.WorkflowService.DelegateTask:output_type -> platform.workflow.v1.DelegateTaskResponse
+	39, // 97: platform.workflow.v1.WorkflowService.GetTask:output_type -> platform.workflow.v1.GetTaskResponse
+	41, // 98: platform.workflow.v1.WorkflowService.ListTasks:output_type -> platform.workflow.v1.ListTasksResponse
+	45, // 99: platform.workflow.v1.WorkflowService.ListTaskHistory:output_type -> platform.workflow.v1.ListTaskHistoryResponse
+	44, // 100: platform.workflow.v1.WorkflowService.ListInstanceTaskHistory:output_type -> platform.workflow.v1.ListInstanceTaskHistoryResponse
+	84, // [84:101] is the sub-list for method output_type
+	67, // [67:84] is the sub-list for method input_type
+	67, // [67:67] is the sub-list for extension type_name
+	67, // [67:67] is the sub-list for extension extendee
+	0,  // [0:67] is the sub-list for field type_name
 }
 
 func init() { file_platform_workflow_v1_workflow_proto_init() }
@@ -4171,7 +4313,7 @@ func file_platform_workflow_v1_workflow_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_workflow_v1_workflow_proto_rawDesc), len(file_platform_workflow_v1_workflow_proto_rawDesc)),
 			NumEnums:      6,
-			NumMessages:   44,
+			NumMessages:   46,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

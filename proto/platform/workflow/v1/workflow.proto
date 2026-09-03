@@ -28,6 +28,7 @@ service WorkflowService {
   rpc GetTask(GetTaskRequest) returns (GetTaskResponse);
   rpc ListTasks(ListTasksRequest) returns (ListTasksResponse);
   rpc ListTaskHistory(ListTaskHistoryRequest) returns (ListTaskHistoryResponse);
+  rpc ListInstanceTaskHistory(ListInstanceTaskHistoryRequest) returns (ListInstanceTaskHistoryResponse);
 }
 
 enum DefinitionStatus {
@@ -371,8 +372,20 @@ message ListTaskHistoryRequest {
   string tenant_id = 1;
   string application_id = 2;
   string task_id = 3;
-  string instance_id = 4;
+  // Deprecated: use ListInstanceTaskHistory for instance-scoped history so
+  // authorization can be evaluated against workflow.instance/read.
+  string instance_id = 4 [deprecated = true];
   platform.common.v1.PageRequest page = 5;
+}
+message ListInstanceTaskHistoryRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string instance_id = 3;
+  platform.common.v1.PageRequest page = 4;
+}
+message ListInstanceTaskHistoryResponse {
+  repeated WorkflowTaskHistory items = 1;
+  platform.common.v1.PageResult page = 2;
 }
 message ListTaskHistoryResponse {
   repeated WorkflowTaskHistory items = 1;

@@ -19,22 +19,23 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	WorkflowService_CreateDefinition_FullMethodName  = "/platform.workflow.v1.WorkflowService/CreateDefinition"
-	WorkflowService_UpdateDefinition_FullMethodName  = "/platform.workflow.v1.WorkflowService/UpdateDefinition"
-	WorkflowService_PublishDefinition_FullMethodName = "/platform.workflow.v1.WorkflowService/PublishDefinition"
-	WorkflowService_DisableDefinition_FullMethodName = "/platform.workflow.v1.WorkflowService/DisableDefinition"
-	WorkflowService_GetDefinition_FullMethodName     = "/platform.workflow.v1.WorkflowService/GetDefinition"
-	WorkflowService_ListDefinitions_FullMethodName   = "/platform.workflow.v1.WorkflowService/ListDefinitions"
-	WorkflowService_StartInstance_FullMethodName     = "/platform.workflow.v1.WorkflowService/StartInstance"
-	WorkflowService_CancelInstance_FullMethodName    = "/platform.workflow.v1.WorkflowService/CancelInstance"
-	WorkflowService_GetInstance_FullMethodName       = "/platform.workflow.v1.WorkflowService/GetInstance"
-	WorkflowService_ListInstances_FullMethodName     = "/platform.workflow.v1.WorkflowService/ListInstances"
-	WorkflowService_ClaimTask_FullMethodName         = "/platform.workflow.v1.WorkflowService/ClaimTask"
-	WorkflowService_CompleteTask_FullMethodName      = "/platform.workflow.v1.WorkflowService/CompleteTask"
-	WorkflowService_DelegateTask_FullMethodName      = "/platform.workflow.v1.WorkflowService/DelegateTask"
-	WorkflowService_GetTask_FullMethodName           = "/platform.workflow.v1.WorkflowService/GetTask"
-	WorkflowService_ListTasks_FullMethodName         = "/platform.workflow.v1.WorkflowService/ListTasks"
-	WorkflowService_ListTaskHistory_FullMethodName   = "/platform.workflow.v1.WorkflowService/ListTaskHistory"
+	WorkflowService_CreateDefinition_FullMethodName        = "/platform.workflow.v1.WorkflowService/CreateDefinition"
+	WorkflowService_UpdateDefinition_FullMethodName        = "/platform.workflow.v1.WorkflowService/UpdateDefinition"
+	WorkflowService_PublishDefinition_FullMethodName       = "/platform.workflow.v1.WorkflowService/PublishDefinition"
+	WorkflowService_DisableDefinition_FullMethodName       = "/platform.workflow.v1.WorkflowService/DisableDefinition"
+	WorkflowService_GetDefinition_FullMethodName           = "/platform.workflow.v1.WorkflowService/GetDefinition"
+	WorkflowService_ListDefinitions_FullMethodName         = "/platform.workflow.v1.WorkflowService/ListDefinitions"
+	WorkflowService_StartInstance_FullMethodName           = "/platform.workflow.v1.WorkflowService/StartInstance"
+	WorkflowService_CancelInstance_FullMethodName          = "/platform.workflow.v1.WorkflowService/CancelInstance"
+	WorkflowService_GetInstance_FullMethodName             = "/platform.workflow.v1.WorkflowService/GetInstance"
+	WorkflowService_ListInstances_FullMethodName           = "/platform.workflow.v1.WorkflowService/ListInstances"
+	WorkflowService_ClaimTask_FullMethodName               = "/platform.workflow.v1.WorkflowService/ClaimTask"
+	WorkflowService_CompleteTask_FullMethodName            = "/platform.workflow.v1.WorkflowService/CompleteTask"
+	WorkflowService_DelegateTask_FullMethodName            = "/platform.workflow.v1.WorkflowService/DelegateTask"
+	WorkflowService_GetTask_FullMethodName                 = "/platform.workflow.v1.WorkflowService/GetTask"
+	WorkflowService_ListTasks_FullMethodName               = "/platform.workflow.v1.WorkflowService/ListTasks"
+	WorkflowService_ListTaskHistory_FullMethodName         = "/platform.workflow.v1.WorkflowService/ListTaskHistory"
+	WorkflowService_ListInstanceTaskHistory_FullMethodName = "/platform.workflow.v1.WorkflowService/ListInstanceTaskHistory"
 )
 
 // WorkflowServiceClient is the client API for WorkflowService service.
@@ -60,6 +61,7 @@ type WorkflowServiceClient interface {
 	GetTask(ctx context.Context, in *GetTaskRequest, opts ...grpc.CallOption) (*GetTaskResponse, error)
 	ListTasks(ctx context.Context, in *ListTasksRequest, opts ...grpc.CallOption) (*ListTasksResponse, error)
 	ListTaskHistory(ctx context.Context, in *ListTaskHistoryRequest, opts ...grpc.CallOption) (*ListTaskHistoryResponse, error)
+	ListInstanceTaskHistory(ctx context.Context, in *ListInstanceTaskHistoryRequest, opts ...grpc.CallOption) (*ListInstanceTaskHistoryResponse, error)
 }
 
 type workflowServiceClient struct {
@@ -230,6 +232,16 @@ func (c *workflowServiceClient) ListTaskHistory(ctx context.Context, in *ListTas
 	return out, nil
 }
 
+func (c *workflowServiceClient) ListInstanceTaskHistory(ctx context.Context, in *ListInstanceTaskHistoryRequest, opts ...grpc.CallOption) (*ListInstanceTaskHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListInstanceTaskHistoryResponse)
+	err := c.cc.Invoke(ctx, WorkflowService_ListInstanceTaskHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WorkflowServiceServer is the server API for WorkflowService service.
 // All implementations must embed UnimplementedWorkflowServiceServer
 // for forward compatibility.
@@ -253,6 +265,7 @@ type WorkflowServiceServer interface {
 	GetTask(context.Context, *GetTaskRequest) (*GetTaskResponse, error)
 	ListTasks(context.Context, *ListTasksRequest) (*ListTasksResponse, error)
 	ListTaskHistory(context.Context, *ListTaskHistoryRequest) (*ListTaskHistoryResponse, error)
+	ListInstanceTaskHistory(context.Context, *ListInstanceTaskHistoryRequest) (*ListInstanceTaskHistoryResponse, error)
 	mustEmbedUnimplementedWorkflowServiceServer()
 }
 
@@ -310,6 +323,9 @@ func (UnimplementedWorkflowServiceServer) ListTasks(context.Context, *ListTasksR
 }
 func (UnimplementedWorkflowServiceServer) ListTaskHistory(context.Context, *ListTaskHistoryRequest) (*ListTaskHistoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTaskHistory not implemented")
+}
+func (UnimplementedWorkflowServiceServer) ListInstanceTaskHistory(context.Context, *ListInstanceTaskHistoryRequest) (*ListInstanceTaskHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstanceTaskHistory not implemented")
 }
 func (UnimplementedWorkflowServiceServer) mustEmbedUnimplementedWorkflowServiceServer() {}
 func (UnimplementedWorkflowServiceServer) testEmbeddedByValue()                         {}
@@ -620,6 +636,24 @@ func _WorkflowService_ListTaskHistory_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WorkflowService_ListInstanceTaskHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListInstanceTaskHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkflowServiceServer).ListInstanceTaskHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkflowService_ListInstanceTaskHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkflowServiceServer).ListInstanceTaskHistory(ctx, req.(*ListInstanceTaskHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WorkflowService_ServiceDesc is the grpc.ServiceDesc for WorkflowService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -690,6 +724,10 @@ var WorkflowService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTaskHistory",
 			Handler:    _WorkflowService_ListTaskHistory_Handler,
+		},
+		{
+			MethodName: "ListInstanceTaskHistory",
+			Handler:    _WorkflowService_ListInstanceTaskHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
