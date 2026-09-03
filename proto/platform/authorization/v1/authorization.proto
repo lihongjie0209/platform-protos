@@ -13,9 +13,11 @@ service AuthorizationService {
   rpc ResolveDataScope(ResolveDataScopeRequest) returns (ResolveDataScopeResponse);
   rpc InvalidateSubject(InvalidateSubjectRequest) returns (InvalidateSubjectResponse);
   rpc CreatePermission(CreatePermissionRequest) returns (CreatePermissionResponse);
+  rpc GetPermission(GetPermissionRequest) returns (GetPermissionResponse);
   rpc UpdatePermission(UpdatePermissionRequest) returns (UpdatePermissionResponse);
   rpc ListPermissions(ListPermissionsRequest) returns (ListPermissionsResponse);
   rpc CreateRole(CreateRoleRequest) returns (CreateRoleResponse);
+  rpc GetRole(GetRoleRequest) returns (GetRoleResponse);
   rpc UpdateRole(UpdateRoleRequest) returns (UpdateRoleResponse);
   rpc ListRoles(ListRolesRequest) returns (ListRolesResponse);
   rpc GrantRolePermission(GrantRolePermissionRequest) returns (GrantRolePermissionResponse);
@@ -157,6 +159,12 @@ message CreatePermissionRequest {
 message CreatePermissionResponse {
   Permission permission = 1;
 }
+message GetPermissionRequest {
+  string permission_id = 1;
+}
+message GetPermissionResponse {
+  Permission permission = 1;
+}
 message UpdatePermissionRequest {
   string permission_id = 1;
   string name = 2;
@@ -184,6 +192,12 @@ message CreateRoleRequest {
   string data_scope = 5;
 }
 message CreateRoleResponse {
+  Role role = 1;
+}
+message GetRoleRequest {
+  string role_id = 1;
+}
+message GetRoleResponse {
   Role role = 1;
 }
 message UpdateRoleRequest {

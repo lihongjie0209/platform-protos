@@ -25,6 +25,7 @@ service TenantService {
   rpc RevokeInvitation(RevokeInvitationRequest) returns (RevokeInvitationResponse);
   rpc ListInvitations(ListInvitationsRequest) returns (ListInvitationsResponse);
   rpc CreateGroup(CreateGroupRequest) returns (CreateGroupResponse);
+  rpc GetGroup(GetGroupRequest) returns (GetGroupResponse);
   rpc UpdateGroup(UpdateGroupRequest) returns (UpdateGroupResponse);
   rpc AddGroupMember(AddGroupMemberRequest) returns (AddGroupMemberResponse);
   rpc GetGroupMember(GetGroupMemberRequest) returns (GetGroupMemberResponse);
@@ -290,6 +291,12 @@ message CreateGroupRequest {
   string name = 3;
 }
 message CreateGroupResponse {
+  Group group = 1;
+}
+message GetGroupRequest {
+  string group_id = 1;
+}
+message GetGroupResponse {
   Group group = 1;
 }
 message UpdateGroupRequest {
