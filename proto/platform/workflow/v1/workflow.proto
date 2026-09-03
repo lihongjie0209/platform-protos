@@ -27,6 +27,7 @@ service WorkflowService {
   rpc DelegateTask(DelegateTaskRequest) returns (DelegateTaskResponse);
   rpc GetTask(GetTaskRequest) returns (GetTaskResponse);
   rpc ListTasks(ListTasksRequest) returns (ListTasksResponse);
+  rpc ListTaskHistory(ListTaskHistoryRequest) returns (ListTaskHistoryResponse);
 }
 
 enum DefinitionStatus {
@@ -164,6 +165,24 @@ message WorkflowTask {
   string created_by = 19;
   string updated_by = 20;
   string application_id = 21;
+}
+
+message WorkflowTaskHistory {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string task_id = 4;
+  string instance_id = 5;
+  string action = 6;
+  string actor_id = 7;
+  string from_status = 8;
+  string to_status = 9;
+  string detail_json = 10;
+  int64 version = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  string created_by = 14;
+  string updated_by = 15;
 }
 
 message CreateDefinitionRequest {
@@ -345,6 +364,18 @@ message ListTasksRequest {
 }
 message ListTasksResponse {
   repeated WorkflowTask tasks = 1;
+  platform.common.v1.PageResult page = 2;
+}
+
+message ListTaskHistoryRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string task_id = 3;
+  string instance_id = 4;
+  platform.common.v1.PageRequest page = 5;
+}
+message ListTaskHistoryResponse {
+  repeated WorkflowTaskHistory items = 1;
   platform.common.v1.PageResult page = 2;
 }
 

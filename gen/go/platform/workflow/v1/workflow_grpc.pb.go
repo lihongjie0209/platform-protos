@@ -34,6 +34,7 @@ const (
 	WorkflowService_DelegateTask_FullMethodName      = "/platform.workflow.v1.WorkflowService/DelegateTask"
 	WorkflowService_GetTask_FullMethodName           = "/platform.workflow.v1.WorkflowService/GetTask"
 	WorkflowService_ListTasks_FullMethodName         = "/platform.workflow.v1.WorkflowService/ListTasks"
+	WorkflowService_ListTaskHistory_FullMethodName   = "/platform.workflow.v1.WorkflowService/ListTaskHistory"
 )
 
 // WorkflowServiceClient is the client API for WorkflowService service.
@@ -58,6 +59,7 @@ type WorkflowServiceClient interface {
 	DelegateTask(ctx context.Context, in *DelegateTaskRequest, opts ...grpc.CallOption) (*DelegateTaskResponse, error)
 	GetTask(ctx context.Context, in *GetTaskRequest, opts ...grpc.CallOption) (*GetTaskResponse, error)
 	ListTasks(ctx context.Context, in *ListTasksRequest, opts ...grpc.CallOption) (*ListTasksResponse, error)
+	ListTaskHistory(ctx context.Context, in *ListTaskHistoryRequest, opts ...grpc.CallOption) (*ListTaskHistoryResponse, error)
 }
 
 type workflowServiceClient struct {
@@ -218,6 +220,16 @@ func (c *workflowServiceClient) ListTasks(ctx context.Context, in *ListTasksRequ
 	return out, nil
 }
 
+func (c *workflowServiceClient) ListTaskHistory(ctx context.Context, in *ListTaskHistoryRequest, opts ...grpc.CallOption) (*ListTaskHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTaskHistoryResponse)
+	err := c.cc.Invoke(ctx, WorkflowService_ListTaskHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WorkflowServiceServer is the server API for WorkflowService service.
 // All implementations must embed UnimplementedWorkflowServiceServer
 // for forward compatibility.
@@ -240,6 +252,7 @@ type WorkflowServiceServer interface {
 	DelegateTask(context.Context, *DelegateTaskRequest) (*DelegateTaskResponse, error)
 	GetTask(context.Context, *GetTaskRequest) (*GetTaskResponse, error)
 	ListTasks(context.Context, *ListTasksRequest) (*ListTasksResponse, error)
+	ListTaskHistory(context.Context, *ListTaskHistoryRequest) (*ListTaskHistoryResponse, error)
 	mustEmbedUnimplementedWorkflowServiceServer()
 }
 
@@ -294,6 +307,9 @@ func (UnimplementedWorkflowServiceServer) GetTask(context.Context, *GetTaskReque
 }
 func (UnimplementedWorkflowServiceServer) ListTasks(context.Context, *ListTasksRequest) (*ListTasksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTasks not implemented")
+}
+func (UnimplementedWorkflowServiceServer) ListTaskHistory(context.Context, *ListTaskHistoryRequest) (*ListTaskHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTaskHistory not implemented")
 }
 func (UnimplementedWorkflowServiceServer) mustEmbedUnimplementedWorkflowServiceServer() {}
 func (UnimplementedWorkflowServiceServer) testEmbeddedByValue()                         {}
@@ -586,6 +602,24 @@ func _WorkflowService_ListTasks_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WorkflowService_ListTaskHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTaskHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkflowServiceServer).ListTaskHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkflowService_ListTaskHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkflowServiceServer).ListTaskHistory(ctx, req.(*ListTaskHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WorkflowService_ServiceDesc is the grpc.ServiceDesc for WorkflowService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -652,6 +686,10 @@ var WorkflowService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTasks",
 			Handler:    _WorkflowService_ListTasks_Handler,
+		},
+		{
+			MethodName: "ListTaskHistory",
+			Handler:    _WorkflowService_ListTaskHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
