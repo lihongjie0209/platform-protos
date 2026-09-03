@@ -32,6 +32,7 @@ service BillingService {
   rpc ListInvoices(ListInvoicesRequest) returns (ListInvoicesResponse);
 
   rpc CreatePaymentAttempt(CreatePaymentAttemptRequest) returns (CreatePaymentAttemptResponse);
+  rpc GetPaymentAttempt(GetPaymentAttemptRequest) returns (GetPaymentAttemptResponse);
   rpc ApplyPaymentResult(ApplyPaymentResultRequest) returns (ApplyPaymentResultResponse);
   rpc RecordRefund(RecordRefundRequest) returns (RecordRefundResponse);
   rpc ReconcilePayment(ReconcilePaymentRequest) returns (ReconcilePaymentResponse);
@@ -366,6 +367,14 @@ message CreatePaymentAttemptRequest {
 message CreatePaymentAttemptResponse {
   PaymentAttempt payment_attempt = 1;
   bool duplicate = 2;
+}
+message GetPaymentAttemptRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string id = 3;
+}
+message GetPaymentAttemptResponse {
+  PaymentAttempt payment_attempt = 1;
 }
 message ApplyPaymentResultRequest {
   string payment_attempt_id = 1;

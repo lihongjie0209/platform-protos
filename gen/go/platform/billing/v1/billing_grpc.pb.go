@@ -37,6 +37,7 @@ const (
 	BillingService_GetInvoice_FullMethodName           = "/platform.billing.v1.BillingService/GetInvoice"
 	BillingService_ListInvoices_FullMethodName         = "/platform.billing.v1.BillingService/ListInvoices"
 	BillingService_CreatePaymentAttempt_FullMethodName = "/platform.billing.v1.BillingService/CreatePaymentAttempt"
+	BillingService_GetPaymentAttempt_FullMethodName    = "/platform.billing.v1.BillingService/GetPaymentAttempt"
 	BillingService_ApplyPaymentResult_FullMethodName   = "/platform.billing.v1.BillingService/ApplyPaymentResult"
 	BillingService_RecordRefund_FullMethodName         = "/platform.billing.v1.BillingService/RecordRefund"
 	BillingService_ReconcilePayment_FullMethodName     = "/platform.billing.v1.BillingService/ReconcilePayment"
@@ -68,6 +69,7 @@ type BillingServiceClient interface {
 	GetInvoice(ctx context.Context, in *GetInvoiceRequest, opts ...grpc.CallOption) (*GetInvoiceResponse, error)
 	ListInvoices(ctx context.Context, in *ListInvoicesRequest, opts ...grpc.CallOption) (*ListInvoicesResponse, error)
 	CreatePaymentAttempt(ctx context.Context, in *CreatePaymentAttemptRequest, opts ...grpc.CallOption) (*CreatePaymentAttemptResponse, error)
+	GetPaymentAttempt(ctx context.Context, in *GetPaymentAttemptRequest, opts ...grpc.CallOption) (*GetPaymentAttemptResponse, error)
 	ApplyPaymentResult(ctx context.Context, in *ApplyPaymentResultRequest, opts ...grpc.CallOption) (*ApplyPaymentResultResponse, error)
 	RecordRefund(ctx context.Context, in *RecordRefundRequest, opts ...grpc.CallOption) (*RecordRefundResponse, error)
 	ReconcilePayment(ctx context.Context, in *ReconcilePaymentRequest, opts ...grpc.CallOption) (*ReconcilePaymentResponse, error)
@@ -261,6 +263,16 @@ func (c *billingServiceClient) CreatePaymentAttempt(ctx context.Context, in *Cre
 	return out, nil
 }
 
+func (c *billingServiceClient) GetPaymentAttempt(ctx context.Context, in *GetPaymentAttemptRequest, opts ...grpc.CallOption) (*GetPaymentAttemptResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPaymentAttemptResponse)
+	err := c.cc.Invoke(ctx, BillingService_GetPaymentAttempt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *billingServiceClient) ApplyPaymentResult(ctx context.Context, in *ApplyPaymentResultRequest, opts ...grpc.CallOption) (*ApplyPaymentResultResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ApplyPaymentResultResponse)
@@ -317,6 +329,7 @@ type BillingServiceServer interface {
 	GetInvoice(context.Context, *GetInvoiceRequest) (*GetInvoiceResponse, error)
 	ListInvoices(context.Context, *ListInvoicesRequest) (*ListInvoicesResponse, error)
 	CreatePaymentAttempt(context.Context, *CreatePaymentAttemptRequest) (*CreatePaymentAttemptResponse, error)
+	GetPaymentAttempt(context.Context, *GetPaymentAttemptRequest) (*GetPaymentAttemptResponse, error)
 	ApplyPaymentResult(context.Context, *ApplyPaymentResultRequest) (*ApplyPaymentResultResponse, error)
 	RecordRefund(context.Context, *RecordRefundRequest) (*RecordRefundResponse, error)
 	ReconcilePayment(context.Context, *ReconcilePaymentRequest) (*ReconcilePaymentResponse, error)
@@ -383,6 +396,9 @@ func (UnimplementedBillingServiceServer) ListInvoices(context.Context, *ListInvo
 }
 func (UnimplementedBillingServiceServer) CreatePaymentAttempt(context.Context, *CreatePaymentAttemptRequest) (*CreatePaymentAttemptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePaymentAttempt not implemented")
+}
+func (UnimplementedBillingServiceServer) GetPaymentAttempt(context.Context, *GetPaymentAttemptRequest) (*GetPaymentAttemptResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPaymentAttempt not implemented")
 }
 func (UnimplementedBillingServiceServer) ApplyPaymentResult(context.Context, *ApplyPaymentResultRequest) (*ApplyPaymentResultResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ApplyPaymentResult not implemented")
@@ -738,6 +754,24 @@ func _BillingService_CreatePaymentAttempt_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BillingService_GetPaymentAttempt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPaymentAttemptRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BillingServiceServer).GetPaymentAttempt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BillingService_GetPaymentAttempt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BillingServiceServer).GetPaymentAttempt(ctx, req.(*GetPaymentAttemptRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _BillingService_ApplyPaymentResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ApplyPaymentResultRequest)
 	if err := dec(in); err != nil {
@@ -870,6 +904,10 @@ var BillingService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePaymentAttempt",
 			Handler:    _BillingService_CreatePaymentAttempt_Handler,
+		},
+		{
+			MethodName: "GetPaymentAttempt",
+			Handler:    _BillingService_GetPaymentAttempt_Handler,
 		},
 		{
 			MethodName: "ApplyPaymentResult",

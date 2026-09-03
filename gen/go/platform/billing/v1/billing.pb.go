@@ -3451,6 +3451,110 @@ func (x *CreatePaymentAttemptResponse) GetDuplicate() bool {
 	return false
 }
 
+type GetPaymentAttemptRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	Id            string                 `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetPaymentAttemptRequest) Reset() {
+	*x = GetPaymentAttemptRequest{}
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPaymentAttemptRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPaymentAttemptRequest) ProtoMessage() {}
+
+func (x *GetPaymentAttemptRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPaymentAttemptRequest.ProtoReflect.Descriptor instead.
+func (*GetPaymentAttemptRequest) Descriptor() ([]byte, []int) {
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *GetPaymentAttemptRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetPaymentAttemptRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+func (x *GetPaymentAttemptRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetPaymentAttemptResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	PaymentAttempt *PaymentAttempt        `protobuf:"bytes,1,opt,name=payment_attempt,json=paymentAttempt,proto3" json:"payment_attempt,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetPaymentAttemptResponse) Reset() {
+	*x = GetPaymentAttemptResponse{}
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetPaymentAttemptResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetPaymentAttemptResponse) ProtoMessage() {}
+
+func (x *GetPaymentAttemptResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetPaymentAttemptResponse.ProtoReflect.Descriptor instead.
+func (*GetPaymentAttemptResponse) Descriptor() ([]byte, []int) {
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *GetPaymentAttemptResponse) GetPaymentAttempt() *PaymentAttempt {
+	if x != nil {
+		return x.PaymentAttempt
+	}
+	return nil
+}
+
 type ApplyPaymentResultRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	PaymentAttemptId  string                 `protobuf:"bytes,1,opt,name=payment_attempt_id,json=paymentAttemptId,proto3" json:"payment_attempt_id,omitempty"`
@@ -3466,7 +3570,7 @@ type ApplyPaymentResultRequest struct {
 
 func (x *ApplyPaymentResultRequest) Reset() {
 	*x = ApplyPaymentResultRequest{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[43]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3478,7 +3582,7 @@ func (x *ApplyPaymentResultRequest) String() string {
 func (*ApplyPaymentResultRequest) ProtoMessage() {}
 
 func (x *ApplyPaymentResultRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[43]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3491,7 +3595,7 @@ func (x *ApplyPaymentResultRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyPaymentResultRequest.ProtoReflect.Descriptor instead.
 func (*ApplyPaymentResultRequest) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{43}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *ApplyPaymentResultRequest) GetPaymentAttemptId() string {
@@ -3554,7 +3658,7 @@ type ApplyPaymentResultResponse struct {
 
 func (x *ApplyPaymentResultResponse) Reset() {
 	*x = ApplyPaymentResultResponse{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[44]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3566,7 +3670,7 @@ func (x *ApplyPaymentResultResponse) String() string {
 func (*ApplyPaymentResultResponse) ProtoMessage() {}
 
 func (x *ApplyPaymentResultResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[44]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3579,7 +3683,7 @@ func (x *ApplyPaymentResultResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ApplyPaymentResultResponse.ProtoReflect.Descriptor instead.
 func (*ApplyPaymentResultResponse) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{44}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *ApplyPaymentResultResponse) GetPaymentAttempt() *PaymentAttempt {
@@ -3619,7 +3723,7 @@ type RecordRefundRequest struct {
 
 func (x *RecordRefundRequest) Reset() {
 	*x = RecordRefundRequest{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[45]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3631,7 +3735,7 @@ func (x *RecordRefundRequest) String() string {
 func (*RecordRefundRequest) ProtoMessage() {}
 
 func (x *RecordRefundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[45]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3644,7 +3748,7 @@ func (x *RecordRefundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordRefundRequest.ProtoReflect.Descriptor instead.
 func (*RecordRefundRequest) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{45}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *RecordRefundRequest) GetPaymentAttemptId() string {
@@ -3714,7 +3818,7 @@ type RecordRefundResponse struct {
 
 func (x *RecordRefundResponse) Reset() {
 	*x = RecordRefundResponse{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[46]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3726,7 +3830,7 @@ func (x *RecordRefundResponse) String() string {
 func (*RecordRefundResponse) ProtoMessage() {}
 
 func (x *RecordRefundResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[46]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3739,7 +3843,7 @@ func (x *RecordRefundResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordRefundResponse.ProtoReflect.Descriptor instead.
 func (*RecordRefundResponse) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{46}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *RecordRefundResponse) GetRefund() *Refund {
@@ -3776,7 +3880,7 @@ type ReconcilePaymentRequest struct {
 
 func (x *ReconcilePaymentRequest) Reset() {
 	*x = ReconcilePaymentRequest{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[47]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3788,7 +3892,7 @@ func (x *ReconcilePaymentRequest) String() string {
 func (*ReconcilePaymentRequest) ProtoMessage() {}
 
 func (x *ReconcilePaymentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[47]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3801,7 +3905,7 @@ func (x *ReconcilePaymentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReconcilePaymentRequest.ProtoReflect.Descriptor instead.
 func (*ReconcilePaymentRequest) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{47}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *ReconcilePaymentRequest) GetProvider() string {
@@ -3852,7 +3956,7 @@ type ReconciliationMismatch struct {
 
 func (x *ReconciliationMismatch) Reset() {
 	*x = ReconciliationMismatch{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[48]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3864,7 +3968,7 @@ func (x *ReconciliationMismatch) String() string {
 func (*ReconciliationMismatch) ProtoMessage() {}
 
 func (x *ReconciliationMismatch) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[48]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3877,7 +3981,7 @@ func (x *ReconciliationMismatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReconciliationMismatch.ProtoReflect.Descriptor instead.
 func (*ReconciliationMismatch) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{48}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *ReconciliationMismatch) GetProviderPaymentId() string {
@@ -3925,7 +4029,7 @@ type ReconcilePaymentResponse struct {
 
 func (x *ReconcilePaymentResponse) Reset() {
 	*x = ReconcilePaymentResponse{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[49]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3937,7 +4041,7 @@ func (x *ReconcilePaymentResponse) String() string {
 func (*ReconcilePaymentResponse) ProtoMessage() {}
 
 func (x *ReconcilePaymentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[49]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3950,7 +4054,7 @@ func (x *ReconcilePaymentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReconcilePaymentResponse.ProtoReflect.Descriptor instead.
 func (*ReconcilePaymentResponse) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{49}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *ReconcilePaymentResponse) GetMismatches() []*ReconciliationMismatch {
@@ -3977,7 +4081,7 @@ type PlanChangedEvent struct {
 
 func (x *PlanChangedEvent) Reset() {
 	*x = PlanChangedEvent{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[50]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3989,7 +4093,7 @@ func (x *PlanChangedEvent) String() string {
 func (*PlanChangedEvent) ProtoMessage() {}
 
 func (x *PlanChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[50]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4002,7 +4106,7 @@ func (x *PlanChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlanChangedEvent.ProtoReflect.Descriptor instead.
 func (*PlanChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{50}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *PlanChangedEvent) GetPlan() *Plan {
@@ -4029,7 +4133,7 @@ type SubscriptionChangedEvent struct {
 
 func (x *SubscriptionChangedEvent) Reset() {
 	*x = SubscriptionChangedEvent{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[51]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4041,7 +4145,7 @@ func (x *SubscriptionChangedEvent) String() string {
 func (*SubscriptionChangedEvent) ProtoMessage() {}
 
 func (x *SubscriptionChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[51]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4054,7 +4158,7 @@ func (x *SubscriptionChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscriptionChangedEvent.ProtoReflect.Descriptor instead.
 func (*SubscriptionChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{51}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *SubscriptionChangedEvent) GetSubscription() *Subscription {
@@ -4082,7 +4186,7 @@ type InvoiceChangedEvent struct {
 
 func (x *InvoiceChangedEvent) Reset() {
 	*x = InvoiceChangedEvent{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[52]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4094,7 +4198,7 @@ func (x *InvoiceChangedEvent) String() string {
 func (*InvoiceChangedEvent) ProtoMessage() {}
 
 func (x *InvoiceChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[52]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4107,7 +4211,7 @@ func (x *InvoiceChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InvoiceChangedEvent.ProtoReflect.Descriptor instead.
 func (*InvoiceChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{52}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *InvoiceChangedEvent) GetInvoice() *Invoice {
@@ -4142,7 +4246,7 @@ type PaymentChangedEvent struct {
 
 func (x *PaymentChangedEvent) Reset() {
 	*x = PaymentChangedEvent{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[53]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4154,7 +4258,7 @@ func (x *PaymentChangedEvent) String() string {
 func (*PaymentChangedEvent) ProtoMessage() {}
 
 func (x *PaymentChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[53]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4167,7 +4271,7 @@ func (x *PaymentChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PaymentChangedEvent.ProtoReflect.Descriptor instead.
 func (*PaymentChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{53}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *PaymentChangedEvent) GetPaymentAttempt() *PaymentAttempt {
@@ -4202,7 +4306,7 @@ type RefundChangedEvent struct {
 
 func (x *RefundChangedEvent) Reset() {
 	*x = RefundChangedEvent{}
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[54]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4214,7 +4318,7 @@ func (x *RefundChangedEvent) String() string {
 func (*RefundChangedEvent) ProtoMessage() {}
 
 func (x *RefundChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_billing_v1_billing_proto_msgTypes[54]
+	mi := &file_platform_billing_v1_billing_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4227,7 +4331,7 @@ func (x *RefundChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefundChangedEvent.ProtoReflect.Descriptor instead.
 func (*RefundChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{54}
+	return file_platform_billing_v1_billing_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *RefundChangedEvent) GetRefund() *Refund {
@@ -4589,7 +4693,13 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x8a\x01\n" +
 	"\x1cCreatePaymentAttemptResponse\x12L\n" +
 	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\x12\x1c\n" +
-	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"\xc8\x02\n" +
+	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"n\n" +
+	"\x18GetPaymentAttemptRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x0e\n" +
+	"\x02id\x18\x03 \x01(\tR\x02id\"i\n" +
+	"\x19GetPaymentAttemptResponse\x12L\n" +
+	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\"\xc8\x02\n" +
 	"\x19ApplyPaymentResultRequest\x12,\n" +
 	"\x12payment_attempt_id\x18\x01 \x01(\tR\x10paymentAttemptId\x12.\n" +
 	"\x13provider_payment_id\x18\x02 \x01(\tR\x11providerPaymentId\x12*\n" +
@@ -4655,7 +4765,7 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x06refund\x18\x01 \x01(\v2\x1b.platform.billing.v1.RefundR\x06refund\x126\n" +
 	"\ainvoice\x18\x02 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x12\x1f\n" +
 	"\vchange_type\x18\x03 \x01(\tR\n" +
-	"changeType2\xe0\x11\n" +
+	"changeType2\xd4\x12\n" +
 	"\x0eBillingService\x12]\n" +
 	"\n" +
 	"CreatePlan\x12&.platform.billing.v1.CreatePlanRequest\x1a'.platform.billing.v1.CreatePlanResponse\x12]\n" +
@@ -4677,7 +4787,8 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\n" +
 	"GetInvoice\x12&.platform.billing.v1.GetInvoiceRequest\x1a'.platform.billing.v1.GetInvoiceResponse\x12c\n" +
 	"\fListInvoices\x12(.platform.billing.v1.ListInvoicesRequest\x1a).platform.billing.v1.ListInvoicesResponse\x12{\n" +
-	"\x14CreatePaymentAttempt\x120.platform.billing.v1.CreatePaymentAttemptRequest\x1a1.platform.billing.v1.CreatePaymentAttemptResponse\x12u\n" +
+	"\x14CreatePaymentAttempt\x120.platform.billing.v1.CreatePaymentAttemptRequest\x1a1.platform.billing.v1.CreatePaymentAttemptResponse\x12r\n" +
+	"\x11GetPaymentAttempt\x12-.platform.billing.v1.GetPaymentAttemptRequest\x1a..platform.billing.v1.GetPaymentAttemptResponse\x12u\n" +
 	"\x12ApplyPaymentResult\x12..platform.billing.v1.ApplyPaymentResultRequest\x1a/.platform.billing.v1.ApplyPaymentResultResponse\x12c\n" +
 	"\fRecordRefund\x12(.platform.billing.v1.RecordRefundRequest\x1a).platform.billing.v1.RecordRefundResponse\x12o\n" +
 	"\x10ReconcilePayment\x12,.platform.billing.v1.ReconcilePaymentRequest\x1a-.platform.billing.v1.ReconcilePaymentResponseBOZMgithub.com/lihongjie0209/platform-protos/gen/go/platform/billing/v1;billingv1b\x06proto3"
@@ -4694,7 +4805,7 @@ func file_platform_billing_v1_billing_proto_rawDescGZIP() []byte {
 	return file_platform_billing_v1_billing_proto_rawDescData
 }
 
-var file_platform_billing_v1_billing_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
+var file_platform_billing_v1_billing_proto_msgTypes = make([]protoimpl.MessageInfo, 57)
 var file_platform_billing_v1_billing_proto_goTypes = []any{
 	(*Plan)(nil),                         // 0: platform.billing.v1.Plan
 	(*UsagePrice)(nil),                   // 1: platform.billing.v1.UsagePrice
@@ -4739,146 +4850,151 @@ var file_platform_billing_v1_billing_proto_goTypes = []any{
 	(*ListInvoicesResponse)(nil),         // 40: platform.billing.v1.ListInvoicesResponse
 	(*CreatePaymentAttemptRequest)(nil),  // 41: platform.billing.v1.CreatePaymentAttemptRequest
 	(*CreatePaymentAttemptResponse)(nil), // 42: platform.billing.v1.CreatePaymentAttemptResponse
-	(*ApplyPaymentResultRequest)(nil),    // 43: platform.billing.v1.ApplyPaymentResultRequest
-	(*ApplyPaymentResultResponse)(nil),   // 44: platform.billing.v1.ApplyPaymentResultResponse
-	(*RecordRefundRequest)(nil),          // 45: platform.billing.v1.RecordRefundRequest
-	(*RecordRefundResponse)(nil),         // 46: platform.billing.v1.RecordRefundResponse
-	(*ReconcilePaymentRequest)(nil),      // 47: platform.billing.v1.ReconcilePaymentRequest
-	(*ReconciliationMismatch)(nil),       // 48: platform.billing.v1.ReconciliationMismatch
-	(*ReconcilePaymentResponse)(nil),     // 49: platform.billing.v1.ReconcilePaymentResponse
-	(*PlanChangedEvent)(nil),             // 50: platform.billing.v1.PlanChangedEvent
-	(*SubscriptionChangedEvent)(nil),     // 51: platform.billing.v1.SubscriptionChangedEvent
-	(*InvoiceChangedEvent)(nil),          // 52: platform.billing.v1.InvoiceChangedEvent
-	(*PaymentChangedEvent)(nil),          // 53: platform.billing.v1.PaymentChangedEvent
-	(*RefundChangedEvent)(nil),           // 54: platform.billing.v1.RefundChangedEvent
-	(*timestamppb.Timestamp)(nil),        // 55: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),               // 56: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                // 57: platform.common.v1.PageResult
+	(*GetPaymentAttemptRequest)(nil),     // 43: platform.billing.v1.GetPaymentAttemptRequest
+	(*GetPaymentAttemptResponse)(nil),    // 44: platform.billing.v1.GetPaymentAttemptResponse
+	(*ApplyPaymentResultRequest)(nil),    // 45: platform.billing.v1.ApplyPaymentResultRequest
+	(*ApplyPaymentResultResponse)(nil),   // 46: platform.billing.v1.ApplyPaymentResultResponse
+	(*RecordRefundRequest)(nil),          // 47: platform.billing.v1.RecordRefundRequest
+	(*RecordRefundResponse)(nil),         // 48: platform.billing.v1.RecordRefundResponse
+	(*ReconcilePaymentRequest)(nil),      // 49: platform.billing.v1.ReconcilePaymentRequest
+	(*ReconciliationMismatch)(nil),       // 50: platform.billing.v1.ReconciliationMismatch
+	(*ReconcilePaymentResponse)(nil),     // 51: platform.billing.v1.ReconcilePaymentResponse
+	(*PlanChangedEvent)(nil),             // 52: platform.billing.v1.PlanChangedEvent
+	(*SubscriptionChangedEvent)(nil),     // 53: platform.billing.v1.SubscriptionChangedEvent
+	(*InvoiceChangedEvent)(nil),          // 54: platform.billing.v1.InvoiceChangedEvent
+	(*PaymentChangedEvent)(nil),          // 55: platform.billing.v1.PaymentChangedEvent
+	(*RefundChangedEvent)(nil),           // 56: platform.billing.v1.RefundChangedEvent
+	(*timestamppb.Timestamp)(nil),        // 57: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),               // 58: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                // 59: platform.common.v1.PageResult
 }
 var file_platform_billing_v1_billing_proto_depIdxs = []int32{
-	55, // 0: platform.billing.v1.Plan.created_at:type_name -> google.protobuf.Timestamp
-	55, // 1: platform.billing.v1.Plan.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 2: platform.billing.v1.UsagePrice.created_at:type_name -> google.protobuf.Timestamp
-	55, // 3: platform.billing.v1.UsagePrice.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 4: platform.billing.v1.Subscription.current_period_start:type_name -> google.protobuf.Timestamp
-	55, // 5: platform.billing.v1.Subscription.current_period_end:type_name -> google.protobuf.Timestamp
-	55, // 6: platform.billing.v1.Subscription.canceled_at:type_name -> google.protobuf.Timestamp
-	55, // 7: platform.billing.v1.Subscription.created_at:type_name -> google.protobuf.Timestamp
-	55, // 8: platform.billing.v1.Subscription.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 9: platform.billing.v1.Subscription.pending_change_at:type_name -> google.protobuf.Timestamp
-	55, // 10: platform.billing.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
-	55, // 11: platform.billing.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
-	55, // 12: platform.billing.v1.Invoice.due_at:type_name -> google.protobuf.Timestamp
-	55, // 13: platform.billing.v1.Invoice.finalized_at:type_name -> google.protobuf.Timestamp
-	55, // 14: platform.billing.v1.Invoice.paid_at:type_name -> google.protobuf.Timestamp
-	55, // 15: platform.billing.v1.Invoice.created_at:type_name -> google.protobuf.Timestamp
-	55, // 16: platform.billing.v1.Invoice.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 17: platform.billing.v1.InvoiceLine.created_at:type_name -> google.protobuf.Timestamp
-	55, // 18: platform.billing.v1.InvoiceLine.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 19: platform.billing.v1.PaymentAttempt.processed_at:type_name -> google.protobuf.Timestamp
-	55, // 20: platform.billing.v1.PaymentAttempt.created_at:type_name -> google.protobuf.Timestamp
-	55, // 21: platform.billing.v1.PaymentAttempt.updated_at:type_name -> google.protobuf.Timestamp
-	55, // 22: platform.billing.v1.Refund.created_at:type_name -> google.protobuf.Timestamp
-	55, // 23: platform.billing.v1.Refund.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 0: platform.billing.v1.Plan.created_at:type_name -> google.protobuf.Timestamp
+	57, // 1: platform.billing.v1.Plan.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 2: platform.billing.v1.UsagePrice.created_at:type_name -> google.protobuf.Timestamp
+	57, // 3: platform.billing.v1.UsagePrice.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 4: platform.billing.v1.Subscription.current_period_start:type_name -> google.protobuf.Timestamp
+	57, // 5: platform.billing.v1.Subscription.current_period_end:type_name -> google.protobuf.Timestamp
+	57, // 6: platform.billing.v1.Subscription.canceled_at:type_name -> google.protobuf.Timestamp
+	57, // 7: platform.billing.v1.Subscription.created_at:type_name -> google.protobuf.Timestamp
+	57, // 8: platform.billing.v1.Subscription.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 9: platform.billing.v1.Subscription.pending_change_at:type_name -> google.protobuf.Timestamp
+	57, // 10: platform.billing.v1.Invoice.period_start:type_name -> google.protobuf.Timestamp
+	57, // 11: platform.billing.v1.Invoice.period_end:type_name -> google.protobuf.Timestamp
+	57, // 12: platform.billing.v1.Invoice.due_at:type_name -> google.protobuf.Timestamp
+	57, // 13: platform.billing.v1.Invoice.finalized_at:type_name -> google.protobuf.Timestamp
+	57, // 14: platform.billing.v1.Invoice.paid_at:type_name -> google.protobuf.Timestamp
+	57, // 15: platform.billing.v1.Invoice.created_at:type_name -> google.protobuf.Timestamp
+	57, // 16: platform.billing.v1.Invoice.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 17: platform.billing.v1.InvoiceLine.created_at:type_name -> google.protobuf.Timestamp
+	57, // 18: platform.billing.v1.InvoiceLine.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 19: platform.billing.v1.PaymentAttempt.processed_at:type_name -> google.protobuf.Timestamp
+	57, // 20: platform.billing.v1.PaymentAttempt.created_at:type_name -> google.protobuf.Timestamp
+	57, // 21: platform.billing.v1.PaymentAttempt.updated_at:type_name -> google.protobuf.Timestamp
+	57, // 22: platform.billing.v1.Refund.created_at:type_name -> google.protobuf.Timestamp
+	57, // 23: platform.billing.v1.Refund.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 24: platform.billing.v1.CreatePlanResponse.plan:type_name -> platform.billing.v1.Plan
 	0,  // 25: platform.billing.v1.UpdatePlanResponse.plan:type_name -> platform.billing.v1.Plan
 	0,  // 26: platform.billing.v1.GetPlanResponse.plan:type_name -> platform.billing.v1.Plan
 	1,  // 27: platform.billing.v1.GetPlanResponse.usage_prices:type_name -> platform.billing.v1.UsagePrice
-	56, // 28: platform.billing.v1.ListPlansRequest.page:type_name -> platform.common.v1.PageRequest
+	58, // 28: platform.billing.v1.ListPlansRequest.page:type_name -> platform.common.v1.PageRequest
 	0,  // 29: platform.billing.v1.ListPlansResponse.plans:type_name -> platform.billing.v1.Plan
-	57, // 30: platform.billing.v1.ListPlansResponse.page:type_name -> platform.common.v1.PageResult
+	59, // 30: platform.billing.v1.ListPlansResponse.page:type_name -> platform.common.v1.PageResult
 	1,  // 31: platform.billing.v1.UpsertUsagePriceResponse.usage_price:type_name -> platform.billing.v1.UsagePrice
-	55, // 32: platform.billing.v1.CreateSubscriptionRequest.starts_at:type_name -> google.protobuf.Timestamp
+	57, // 32: platform.billing.v1.CreateSubscriptionRequest.starts_at:type_name -> google.protobuf.Timestamp
 	2,  // 33: platform.billing.v1.CreateSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
 	2,  // 34: platform.billing.v1.ChangeSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
 	2,  // 35: platform.billing.v1.CancelSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
 	2,  // 36: platform.billing.v1.GetSubscriptionResponse.subscription:type_name -> platform.billing.v1.Subscription
 	0,  // 37: platform.billing.v1.GetSubscriptionResponse.plan:type_name -> platform.billing.v1.Plan
-	56, // 38: platform.billing.v1.ListSubscriptionsRequest.page:type_name -> platform.common.v1.PageRequest
+	58, // 38: platform.billing.v1.ListSubscriptionsRequest.page:type_name -> platform.common.v1.PageRequest
 	2,  // 39: platform.billing.v1.ListSubscriptionsResponse.subscriptions:type_name -> platform.billing.v1.Subscription
-	57, // 40: platform.billing.v1.ListSubscriptionsResponse.page:type_name -> platform.common.v1.PageResult
-	55, // 41: platform.billing.v1.PreviewInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
-	55, // 42: platform.billing.v1.PreviewInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
+	59, // 40: platform.billing.v1.ListSubscriptionsResponse.page:type_name -> platform.common.v1.PageResult
+	57, // 41: platform.billing.v1.PreviewInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
+	57, // 42: platform.billing.v1.PreviewInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
 	3,  // 43: platform.billing.v1.PreviewInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
 	4,  // 44: platform.billing.v1.PreviewInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 45: platform.billing.v1.GenerateInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
-	55, // 46: platform.billing.v1.GenerateInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
+	57, // 45: platform.billing.v1.GenerateInvoiceRequest.period_start:type_name -> google.protobuf.Timestamp
+	57, // 46: platform.billing.v1.GenerateInvoiceRequest.period_end:type_name -> google.protobuf.Timestamp
 	3,  // 47: platform.billing.v1.GenerateInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
 	4,  // 48: platform.billing.v1.GenerateInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 49: platform.billing.v1.FinalizeInvoiceRequest.due_at:type_name -> google.protobuf.Timestamp
+	57, // 49: platform.billing.v1.FinalizeInvoiceRequest.due_at:type_name -> google.protobuf.Timestamp
 	3,  // 50: platform.billing.v1.FinalizeInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
 	3,  // 51: platform.billing.v1.VoidInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
 	3,  // 52: platform.billing.v1.GetInvoiceResponse.invoice:type_name -> platform.billing.v1.Invoice
 	4,  // 53: platform.billing.v1.GetInvoiceResponse.lines:type_name -> platform.billing.v1.InvoiceLine
-	55, // 54: platform.billing.v1.ListInvoicesRequest.created_from:type_name -> google.protobuf.Timestamp
-	55, // 55: platform.billing.v1.ListInvoicesRequest.created_to:type_name -> google.protobuf.Timestamp
-	56, // 56: platform.billing.v1.ListInvoicesRequest.page:type_name -> platform.common.v1.PageRequest
+	57, // 54: platform.billing.v1.ListInvoicesRequest.created_from:type_name -> google.protobuf.Timestamp
+	57, // 55: platform.billing.v1.ListInvoicesRequest.created_to:type_name -> google.protobuf.Timestamp
+	58, // 56: platform.billing.v1.ListInvoicesRequest.page:type_name -> platform.common.v1.PageRequest
 	3,  // 57: platform.billing.v1.ListInvoicesResponse.invoices:type_name -> platform.billing.v1.Invoice
-	57, // 58: platform.billing.v1.ListInvoicesResponse.page:type_name -> platform.common.v1.PageResult
+	59, // 58: platform.billing.v1.ListInvoicesResponse.page:type_name -> platform.common.v1.PageResult
 	5,  // 59: platform.billing.v1.CreatePaymentAttemptResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	55, // 60: platform.billing.v1.ApplyPaymentResultRequest.processed_at:type_name -> google.protobuf.Timestamp
-	5,  // 61: platform.billing.v1.ApplyPaymentResultResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	3,  // 62: platform.billing.v1.ApplyPaymentResultResponse.invoice:type_name -> platform.billing.v1.Invoice
-	6,  // 63: platform.billing.v1.RecordRefundResponse.refund:type_name -> platform.billing.v1.Refund
-	3,  // 64: platform.billing.v1.RecordRefundResponse.invoice:type_name -> platform.billing.v1.Invoice
-	55, // 65: platform.billing.v1.ReconcilePaymentRequest.from:type_name -> google.protobuf.Timestamp
-	55, // 66: platform.billing.v1.ReconcilePaymentRequest.to:type_name -> google.protobuf.Timestamp
-	48, // 67: platform.billing.v1.ReconcilePaymentResponse.mismatches:type_name -> platform.billing.v1.ReconciliationMismatch
-	0,  // 68: platform.billing.v1.PlanChangedEvent.plan:type_name -> platform.billing.v1.Plan
-	2,  // 69: platform.billing.v1.SubscriptionChangedEvent.subscription:type_name -> platform.billing.v1.Subscription
-	3,  // 70: platform.billing.v1.InvoiceChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	4,  // 71: platform.billing.v1.InvoiceChangedEvent.lines:type_name -> platform.billing.v1.InvoiceLine
-	5,  // 72: platform.billing.v1.PaymentChangedEvent.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
-	3,  // 73: platform.billing.v1.PaymentChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	6,  // 74: platform.billing.v1.RefundChangedEvent.refund:type_name -> platform.billing.v1.Refund
-	3,  // 75: platform.billing.v1.RefundChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
-	7,  // 76: platform.billing.v1.BillingService.CreatePlan:input_type -> platform.billing.v1.CreatePlanRequest
-	9,  // 77: platform.billing.v1.BillingService.UpdatePlan:input_type -> platform.billing.v1.UpdatePlanRequest
-	11, // 78: platform.billing.v1.BillingService.GetPlan:input_type -> platform.billing.v1.GetPlanRequest
-	13, // 79: platform.billing.v1.BillingService.ListPlans:input_type -> platform.billing.v1.ListPlansRequest
-	15, // 80: platform.billing.v1.BillingService.UpsertUsagePrice:input_type -> platform.billing.v1.UpsertUsagePriceRequest
-	17, // 81: platform.billing.v1.BillingService.DeleteUsagePrice:input_type -> platform.billing.v1.DeleteUsagePriceRequest
-	19, // 82: platform.billing.v1.BillingService.CreateSubscription:input_type -> platform.billing.v1.CreateSubscriptionRequest
-	21, // 83: platform.billing.v1.BillingService.ChangeSubscription:input_type -> platform.billing.v1.ChangeSubscriptionRequest
-	23, // 84: platform.billing.v1.BillingService.CancelSubscription:input_type -> platform.billing.v1.CancelSubscriptionRequest
-	25, // 85: platform.billing.v1.BillingService.GetSubscription:input_type -> platform.billing.v1.GetSubscriptionRequest
-	27, // 86: platform.billing.v1.BillingService.ListSubscriptions:input_type -> platform.billing.v1.ListSubscriptionsRequest
-	29, // 87: platform.billing.v1.BillingService.PreviewInvoice:input_type -> platform.billing.v1.PreviewInvoiceRequest
-	31, // 88: platform.billing.v1.BillingService.GenerateInvoice:input_type -> platform.billing.v1.GenerateInvoiceRequest
-	33, // 89: platform.billing.v1.BillingService.FinalizeInvoice:input_type -> platform.billing.v1.FinalizeInvoiceRequest
-	35, // 90: platform.billing.v1.BillingService.VoidInvoice:input_type -> platform.billing.v1.VoidInvoiceRequest
-	37, // 91: platform.billing.v1.BillingService.GetInvoice:input_type -> platform.billing.v1.GetInvoiceRequest
-	39, // 92: platform.billing.v1.BillingService.ListInvoices:input_type -> platform.billing.v1.ListInvoicesRequest
-	41, // 93: platform.billing.v1.BillingService.CreatePaymentAttempt:input_type -> platform.billing.v1.CreatePaymentAttemptRequest
-	43, // 94: platform.billing.v1.BillingService.ApplyPaymentResult:input_type -> platform.billing.v1.ApplyPaymentResultRequest
-	45, // 95: platform.billing.v1.BillingService.RecordRefund:input_type -> platform.billing.v1.RecordRefundRequest
-	47, // 96: platform.billing.v1.BillingService.ReconcilePayment:input_type -> platform.billing.v1.ReconcilePaymentRequest
-	8,  // 97: platform.billing.v1.BillingService.CreatePlan:output_type -> platform.billing.v1.CreatePlanResponse
-	10, // 98: platform.billing.v1.BillingService.UpdatePlan:output_type -> platform.billing.v1.UpdatePlanResponse
-	12, // 99: platform.billing.v1.BillingService.GetPlan:output_type -> platform.billing.v1.GetPlanResponse
-	14, // 100: platform.billing.v1.BillingService.ListPlans:output_type -> platform.billing.v1.ListPlansResponse
-	16, // 101: platform.billing.v1.BillingService.UpsertUsagePrice:output_type -> platform.billing.v1.UpsertUsagePriceResponse
-	18, // 102: platform.billing.v1.BillingService.DeleteUsagePrice:output_type -> platform.billing.v1.DeleteUsagePriceResponse
-	20, // 103: platform.billing.v1.BillingService.CreateSubscription:output_type -> platform.billing.v1.CreateSubscriptionResponse
-	22, // 104: platform.billing.v1.BillingService.ChangeSubscription:output_type -> platform.billing.v1.ChangeSubscriptionResponse
-	24, // 105: platform.billing.v1.BillingService.CancelSubscription:output_type -> platform.billing.v1.CancelSubscriptionResponse
-	26, // 106: platform.billing.v1.BillingService.GetSubscription:output_type -> platform.billing.v1.GetSubscriptionResponse
-	28, // 107: platform.billing.v1.BillingService.ListSubscriptions:output_type -> platform.billing.v1.ListSubscriptionsResponse
-	30, // 108: platform.billing.v1.BillingService.PreviewInvoice:output_type -> platform.billing.v1.PreviewInvoiceResponse
-	32, // 109: platform.billing.v1.BillingService.GenerateInvoice:output_type -> platform.billing.v1.GenerateInvoiceResponse
-	34, // 110: platform.billing.v1.BillingService.FinalizeInvoice:output_type -> platform.billing.v1.FinalizeInvoiceResponse
-	36, // 111: platform.billing.v1.BillingService.VoidInvoice:output_type -> platform.billing.v1.VoidInvoiceResponse
-	38, // 112: platform.billing.v1.BillingService.GetInvoice:output_type -> platform.billing.v1.GetInvoiceResponse
-	40, // 113: platform.billing.v1.BillingService.ListInvoices:output_type -> platform.billing.v1.ListInvoicesResponse
-	42, // 114: platform.billing.v1.BillingService.CreatePaymentAttempt:output_type -> platform.billing.v1.CreatePaymentAttemptResponse
-	44, // 115: platform.billing.v1.BillingService.ApplyPaymentResult:output_type -> platform.billing.v1.ApplyPaymentResultResponse
-	46, // 116: platform.billing.v1.BillingService.RecordRefund:output_type -> platform.billing.v1.RecordRefundResponse
-	49, // 117: platform.billing.v1.BillingService.ReconcilePayment:output_type -> platform.billing.v1.ReconcilePaymentResponse
-	97, // [97:118] is the sub-list for method output_type
-	76, // [76:97] is the sub-list for method input_type
-	76, // [76:76] is the sub-list for extension type_name
-	76, // [76:76] is the sub-list for extension extendee
-	0,  // [0:76] is the sub-list for field type_name
+	5,  // 60: platform.billing.v1.GetPaymentAttemptResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	57, // 61: platform.billing.v1.ApplyPaymentResultRequest.processed_at:type_name -> google.protobuf.Timestamp
+	5,  // 62: platform.billing.v1.ApplyPaymentResultResponse.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	3,  // 63: platform.billing.v1.ApplyPaymentResultResponse.invoice:type_name -> platform.billing.v1.Invoice
+	6,  // 64: platform.billing.v1.RecordRefundResponse.refund:type_name -> platform.billing.v1.Refund
+	3,  // 65: platform.billing.v1.RecordRefundResponse.invoice:type_name -> platform.billing.v1.Invoice
+	57, // 66: platform.billing.v1.ReconcilePaymentRequest.from:type_name -> google.protobuf.Timestamp
+	57, // 67: platform.billing.v1.ReconcilePaymentRequest.to:type_name -> google.protobuf.Timestamp
+	50, // 68: platform.billing.v1.ReconcilePaymentResponse.mismatches:type_name -> platform.billing.v1.ReconciliationMismatch
+	0,  // 69: platform.billing.v1.PlanChangedEvent.plan:type_name -> platform.billing.v1.Plan
+	2,  // 70: platform.billing.v1.SubscriptionChangedEvent.subscription:type_name -> platform.billing.v1.Subscription
+	3,  // 71: platform.billing.v1.InvoiceChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	4,  // 72: platform.billing.v1.InvoiceChangedEvent.lines:type_name -> platform.billing.v1.InvoiceLine
+	5,  // 73: platform.billing.v1.PaymentChangedEvent.payment_attempt:type_name -> platform.billing.v1.PaymentAttempt
+	3,  // 74: platform.billing.v1.PaymentChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	6,  // 75: platform.billing.v1.RefundChangedEvent.refund:type_name -> platform.billing.v1.Refund
+	3,  // 76: platform.billing.v1.RefundChangedEvent.invoice:type_name -> platform.billing.v1.Invoice
+	7,  // 77: platform.billing.v1.BillingService.CreatePlan:input_type -> platform.billing.v1.CreatePlanRequest
+	9,  // 78: platform.billing.v1.BillingService.UpdatePlan:input_type -> platform.billing.v1.UpdatePlanRequest
+	11, // 79: platform.billing.v1.BillingService.GetPlan:input_type -> platform.billing.v1.GetPlanRequest
+	13, // 80: platform.billing.v1.BillingService.ListPlans:input_type -> platform.billing.v1.ListPlansRequest
+	15, // 81: platform.billing.v1.BillingService.UpsertUsagePrice:input_type -> platform.billing.v1.UpsertUsagePriceRequest
+	17, // 82: platform.billing.v1.BillingService.DeleteUsagePrice:input_type -> platform.billing.v1.DeleteUsagePriceRequest
+	19, // 83: platform.billing.v1.BillingService.CreateSubscription:input_type -> platform.billing.v1.CreateSubscriptionRequest
+	21, // 84: platform.billing.v1.BillingService.ChangeSubscription:input_type -> platform.billing.v1.ChangeSubscriptionRequest
+	23, // 85: platform.billing.v1.BillingService.CancelSubscription:input_type -> platform.billing.v1.CancelSubscriptionRequest
+	25, // 86: platform.billing.v1.BillingService.GetSubscription:input_type -> platform.billing.v1.GetSubscriptionRequest
+	27, // 87: platform.billing.v1.BillingService.ListSubscriptions:input_type -> platform.billing.v1.ListSubscriptionsRequest
+	29, // 88: platform.billing.v1.BillingService.PreviewInvoice:input_type -> platform.billing.v1.PreviewInvoiceRequest
+	31, // 89: platform.billing.v1.BillingService.GenerateInvoice:input_type -> platform.billing.v1.GenerateInvoiceRequest
+	33, // 90: platform.billing.v1.BillingService.FinalizeInvoice:input_type -> platform.billing.v1.FinalizeInvoiceRequest
+	35, // 91: platform.billing.v1.BillingService.VoidInvoice:input_type -> platform.billing.v1.VoidInvoiceRequest
+	37, // 92: platform.billing.v1.BillingService.GetInvoice:input_type -> platform.billing.v1.GetInvoiceRequest
+	39, // 93: platform.billing.v1.BillingService.ListInvoices:input_type -> platform.billing.v1.ListInvoicesRequest
+	41, // 94: platform.billing.v1.BillingService.CreatePaymentAttempt:input_type -> platform.billing.v1.CreatePaymentAttemptRequest
+	43, // 95: platform.billing.v1.BillingService.GetPaymentAttempt:input_type -> platform.billing.v1.GetPaymentAttemptRequest
+	45, // 96: platform.billing.v1.BillingService.ApplyPaymentResult:input_type -> platform.billing.v1.ApplyPaymentResultRequest
+	47, // 97: platform.billing.v1.BillingService.RecordRefund:input_type -> platform.billing.v1.RecordRefundRequest
+	49, // 98: platform.billing.v1.BillingService.ReconcilePayment:input_type -> platform.billing.v1.ReconcilePaymentRequest
+	8,  // 99: platform.billing.v1.BillingService.CreatePlan:output_type -> platform.billing.v1.CreatePlanResponse
+	10, // 100: platform.billing.v1.BillingService.UpdatePlan:output_type -> platform.billing.v1.UpdatePlanResponse
+	12, // 101: platform.billing.v1.BillingService.GetPlan:output_type -> platform.billing.v1.GetPlanResponse
+	14, // 102: platform.billing.v1.BillingService.ListPlans:output_type -> platform.billing.v1.ListPlansResponse
+	16, // 103: platform.billing.v1.BillingService.UpsertUsagePrice:output_type -> platform.billing.v1.UpsertUsagePriceResponse
+	18, // 104: platform.billing.v1.BillingService.DeleteUsagePrice:output_type -> platform.billing.v1.DeleteUsagePriceResponse
+	20, // 105: platform.billing.v1.BillingService.CreateSubscription:output_type -> platform.billing.v1.CreateSubscriptionResponse
+	22, // 106: platform.billing.v1.BillingService.ChangeSubscription:output_type -> platform.billing.v1.ChangeSubscriptionResponse
+	24, // 107: platform.billing.v1.BillingService.CancelSubscription:output_type -> platform.billing.v1.CancelSubscriptionResponse
+	26, // 108: platform.billing.v1.BillingService.GetSubscription:output_type -> platform.billing.v1.GetSubscriptionResponse
+	28, // 109: platform.billing.v1.BillingService.ListSubscriptions:output_type -> platform.billing.v1.ListSubscriptionsResponse
+	30, // 110: platform.billing.v1.BillingService.PreviewInvoice:output_type -> platform.billing.v1.PreviewInvoiceResponse
+	32, // 111: platform.billing.v1.BillingService.GenerateInvoice:output_type -> platform.billing.v1.GenerateInvoiceResponse
+	34, // 112: platform.billing.v1.BillingService.FinalizeInvoice:output_type -> platform.billing.v1.FinalizeInvoiceResponse
+	36, // 113: platform.billing.v1.BillingService.VoidInvoice:output_type -> platform.billing.v1.VoidInvoiceResponse
+	38, // 114: platform.billing.v1.BillingService.GetInvoice:output_type -> platform.billing.v1.GetInvoiceResponse
+	40, // 115: platform.billing.v1.BillingService.ListInvoices:output_type -> platform.billing.v1.ListInvoicesResponse
+	42, // 116: platform.billing.v1.BillingService.CreatePaymentAttempt:output_type -> platform.billing.v1.CreatePaymentAttemptResponse
+	44, // 117: platform.billing.v1.BillingService.GetPaymentAttempt:output_type -> platform.billing.v1.GetPaymentAttemptResponse
+	46, // 118: platform.billing.v1.BillingService.ApplyPaymentResult:output_type -> platform.billing.v1.ApplyPaymentResultResponse
+	48, // 119: platform.billing.v1.BillingService.RecordRefund:output_type -> platform.billing.v1.RecordRefundResponse
+	51, // 120: platform.billing.v1.BillingService.ReconcilePayment:output_type -> platform.billing.v1.ReconcilePaymentResponse
+	99, // [99:121] is the sub-list for method output_type
+	77, // [77:99] is the sub-list for method input_type
+	77, // [77:77] is the sub-list for extension type_name
+	77, // [77:77] is the sub-list for extension extendee
+	0,  // [0:77] is the sub-list for field type_name
 }
 
 func init() { file_platform_billing_v1_billing_proto_init() }
@@ -4892,7 +5008,7 @@ func file_platform_billing_v1_billing_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_billing_v1_billing_proto_rawDesc), len(file_platform_billing_v1_billing_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   55,
+			NumMessages:   57,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
