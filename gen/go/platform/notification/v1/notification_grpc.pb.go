@@ -19,6 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	NotificationService_PutProvider_FullMethodName           = "/platform.notification.v1.NotificationService/PutProvider"
+	NotificationService_ListProviders_FullMethodName         = "/platform.notification.v1.NotificationService/ListProviders"
 	NotificationService_PutTemplate_FullMethodName           = "/platform.notification.v1.NotificationService/PutTemplate"
 	NotificationService_ListTemplates_FullMethodName         = "/platform.notification.v1.NotificationService/ListTemplates"
 	NotificationService_Send_FullMethodName                  = "/platform.notification.v1.NotificationService/Send"
@@ -31,6 +33,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type NotificationServiceClient interface {
+	PutProvider(ctx context.Context, in *PutProviderRequest, opts ...grpc.CallOption) (*PutProviderResponse, error)
+	ListProviders(ctx context.Context, in *ListProvidersRequest, opts ...grpc.CallOption) (*ListProvidersResponse, error)
 	PutTemplate(ctx context.Context, in *PutTemplateRequest, opts ...grpc.CallOption) (*PutTemplateResponse, error)
 	ListTemplates(ctx context.Context, in *ListTemplatesRequest, opts ...grpc.CallOption) (*ListTemplatesResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
@@ -45,6 +49,26 @@ type notificationServiceClient struct {
 
 func NewNotificationServiceClient(cc grpc.ClientConnInterface) NotificationServiceClient {
 	return &notificationServiceClient{cc}
+}
+
+func (c *notificationServiceClient) PutProvider(ctx context.Context, in *PutProviderRequest, opts ...grpc.CallOption) (*PutProviderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PutProviderResponse)
+	err := c.cc.Invoke(ctx, NotificationService_PutProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notificationServiceClient) ListProviders(ctx context.Context, in *ListProvidersRequest, opts ...grpc.CallOption) (*ListProvidersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListProvidersResponse)
+	err := c.cc.Invoke(ctx, NotificationService_ListProviders_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *notificationServiceClient) PutTemplate(ctx context.Context, in *PutTemplateRequest, opts ...grpc.CallOption) (*PutTemplateResponse, error) {
@@ -111,6 +135,8 @@ func (c *notificationServiceClient) ListDeliveries(ctx context.Context, in *List
 // All implementations must embed UnimplementedNotificationServiceServer
 // for forward compatibility.
 type NotificationServiceServer interface {
+	PutProvider(context.Context, *PutProviderRequest) (*PutProviderResponse, error)
+	ListProviders(context.Context, *ListProvidersRequest) (*ListProvidersResponse, error)
 	PutTemplate(context.Context, *PutTemplateRequest) (*PutTemplateResponse, error)
 	ListTemplates(context.Context, *ListTemplatesRequest) (*ListTemplatesResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
@@ -127,6 +153,12 @@ type NotificationServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedNotificationServiceServer struct{}
 
+func (UnimplementedNotificationServiceServer) PutProvider(context.Context, *PutProviderRequest) (*PutProviderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PutProvider not implemented")
+}
+func (UnimplementedNotificationServiceServer) ListProviders(context.Context, *ListProvidersRequest) (*ListProvidersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListProviders not implemented")
+}
 func (UnimplementedNotificationServiceServer) PutTemplate(context.Context, *PutTemplateRequest) (*PutTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PutTemplate not implemented")
 }
@@ -164,6 +196,42 @@ func RegisterNotificationServiceServer(s grpc.ServiceRegistrar, srv Notification
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&NotificationService_ServiceDesc, srv)
+}
+
+func _NotificationService_PutProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PutProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationServiceServer).PutProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotificationService_PutProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationServiceServer).PutProvider(ctx, req.(*PutProviderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NotificationService_ListProviders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListProvidersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationServiceServer).ListProviders(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotificationService_ListProviders_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationServiceServer).ListProviders(ctx, req.(*ListProvidersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _NotificationService_PutTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -281,6 +349,14 @@ var NotificationService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "platform.notification.v1.NotificationService",
 	HandlerType: (*NotificationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "PutProvider",
+			Handler:    _NotificationService_PutProvider_Handler,
+		},
+		{
+			MethodName: "ListProviders",
+			Handler:    _NotificationService_ListProviders_Handler,
+		},
 		{
 			MethodName: "PutTemplate",
 			Handler:    _NotificationService_PutTemplate_Handler,

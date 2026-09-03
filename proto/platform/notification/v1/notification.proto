@@ -8,12 +8,49 @@ import "platform/common/v1/common.proto";
 option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/notification/v1;notificationv1";
 
 service NotificationService {
+  rpc PutProvider(PutProviderRequest) returns (PutProviderResponse);
+  rpc ListProviders(ListProvidersRequest) returns (ListProvidersResponse);
   rpc PutTemplate(PutTemplateRequest) returns (PutTemplateResponse);
   rpc ListTemplates(ListTemplatesRequest) returns (ListTemplatesResponse);
   rpc Send(SendRequest) returns (SendResponse);
   rpc RecordProviderReceipt(RecordProviderReceiptRequest) returns (RecordProviderReceiptResponse);
   rpc GetDelivery(GetDeliveryRequest) returns (GetDeliveryResponse);
   rpc ListDeliveries(ListDeliveriesRequest) returns (ListDeliveriesResponse);
+}
+message Provider {
+  string id = 1;
+  string tenant_id = 2;
+  string application_id = 3;
+  string code = 4;
+  string channel = 5;
+  string upstream = 6;
+  string path = 7;
+  int32 priority = 8;
+  string status = 9;
+  int64 version = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+  string created_by = 13;
+  string updated_by = 14;
+}
+message PutProviderRequest {
+  Provider provider = 1;
+  int64 expected_version = 2;
+}
+message PutProviderResponse {
+  Provider provider = 1;
+}
+message ListProvidersRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string keyword = 3;
+  string channel = 4;
+  string status = 5;
+  platform.common.v1.PageRequest page = 6;
+}
+message ListProvidersResponse {
+  repeated Provider providers = 1;
+  platform.common.v1.PageResult page = 2;
 }
 message Template {
   string id = 1;
