@@ -267,6 +267,110 @@ func (x *PutProviderResponse) GetProvider() *Provider {
 	return nil
 }
 
+type GetProviderRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProviderRequest) Reset() {
+	*x = GetProviderRequest{}
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProviderRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProviderRequest) ProtoMessage() {}
+
+func (x *GetProviderRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProviderRequest.ProtoReflect.Descriptor instead.
+func (*GetProviderRequest) Descriptor() ([]byte, []int) {
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetProviderRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetProviderRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+func (x *GetProviderRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+type GetProviderResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Provider      *Provider              `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetProviderResponse) Reset() {
+	*x = GetProviderResponse{}
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetProviderResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetProviderResponse) ProtoMessage() {}
+
+func (x *GetProviderResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetProviderResponse.ProtoReflect.Descriptor instead.
+func (*GetProviderResponse) Descriptor() ([]byte, []int) {
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetProviderResponse) GetProvider() *Provider {
+	if x != nil {
+		return x.Provider
+	}
+	return nil
+}
+
 type ListProvidersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -281,7 +385,7 @@ type ListProvidersRequest struct {
 
 func (x *ListProvidersRequest) Reset() {
 	*x = ListProvidersRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[3]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -293,7 +397,7 @@ func (x *ListProvidersRequest) String() string {
 func (*ListProvidersRequest) ProtoMessage() {}
 
 func (x *ListProvidersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[3]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -306,7 +410,7 @@ func (x *ListProvidersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProvidersRequest.ProtoReflect.Descriptor instead.
 func (*ListProvidersRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{3}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListProvidersRequest) GetTenantId() string {
@@ -361,7 +465,7 @@ type ListProvidersResponse struct {
 
 func (x *ListProvidersResponse) Reset() {
 	*x = ListProvidersResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[4]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -373,7 +477,7 @@ func (x *ListProvidersResponse) String() string {
 func (*ListProvidersResponse) ProtoMessage() {}
 
 func (x *ListProvidersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[4]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +490,7 @@ func (x *ListProvidersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListProvidersResponse.ProtoReflect.Descriptor instead.
 func (*ListProvidersResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{4}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ListProvidersResponse) GetProviders() []*Provider {
@@ -425,7 +529,7 @@ type Template struct {
 
 func (x *Template) Reset() {
 	*x = Template{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[5]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -437,7 +541,7 @@ func (x *Template) String() string {
 func (*Template) ProtoMessage() {}
 
 func (x *Template) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[5]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -450,7 +554,7 @@ func (x *Template) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Template.ProtoReflect.Descriptor instead.
 func (*Template) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{5}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Template) GetId() string {
@@ -577,7 +681,7 @@ type Delivery struct {
 
 func (x *Delivery) Reset() {
 	*x = Delivery{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[6]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -589,7 +693,7 @@ func (x *Delivery) String() string {
 func (*Delivery) ProtoMessage() {}
 
 func (x *Delivery) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[6]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -602,7 +706,7 @@ func (x *Delivery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Delivery.ProtoReflect.Descriptor instead.
 func (*Delivery) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{6}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Delivery) GetId() string {
@@ -741,7 +845,7 @@ type PutTemplateRequest struct {
 
 func (x *PutTemplateRequest) Reset() {
 	*x = PutTemplateRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[7]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -753,7 +857,7 @@ func (x *PutTemplateRequest) String() string {
 func (*PutTemplateRequest) ProtoMessage() {}
 
 func (x *PutTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[7]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -766,7 +870,7 @@ func (x *PutTemplateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutTemplateRequest.ProtoReflect.Descriptor instead.
 func (*PutTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{7}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PutTemplateRequest) GetTemplate() *Template {
@@ -792,7 +896,7 @@ type PutTemplateResponse struct {
 
 func (x *PutTemplateResponse) Reset() {
 	*x = PutTemplateResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[8]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -804,7 +908,7 @@ func (x *PutTemplateResponse) String() string {
 func (*PutTemplateResponse) ProtoMessage() {}
 
 func (x *PutTemplateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[8]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -817,10 +921,130 @@ func (x *PutTemplateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutTemplateResponse.ProtoReflect.Descriptor instead.
 func (*PutTemplateResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{8}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *PutTemplateResponse) GetTemplate() *Template {
+	if x != nil {
+		return x.Template
+	}
+	return nil
+}
+
+type GetTemplateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ApplicationId string                 `protobuf:"bytes,2,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Channel       string                 `protobuf:"bytes,4,opt,name=channel,proto3" json:"channel,omitempty"`
+	Locale        string                 `protobuf:"bytes,5,opt,name=locale,proto3" json:"locale,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTemplateRequest) Reset() {
+	*x = GetTemplateRequest{}
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTemplateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTemplateRequest) ProtoMessage() {}
+
+func (x *GetTemplateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTemplateRequest.ProtoReflect.Descriptor instead.
+func (*GetTemplateRequest) Descriptor() ([]byte, []int) {
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetTemplateRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetTemplateRequest) GetApplicationId() string {
+	if x != nil {
+		return x.ApplicationId
+	}
+	return ""
+}
+
+func (x *GetTemplateRequest) GetCode() string {
+	if x != nil {
+		return x.Code
+	}
+	return ""
+}
+
+func (x *GetTemplateRequest) GetChannel() string {
+	if x != nil {
+		return x.Channel
+	}
+	return ""
+}
+
+func (x *GetTemplateRequest) GetLocale() string {
+	if x != nil {
+		return x.Locale
+	}
+	return ""
+}
+
+type GetTemplateResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Template      *Template              `protobuf:"bytes,1,opt,name=template,proto3" json:"template,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTemplateResponse) Reset() {
+	*x = GetTemplateResponse{}
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTemplateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTemplateResponse) ProtoMessage() {}
+
+func (x *GetTemplateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTemplateResponse.ProtoReflect.Descriptor instead.
+func (*GetTemplateResponse) Descriptor() ([]byte, []int) {
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetTemplateResponse) GetTemplate() *Template {
 	if x != nil {
 		return x.Template
 	}
@@ -841,7 +1065,7 @@ type ListTemplatesRequest struct {
 
 func (x *ListTemplatesRequest) Reset() {
 	*x = ListTemplatesRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[9]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -853,7 +1077,7 @@ func (x *ListTemplatesRequest) String() string {
 func (*ListTemplatesRequest) ProtoMessage() {}
 
 func (x *ListTemplatesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[9]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -866,7 +1090,7 @@ func (x *ListTemplatesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTemplatesRequest.ProtoReflect.Descriptor instead.
 func (*ListTemplatesRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{9}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListTemplatesRequest) GetTenantId() string {
@@ -921,7 +1145,7 @@ type ListTemplatesResponse struct {
 
 func (x *ListTemplatesResponse) Reset() {
 	*x = ListTemplatesResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[10]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -933,7 +1157,7 @@ func (x *ListTemplatesResponse) String() string {
 func (*ListTemplatesResponse) ProtoMessage() {}
 
 func (x *ListTemplatesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[10]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -946,7 +1170,7 @@ func (x *ListTemplatesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListTemplatesResponse.ProtoReflect.Descriptor instead.
 func (*ListTemplatesResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{10}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListTemplatesResponse) GetTemplates() []*Template {
@@ -979,7 +1203,7 @@ type SendRequest struct {
 
 func (x *SendRequest) Reset() {
 	*x = SendRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[11]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -991,7 +1215,7 @@ func (x *SendRequest) String() string {
 func (*SendRequest) ProtoMessage() {}
 
 func (x *SendRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[11]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1004,7 +1228,7 @@ func (x *SendRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendRequest.ProtoReflect.Descriptor instead.
 func (*SendRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{11}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SendRequest) GetTenantId() string {
@@ -1072,7 +1296,7 @@ type SendResponse struct {
 
 func (x *SendResponse) Reset() {
 	*x = SendResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[12]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1084,7 +1308,7 @@ func (x *SendResponse) String() string {
 func (*SendResponse) ProtoMessage() {}
 
 func (x *SendResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[12]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1097,7 +1321,7 @@ func (x *SendResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendResponse.ProtoReflect.Descriptor instead.
 func (*SendResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{12}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SendResponse) GetDelivery() *Delivery {
@@ -1121,7 +1345,7 @@ type RecordProviderReceiptRequest struct {
 
 func (x *RecordProviderReceiptRequest) Reset() {
 	*x = RecordProviderReceiptRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[13]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1133,7 +1357,7 @@ func (x *RecordProviderReceiptRequest) String() string {
 func (*RecordProviderReceiptRequest) ProtoMessage() {}
 
 func (x *RecordProviderReceiptRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[13]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1146,7 +1370,7 @@ func (x *RecordProviderReceiptRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordProviderReceiptRequest.ProtoReflect.Descriptor instead.
 func (*RecordProviderReceiptRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{13}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *RecordProviderReceiptRequest) GetTenantId() string {
@@ -1200,7 +1424,7 @@ type RecordProviderReceiptResponse struct {
 
 func (x *RecordProviderReceiptResponse) Reset() {
 	*x = RecordProviderReceiptResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[14]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1212,7 +1436,7 @@ func (x *RecordProviderReceiptResponse) String() string {
 func (*RecordProviderReceiptResponse) ProtoMessage() {}
 
 func (x *RecordProviderReceiptResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[14]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1225,7 +1449,7 @@ func (x *RecordProviderReceiptResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordProviderReceiptResponse.ProtoReflect.Descriptor instead.
 func (*RecordProviderReceiptResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{14}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *RecordProviderReceiptResponse) GetDelivery() *Delivery {
@@ -1246,7 +1470,7 @@ type GetDeliveryRequest struct {
 
 func (x *GetDeliveryRequest) Reset() {
 	*x = GetDeliveryRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[15]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1258,7 +1482,7 @@ func (x *GetDeliveryRequest) String() string {
 func (*GetDeliveryRequest) ProtoMessage() {}
 
 func (x *GetDeliveryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[15]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1271,7 +1495,7 @@ func (x *GetDeliveryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDeliveryRequest.ProtoReflect.Descriptor instead.
 func (*GetDeliveryRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{15}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetDeliveryRequest) GetId() string {
@@ -1304,7 +1528,7 @@ type GetDeliveryResponse struct {
 
 func (x *GetDeliveryResponse) Reset() {
 	*x = GetDeliveryResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[16]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1316,7 +1540,7 @@ func (x *GetDeliveryResponse) String() string {
 func (*GetDeliveryResponse) ProtoMessage() {}
 
 func (x *GetDeliveryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[16]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1329,7 +1553,7 @@ func (x *GetDeliveryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDeliveryResponse.ProtoReflect.Descriptor instead.
 func (*GetDeliveryResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{16}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetDeliveryResponse) GetDelivery() *Delivery {
@@ -1351,7 +1575,7 @@ type ListDeliveriesRequest struct {
 
 func (x *ListDeliveriesRequest) Reset() {
 	*x = ListDeliveriesRequest{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[17]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1363,7 +1587,7 @@ func (x *ListDeliveriesRequest) String() string {
 func (*ListDeliveriesRequest) ProtoMessage() {}
 
 func (x *ListDeliveriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[17]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1376,7 +1600,7 @@ func (x *ListDeliveriesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDeliveriesRequest.ProtoReflect.Descriptor instead.
 func (*ListDeliveriesRequest) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{17}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ListDeliveriesRequest) GetTenantId() string {
@@ -1417,7 +1641,7 @@ type ListDeliveriesResponse struct {
 
 func (x *ListDeliveriesResponse) Reset() {
 	*x = ListDeliveriesResponse{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[18]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1429,7 +1653,7 @@ func (x *ListDeliveriesResponse) String() string {
 func (*ListDeliveriesResponse) ProtoMessage() {}
 
 func (x *ListDeliveriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[18]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1442,7 +1666,7 @@ func (x *ListDeliveriesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDeliveriesResponse.ProtoReflect.Descriptor instead.
 func (*ListDeliveriesResponse) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{18}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListDeliveriesResponse) GetDeliveries() []*Delivery {
@@ -1468,7 +1692,7 @@ type NotificationRequestedEvent struct {
 
 func (x *NotificationRequestedEvent) Reset() {
 	*x = NotificationRequestedEvent{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[19]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1480,7 +1704,7 @@ func (x *NotificationRequestedEvent) String() string {
 func (*NotificationRequestedEvent) ProtoMessage() {}
 
 func (x *NotificationRequestedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[19]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1493,7 +1717,7 @@ func (x *NotificationRequestedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotificationRequestedEvent.ProtoReflect.Descriptor instead.
 func (*NotificationRequestedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{19}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *NotificationRequestedEvent) GetDelivery() *Delivery {
@@ -1512,7 +1736,7 @@ type NotificationStatusChangedEvent struct {
 
 func (x *NotificationStatusChangedEvent) Reset() {
 	*x = NotificationStatusChangedEvent{}
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[20]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1524,7 +1748,7 @@ func (x *NotificationStatusChangedEvent) String() string {
 func (*NotificationStatusChangedEvent) ProtoMessage() {}
 
 func (x *NotificationStatusChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_notification_v1_notification_proto_msgTypes[20]
+	mi := &file_platform_notification_v1_notification_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1537,7 +1761,7 @@ func (x *NotificationStatusChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NotificationStatusChangedEvent.ProtoReflect.Descriptor instead.
 func (*NotificationStatusChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{20}
+	return file_platform_notification_v1_notification_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *NotificationStatusChangedEvent) GetDelivery() *Delivery {
@@ -1576,6 +1800,12 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\bprovider\x18\x01 \x01(\v2\".platform.notification.v1.ProviderR\bprovider\x12)\n" +
 	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"U\n" +
 	"\x13PutProviderResponse\x12>\n" +
+	"\bprovider\x18\x01 \x01(\v2\".platform.notification.v1.ProviderR\bprovider\"l\n" +
+	"\x12GetProviderRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\"U\n" +
+	"\x13GetProviderResponse\x12>\n" +
 	"\bprovider\x18\x01 \x01(\v2\".platform.notification.v1.ProviderR\bprovider\"\xdb\x01\n" +
 	"\x14ListProvidersRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
@@ -1638,6 +1868,14 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\x12)\n" +
 	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"U\n" +
 	"\x13PutTemplateResponse\x12>\n" +
+	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\"\x9e\x01\n" +
+	"\x12GetTemplateRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12%\n" +
+	"\x0eapplication_id\x18\x02 \x01(\tR\rapplicationId\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x18\n" +
+	"\achannel\x18\x04 \x01(\tR\achannel\x12\x16\n" +
+	"\x06locale\x18\x05 \x01(\tR\x06locale\"U\n" +
+	"\x13GetTemplateResponse\x12>\n" +
 	"\btemplate\x18\x01 \x01(\v2\".platform.notification.v1.TemplateR\btemplate\"\xdb\x01\n" +
 	"\x14ListTemplatesRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x18\n" +
@@ -1691,11 +1929,13 @@ const file_platform_notification_v1_notification_proto_rawDesc = "" +
 	"\x1aNotificationRequestedEvent\x12>\n" +
 	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery\"`\n" +
 	"\x1eNotificationStatusChangedEvent\x12>\n" +
-	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery2\x94\a\n" +
+	"\bdelivery\x18\x01 \x01(\v2\".platform.notification.v1.DeliveryR\bdelivery2\xec\b\n" +
 	"\x13NotificationService\x12j\n" +
-	"\vPutProvider\x12,.platform.notification.v1.PutProviderRequest\x1a-.platform.notification.v1.PutProviderResponse\x12p\n" +
+	"\vPutProvider\x12,.platform.notification.v1.PutProviderRequest\x1a-.platform.notification.v1.PutProviderResponse\x12j\n" +
+	"\vGetProvider\x12,.platform.notification.v1.GetProviderRequest\x1a-.platform.notification.v1.GetProviderResponse\x12p\n" +
 	"\rListProviders\x12..platform.notification.v1.ListProvidersRequest\x1a/.platform.notification.v1.ListProvidersResponse\x12j\n" +
-	"\vPutTemplate\x12,.platform.notification.v1.PutTemplateRequest\x1a-.platform.notification.v1.PutTemplateResponse\x12p\n" +
+	"\vPutTemplate\x12,.platform.notification.v1.PutTemplateRequest\x1a-.platform.notification.v1.PutTemplateResponse\x12j\n" +
+	"\vGetTemplate\x12,.platform.notification.v1.GetTemplateRequest\x1a-.platform.notification.v1.GetTemplateResponse\x12p\n" +
 	"\rListTemplates\x12..platform.notification.v1.ListTemplatesRequest\x1a/.platform.notification.v1.ListTemplatesResponse\x12U\n" +
 	"\x04Send\x12%.platform.notification.v1.SendRequest\x1a&.platform.notification.v1.SendResponse\x12\x88\x01\n" +
 	"\x15RecordProviderReceipt\x126.platform.notification.v1.RecordProviderReceiptRequest\x1a7.platform.notification.v1.RecordProviderReceiptResponse\x12j\n" +
@@ -1714,84 +1954,94 @@ func file_platform_notification_v1_notification_proto_rawDescGZIP() []byte {
 	return file_platform_notification_v1_notification_proto_rawDescData
 }
 
-var file_platform_notification_v1_notification_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_platform_notification_v1_notification_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_platform_notification_v1_notification_proto_goTypes = []any{
 	(*Provider)(nil),                       // 0: platform.notification.v1.Provider
 	(*PutProviderRequest)(nil),             // 1: platform.notification.v1.PutProviderRequest
 	(*PutProviderResponse)(nil),            // 2: platform.notification.v1.PutProviderResponse
-	(*ListProvidersRequest)(nil),           // 3: platform.notification.v1.ListProvidersRequest
-	(*ListProvidersResponse)(nil),          // 4: platform.notification.v1.ListProvidersResponse
-	(*Template)(nil),                       // 5: platform.notification.v1.Template
-	(*Delivery)(nil),                       // 6: platform.notification.v1.Delivery
-	(*PutTemplateRequest)(nil),             // 7: platform.notification.v1.PutTemplateRequest
-	(*PutTemplateResponse)(nil),            // 8: platform.notification.v1.PutTemplateResponse
-	(*ListTemplatesRequest)(nil),           // 9: platform.notification.v1.ListTemplatesRequest
-	(*ListTemplatesResponse)(nil),          // 10: platform.notification.v1.ListTemplatesResponse
-	(*SendRequest)(nil),                    // 11: platform.notification.v1.SendRequest
-	(*SendResponse)(nil),                   // 12: platform.notification.v1.SendResponse
-	(*RecordProviderReceiptRequest)(nil),   // 13: platform.notification.v1.RecordProviderReceiptRequest
-	(*RecordProviderReceiptResponse)(nil),  // 14: platform.notification.v1.RecordProviderReceiptResponse
-	(*GetDeliveryRequest)(nil),             // 15: platform.notification.v1.GetDeliveryRequest
-	(*GetDeliveryResponse)(nil),            // 16: platform.notification.v1.GetDeliveryResponse
-	(*ListDeliveriesRequest)(nil),          // 17: platform.notification.v1.ListDeliveriesRequest
-	(*ListDeliveriesResponse)(nil),         // 18: platform.notification.v1.ListDeliveriesResponse
-	(*NotificationRequestedEvent)(nil),     // 19: platform.notification.v1.NotificationRequestedEvent
-	(*NotificationStatusChangedEvent)(nil), // 20: platform.notification.v1.NotificationStatusChangedEvent
-	nil,                                    // 21: platform.notification.v1.Delivery.VariablesEntry
-	nil,                                    // 22: platform.notification.v1.SendRequest.VariablesEntry
-	(*timestamppb.Timestamp)(nil),          // 23: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                 // 24: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                  // 25: platform.common.v1.PageResult
+	(*GetProviderRequest)(nil),             // 3: platform.notification.v1.GetProviderRequest
+	(*GetProviderResponse)(nil),            // 4: platform.notification.v1.GetProviderResponse
+	(*ListProvidersRequest)(nil),           // 5: platform.notification.v1.ListProvidersRequest
+	(*ListProvidersResponse)(nil),          // 6: platform.notification.v1.ListProvidersResponse
+	(*Template)(nil),                       // 7: platform.notification.v1.Template
+	(*Delivery)(nil),                       // 8: platform.notification.v1.Delivery
+	(*PutTemplateRequest)(nil),             // 9: platform.notification.v1.PutTemplateRequest
+	(*PutTemplateResponse)(nil),            // 10: platform.notification.v1.PutTemplateResponse
+	(*GetTemplateRequest)(nil),             // 11: platform.notification.v1.GetTemplateRequest
+	(*GetTemplateResponse)(nil),            // 12: platform.notification.v1.GetTemplateResponse
+	(*ListTemplatesRequest)(nil),           // 13: platform.notification.v1.ListTemplatesRequest
+	(*ListTemplatesResponse)(nil),          // 14: platform.notification.v1.ListTemplatesResponse
+	(*SendRequest)(nil),                    // 15: platform.notification.v1.SendRequest
+	(*SendResponse)(nil),                   // 16: platform.notification.v1.SendResponse
+	(*RecordProviderReceiptRequest)(nil),   // 17: platform.notification.v1.RecordProviderReceiptRequest
+	(*RecordProviderReceiptResponse)(nil),  // 18: platform.notification.v1.RecordProviderReceiptResponse
+	(*GetDeliveryRequest)(nil),             // 19: platform.notification.v1.GetDeliveryRequest
+	(*GetDeliveryResponse)(nil),            // 20: platform.notification.v1.GetDeliveryResponse
+	(*ListDeliveriesRequest)(nil),          // 21: platform.notification.v1.ListDeliveriesRequest
+	(*ListDeliveriesResponse)(nil),         // 22: platform.notification.v1.ListDeliveriesResponse
+	(*NotificationRequestedEvent)(nil),     // 23: platform.notification.v1.NotificationRequestedEvent
+	(*NotificationStatusChangedEvent)(nil), // 24: platform.notification.v1.NotificationStatusChangedEvent
+	nil,                                    // 25: platform.notification.v1.Delivery.VariablesEntry
+	nil,                                    // 26: platform.notification.v1.SendRequest.VariablesEntry
+	(*timestamppb.Timestamp)(nil),          // 27: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                 // 28: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                  // 29: platform.common.v1.PageResult
 }
 var file_platform_notification_v1_notification_proto_depIdxs = []int32{
-	23, // 0: platform.notification.v1.Provider.created_at:type_name -> google.protobuf.Timestamp
-	23, // 1: platform.notification.v1.Provider.updated_at:type_name -> google.protobuf.Timestamp
+	27, // 0: platform.notification.v1.Provider.created_at:type_name -> google.protobuf.Timestamp
+	27, // 1: platform.notification.v1.Provider.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: platform.notification.v1.PutProviderRequest.provider:type_name -> platform.notification.v1.Provider
 	0,  // 3: platform.notification.v1.PutProviderResponse.provider:type_name -> platform.notification.v1.Provider
-	24, // 4: platform.notification.v1.ListProvidersRequest.page:type_name -> platform.common.v1.PageRequest
-	0,  // 5: platform.notification.v1.ListProvidersResponse.providers:type_name -> platform.notification.v1.Provider
-	25, // 6: platform.notification.v1.ListProvidersResponse.page:type_name -> platform.common.v1.PageResult
-	23, // 7: platform.notification.v1.Template.created_at:type_name -> google.protobuf.Timestamp
-	23, // 8: platform.notification.v1.Template.updated_at:type_name -> google.protobuf.Timestamp
-	21, // 9: platform.notification.v1.Delivery.variables:type_name -> platform.notification.v1.Delivery.VariablesEntry
-	23, // 10: platform.notification.v1.Delivery.next_attempt_at:type_name -> google.protobuf.Timestamp
-	23, // 11: platform.notification.v1.Delivery.created_at:type_name -> google.protobuf.Timestamp
-	23, // 12: platform.notification.v1.Delivery.updated_at:type_name -> google.protobuf.Timestamp
-	5,  // 13: platform.notification.v1.PutTemplateRequest.template:type_name -> platform.notification.v1.Template
-	5,  // 14: platform.notification.v1.PutTemplateResponse.template:type_name -> platform.notification.v1.Template
-	24, // 15: platform.notification.v1.ListTemplatesRequest.page:type_name -> platform.common.v1.PageRequest
-	5,  // 16: platform.notification.v1.ListTemplatesResponse.templates:type_name -> platform.notification.v1.Template
-	25, // 17: platform.notification.v1.ListTemplatesResponse.page:type_name -> platform.common.v1.PageResult
-	22, // 18: platform.notification.v1.SendRequest.variables:type_name -> platform.notification.v1.SendRequest.VariablesEntry
-	6,  // 19: platform.notification.v1.SendResponse.delivery:type_name -> platform.notification.v1.Delivery
-	6,  // 20: platform.notification.v1.RecordProviderReceiptResponse.delivery:type_name -> platform.notification.v1.Delivery
-	6,  // 21: platform.notification.v1.GetDeliveryResponse.delivery:type_name -> platform.notification.v1.Delivery
-	24, // 22: platform.notification.v1.ListDeliveriesRequest.page:type_name -> platform.common.v1.PageRequest
-	6,  // 23: platform.notification.v1.ListDeliveriesResponse.deliveries:type_name -> platform.notification.v1.Delivery
-	25, // 24: platform.notification.v1.ListDeliveriesResponse.page:type_name -> platform.common.v1.PageResult
-	6,  // 25: platform.notification.v1.NotificationRequestedEvent.delivery:type_name -> platform.notification.v1.Delivery
-	6,  // 26: platform.notification.v1.NotificationStatusChangedEvent.delivery:type_name -> platform.notification.v1.Delivery
-	1,  // 27: platform.notification.v1.NotificationService.PutProvider:input_type -> platform.notification.v1.PutProviderRequest
-	3,  // 28: platform.notification.v1.NotificationService.ListProviders:input_type -> platform.notification.v1.ListProvidersRequest
-	7,  // 29: platform.notification.v1.NotificationService.PutTemplate:input_type -> platform.notification.v1.PutTemplateRequest
-	9,  // 30: platform.notification.v1.NotificationService.ListTemplates:input_type -> platform.notification.v1.ListTemplatesRequest
-	11, // 31: platform.notification.v1.NotificationService.Send:input_type -> platform.notification.v1.SendRequest
-	13, // 32: platform.notification.v1.NotificationService.RecordProviderReceipt:input_type -> platform.notification.v1.RecordProviderReceiptRequest
-	15, // 33: platform.notification.v1.NotificationService.GetDelivery:input_type -> platform.notification.v1.GetDeliveryRequest
-	17, // 34: platform.notification.v1.NotificationService.ListDeliveries:input_type -> platform.notification.v1.ListDeliveriesRequest
-	2,  // 35: platform.notification.v1.NotificationService.PutProvider:output_type -> platform.notification.v1.PutProviderResponse
-	4,  // 36: platform.notification.v1.NotificationService.ListProviders:output_type -> platform.notification.v1.ListProvidersResponse
-	8,  // 37: platform.notification.v1.NotificationService.PutTemplate:output_type -> platform.notification.v1.PutTemplateResponse
-	10, // 38: platform.notification.v1.NotificationService.ListTemplates:output_type -> platform.notification.v1.ListTemplatesResponse
-	12, // 39: platform.notification.v1.NotificationService.Send:output_type -> platform.notification.v1.SendResponse
-	14, // 40: platform.notification.v1.NotificationService.RecordProviderReceipt:output_type -> platform.notification.v1.RecordProviderReceiptResponse
-	16, // 41: platform.notification.v1.NotificationService.GetDelivery:output_type -> platform.notification.v1.GetDeliveryResponse
-	18, // 42: platform.notification.v1.NotificationService.ListDeliveries:output_type -> platform.notification.v1.ListDeliveriesResponse
-	35, // [35:43] is the sub-list for method output_type
-	27, // [27:35] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	0,  // 4: platform.notification.v1.GetProviderResponse.provider:type_name -> platform.notification.v1.Provider
+	28, // 5: platform.notification.v1.ListProvidersRequest.page:type_name -> platform.common.v1.PageRequest
+	0,  // 6: platform.notification.v1.ListProvidersResponse.providers:type_name -> platform.notification.v1.Provider
+	29, // 7: platform.notification.v1.ListProvidersResponse.page:type_name -> platform.common.v1.PageResult
+	27, // 8: platform.notification.v1.Template.created_at:type_name -> google.protobuf.Timestamp
+	27, // 9: platform.notification.v1.Template.updated_at:type_name -> google.protobuf.Timestamp
+	25, // 10: platform.notification.v1.Delivery.variables:type_name -> platform.notification.v1.Delivery.VariablesEntry
+	27, // 11: platform.notification.v1.Delivery.next_attempt_at:type_name -> google.protobuf.Timestamp
+	27, // 12: platform.notification.v1.Delivery.created_at:type_name -> google.protobuf.Timestamp
+	27, // 13: platform.notification.v1.Delivery.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 14: platform.notification.v1.PutTemplateRequest.template:type_name -> platform.notification.v1.Template
+	7,  // 15: platform.notification.v1.PutTemplateResponse.template:type_name -> platform.notification.v1.Template
+	7,  // 16: platform.notification.v1.GetTemplateResponse.template:type_name -> platform.notification.v1.Template
+	28, // 17: platform.notification.v1.ListTemplatesRequest.page:type_name -> platform.common.v1.PageRequest
+	7,  // 18: platform.notification.v1.ListTemplatesResponse.templates:type_name -> platform.notification.v1.Template
+	29, // 19: platform.notification.v1.ListTemplatesResponse.page:type_name -> platform.common.v1.PageResult
+	26, // 20: platform.notification.v1.SendRequest.variables:type_name -> platform.notification.v1.SendRequest.VariablesEntry
+	8,  // 21: platform.notification.v1.SendResponse.delivery:type_name -> platform.notification.v1.Delivery
+	8,  // 22: platform.notification.v1.RecordProviderReceiptResponse.delivery:type_name -> platform.notification.v1.Delivery
+	8,  // 23: platform.notification.v1.GetDeliveryResponse.delivery:type_name -> platform.notification.v1.Delivery
+	28, // 24: platform.notification.v1.ListDeliveriesRequest.page:type_name -> platform.common.v1.PageRequest
+	8,  // 25: platform.notification.v1.ListDeliveriesResponse.deliveries:type_name -> platform.notification.v1.Delivery
+	29, // 26: platform.notification.v1.ListDeliveriesResponse.page:type_name -> platform.common.v1.PageResult
+	8,  // 27: platform.notification.v1.NotificationRequestedEvent.delivery:type_name -> platform.notification.v1.Delivery
+	8,  // 28: platform.notification.v1.NotificationStatusChangedEvent.delivery:type_name -> platform.notification.v1.Delivery
+	1,  // 29: platform.notification.v1.NotificationService.PutProvider:input_type -> platform.notification.v1.PutProviderRequest
+	3,  // 30: platform.notification.v1.NotificationService.GetProvider:input_type -> platform.notification.v1.GetProviderRequest
+	5,  // 31: platform.notification.v1.NotificationService.ListProviders:input_type -> platform.notification.v1.ListProvidersRequest
+	9,  // 32: platform.notification.v1.NotificationService.PutTemplate:input_type -> platform.notification.v1.PutTemplateRequest
+	11, // 33: platform.notification.v1.NotificationService.GetTemplate:input_type -> platform.notification.v1.GetTemplateRequest
+	13, // 34: platform.notification.v1.NotificationService.ListTemplates:input_type -> platform.notification.v1.ListTemplatesRequest
+	15, // 35: platform.notification.v1.NotificationService.Send:input_type -> platform.notification.v1.SendRequest
+	17, // 36: platform.notification.v1.NotificationService.RecordProviderReceipt:input_type -> platform.notification.v1.RecordProviderReceiptRequest
+	19, // 37: platform.notification.v1.NotificationService.GetDelivery:input_type -> platform.notification.v1.GetDeliveryRequest
+	21, // 38: platform.notification.v1.NotificationService.ListDeliveries:input_type -> platform.notification.v1.ListDeliveriesRequest
+	2,  // 39: platform.notification.v1.NotificationService.PutProvider:output_type -> platform.notification.v1.PutProviderResponse
+	4,  // 40: platform.notification.v1.NotificationService.GetProvider:output_type -> platform.notification.v1.GetProviderResponse
+	6,  // 41: platform.notification.v1.NotificationService.ListProviders:output_type -> platform.notification.v1.ListProvidersResponse
+	10, // 42: platform.notification.v1.NotificationService.PutTemplate:output_type -> platform.notification.v1.PutTemplateResponse
+	12, // 43: platform.notification.v1.NotificationService.GetTemplate:output_type -> platform.notification.v1.GetTemplateResponse
+	14, // 44: platform.notification.v1.NotificationService.ListTemplates:output_type -> platform.notification.v1.ListTemplatesResponse
+	16, // 45: platform.notification.v1.NotificationService.Send:output_type -> platform.notification.v1.SendResponse
+	18, // 46: platform.notification.v1.NotificationService.RecordProviderReceipt:output_type -> platform.notification.v1.RecordProviderReceiptResponse
+	20, // 47: platform.notification.v1.NotificationService.GetDelivery:output_type -> platform.notification.v1.GetDeliveryResponse
+	22, // 48: platform.notification.v1.NotificationService.ListDeliveries:output_type -> platform.notification.v1.ListDeliveriesResponse
+	39, // [39:49] is the sub-list for method output_type
+	29, // [29:39] is the sub-list for method input_type
+	29, // [29:29] is the sub-list for extension type_name
+	29, // [29:29] is the sub-list for extension extendee
+	0,  // [0:29] is the sub-list for field type_name
 }
 
 func init() { file_platform_notification_v1_notification_proto_init() }
@@ -1805,7 +2055,7 @@ func file_platform_notification_v1_notification_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_notification_v1_notification_proto_rawDesc), len(file_platform_notification_v1_notification_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

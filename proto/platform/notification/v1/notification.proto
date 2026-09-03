@@ -9,8 +9,10 @@ option go_package = "github.com/lihongjie0209/platform-protos/gen/go/platform/no
 
 service NotificationService {
   rpc PutProvider(PutProviderRequest) returns (PutProviderResponse);
+  rpc GetProvider(GetProviderRequest) returns (GetProviderResponse);
   rpc ListProviders(ListProvidersRequest) returns (ListProvidersResponse);
   rpc PutTemplate(PutTemplateRequest) returns (PutTemplateResponse);
+  rpc GetTemplate(GetTemplateRequest) returns (GetTemplateResponse);
   rpc ListTemplates(ListTemplatesRequest) returns (ListTemplatesResponse);
   rpc Send(SendRequest) returns (SendResponse);
   rpc RecordProviderReceipt(RecordProviderReceiptRequest) returns (RecordProviderReceiptResponse);
@@ -38,6 +40,14 @@ message PutProviderRequest {
   int64 expected_version = 2;
 }
 message PutProviderResponse {
+  Provider provider = 1;
+}
+message GetProviderRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string code = 3;
+}
+message GetProviderResponse {
   Provider provider = 1;
 }
 message ListProvidersRequest {
@@ -93,6 +103,16 @@ message PutTemplateRequest {
   int64 expected_version = 2;
 }
 message PutTemplateResponse {
+  Template template = 1;
+}
+message GetTemplateRequest {
+  string tenant_id = 1;
+  string application_id = 2;
+  string code = 3;
+  string channel = 4;
+  string locale = 5;
+}
+message GetTemplateResponse {
   Template template = 1;
 }
 message ListTemplatesRequest {
