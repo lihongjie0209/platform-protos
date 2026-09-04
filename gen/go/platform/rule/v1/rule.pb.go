@@ -882,6 +882,7 @@ type CreateRuleVersionRequest struct {
 	DefinitionJson string                 `protobuf:"bytes,3,opt,name=definition_json,json=definitionJson,proto3" json:"definition_json,omitempty"`
 	IdempotencyKey string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
 	ApplicationId  string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	RuleSetVersion int64                  `protobuf:"varint,6,opt,name=rule_set_version,json=ruleSetVersion,proto3" json:"rule_set_version,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -949,6 +950,13 @@ func (x *CreateRuleVersionRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *CreateRuleVersionRequest) GetRuleSetVersion() int64 {
+	if x != nil {
+		return x.RuleSetVersion
+	}
+	return 0
 }
 
 type CreateRuleVersionResponse struct {
@@ -1957,13 +1965,14 @@ const file_platform_rule_v1_rule_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x82\x01\n" +
 	"\x14ListRuleSetsResponse\x126\n" +
 	"\trule_sets\x18\x01 \x03(\v2\x19.platform.rule.v1.RuleSetR\bruleSets\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xd0\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xfa\x01\n" +
 	"\x18CreateRuleVersionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1e\n" +
 	"\vrule_set_id\x18\x02 \x01(\tR\truleSetId\x12'\n" +
 	"\x0fdefinition_json\x18\x03 \x01(\tR\x0edefinitionJson\x12'\n" +
 	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12%\n" +
-	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"]\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\x12(\n" +
+	"\x10rule_set_version\x18\x06 \x01(\x03R\x0eruleSetVersion\"]\n" +
 	"\x19CreateRuleVersionResponse\x12@\n" +
 	"\frule_version\x18\x01 \x01(\v2\x1d.platform.rule.v1.RuleVersionR\vruleVersion\"\xa9\x01\n" +
 	"\x1aValidateRuleVersionRequest\x12\x1b\n" +
