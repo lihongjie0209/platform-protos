@@ -3765,6 +3765,7 @@ type RecordRefundRequest struct {
 	Status           string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
 	TenantId         string                 `protobuf:"bytes,7,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ApplicationId    string                 `protobuf:"bytes,8,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	PaymentVersion   int64                  `protobuf:"varint,9,opt,name=payment_version,json=paymentVersion,proto3" json:"payment_version,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -3853,6 +3854,13 @@ func (x *RecordRefundRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *RecordRefundRequest) GetPaymentVersion() int64 {
+	if x != nil {
+		return x.PaymentVersion
+	}
+	return 0
 }
 
 type RecordRefundResponse struct {
@@ -4766,7 +4774,7 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x1aApplyPaymentResultResponse\x12L\n" +
 	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\x126\n" +
 	"\ainvoice\x18\x02 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x12\x1c\n" +
-	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"\xb1\x02\n" +
+	"\tduplicate\x18\x03 \x01(\bR\tduplicate\"\xda\x02\n" +
 	"\x13RecordRefundRequest\x12,\n" +
 	"\x12payment_attempt_id\x18\x01 \x01(\tR\x10paymentAttemptId\x12,\n" +
 	"\x12provider_refund_id\x18\x02 \x01(\tR\x10providerRefundId\x12'\n" +
@@ -4775,7 +4783,8 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12\x1b\n" +
 	"\ttenant_id\x18\a \x01(\tR\btenantId\x12%\n" +
-	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\"\xa1\x01\n" +
+	"\x0eapplication_id\x18\b \x01(\tR\rapplicationId\x12'\n" +
+	"\x0fpayment_version\x18\t \x01(\x03R\x0epaymentVersion\"\xa1\x01\n" +
 	"\x14RecordRefundResponse\x123\n" +
 	"\x06refund\x18\x01 \x01(\v2\x1b.platform.billing.v1.RefundR\x06refund\x126\n" +
 	"\ainvoice\x18\x02 \x01(\v2\x1c.platform.billing.v1.InvoiceR\ainvoice\x12\x1c\n" +

@@ -405,6 +405,7 @@ message RecordRefundRequest {
   string status = 6;
   string tenant_id = 7;
   string application_id = 8;
+  int64 payment_version = 9;
 }
 message RecordRefundResponse {
   Refund refund = 1;
