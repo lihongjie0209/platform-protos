@@ -1871,6 +1871,8 @@ type DeleteUsagePriceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Version       int64                  `protobuf:"varint,2,opt,name=version,proto3" json:"version,omitempty"`
+	PlanId        string                 `protobuf:"bytes,3,opt,name=plan_id,json=planId,proto3" json:"plan_id,omitempty"`
+	PlanVersion   int64                  `protobuf:"varint,4,opt,name=plan_version,json=planVersion,proto3" json:"plan_version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1915,6 +1917,20 @@ func (x *DeleteUsagePriceRequest) GetId() string {
 func (x *DeleteUsagePriceRequest) GetVersion() int64 {
 	if x != nil {
 		return x.Version
+	}
+	return 0
+}
+
+func (x *DeleteUsagePriceRequest) GetPlanId() string {
+	if x != nil {
+		return x.PlanId
+	}
+	return ""
+}
+
+func (x *DeleteUsagePriceRequest) GetPlanVersion() int64 {
+	if x != nil {
+		return x.PlanVersion
 	}
 	return 0
 }
@@ -4607,10 +4623,12 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	" \x01(\x03R\vplanVersion\"\\\n" +
 	"\x18UpsertUsagePriceResponse\x12@\n" +
 	"\vusage_price\x18\x01 \x01(\v2\x1f.platform.billing.v1.UsagePriceR\n" +
-	"usagePrice\"C\n" +
+	"usagePrice\"\x7f\n" +
 	"\x17DeleteUsagePriceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
-	"\aversion\x18\x02 \x01(\x03R\aversion\"\x1a\n" +
+	"\aversion\x18\x02 \x01(\x03R\aversion\x12\x17\n" +
+	"\aplan_id\x18\x03 \x01(\tR\x06planId\x12!\n" +
+	"\fplan_version\x18\x04 \x01(\x03R\vplanVersion\"\x1a\n" +
 	"\x18DeleteUsagePriceResponse\"\xac\x02\n" +
 	"\x19CreateSubscriptionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x17\n" +

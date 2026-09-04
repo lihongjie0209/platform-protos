@@ -236,6 +236,8 @@ message UpsertUsagePriceResponse {
 message DeleteUsagePriceRequest {
   string id = 1;
   int64 version = 2;
+  string plan_id = 3;
+  int64 plan_version = 4;
 }
 message DeleteUsagePriceResponse {}
 
