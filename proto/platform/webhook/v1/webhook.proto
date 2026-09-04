@@ -162,6 +162,7 @@ message TestSubscriptionRequest {
   string tenant_id = 2;
   string payload_json = 3;
   string application_id = 4;
+  int64 expected_version = 5;
 }
 
 message TestSubscriptionResponse {

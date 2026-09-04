@@ -1263,13 +1263,14 @@ func (*DeleteSubscriptionResponse) Descriptor() ([]byte, []int) {
 }
 
 type TestSubscriptionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	PayloadJson   string                 `protobuf:"bytes,3,opt,name=payload_json,json=payloadJson,proto3" json:"payload_json,omitempty"`
-	ApplicationId string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	PayloadJson     string                 `protobuf:"bytes,3,opt,name=payload_json,json=payloadJson,proto3" json:"payload_json,omitempty"`
+	ApplicationId   string                 `protobuf:"bytes,4,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *TestSubscriptionRequest) Reset() {
@@ -1328,6 +1329,13 @@ func (x *TestSubscriptionRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *TestSubscriptionRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
 }
 
 type TestSubscriptionResponse struct {
@@ -1948,12 +1956,13 @@ const file_platform_webhook_v1_webhook_proto_rawDesc = "" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12)\n" +
 	"\x10expected_version\x18\x03 \x01(\x03R\x0fexpectedVersion\x12%\n" +
 	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"\x1c\n" +
-	"\x1aDeleteSubscriptionResponse\"\x90\x01\n" +
+	"\x1aDeleteSubscriptionResponse\"\xbb\x01\n" +
 	"\x17TestSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12!\n" +
 	"\fpayload_json\x18\x03 \x01(\tR\vpayloadJson\x12%\n" +
-	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\"U\n" +
+	"\x0eapplication_id\x18\x04 \x01(\tR\rapplicationId\x12)\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"U\n" +
 	"\x18TestSubscriptionResponse\x129\n" +
 	"\bdelivery\x18\x01 \x01(\v2\x1d.platform.webhook.v1.DeliveryR\bdelivery\"h\n" +
 	"\x12GetDeliveryRequest\x12\x0e\n" +
