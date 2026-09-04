@@ -19,38 +19,39 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	TenantService_CreateTenant_FullMethodName             = "/platform.tenant.v1.TenantService/CreateTenant"
-	TenantService_GetTenant_FullMethodName                = "/platform.tenant.v1.TenantService/GetTenant"
-	TenantService_ListTenants_FullMethodName              = "/platform.tenant.v1.TenantService/ListTenants"
-	TenantService_UpdateTenant_FullMethodName             = "/platform.tenant.v1.TenantService/UpdateTenant"
-	TenantService_AddMembership_FullMethodName            = "/platform.tenant.v1.TenantService/AddMembership"
-	TenantService_UpdateMembership_FullMethodName         = "/platform.tenant.v1.TenantService/UpdateMembership"
-	TenantService_ListMemberships_FullMethodName          = "/platform.tenant.v1.TenantService/ListMemberships"
-	TenantService_CreateOrganizationUnit_FullMethodName   = "/platform.tenant.v1.TenantService/CreateOrganizationUnit"
-	TenantService_GetOrganizationUnit_FullMethodName      = "/platform.tenant.v1.TenantService/GetOrganizationUnit"
-	TenantService_UpdateOrganizationUnit_FullMethodName   = "/platform.tenant.v1.TenantService/UpdateOrganizationUnit"
-	TenantService_ListOrganizationUnits_FullMethodName    = "/platform.tenant.v1.TenantService/ListOrganizationUnits"
-	TenantService_CreateInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/CreateInvitation"
-	TenantService_AcceptInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/AcceptInvitation"
-	TenantService_GetInvitation_FullMethodName            = "/platform.tenant.v1.TenantService/GetInvitation"
-	TenantService_RevokeInvitation_FullMethodName         = "/platform.tenant.v1.TenantService/RevokeInvitation"
-	TenantService_ListInvitations_FullMethodName          = "/platform.tenant.v1.TenantService/ListInvitations"
-	TenantService_CreateGroup_FullMethodName              = "/platform.tenant.v1.TenantService/CreateGroup"
-	TenantService_GetGroup_FullMethodName                 = "/platform.tenant.v1.TenantService/GetGroup"
-	TenantService_UpdateGroup_FullMethodName              = "/platform.tenant.v1.TenantService/UpdateGroup"
-	TenantService_AddGroupMember_FullMethodName           = "/platform.tenant.v1.TenantService/AddGroupMember"
-	TenantService_GetGroupMember_FullMethodName           = "/platform.tenant.v1.TenantService/GetGroupMember"
-	TenantService_RemoveGroupMember_FullMethodName        = "/platform.tenant.v1.TenantService/RemoveGroupMember"
-	TenantService_ListGroupMembers_FullMethodName         = "/platform.tenant.v1.TenantService/ListGroupMembers"
-	TenantService_ListGroups_FullMethodName               = "/platform.tenant.v1.TenantService/ListGroups"
-	TenantService_GetQuota_FullMethodName                 = "/platform.tenant.v1.TenantService/GetQuota"
-	TenantService_ListQuotas_FullMethodName               = "/platform.tenant.v1.TenantService/ListQuotas"
-	TenantService_SetQuota_FullMethodName                 = "/platform.tenant.v1.TenantService/SetQuota"
-	TenantService_ConsumeQuota_FullMethodName             = "/platform.tenant.v1.TenantService/ConsumeQuota"
-	TenantService_ValidateMembership_FullMethodName       = "/platform.tenant.v1.TenantService/ValidateMembership"
-	TenantService_GetMembership_FullMethodName            = "/platform.tenant.v1.TenantService/GetMembership"
-	TenantService_ListUserTenants_FullMethodName          = "/platform.tenant.v1.TenantService/ListUserTenants"
-	TenantService_ResolveOrganizationScope_FullMethodName = "/platform.tenant.v1.TenantService/ResolveOrganizationScope"
+	TenantService_CreateTenant_FullMethodName              = "/platform.tenant.v1.TenantService/CreateTenant"
+	TenantService_GetTenant_FullMethodName                 = "/platform.tenant.v1.TenantService/GetTenant"
+	TenantService_ListTenants_FullMethodName               = "/platform.tenant.v1.TenantService/ListTenants"
+	TenantService_UpdateTenant_FullMethodName              = "/platform.tenant.v1.TenantService/UpdateTenant"
+	TenantService_AddMembership_FullMethodName             = "/platform.tenant.v1.TenantService/AddMembership"
+	TenantService_UpdateMembership_FullMethodName          = "/platform.tenant.v1.TenantService/UpdateMembership"
+	TenantService_ListMemberships_FullMethodName           = "/platform.tenant.v1.TenantService/ListMemberships"
+	TenantService_SearchMembershipDirectory_FullMethodName = "/platform.tenant.v1.TenantService/SearchMembershipDirectory"
+	TenantService_CreateOrganizationUnit_FullMethodName    = "/platform.tenant.v1.TenantService/CreateOrganizationUnit"
+	TenantService_GetOrganizationUnit_FullMethodName       = "/platform.tenant.v1.TenantService/GetOrganizationUnit"
+	TenantService_UpdateOrganizationUnit_FullMethodName    = "/platform.tenant.v1.TenantService/UpdateOrganizationUnit"
+	TenantService_ListOrganizationUnits_FullMethodName     = "/platform.tenant.v1.TenantService/ListOrganizationUnits"
+	TenantService_CreateInvitation_FullMethodName          = "/platform.tenant.v1.TenantService/CreateInvitation"
+	TenantService_AcceptInvitation_FullMethodName          = "/platform.tenant.v1.TenantService/AcceptInvitation"
+	TenantService_GetInvitation_FullMethodName             = "/platform.tenant.v1.TenantService/GetInvitation"
+	TenantService_RevokeInvitation_FullMethodName          = "/platform.tenant.v1.TenantService/RevokeInvitation"
+	TenantService_ListInvitations_FullMethodName           = "/platform.tenant.v1.TenantService/ListInvitations"
+	TenantService_CreateGroup_FullMethodName               = "/platform.tenant.v1.TenantService/CreateGroup"
+	TenantService_GetGroup_FullMethodName                  = "/platform.tenant.v1.TenantService/GetGroup"
+	TenantService_UpdateGroup_FullMethodName               = "/platform.tenant.v1.TenantService/UpdateGroup"
+	TenantService_AddGroupMember_FullMethodName            = "/platform.tenant.v1.TenantService/AddGroupMember"
+	TenantService_GetGroupMember_FullMethodName            = "/platform.tenant.v1.TenantService/GetGroupMember"
+	TenantService_RemoveGroupMember_FullMethodName         = "/platform.tenant.v1.TenantService/RemoveGroupMember"
+	TenantService_ListGroupMembers_FullMethodName          = "/platform.tenant.v1.TenantService/ListGroupMembers"
+	TenantService_ListGroups_FullMethodName                = "/platform.tenant.v1.TenantService/ListGroups"
+	TenantService_GetQuota_FullMethodName                  = "/platform.tenant.v1.TenantService/GetQuota"
+	TenantService_ListQuotas_FullMethodName                = "/platform.tenant.v1.TenantService/ListQuotas"
+	TenantService_SetQuota_FullMethodName                  = "/platform.tenant.v1.TenantService/SetQuota"
+	TenantService_ConsumeQuota_FullMethodName              = "/platform.tenant.v1.TenantService/ConsumeQuota"
+	TenantService_ValidateMembership_FullMethodName        = "/platform.tenant.v1.TenantService/ValidateMembership"
+	TenantService_GetMembership_FullMethodName             = "/platform.tenant.v1.TenantService/GetMembership"
+	TenantService_ListUserTenants_FullMethodName           = "/platform.tenant.v1.TenantService/ListUserTenants"
+	TenantService_ResolveOrganizationScope_FullMethodName  = "/platform.tenant.v1.TenantService/ResolveOrganizationScope"
 )
 
 // TenantServiceClient is the client API for TenantService service.
@@ -64,6 +65,7 @@ type TenantServiceClient interface {
 	AddMembership(ctx context.Context, in *AddMembershipRequest, opts ...grpc.CallOption) (*AddMembershipResponse, error)
 	UpdateMembership(ctx context.Context, in *UpdateMembershipRequest, opts ...grpc.CallOption) (*UpdateMembershipResponse, error)
 	ListMemberships(ctx context.Context, in *ListMembershipsRequest, opts ...grpc.CallOption) (*ListMembershipsResponse, error)
+	SearchMembershipDirectory(ctx context.Context, in *SearchMembershipDirectoryRequest, opts ...grpc.CallOption) (*SearchMembershipDirectoryResponse, error)
 	CreateOrganizationUnit(ctx context.Context, in *CreateOrganizationUnitRequest, opts ...grpc.CallOption) (*CreateOrganizationUnitResponse, error)
 	GetOrganizationUnit(ctx context.Context, in *GetOrganizationUnitRequest, opts ...grpc.CallOption) (*GetOrganizationUnitResponse, error)
 	UpdateOrganizationUnit(ctx context.Context, in *UpdateOrganizationUnitRequest, opts ...grpc.CallOption) (*UpdateOrganizationUnitResponse, error)
@@ -163,6 +165,16 @@ func (c *tenantServiceClient) ListMemberships(ctx context.Context, in *ListMembe
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListMembershipsResponse)
 	err := c.cc.Invoke(ctx, TenantService_ListMemberships_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tenantServiceClient) SearchMembershipDirectory(ctx context.Context, in *SearchMembershipDirectoryRequest, opts ...grpc.CallOption) (*SearchMembershipDirectoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchMembershipDirectoryResponse)
+	err := c.cc.Invoke(ctx, TenantService_SearchMembershipDirectory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -430,6 +442,7 @@ type TenantServiceServer interface {
 	AddMembership(context.Context, *AddMembershipRequest) (*AddMembershipResponse, error)
 	UpdateMembership(context.Context, *UpdateMembershipRequest) (*UpdateMembershipResponse, error)
 	ListMemberships(context.Context, *ListMembershipsRequest) (*ListMembershipsResponse, error)
+	SearchMembershipDirectory(context.Context, *SearchMembershipDirectoryRequest) (*SearchMembershipDirectoryResponse, error)
 	CreateOrganizationUnit(context.Context, *CreateOrganizationUnitRequest) (*CreateOrganizationUnitResponse, error)
 	GetOrganizationUnit(context.Context, *GetOrganizationUnitRequest) (*GetOrganizationUnitResponse, error)
 	UpdateOrganizationUnit(context.Context, *UpdateOrganizationUnitRequest) (*UpdateOrganizationUnitResponse, error)
@@ -485,6 +498,9 @@ func (UnimplementedTenantServiceServer) UpdateMembership(context.Context, *Updat
 }
 func (UnimplementedTenantServiceServer) ListMemberships(context.Context, *ListMembershipsRequest) (*ListMembershipsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMemberships not implemented")
+}
+func (UnimplementedTenantServiceServer) SearchMembershipDirectory(context.Context, *SearchMembershipDirectoryRequest) (*SearchMembershipDirectoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchMembershipDirectory not implemented")
 }
 func (UnimplementedTenantServiceServer) CreateOrganizationUnit(context.Context, *CreateOrganizationUnitRequest) (*CreateOrganizationUnitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrganizationUnit not implemented")
@@ -704,6 +720,24 @@ func _TenantService_ListMemberships_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TenantServiceServer).ListMemberships(ctx, req.(*ListMembershipsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TenantService_SearchMembershipDirectory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchMembershipDirectoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TenantServiceServer).SearchMembershipDirectory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TenantService_SearchMembershipDirectory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TenantServiceServer).SearchMembershipDirectory(ctx, req.(*SearchMembershipDirectoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1192,6 +1226,10 @@ var TenantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListMemberships",
 			Handler:    _TenantService_ListMemberships_Handler,
+		},
+		{
+			MethodName: "SearchMembershipDirectory",
+			Handler:    _TenantService_SearchMembershipDirectory_Handler,
 		},
 		{
 			MethodName: "CreateOrganizationUnit",

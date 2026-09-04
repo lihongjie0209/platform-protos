@@ -1740,6 +1740,170 @@ func (x *ListMembershipsResponse) GetPage() *v1.PageResult {
 	return nil
 }
 
+type MembershipDirectoryEntry struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Membership    *Membership            `protobuf:"bytes,1,opt,name=membership,proto3" json:"membership,omitempty"`
+	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	DisplayName   string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MembershipDirectoryEntry) Reset() {
+	*x = MembershipDirectoryEntry{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MembershipDirectoryEntry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MembershipDirectoryEntry) ProtoMessage() {}
+
+func (x *MembershipDirectoryEntry) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MembershipDirectoryEntry.ProtoReflect.Descriptor instead.
+func (*MembershipDirectoryEntry) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *MembershipDirectoryEntry) GetMembership() *Membership {
+	if x != nil {
+		return x.Membership
+	}
+	return nil
+}
+
+func (x *MembershipDirectoryEntry) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *MembershipDirectoryEntry) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+type SearchMembershipDirectoryRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Keyword       string                 `protobuf:"bytes,2,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Limit         uint32                 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchMembershipDirectoryRequest) Reset() {
+	*x = SearchMembershipDirectoryRequest{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchMembershipDirectoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchMembershipDirectoryRequest) ProtoMessage() {}
+
+func (x *SearchMembershipDirectoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchMembershipDirectoryRequest.ProtoReflect.Descriptor instead.
+func (*SearchMembershipDirectoryRequest) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *SearchMembershipDirectoryRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *SearchMembershipDirectoryRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *SearchMembershipDirectoryRequest) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+type SearchMembershipDirectoryResponse struct {
+	state         protoimpl.MessageState      `protogen:"open.v1"`
+	Entries       []*MembershipDirectoryEntry `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchMembershipDirectoryResponse) Reset() {
+	*x = SearchMembershipDirectoryResponse{}
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchMembershipDirectoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchMembershipDirectoryResponse) ProtoMessage() {}
+
+func (x *SearchMembershipDirectoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchMembershipDirectoryResponse.ProtoReflect.Descriptor instead.
+func (*SearchMembershipDirectoryResponse) Descriptor() ([]byte, []int) {
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *SearchMembershipDirectoryResponse) GetEntries() []*MembershipDirectoryEntry {
+	if x != nil {
+		return x.Entries
+	}
+	return nil
+}
+
 type CreateOrganizationUnitRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -1752,7 +1916,7 @@ type CreateOrganizationUnitRequest struct {
 
 func (x *CreateOrganizationUnitRequest) Reset() {
 	*x = CreateOrganizationUnitRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1764,7 +1928,7 @@ func (x *CreateOrganizationUnitRequest) String() string {
 func (*CreateOrganizationUnitRequest) ProtoMessage() {}
 
 func (x *CreateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[21]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1777,7 +1941,7 @@ func (x *CreateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationUnitRequest.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationUnitRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{21}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CreateOrganizationUnitRequest) GetTenantId() string {
@@ -1817,7 +1981,7 @@ type CreateOrganizationUnitResponse struct {
 
 func (x *CreateOrganizationUnitResponse) Reset() {
 	*x = CreateOrganizationUnitResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1829,7 +1993,7 @@ func (x *CreateOrganizationUnitResponse) String() string {
 func (*CreateOrganizationUnitResponse) ProtoMessage() {}
 
 func (x *CreateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[22]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1842,7 +2006,7 @@ func (x *CreateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateOrganizationUnitResponse.ProtoReflect.Descriptor instead.
 func (*CreateOrganizationUnitResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{22}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CreateOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
@@ -1861,7 +2025,7 @@ type GetOrganizationUnitRequest struct {
 
 func (x *GetOrganizationUnitRequest) Reset() {
 	*x = GetOrganizationUnitRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1873,7 +2037,7 @@ func (x *GetOrganizationUnitRequest) String() string {
 func (*GetOrganizationUnitRequest) ProtoMessage() {}
 
 func (x *GetOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[23]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1886,7 +2050,7 @@ func (x *GetOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOrganizationUnitRequest.ProtoReflect.Descriptor instead.
 func (*GetOrganizationUnitRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{23}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *GetOrganizationUnitRequest) GetOrganizationUnitId() string {
@@ -1905,7 +2069,7 @@ type GetOrganizationUnitResponse struct {
 
 func (x *GetOrganizationUnitResponse) Reset() {
 	*x = GetOrganizationUnitResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1917,7 +2081,7 @@ func (x *GetOrganizationUnitResponse) String() string {
 func (*GetOrganizationUnitResponse) ProtoMessage() {}
 
 func (x *GetOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[24]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1930,7 +2094,7 @@ func (x *GetOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetOrganizationUnitResponse.ProtoReflect.Descriptor instead.
 func (*GetOrganizationUnitResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{24}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
@@ -1953,7 +2117,7 @@ type UpdateOrganizationUnitRequest struct {
 
 func (x *UpdateOrganizationUnitRequest) Reset() {
 	*x = UpdateOrganizationUnitRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1965,7 +2129,7 @@ func (x *UpdateOrganizationUnitRequest) String() string {
 func (*UpdateOrganizationUnitRequest) ProtoMessage() {}
 
 func (x *UpdateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[25]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1978,7 +2142,7 @@ func (x *UpdateOrganizationUnitRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationUnitRequest.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationUnitRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{25}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *UpdateOrganizationUnitRequest) GetOrganizationUnitId() string {
@@ -2025,7 +2189,7 @@ type UpdateOrganizationUnitResponse struct {
 
 func (x *UpdateOrganizationUnitResponse) Reset() {
 	*x = UpdateOrganizationUnitResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2037,7 +2201,7 @@ func (x *UpdateOrganizationUnitResponse) String() string {
 func (*UpdateOrganizationUnitResponse) ProtoMessage() {}
 
 func (x *UpdateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[26]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2050,7 +2214,7 @@ func (x *UpdateOrganizationUnitResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateOrganizationUnitResponse.ProtoReflect.Descriptor instead.
 func (*UpdateOrganizationUnitResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{26}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *UpdateOrganizationUnitResponse) GetOrganizationUnit() *OrganizationUnit {
@@ -2069,7 +2233,7 @@ type ListOrganizationUnitsRequest struct {
 
 func (x *ListOrganizationUnitsRequest) Reset() {
 	*x = ListOrganizationUnitsRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2081,7 +2245,7 @@ func (x *ListOrganizationUnitsRequest) String() string {
 func (*ListOrganizationUnitsRequest) ProtoMessage() {}
 
 func (x *ListOrganizationUnitsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[27]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2094,7 +2258,7 @@ func (x *ListOrganizationUnitsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationUnitsRequest.ProtoReflect.Descriptor instead.
 func (*ListOrganizationUnitsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{27}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *ListOrganizationUnitsRequest) GetTenantId() string {
@@ -2113,7 +2277,7 @@ type ListOrganizationUnitsResponse struct {
 
 func (x *ListOrganizationUnitsResponse) Reset() {
 	*x = ListOrganizationUnitsResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2125,7 +2289,7 @@ func (x *ListOrganizationUnitsResponse) String() string {
 func (*ListOrganizationUnitsResponse) ProtoMessage() {}
 
 func (x *ListOrganizationUnitsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[28]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2138,7 +2302,7 @@ func (x *ListOrganizationUnitsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListOrganizationUnitsResponse.ProtoReflect.Descriptor instead.
 func (*ListOrganizationUnitsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{28}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *ListOrganizationUnitsResponse) GetOrganizationUnits() []*OrganizationUnit {
@@ -2159,7 +2323,7 @@ type CreateInvitationRequest struct {
 
 func (x *CreateInvitationRequest) Reset() {
 	*x = CreateInvitationRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2171,7 +2335,7 @@ func (x *CreateInvitationRequest) String() string {
 func (*CreateInvitationRequest) ProtoMessage() {}
 
 func (x *CreateInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[29]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2184,7 +2348,7 @@ func (x *CreateInvitationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInvitationRequest.ProtoReflect.Descriptor instead.
 func (*CreateInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{29}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CreateInvitationRequest) GetTenantId() string {
@@ -2218,7 +2382,7 @@ type CreateInvitationResponse struct {
 
 func (x *CreateInvitationResponse) Reset() {
 	*x = CreateInvitationResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2230,7 +2394,7 @@ func (x *CreateInvitationResponse) String() string {
 func (*CreateInvitationResponse) ProtoMessage() {}
 
 func (x *CreateInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[30]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2243,7 +2407,7 @@ func (x *CreateInvitationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInvitationResponse.ProtoReflect.Descriptor instead.
 func (*CreateInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{30}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CreateInvitationResponse) GetInvitation() *Invitation {
@@ -2270,7 +2434,7 @@ type AcceptInvitationRequest struct {
 
 func (x *AcceptInvitationRequest) Reset() {
 	*x = AcceptInvitationRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2282,7 +2446,7 @@ func (x *AcceptInvitationRequest) String() string {
 func (*AcceptInvitationRequest) ProtoMessage() {}
 
 func (x *AcceptInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[31]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2295,7 +2459,7 @@ func (x *AcceptInvitationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AcceptInvitationRequest.ProtoReflect.Descriptor instead.
 func (*AcceptInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{31}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *AcceptInvitationRequest) GetToken() string {
@@ -2322,7 +2486,7 @@ type AcceptInvitationResponse struct {
 
 func (x *AcceptInvitationResponse) Reset() {
 	*x = AcceptInvitationResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2334,7 +2498,7 @@ func (x *AcceptInvitationResponse) String() string {
 func (*AcceptInvitationResponse) ProtoMessage() {}
 
 func (x *AcceptInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[32]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2347,7 +2511,7 @@ func (x *AcceptInvitationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AcceptInvitationResponse.ProtoReflect.Descriptor instead.
 func (*AcceptInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{32}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *AcceptInvitationResponse) GetInvitation() *Invitation {
@@ -2373,7 +2537,7 @@ type GetInvitationRequest struct {
 
 func (x *GetInvitationRequest) Reset() {
 	*x = GetInvitationRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2385,7 +2549,7 @@ func (x *GetInvitationRequest) String() string {
 func (*GetInvitationRequest) ProtoMessage() {}
 
 func (x *GetInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[33]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2398,7 +2562,7 @@ func (x *GetInvitationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInvitationRequest.ProtoReflect.Descriptor instead.
 func (*GetInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{33}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *GetInvitationRequest) GetInvitationId() string {
@@ -2417,7 +2581,7 @@ type GetInvitationResponse struct {
 
 func (x *GetInvitationResponse) Reset() {
 	*x = GetInvitationResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2429,7 +2593,7 @@ func (x *GetInvitationResponse) String() string {
 func (*GetInvitationResponse) ProtoMessage() {}
 
 func (x *GetInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[34]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2442,7 +2606,7 @@ func (x *GetInvitationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInvitationResponse.ProtoReflect.Descriptor instead.
 func (*GetInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{34}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *GetInvitationResponse) GetInvitation() *Invitation {
@@ -2462,7 +2626,7 @@ type RevokeInvitationRequest struct {
 
 func (x *RevokeInvitationRequest) Reset() {
 	*x = RevokeInvitationRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2474,7 +2638,7 @@ func (x *RevokeInvitationRequest) String() string {
 func (*RevokeInvitationRequest) ProtoMessage() {}
 
 func (x *RevokeInvitationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[35]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2487,7 +2651,7 @@ func (x *RevokeInvitationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeInvitationRequest.ProtoReflect.Descriptor instead.
 func (*RevokeInvitationRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{35}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *RevokeInvitationRequest) GetInvitationId() string {
@@ -2513,7 +2677,7 @@ type RevokeInvitationResponse struct {
 
 func (x *RevokeInvitationResponse) Reset() {
 	*x = RevokeInvitationResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2525,7 +2689,7 @@ func (x *RevokeInvitationResponse) String() string {
 func (*RevokeInvitationResponse) ProtoMessage() {}
 
 func (x *RevokeInvitationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[36]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2538,7 +2702,7 @@ func (x *RevokeInvitationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeInvitationResponse.ProtoReflect.Descriptor instead.
 func (*RevokeInvitationResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{36}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *RevokeInvitationResponse) GetInvitation() *Invitation {
@@ -2558,7 +2722,7 @@ type ListInvitationsRequest struct {
 
 func (x *ListInvitationsRequest) Reset() {
 	*x = ListInvitationsRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2570,7 +2734,7 @@ func (x *ListInvitationsRequest) String() string {
 func (*ListInvitationsRequest) ProtoMessage() {}
 
 func (x *ListInvitationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[37]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2583,7 +2747,7 @@ func (x *ListInvitationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInvitationsRequest.ProtoReflect.Descriptor instead.
 func (*ListInvitationsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{37}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *ListInvitationsRequest) GetTenantId() string {
@@ -2610,7 +2774,7 @@ type ListInvitationsResponse struct {
 
 func (x *ListInvitationsResponse) Reset() {
 	*x = ListInvitationsResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2622,7 +2786,7 @@ func (x *ListInvitationsResponse) String() string {
 func (*ListInvitationsResponse) ProtoMessage() {}
 
 func (x *ListInvitationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[38]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2635,7 +2799,7 @@ func (x *ListInvitationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInvitationsResponse.ProtoReflect.Descriptor instead.
 func (*ListInvitationsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{38}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *ListInvitationsResponse) GetInvitations() []*Invitation {
@@ -2663,7 +2827,7 @@ type CreateGroupRequest struct {
 
 func (x *CreateGroupRequest) Reset() {
 	*x = CreateGroupRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2675,7 +2839,7 @@ func (x *CreateGroupRequest) String() string {
 func (*CreateGroupRequest) ProtoMessage() {}
 
 func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[39]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2688,7 +2852,7 @@ func (x *CreateGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGroupRequest.ProtoReflect.Descriptor instead.
 func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{39}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CreateGroupRequest) GetTenantId() string {
@@ -2721,7 +2885,7 @@ type CreateGroupResponse struct {
 
 func (x *CreateGroupResponse) Reset() {
 	*x = CreateGroupResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2733,7 +2897,7 @@ func (x *CreateGroupResponse) String() string {
 func (*CreateGroupResponse) ProtoMessage() {}
 
 func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[40]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2746,7 +2910,7 @@ func (x *CreateGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateGroupResponse.ProtoReflect.Descriptor instead.
 func (*CreateGroupResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{40}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CreateGroupResponse) GetGroup() *Group {
@@ -2765,7 +2929,7 @@ type GetGroupRequest struct {
 
 func (x *GetGroupRequest) Reset() {
 	*x = GetGroupRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2777,7 +2941,7 @@ func (x *GetGroupRequest) String() string {
 func (*GetGroupRequest) ProtoMessage() {}
 
 func (x *GetGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[41]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2790,7 +2954,7 @@ func (x *GetGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{41}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *GetGroupRequest) GetGroupId() string {
@@ -2809,7 +2973,7 @@ type GetGroupResponse struct {
 
 func (x *GetGroupResponse) Reset() {
 	*x = GetGroupResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2821,7 +2985,7 @@ func (x *GetGroupResponse) String() string {
 func (*GetGroupResponse) ProtoMessage() {}
 
 func (x *GetGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[42]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2834,7 +2998,7 @@ func (x *GetGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{42}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *GetGroupResponse) GetGroup() *Group {
@@ -2856,7 +3020,7 @@ type UpdateGroupRequest struct {
 
 func (x *UpdateGroupRequest) Reset() {
 	*x = UpdateGroupRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2868,7 +3032,7 @@ func (x *UpdateGroupRequest) String() string {
 func (*UpdateGroupRequest) ProtoMessage() {}
 
 func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[43]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2881,7 +3045,7 @@ func (x *UpdateGroupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGroupRequest.ProtoReflect.Descriptor instead.
 func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{43}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *UpdateGroupRequest) GetGroupId() string {
@@ -2921,7 +3085,7 @@ type UpdateGroupResponse struct {
 
 func (x *UpdateGroupResponse) Reset() {
 	*x = UpdateGroupResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2933,7 +3097,7 @@ func (x *UpdateGroupResponse) String() string {
 func (*UpdateGroupResponse) ProtoMessage() {}
 
 func (x *UpdateGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[44]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2946,7 +3110,7 @@ func (x *UpdateGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGroupResponse.ProtoReflect.Descriptor instead.
 func (*UpdateGroupResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{44}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *UpdateGroupResponse) GetGroup() *Group {
@@ -2966,7 +3130,7 @@ type AddGroupMemberRequest struct {
 
 func (x *AddGroupMemberRequest) Reset() {
 	*x = AddGroupMemberRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2978,7 +3142,7 @@ func (x *AddGroupMemberRequest) String() string {
 func (*AddGroupMemberRequest) ProtoMessage() {}
 
 func (x *AddGroupMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[45]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2991,7 +3155,7 @@ func (x *AddGroupMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGroupMemberRequest.ProtoReflect.Descriptor instead.
 func (*AddGroupMemberRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{45}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *AddGroupMemberRequest) GetGroupId() string {
@@ -3017,7 +3181,7 @@ type AddGroupMemberResponse struct {
 
 func (x *AddGroupMemberResponse) Reset() {
 	*x = AddGroupMemberResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3029,7 +3193,7 @@ func (x *AddGroupMemberResponse) String() string {
 func (*AddGroupMemberResponse) ProtoMessage() {}
 
 func (x *AddGroupMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[46]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3042,7 +3206,7 @@ func (x *AddGroupMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGroupMemberResponse.ProtoReflect.Descriptor instead.
 func (*AddGroupMemberResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{46}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *AddGroupMemberResponse) GetAdded() bool {
@@ -3062,7 +3226,7 @@ type GetGroupMemberRequest struct {
 
 func (x *GetGroupMemberRequest) Reset() {
 	*x = GetGroupMemberRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3074,7 +3238,7 @@ func (x *GetGroupMemberRequest) String() string {
 func (*GetGroupMemberRequest) ProtoMessage() {}
 
 func (x *GetGroupMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[47]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3087,7 +3251,7 @@ func (x *GetGroupMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupMemberRequest.ProtoReflect.Descriptor instead.
 func (*GetGroupMemberRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{47}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *GetGroupMemberRequest) GetGroupId() string {
@@ -3113,7 +3277,7 @@ type GetGroupMemberResponse struct {
 
 func (x *GetGroupMemberResponse) Reset() {
 	*x = GetGroupMemberResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3125,7 +3289,7 @@ func (x *GetGroupMemberResponse) String() string {
 func (*GetGroupMemberResponse) ProtoMessage() {}
 
 func (x *GetGroupMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[48]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3138,7 +3302,7 @@ func (x *GetGroupMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGroupMemberResponse.ProtoReflect.Descriptor instead.
 func (*GetGroupMemberResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{48}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GetGroupMemberResponse) GetGroupMember() *GroupMember {
@@ -3159,7 +3323,7 @@ type RemoveGroupMemberRequest struct {
 
 func (x *RemoveGroupMemberRequest) Reset() {
 	*x = RemoveGroupMemberRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3171,7 +3335,7 @@ func (x *RemoveGroupMemberRequest) String() string {
 func (*RemoveGroupMemberRequest) ProtoMessage() {}
 
 func (x *RemoveGroupMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[49]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3184,7 +3348,7 @@ func (x *RemoveGroupMemberRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGroupMemberRequest.ProtoReflect.Descriptor instead.
 func (*RemoveGroupMemberRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{49}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *RemoveGroupMemberRequest) GetGroupId() string {
@@ -3217,7 +3381,7 @@ type RemoveGroupMemberResponse struct {
 
 func (x *RemoveGroupMemberResponse) Reset() {
 	*x = RemoveGroupMemberResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3229,7 +3393,7 @@ func (x *RemoveGroupMemberResponse) String() string {
 func (*RemoveGroupMemberResponse) ProtoMessage() {}
 
 func (x *RemoveGroupMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[50]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3242,7 +3406,7 @@ func (x *RemoveGroupMemberResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveGroupMemberResponse.ProtoReflect.Descriptor instead.
 func (*RemoveGroupMemberResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{50}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *RemoveGroupMemberResponse) GetRemoved() bool {
@@ -3261,7 +3425,7 @@ type ListGroupMembersRequest struct {
 
 func (x *ListGroupMembersRequest) Reset() {
 	*x = ListGroupMembersRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3273,7 +3437,7 @@ func (x *ListGroupMembersRequest) String() string {
 func (*ListGroupMembersRequest) ProtoMessage() {}
 
 func (x *ListGroupMembersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[51]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3286,7 +3450,7 @@ func (x *ListGroupMembersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGroupMembersRequest.ProtoReflect.Descriptor instead.
 func (*ListGroupMembersRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{51}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *ListGroupMembersRequest) GetGroupId() string {
@@ -3305,7 +3469,7 @@ type ListGroupMembersResponse struct {
 
 func (x *ListGroupMembersResponse) Reset() {
 	*x = ListGroupMembersResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3317,7 +3481,7 @@ func (x *ListGroupMembersResponse) String() string {
 func (*ListGroupMembersResponse) ProtoMessage() {}
 
 func (x *ListGroupMembersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[52]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3330,7 +3494,7 @@ func (x *ListGroupMembersResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGroupMembersResponse.ProtoReflect.Descriptor instead.
 func (*ListGroupMembersResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{52}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *ListGroupMembersResponse) GetGroupMembers() []*GroupMember {
@@ -3349,7 +3513,7 @@ type ListGroupsRequest struct {
 
 func (x *ListGroupsRequest) Reset() {
 	*x = ListGroupsRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3361,7 +3525,7 @@ func (x *ListGroupsRequest) String() string {
 func (*ListGroupsRequest) ProtoMessage() {}
 
 func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[53]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3374,7 +3538,7 @@ func (x *ListGroupsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGroupsRequest.ProtoReflect.Descriptor instead.
 func (*ListGroupsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{53}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *ListGroupsRequest) GetTenantId() string {
@@ -3393,7 +3557,7 @@ type ListGroupsResponse struct {
 
 func (x *ListGroupsResponse) Reset() {
 	*x = ListGroupsResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3405,7 +3569,7 @@ func (x *ListGroupsResponse) String() string {
 func (*ListGroupsResponse) ProtoMessage() {}
 
 func (x *ListGroupsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[54]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3418,7 +3582,7 @@ func (x *ListGroupsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListGroupsResponse.ProtoReflect.Descriptor instead.
 func (*ListGroupsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{54}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *ListGroupsResponse) GetGroups() []*Group {
@@ -3438,7 +3602,7 @@ type GetQuotaRequest struct {
 
 func (x *GetQuotaRequest) Reset() {
 	*x = GetQuotaRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3450,7 +3614,7 @@ func (x *GetQuotaRequest) String() string {
 func (*GetQuotaRequest) ProtoMessage() {}
 
 func (x *GetQuotaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[55]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3463,7 +3627,7 @@ func (x *GetQuotaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQuotaRequest.ProtoReflect.Descriptor instead.
 func (*GetQuotaRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{55}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *GetQuotaRequest) GetTenantId() string {
@@ -3489,7 +3653,7 @@ type GetQuotaResponse struct {
 
 func (x *GetQuotaResponse) Reset() {
 	*x = GetQuotaResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3501,7 +3665,7 @@ func (x *GetQuotaResponse) String() string {
 func (*GetQuotaResponse) ProtoMessage() {}
 
 func (x *GetQuotaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[56]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3514,7 +3678,7 @@ func (x *GetQuotaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetQuotaResponse.ProtoReflect.Descriptor instead.
 func (*GetQuotaResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{56}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *GetQuotaResponse) GetQuota() *Quota {
@@ -3535,7 +3699,7 @@ type ListQuotasRequest struct {
 
 func (x *ListQuotasRequest) Reset() {
 	*x = ListQuotasRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3547,7 +3711,7 @@ func (x *ListQuotasRequest) String() string {
 func (*ListQuotasRequest) ProtoMessage() {}
 
 func (x *ListQuotasRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[57]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3560,7 +3724,7 @@ func (x *ListQuotasRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuotasRequest.ProtoReflect.Descriptor instead.
 func (*ListQuotasRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{57}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *ListQuotasRequest) GetTenantId() string {
@@ -3594,7 +3758,7 @@ type ListQuotasResponse struct {
 
 func (x *ListQuotasResponse) Reset() {
 	*x = ListQuotasResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3606,7 +3770,7 @@ func (x *ListQuotasResponse) String() string {
 func (*ListQuotasResponse) ProtoMessage() {}
 
 func (x *ListQuotasResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[58]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3619,7 +3783,7 @@ func (x *ListQuotasResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListQuotasResponse.ProtoReflect.Descriptor instead.
 func (*ListQuotasResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{58}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *ListQuotasResponse) GetQuotas() []*Quota {
@@ -3648,7 +3812,7 @@ type SetQuotaRequest struct {
 
 func (x *SetQuotaRequest) Reset() {
 	*x = SetQuotaRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3660,7 +3824,7 @@ func (x *SetQuotaRequest) String() string {
 func (*SetQuotaRequest) ProtoMessage() {}
 
 func (x *SetQuotaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[59]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3673,7 +3837,7 @@ func (x *SetQuotaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetQuotaRequest.ProtoReflect.Descriptor instead.
 func (*SetQuotaRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{59}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *SetQuotaRequest) GetTenantId() string {
@@ -3713,7 +3877,7 @@ type SetQuotaResponse struct {
 
 func (x *SetQuotaResponse) Reset() {
 	*x = SetQuotaResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3725,7 +3889,7 @@ func (x *SetQuotaResponse) String() string {
 func (*SetQuotaResponse) ProtoMessage() {}
 
 func (x *SetQuotaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[60]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3738,7 +3902,7 @@ func (x *SetQuotaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetQuotaResponse.ProtoReflect.Descriptor instead.
 func (*SetQuotaResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{60}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *SetQuotaResponse) GetQuota() *Quota {
@@ -3759,7 +3923,7 @@ type ConsumeQuotaRequest struct {
 
 func (x *ConsumeQuotaRequest) Reset() {
 	*x = ConsumeQuotaRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3771,7 +3935,7 @@ func (x *ConsumeQuotaRequest) String() string {
 func (*ConsumeQuotaRequest) ProtoMessage() {}
 
 func (x *ConsumeQuotaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[61]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3784,7 +3948,7 @@ func (x *ConsumeQuotaRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConsumeQuotaRequest.ProtoReflect.Descriptor instead.
 func (*ConsumeQuotaRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{61}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *ConsumeQuotaRequest) GetTenantId() string {
@@ -3818,7 +3982,7 @@ type ConsumeQuotaResponse struct {
 
 func (x *ConsumeQuotaResponse) Reset() {
 	*x = ConsumeQuotaResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3830,7 +3994,7 @@ func (x *ConsumeQuotaResponse) String() string {
 func (*ConsumeQuotaResponse) ProtoMessage() {}
 
 func (x *ConsumeQuotaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[62]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3843,7 +4007,7 @@ func (x *ConsumeQuotaResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConsumeQuotaResponse.ProtoReflect.Descriptor instead.
 func (*ConsumeQuotaResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{62}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *ConsumeQuotaResponse) GetQuota() *Quota {
@@ -3870,7 +4034,7 @@ type ValidateMembershipRequest struct {
 
 func (x *ValidateMembershipRequest) Reset() {
 	*x = ValidateMembershipRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[63]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3882,7 +4046,7 @@ func (x *ValidateMembershipRequest) String() string {
 func (*ValidateMembershipRequest) ProtoMessage() {}
 
 func (x *ValidateMembershipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[63]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3895,7 +4059,7 @@ func (x *ValidateMembershipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateMembershipRequest.ProtoReflect.Descriptor instead.
 func (*ValidateMembershipRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{63}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *ValidateMembershipRequest) GetUserId() string {
@@ -3923,7 +4087,7 @@ type ValidateMembershipResponse struct {
 
 func (x *ValidateMembershipResponse) Reset() {
 	*x = ValidateMembershipResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[64]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3935,7 +4099,7 @@ func (x *ValidateMembershipResponse) String() string {
 func (*ValidateMembershipResponse) ProtoMessage() {}
 
 func (x *ValidateMembershipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[64]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3948,7 +4112,7 @@ func (x *ValidateMembershipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateMembershipResponse.ProtoReflect.Descriptor instead.
 func (*ValidateMembershipResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{64}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *ValidateMembershipResponse) GetValid() bool {
@@ -3981,7 +4145,7 @@ type GetMembershipRequest struct {
 
 func (x *GetMembershipRequest) Reset() {
 	*x = GetMembershipRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[65]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3993,7 +4157,7 @@ func (x *GetMembershipRequest) String() string {
 func (*GetMembershipRequest) ProtoMessage() {}
 
 func (x *GetMembershipRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[65]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4006,7 +4170,7 @@ func (x *GetMembershipRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMembershipRequest.ProtoReflect.Descriptor instead.
 func (*GetMembershipRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{65}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *GetMembershipRequest) GetMembershipId() string {
@@ -4025,7 +4189,7 @@ type GetMembershipResponse struct {
 
 func (x *GetMembershipResponse) Reset() {
 	*x = GetMembershipResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[66]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4037,7 +4201,7 @@ func (x *GetMembershipResponse) String() string {
 func (*GetMembershipResponse) ProtoMessage() {}
 
 func (x *GetMembershipResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[66]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4050,7 +4214,7 @@ func (x *GetMembershipResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMembershipResponse.ProtoReflect.Descriptor instead.
 func (*GetMembershipResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{66}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *GetMembershipResponse) GetMembership() *Membership {
@@ -4070,7 +4234,7 @@ type ListUserTenantsRequest struct {
 
 func (x *ListUserTenantsRequest) Reset() {
 	*x = ListUserTenantsRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[67]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4082,7 +4246,7 @@ func (x *ListUserTenantsRequest) String() string {
 func (*ListUserTenantsRequest) ProtoMessage() {}
 
 func (x *ListUserTenantsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[67]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4095,7 +4259,7 @@ func (x *ListUserTenantsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserTenantsRequest.ProtoReflect.Descriptor instead.
 func (*ListUserTenantsRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{67}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *ListUserTenantsRequest) GetUserId() string {
@@ -4122,7 +4286,7 @@ type ListUserTenantsResponse struct {
 
 func (x *ListUserTenantsResponse) Reset() {
 	*x = ListUserTenantsResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[68]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4134,7 +4298,7 @@ func (x *ListUserTenantsResponse) String() string {
 func (*ListUserTenantsResponse) ProtoMessage() {}
 
 func (x *ListUserTenantsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[68]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4147,7 +4311,7 @@ func (x *ListUserTenantsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUserTenantsResponse.ProtoReflect.Descriptor instead.
 func (*ListUserTenantsResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{68}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *ListUserTenantsResponse) GetTenants() []*Tenant {
@@ -4173,7 +4337,7 @@ type ResolveOrganizationScopeRequest struct {
 
 func (x *ResolveOrganizationScopeRequest) Reset() {
 	*x = ResolveOrganizationScopeRequest{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[69]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4185,7 +4349,7 @@ func (x *ResolveOrganizationScopeRequest) String() string {
 func (*ResolveOrganizationScopeRequest) ProtoMessage() {}
 
 func (x *ResolveOrganizationScopeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[69]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4198,7 +4362,7 @@ func (x *ResolveOrganizationScopeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveOrganizationScopeRequest.ProtoReflect.Descriptor instead.
 func (*ResolveOrganizationScopeRequest) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{69}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *ResolveOrganizationScopeRequest) GetMembershipId() string {
@@ -4217,7 +4381,7 @@ type ResolveOrganizationScopeResponse struct {
 
 func (x *ResolveOrganizationScopeResponse) Reset() {
 	*x = ResolveOrganizationScopeResponse{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[70]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4229,7 +4393,7 @@ func (x *ResolveOrganizationScopeResponse) String() string {
 func (*ResolveOrganizationScopeResponse) ProtoMessage() {}
 
 func (x *ResolveOrganizationScopeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[70]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4242,7 +4406,7 @@ func (x *ResolveOrganizationScopeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveOrganizationScopeResponse.ProtoReflect.Descriptor instead.
 func (*ResolveOrganizationScopeResponse) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{70}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *ResolveOrganizationScopeResponse) GetOrganizationUnitIds() []string {
@@ -4266,7 +4430,7 @@ type MembershipChangedEvent struct {
 
 func (x *MembershipChangedEvent) Reset() {
 	*x = MembershipChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[71]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4278,7 +4442,7 @@ func (x *MembershipChangedEvent) String() string {
 func (*MembershipChangedEvent) ProtoMessage() {}
 
 func (x *MembershipChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[71]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4291,7 +4455,7 @@ func (x *MembershipChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MembershipChangedEvent.ProtoReflect.Descriptor instead.
 func (*MembershipChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{71}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *MembershipChangedEvent) GetMembershipId() string {
@@ -4347,7 +4511,7 @@ type TenantCreatedEvent struct {
 
 func (x *TenantCreatedEvent) Reset() {
 	*x = TenantCreatedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[72]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4359,7 +4523,7 @@ func (x *TenantCreatedEvent) String() string {
 func (*TenantCreatedEvent) ProtoMessage() {}
 
 func (x *TenantCreatedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[72]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4372,7 +4536,7 @@ func (x *TenantCreatedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TenantCreatedEvent.ProtoReflect.Descriptor instead.
 func (*TenantCreatedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{72}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *TenantCreatedEvent) GetTenant() *Tenant {
@@ -4408,7 +4572,7 @@ type TenantStatusChangedEvent struct {
 
 func (x *TenantStatusChangedEvent) Reset() {
 	*x = TenantStatusChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[73]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4420,7 +4584,7 @@ func (x *TenantStatusChangedEvent) String() string {
 func (*TenantStatusChangedEvent) ProtoMessage() {}
 
 func (x *TenantStatusChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[73]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4433,7 +4597,7 @@ func (x *TenantStatusChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TenantStatusChangedEvent.ProtoReflect.Descriptor instead.
 func (*TenantStatusChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{73}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *TenantStatusChangedEvent) GetTenantId() string {
@@ -4475,7 +4639,7 @@ type OrganizationUnitChangedEvent struct {
 
 func (x *OrganizationUnitChangedEvent) Reset() {
 	*x = OrganizationUnitChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[74]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4487,7 +4651,7 @@ func (x *OrganizationUnitChangedEvent) String() string {
 func (*OrganizationUnitChangedEvent) ProtoMessage() {}
 
 func (x *OrganizationUnitChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[74]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4500,7 +4664,7 @@ func (x *OrganizationUnitChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrganizationUnitChangedEvent.ProtoReflect.Descriptor instead.
 func (*OrganizationUnitChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{74}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *OrganizationUnitChangedEvent) GetOrganizationUnit() *OrganizationUnit {
@@ -4534,7 +4698,7 @@ type InvitationChangedEvent struct {
 
 func (x *InvitationChangedEvent) Reset() {
 	*x = InvitationChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[75]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4546,7 +4710,7 @@ func (x *InvitationChangedEvent) String() string {
 func (*InvitationChangedEvent) ProtoMessage() {}
 
 func (x *InvitationChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[75]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4559,7 +4723,7 @@ func (x *InvitationChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InvitationChangedEvent.ProtoReflect.Descriptor instead.
 func (*InvitationChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{75}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *InvitationChangedEvent) GetInvitation() *Invitation {
@@ -4587,7 +4751,7 @@ type GroupChangedEvent struct {
 
 func (x *GroupChangedEvent) Reset() {
 	*x = GroupChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[76]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4599,7 +4763,7 @@ func (x *GroupChangedEvent) String() string {
 func (*GroupChangedEvent) ProtoMessage() {}
 
 func (x *GroupChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[76]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4612,7 +4776,7 @@ func (x *GroupChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupChangedEvent.ProtoReflect.Descriptor instead.
 func (*GroupChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{76}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *GroupChangedEvent) GetGroup() *Group {
@@ -4647,7 +4811,7 @@ type QuotaChangedEvent struct {
 
 func (x *QuotaChangedEvent) Reset() {
 	*x = QuotaChangedEvent{}
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[77]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4659,7 +4823,7 @@ func (x *QuotaChangedEvent) String() string {
 func (*QuotaChangedEvent) ProtoMessage() {}
 
 func (x *QuotaChangedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[77]
+	mi := &file_platform_tenant_v1_tenant_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4672,7 +4836,7 @@ func (x *QuotaChangedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QuotaChangedEvent.ProtoReflect.Descriptor instead.
 func (*QuotaChangedEvent) Descriptor() ([]byte, []int) {
-	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{77}
+	return file_platform_tenant_v1_tenant_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *QuotaChangedEvent) GetQuota() *Quota {
@@ -4867,7 +5031,19 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x04page\x18\x04 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"\x8f\x01\n" +
 	"\x17ListMembershipsResponse\x12@\n" +
 	"\vmemberships\x18\x01 \x03(\v2\x1e.platform.tenant.v1.MembershipR\vmemberships\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x81\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\x99\x01\n" +
+	"\x18MembershipDirectoryEntry\x12>\n" +
+	"\n" +
+	"membership\x18\x01 \x01(\v2\x1e.platform.tenant.v1.MembershipR\n" +
+	"membership\x12\x1a\n" +
+	"\busername\x18\x02 \x01(\tR\busername\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\"o\n" +
+	" SearchMembershipDirectoryRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x18\n" +
+	"\akeyword\x18\x02 \x01(\tR\akeyword\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\rR\x05limit\"k\n" +
+	"!SearchMembershipDirectoryResponse\x12F\n" +
+	"\aentries\x18\x01 \x03(\v2,.platform.tenant.v1.MembershipDirectoryEntryR\aentries\"\x81\x01\n" +
 	"\x1dCreateOrganizationUnitRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1b\n" +
 	"\tparent_id\x18\x02 \x01(\tR\bparentId\x12\x12\n" +
@@ -5070,7 +5246,7 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x19MEMBERSHIP_STATUS_INVITED\x10\x01\x12\x1c\n" +
 	"\x18MEMBERSHIP_STATUS_ACTIVE\x10\x02\x12\x1e\n" +
 	"\x1aMEMBERSHIP_STATUS_DISABLED\x10\x03\x12\x1d\n" +
-	"\x19MEMBERSHIP_STATUS_REMOVED\x10\x042\xcb\x1a\n" +
+	"\x19MEMBERSHIP_STATUS_REMOVED\x10\x042\xd6\x1b\n" +
 	"\rTenantService\x12a\n" +
 	"\fCreateTenant\x12'.platform.tenant.v1.CreateTenantRequest\x1a(.platform.tenant.v1.CreateTenantResponse\x12X\n" +
 	"\tGetTenant\x12$.platform.tenant.v1.GetTenantRequest\x1a%.platform.tenant.v1.GetTenantResponse\x12^\n" +
@@ -5078,7 +5254,8 @@ const file_platform_tenant_v1_tenant_proto_rawDesc = "" +
 	"\fUpdateTenant\x12'.platform.tenant.v1.UpdateTenantRequest\x1a(.platform.tenant.v1.UpdateTenantResponse\x12d\n" +
 	"\rAddMembership\x12(.platform.tenant.v1.AddMembershipRequest\x1a).platform.tenant.v1.AddMembershipResponse\x12m\n" +
 	"\x10UpdateMembership\x12+.platform.tenant.v1.UpdateMembershipRequest\x1a,.platform.tenant.v1.UpdateMembershipResponse\x12j\n" +
-	"\x0fListMemberships\x12*.platform.tenant.v1.ListMembershipsRequest\x1a+.platform.tenant.v1.ListMembershipsResponse\x12\x7f\n" +
+	"\x0fListMemberships\x12*.platform.tenant.v1.ListMembershipsRequest\x1a+.platform.tenant.v1.ListMembershipsResponse\x12\x88\x01\n" +
+	"\x19SearchMembershipDirectory\x124.platform.tenant.v1.SearchMembershipDirectoryRequest\x1a5.platform.tenant.v1.SearchMembershipDirectoryResponse\x12\x7f\n" +
 	"\x16CreateOrganizationUnit\x121.platform.tenant.v1.CreateOrganizationUnitRequest\x1a2.platform.tenant.v1.CreateOrganizationUnitResponse\x12v\n" +
 	"\x13GetOrganizationUnit\x12..platform.tenant.v1.GetOrganizationUnitRequest\x1a/.platform.tenant.v1.GetOrganizationUnitResponse\x12\x7f\n" +
 	"\x16UpdateOrganizationUnit\x121.platform.tenant.v1.UpdateOrganizationUnitRequest\x1a2.platform.tenant.v1.UpdateOrganizationUnitResponse\x12|\n" +
@@ -5120,115 +5297,118 @@ func file_platform_tenant_v1_tenant_proto_rawDescGZIP() []byte {
 }
 
 var file_platform_tenant_v1_tenant_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_platform_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 78)
+var file_platform_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 81)
 var file_platform_tenant_v1_tenant_proto_goTypes = []any{
-	(TenantStatus)(0),                        // 0: platform.tenant.v1.TenantStatus
-	(MembershipStatus)(0),                    // 1: platform.tenant.v1.MembershipStatus
-	(*Tenant)(nil),                           // 2: platform.tenant.v1.Tenant
-	(*ListTenantsRequest)(nil),               // 3: platform.tenant.v1.ListTenantsRequest
-	(*ListTenantsResponse)(nil),              // 4: platform.tenant.v1.ListTenantsResponse
-	(*Membership)(nil),                       // 5: platform.tenant.v1.Membership
-	(*OrganizationUnit)(nil),                 // 6: platform.tenant.v1.OrganizationUnit
-	(*Invitation)(nil),                       // 7: platform.tenant.v1.Invitation
-	(*Group)(nil),                            // 8: platform.tenant.v1.Group
-	(*GroupMember)(nil),                      // 9: platform.tenant.v1.GroupMember
-	(*Quota)(nil),                            // 10: platform.tenant.v1.Quota
-	(*CreateTenantRequest)(nil),              // 11: platform.tenant.v1.CreateTenantRequest
-	(*CreateTenantResponse)(nil),             // 12: platform.tenant.v1.CreateTenantResponse
-	(*GetTenantRequest)(nil),                 // 13: platform.tenant.v1.GetTenantRequest
-	(*GetTenantResponse)(nil),                // 14: platform.tenant.v1.GetTenantResponse
-	(*UpdateTenantRequest)(nil),              // 15: platform.tenant.v1.UpdateTenantRequest
-	(*UpdateTenantResponse)(nil),             // 16: platform.tenant.v1.UpdateTenantResponse
-	(*AddMembershipRequest)(nil),             // 17: platform.tenant.v1.AddMembershipRequest
-	(*AddMembershipResponse)(nil),            // 18: platform.tenant.v1.AddMembershipResponse
-	(*UpdateMembershipRequest)(nil),          // 19: platform.tenant.v1.UpdateMembershipRequest
-	(*UpdateMembershipResponse)(nil),         // 20: platform.tenant.v1.UpdateMembershipResponse
-	(*ListMembershipsRequest)(nil),           // 21: platform.tenant.v1.ListMembershipsRequest
-	(*ListMembershipsResponse)(nil),          // 22: platform.tenant.v1.ListMembershipsResponse
-	(*CreateOrganizationUnitRequest)(nil),    // 23: platform.tenant.v1.CreateOrganizationUnitRequest
-	(*CreateOrganizationUnitResponse)(nil),   // 24: platform.tenant.v1.CreateOrganizationUnitResponse
-	(*GetOrganizationUnitRequest)(nil),       // 25: platform.tenant.v1.GetOrganizationUnitRequest
-	(*GetOrganizationUnitResponse)(nil),      // 26: platform.tenant.v1.GetOrganizationUnitResponse
-	(*UpdateOrganizationUnitRequest)(nil),    // 27: platform.tenant.v1.UpdateOrganizationUnitRequest
-	(*UpdateOrganizationUnitResponse)(nil),   // 28: platform.tenant.v1.UpdateOrganizationUnitResponse
-	(*ListOrganizationUnitsRequest)(nil),     // 29: platform.tenant.v1.ListOrganizationUnitsRequest
-	(*ListOrganizationUnitsResponse)(nil),    // 30: platform.tenant.v1.ListOrganizationUnitsResponse
-	(*CreateInvitationRequest)(nil),          // 31: platform.tenant.v1.CreateInvitationRequest
-	(*CreateInvitationResponse)(nil),         // 32: platform.tenant.v1.CreateInvitationResponse
-	(*AcceptInvitationRequest)(nil),          // 33: platform.tenant.v1.AcceptInvitationRequest
-	(*AcceptInvitationResponse)(nil),         // 34: platform.tenant.v1.AcceptInvitationResponse
-	(*GetInvitationRequest)(nil),             // 35: platform.tenant.v1.GetInvitationRequest
-	(*GetInvitationResponse)(nil),            // 36: platform.tenant.v1.GetInvitationResponse
-	(*RevokeInvitationRequest)(nil),          // 37: platform.tenant.v1.RevokeInvitationRequest
-	(*RevokeInvitationResponse)(nil),         // 38: platform.tenant.v1.RevokeInvitationResponse
-	(*ListInvitationsRequest)(nil),           // 39: platform.tenant.v1.ListInvitationsRequest
-	(*ListInvitationsResponse)(nil),          // 40: platform.tenant.v1.ListInvitationsResponse
-	(*CreateGroupRequest)(nil),               // 41: platform.tenant.v1.CreateGroupRequest
-	(*CreateGroupResponse)(nil),              // 42: platform.tenant.v1.CreateGroupResponse
-	(*GetGroupRequest)(nil),                  // 43: platform.tenant.v1.GetGroupRequest
-	(*GetGroupResponse)(nil),                 // 44: platform.tenant.v1.GetGroupResponse
-	(*UpdateGroupRequest)(nil),               // 45: platform.tenant.v1.UpdateGroupRequest
-	(*UpdateGroupResponse)(nil),              // 46: platform.tenant.v1.UpdateGroupResponse
-	(*AddGroupMemberRequest)(nil),            // 47: platform.tenant.v1.AddGroupMemberRequest
-	(*AddGroupMemberResponse)(nil),           // 48: platform.tenant.v1.AddGroupMemberResponse
-	(*GetGroupMemberRequest)(nil),            // 49: platform.tenant.v1.GetGroupMemberRequest
-	(*GetGroupMemberResponse)(nil),           // 50: platform.tenant.v1.GetGroupMemberResponse
-	(*RemoveGroupMemberRequest)(nil),         // 51: platform.tenant.v1.RemoveGroupMemberRequest
-	(*RemoveGroupMemberResponse)(nil),        // 52: platform.tenant.v1.RemoveGroupMemberResponse
-	(*ListGroupMembersRequest)(nil),          // 53: platform.tenant.v1.ListGroupMembersRequest
-	(*ListGroupMembersResponse)(nil),         // 54: platform.tenant.v1.ListGroupMembersResponse
-	(*ListGroupsRequest)(nil),                // 55: platform.tenant.v1.ListGroupsRequest
-	(*ListGroupsResponse)(nil),               // 56: platform.tenant.v1.ListGroupsResponse
-	(*GetQuotaRequest)(nil),                  // 57: platform.tenant.v1.GetQuotaRequest
-	(*GetQuotaResponse)(nil),                 // 58: platform.tenant.v1.GetQuotaResponse
-	(*ListQuotasRequest)(nil),                // 59: platform.tenant.v1.ListQuotasRequest
-	(*ListQuotasResponse)(nil),               // 60: platform.tenant.v1.ListQuotasResponse
-	(*SetQuotaRequest)(nil),                  // 61: platform.tenant.v1.SetQuotaRequest
-	(*SetQuotaResponse)(nil),                 // 62: platform.tenant.v1.SetQuotaResponse
-	(*ConsumeQuotaRequest)(nil),              // 63: platform.tenant.v1.ConsumeQuotaRequest
-	(*ConsumeQuotaResponse)(nil),             // 64: platform.tenant.v1.ConsumeQuotaResponse
-	(*ValidateMembershipRequest)(nil),        // 65: platform.tenant.v1.ValidateMembershipRequest
-	(*ValidateMembershipResponse)(nil),       // 66: platform.tenant.v1.ValidateMembershipResponse
-	(*GetMembershipRequest)(nil),             // 67: platform.tenant.v1.GetMembershipRequest
-	(*GetMembershipResponse)(nil),            // 68: platform.tenant.v1.GetMembershipResponse
-	(*ListUserTenantsRequest)(nil),           // 69: platform.tenant.v1.ListUserTenantsRequest
-	(*ListUserTenantsResponse)(nil),          // 70: platform.tenant.v1.ListUserTenantsResponse
-	(*ResolveOrganizationScopeRequest)(nil),  // 71: platform.tenant.v1.ResolveOrganizationScopeRequest
-	(*ResolveOrganizationScopeResponse)(nil), // 72: platform.tenant.v1.ResolveOrganizationScopeResponse
-	(*MembershipChangedEvent)(nil),           // 73: platform.tenant.v1.MembershipChangedEvent
-	(*TenantCreatedEvent)(nil),               // 74: platform.tenant.v1.TenantCreatedEvent
-	(*TenantStatusChangedEvent)(nil),         // 75: platform.tenant.v1.TenantStatusChangedEvent
-	(*OrganizationUnitChangedEvent)(nil),     // 76: platform.tenant.v1.OrganizationUnitChangedEvent
-	(*InvitationChangedEvent)(nil),           // 77: platform.tenant.v1.InvitationChangedEvent
-	(*GroupChangedEvent)(nil),                // 78: platform.tenant.v1.GroupChangedEvent
-	(*QuotaChangedEvent)(nil),                // 79: platform.tenant.v1.QuotaChangedEvent
-	(*timestamppb.Timestamp)(nil),            // 80: google.protobuf.Timestamp
-	(*v1.PageRequest)(nil),                   // 81: platform.common.v1.PageRequest
-	(*v1.PageResult)(nil),                    // 82: platform.common.v1.PageResult
+	(TenantStatus)(0),                         // 0: platform.tenant.v1.TenantStatus
+	(MembershipStatus)(0),                     // 1: platform.tenant.v1.MembershipStatus
+	(*Tenant)(nil),                            // 2: platform.tenant.v1.Tenant
+	(*ListTenantsRequest)(nil),                // 3: platform.tenant.v1.ListTenantsRequest
+	(*ListTenantsResponse)(nil),               // 4: platform.tenant.v1.ListTenantsResponse
+	(*Membership)(nil),                        // 5: platform.tenant.v1.Membership
+	(*OrganizationUnit)(nil),                  // 6: platform.tenant.v1.OrganizationUnit
+	(*Invitation)(nil),                        // 7: platform.tenant.v1.Invitation
+	(*Group)(nil),                             // 8: platform.tenant.v1.Group
+	(*GroupMember)(nil),                       // 9: platform.tenant.v1.GroupMember
+	(*Quota)(nil),                             // 10: platform.tenant.v1.Quota
+	(*CreateTenantRequest)(nil),               // 11: platform.tenant.v1.CreateTenantRequest
+	(*CreateTenantResponse)(nil),              // 12: platform.tenant.v1.CreateTenantResponse
+	(*GetTenantRequest)(nil),                  // 13: platform.tenant.v1.GetTenantRequest
+	(*GetTenantResponse)(nil),                 // 14: platform.tenant.v1.GetTenantResponse
+	(*UpdateTenantRequest)(nil),               // 15: platform.tenant.v1.UpdateTenantRequest
+	(*UpdateTenantResponse)(nil),              // 16: platform.tenant.v1.UpdateTenantResponse
+	(*AddMembershipRequest)(nil),              // 17: platform.tenant.v1.AddMembershipRequest
+	(*AddMembershipResponse)(nil),             // 18: platform.tenant.v1.AddMembershipResponse
+	(*UpdateMembershipRequest)(nil),           // 19: platform.tenant.v1.UpdateMembershipRequest
+	(*UpdateMembershipResponse)(nil),          // 20: platform.tenant.v1.UpdateMembershipResponse
+	(*ListMembershipsRequest)(nil),            // 21: platform.tenant.v1.ListMembershipsRequest
+	(*ListMembershipsResponse)(nil),           // 22: platform.tenant.v1.ListMembershipsResponse
+	(*MembershipDirectoryEntry)(nil),          // 23: platform.tenant.v1.MembershipDirectoryEntry
+	(*SearchMembershipDirectoryRequest)(nil),  // 24: platform.tenant.v1.SearchMembershipDirectoryRequest
+	(*SearchMembershipDirectoryResponse)(nil), // 25: platform.tenant.v1.SearchMembershipDirectoryResponse
+	(*CreateOrganizationUnitRequest)(nil),     // 26: platform.tenant.v1.CreateOrganizationUnitRequest
+	(*CreateOrganizationUnitResponse)(nil),    // 27: platform.tenant.v1.CreateOrganizationUnitResponse
+	(*GetOrganizationUnitRequest)(nil),        // 28: platform.tenant.v1.GetOrganizationUnitRequest
+	(*GetOrganizationUnitResponse)(nil),       // 29: platform.tenant.v1.GetOrganizationUnitResponse
+	(*UpdateOrganizationUnitRequest)(nil),     // 30: platform.tenant.v1.UpdateOrganizationUnitRequest
+	(*UpdateOrganizationUnitResponse)(nil),    // 31: platform.tenant.v1.UpdateOrganizationUnitResponse
+	(*ListOrganizationUnitsRequest)(nil),      // 32: platform.tenant.v1.ListOrganizationUnitsRequest
+	(*ListOrganizationUnitsResponse)(nil),     // 33: platform.tenant.v1.ListOrganizationUnitsResponse
+	(*CreateInvitationRequest)(nil),           // 34: platform.tenant.v1.CreateInvitationRequest
+	(*CreateInvitationResponse)(nil),          // 35: platform.tenant.v1.CreateInvitationResponse
+	(*AcceptInvitationRequest)(nil),           // 36: platform.tenant.v1.AcceptInvitationRequest
+	(*AcceptInvitationResponse)(nil),          // 37: platform.tenant.v1.AcceptInvitationResponse
+	(*GetInvitationRequest)(nil),              // 38: platform.tenant.v1.GetInvitationRequest
+	(*GetInvitationResponse)(nil),             // 39: platform.tenant.v1.GetInvitationResponse
+	(*RevokeInvitationRequest)(nil),           // 40: platform.tenant.v1.RevokeInvitationRequest
+	(*RevokeInvitationResponse)(nil),          // 41: platform.tenant.v1.RevokeInvitationResponse
+	(*ListInvitationsRequest)(nil),            // 42: platform.tenant.v1.ListInvitationsRequest
+	(*ListInvitationsResponse)(nil),           // 43: platform.tenant.v1.ListInvitationsResponse
+	(*CreateGroupRequest)(nil),                // 44: platform.tenant.v1.CreateGroupRequest
+	(*CreateGroupResponse)(nil),               // 45: platform.tenant.v1.CreateGroupResponse
+	(*GetGroupRequest)(nil),                   // 46: platform.tenant.v1.GetGroupRequest
+	(*GetGroupResponse)(nil),                  // 47: platform.tenant.v1.GetGroupResponse
+	(*UpdateGroupRequest)(nil),                // 48: platform.tenant.v1.UpdateGroupRequest
+	(*UpdateGroupResponse)(nil),               // 49: platform.tenant.v1.UpdateGroupResponse
+	(*AddGroupMemberRequest)(nil),             // 50: platform.tenant.v1.AddGroupMemberRequest
+	(*AddGroupMemberResponse)(nil),            // 51: platform.tenant.v1.AddGroupMemberResponse
+	(*GetGroupMemberRequest)(nil),             // 52: platform.tenant.v1.GetGroupMemberRequest
+	(*GetGroupMemberResponse)(nil),            // 53: platform.tenant.v1.GetGroupMemberResponse
+	(*RemoveGroupMemberRequest)(nil),          // 54: platform.tenant.v1.RemoveGroupMemberRequest
+	(*RemoveGroupMemberResponse)(nil),         // 55: platform.tenant.v1.RemoveGroupMemberResponse
+	(*ListGroupMembersRequest)(nil),           // 56: platform.tenant.v1.ListGroupMembersRequest
+	(*ListGroupMembersResponse)(nil),          // 57: platform.tenant.v1.ListGroupMembersResponse
+	(*ListGroupsRequest)(nil),                 // 58: platform.tenant.v1.ListGroupsRequest
+	(*ListGroupsResponse)(nil),                // 59: platform.tenant.v1.ListGroupsResponse
+	(*GetQuotaRequest)(nil),                   // 60: platform.tenant.v1.GetQuotaRequest
+	(*GetQuotaResponse)(nil),                  // 61: platform.tenant.v1.GetQuotaResponse
+	(*ListQuotasRequest)(nil),                 // 62: platform.tenant.v1.ListQuotasRequest
+	(*ListQuotasResponse)(nil),                // 63: platform.tenant.v1.ListQuotasResponse
+	(*SetQuotaRequest)(nil),                   // 64: platform.tenant.v1.SetQuotaRequest
+	(*SetQuotaResponse)(nil),                  // 65: platform.tenant.v1.SetQuotaResponse
+	(*ConsumeQuotaRequest)(nil),               // 66: platform.tenant.v1.ConsumeQuotaRequest
+	(*ConsumeQuotaResponse)(nil),              // 67: platform.tenant.v1.ConsumeQuotaResponse
+	(*ValidateMembershipRequest)(nil),         // 68: platform.tenant.v1.ValidateMembershipRequest
+	(*ValidateMembershipResponse)(nil),        // 69: platform.tenant.v1.ValidateMembershipResponse
+	(*GetMembershipRequest)(nil),              // 70: platform.tenant.v1.GetMembershipRequest
+	(*GetMembershipResponse)(nil),             // 71: platform.tenant.v1.GetMembershipResponse
+	(*ListUserTenantsRequest)(nil),            // 72: platform.tenant.v1.ListUserTenantsRequest
+	(*ListUserTenantsResponse)(nil),           // 73: platform.tenant.v1.ListUserTenantsResponse
+	(*ResolveOrganizationScopeRequest)(nil),   // 74: platform.tenant.v1.ResolveOrganizationScopeRequest
+	(*ResolveOrganizationScopeResponse)(nil),  // 75: platform.tenant.v1.ResolveOrganizationScopeResponse
+	(*MembershipChangedEvent)(nil),            // 76: platform.tenant.v1.MembershipChangedEvent
+	(*TenantCreatedEvent)(nil),                // 77: platform.tenant.v1.TenantCreatedEvent
+	(*TenantStatusChangedEvent)(nil),          // 78: platform.tenant.v1.TenantStatusChangedEvent
+	(*OrganizationUnitChangedEvent)(nil),      // 79: platform.tenant.v1.OrganizationUnitChangedEvent
+	(*InvitationChangedEvent)(nil),            // 80: platform.tenant.v1.InvitationChangedEvent
+	(*GroupChangedEvent)(nil),                 // 81: platform.tenant.v1.GroupChangedEvent
+	(*QuotaChangedEvent)(nil),                 // 82: platform.tenant.v1.QuotaChangedEvent
+	(*timestamppb.Timestamp)(nil),             // 83: google.protobuf.Timestamp
+	(*v1.PageRequest)(nil),                    // 84: platform.common.v1.PageRequest
+	(*v1.PageResult)(nil),                     // 85: platform.common.v1.PageResult
 }
 var file_platform_tenant_v1_tenant_proto_depIdxs = []int32{
 	0,   // 0: platform.tenant.v1.Tenant.status:type_name -> platform.tenant.v1.TenantStatus
-	80,  // 1: platform.tenant.v1.Tenant.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 2: platform.tenant.v1.Tenant.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 1: platform.tenant.v1.Tenant.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 2: platform.tenant.v1.Tenant.updated_at:type_name -> google.protobuf.Timestamp
 	0,   // 3: platform.tenant.v1.ListTenantsRequest.status:type_name -> platform.tenant.v1.TenantStatus
-	81,  // 4: platform.tenant.v1.ListTenantsRequest.page:type_name -> platform.common.v1.PageRequest
+	84,  // 4: platform.tenant.v1.ListTenantsRequest.page:type_name -> platform.common.v1.PageRequest
 	2,   // 5: platform.tenant.v1.ListTenantsResponse.tenants:type_name -> platform.tenant.v1.Tenant
-	82,  // 6: platform.tenant.v1.ListTenantsResponse.page:type_name -> platform.common.v1.PageResult
+	85,  // 6: platform.tenant.v1.ListTenantsResponse.page:type_name -> platform.common.v1.PageResult
 	1,   // 7: platform.tenant.v1.Membership.status:type_name -> platform.tenant.v1.MembershipStatus
-	80,  // 8: platform.tenant.v1.Membership.joined_at:type_name -> google.protobuf.Timestamp
-	80,  // 9: platform.tenant.v1.Membership.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 10: platform.tenant.v1.Membership.updated_at:type_name -> google.protobuf.Timestamp
-	80,  // 11: platform.tenant.v1.OrganizationUnit.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 12: platform.tenant.v1.OrganizationUnit.updated_at:type_name -> google.protobuf.Timestamp
-	80,  // 13: platform.tenant.v1.Invitation.expires_at:type_name -> google.protobuf.Timestamp
-	80,  // 14: platform.tenant.v1.Invitation.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 15: platform.tenant.v1.Invitation.updated_at:type_name -> google.protobuf.Timestamp
-	80,  // 16: platform.tenant.v1.Group.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 17: platform.tenant.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
-	80,  // 18: platform.tenant.v1.GroupMember.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 19: platform.tenant.v1.GroupMember.updated_at:type_name -> google.protobuf.Timestamp
-	80,  // 20: platform.tenant.v1.Quota.created_at:type_name -> google.protobuf.Timestamp
-	80,  // 21: platform.tenant.v1.Quota.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 8: platform.tenant.v1.Membership.joined_at:type_name -> google.protobuf.Timestamp
+	83,  // 9: platform.tenant.v1.Membership.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 10: platform.tenant.v1.Membership.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 11: platform.tenant.v1.OrganizationUnit.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 12: platform.tenant.v1.OrganizationUnit.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 13: platform.tenant.v1.Invitation.expires_at:type_name -> google.protobuf.Timestamp
+	83,  // 14: platform.tenant.v1.Invitation.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 15: platform.tenant.v1.Invitation.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 16: platform.tenant.v1.Group.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 17: platform.tenant.v1.Group.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 18: platform.tenant.v1.GroupMember.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 19: platform.tenant.v1.GroupMember.updated_at:type_name -> google.protobuf.Timestamp
+	83,  // 20: platform.tenant.v1.Quota.created_at:type_name -> google.protobuf.Timestamp
+	83,  // 21: platform.tenant.v1.Quota.updated_at:type_name -> google.protobuf.Timestamp
 	2,   // 22: platform.tenant.v1.CreateTenantResponse.tenant:type_name -> platform.tenant.v1.Tenant
 	5,   // 23: platform.tenant.v1.CreateTenantResponse.owner_membership:type_name -> platform.tenant.v1.Membership
 	2,   // 24: platform.tenant.v1.GetTenantResponse.tenant:type_name -> platform.tenant.v1.Tenant
@@ -5238,117 +5418,121 @@ var file_platform_tenant_v1_tenant_proto_depIdxs = []int32{
 	1,   // 28: platform.tenant.v1.UpdateMembershipRequest.status:type_name -> platform.tenant.v1.MembershipStatus
 	5,   // 29: platform.tenant.v1.UpdateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
 	1,   // 30: platform.tenant.v1.ListMembershipsRequest.status:type_name -> platform.tenant.v1.MembershipStatus
-	81,  // 31: platform.tenant.v1.ListMembershipsRequest.page:type_name -> platform.common.v1.PageRequest
+	84,  // 31: platform.tenant.v1.ListMembershipsRequest.page:type_name -> platform.common.v1.PageRequest
 	5,   // 32: platform.tenant.v1.ListMembershipsResponse.memberships:type_name -> platform.tenant.v1.Membership
-	82,  // 33: platform.tenant.v1.ListMembershipsResponse.page:type_name -> platform.common.v1.PageResult
-	6,   // 34: platform.tenant.v1.CreateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
-	6,   // 35: platform.tenant.v1.GetOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
-	6,   // 36: platform.tenant.v1.UpdateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
-	6,   // 37: platform.tenant.v1.ListOrganizationUnitsResponse.organization_units:type_name -> platform.tenant.v1.OrganizationUnit
-	7,   // 38: platform.tenant.v1.CreateInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
-	7,   // 39: platform.tenant.v1.AcceptInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
-	5,   // 40: platform.tenant.v1.AcceptInvitationResponse.membership:type_name -> platform.tenant.v1.Membership
-	7,   // 41: platform.tenant.v1.GetInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
-	7,   // 42: platform.tenant.v1.RevokeInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
-	81,  // 43: platform.tenant.v1.ListInvitationsRequest.page:type_name -> platform.common.v1.PageRequest
-	7,   // 44: platform.tenant.v1.ListInvitationsResponse.invitations:type_name -> platform.tenant.v1.Invitation
-	82,  // 45: platform.tenant.v1.ListInvitationsResponse.page:type_name -> platform.common.v1.PageResult
-	8,   // 46: platform.tenant.v1.CreateGroupResponse.group:type_name -> platform.tenant.v1.Group
-	8,   // 47: platform.tenant.v1.GetGroupResponse.group:type_name -> platform.tenant.v1.Group
-	8,   // 48: platform.tenant.v1.UpdateGroupResponse.group:type_name -> platform.tenant.v1.Group
-	9,   // 49: platform.tenant.v1.GetGroupMemberResponse.group_member:type_name -> platform.tenant.v1.GroupMember
-	9,   // 50: platform.tenant.v1.ListGroupMembersResponse.group_members:type_name -> platform.tenant.v1.GroupMember
-	8,   // 51: platform.tenant.v1.ListGroupsResponse.groups:type_name -> platform.tenant.v1.Group
-	10,  // 52: platform.tenant.v1.GetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
-	81,  // 53: platform.tenant.v1.ListQuotasRequest.page:type_name -> platform.common.v1.PageRequest
-	10,  // 54: platform.tenant.v1.ListQuotasResponse.quotas:type_name -> platform.tenant.v1.Quota
-	82,  // 55: platform.tenant.v1.ListQuotasResponse.page:type_name -> platform.common.v1.PageResult
-	10,  // 56: platform.tenant.v1.SetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
-	10,  // 57: platform.tenant.v1.ConsumeQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
-	2,   // 58: platform.tenant.v1.ValidateMembershipResponse.tenant:type_name -> platform.tenant.v1.Tenant
-	5,   // 59: platform.tenant.v1.ValidateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
-	5,   // 60: platform.tenant.v1.GetMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
-	81,  // 61: platform.tenant.v1.ListUserTenantsRequest.page:type_name -> platform.common.v1.PageRequest
-	2,   // 62: platform.tenant.v1.ListUserTenantsResponse.tenants:type_name -> platform.tenant.v1.Tenant
-	82,  // 63: platform.tenant.v1.ListUserTenantsResponse.page:type_name -> platform.common.v1.PageResult
-	1,   // 64: platform.tenant.v1.MembershipChangedEvent.previous_status:type_name -> platform.tenant.v1.MembershipStatus
-	1,   // 65: platform.tenant.v1.MembershipChangedEvent.current_status:type_name -> platform.tenant.v1.MembershipStatus
-	2,   // 66: platform.tenant.v1.TenantCreatedEvent.tenant:type_name -> platform.tenant.v1.Tenant
-	0,   // 67: platform.tenant.v1.TenantStatusChangedEvent.previous_status:type_name -> platform.tenant.v1.TenantStatus
-	0,   // 68: platform.tenant.v1.TenantStatusChangedEvent.current_status:type_name -> platform.tenant.v1.TenantStatus
-	6,   // 69: platform.tenant.v1.OrganizationUnitChangedEvent.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
-	7,   // 70: platform.tenant.v1.InvitationChangedEvent.invitation:type_name -> platform.tenant.v1.Invitation
-	8,   // 71: platform.tenant.v1.GroupChangedEvent.group:type_name -> platform.tenant.v1.Group
-	10,  // 72: platform.tenant.v1.QuotaChangedEvent.quota:type_name -> platform.tenant.v1.Quota
-	11,  // 73: platform.tenant.v1.TenantService.CreateTenant:input_type -> platform.tenant.v1.CreateTenantRequest
-	13,  // 74: platform.tenant.v1.TenantService.GetTenant:input_type -> platform.tenant.v1.GetTenantRequest
-	3,   // 75: platform.tenant.v1.TenantService.ListTenants:input_type -> platform.tenant.v1.ListTenantsRequest
-	15,  // 76: platform.tenant.v1.TenantService.UpdateTenant:input_type -> platform.tenant.v1.UpdateTenantRequest
-	17,  // 77: platform.tenant.v1.TenantService.AddMembership:input_type -> platform.tenant.v1.AddMembershipRequest
-	19,  // 78: platform.tenant.v1.TenantService.UpdateMembership:input_type -> platform.tenant.v1.UpdateMembershipRequest
-	21,  // 79: platform.tenant.v1.TenantService.ListMemberships:input_type -> platform.tenant.v1.ListMembershipsRequest
-	23,  // 80: platform.tenant.v1.TenantService.CreateOrganizationUnit:input_type -> platform.tenant.v1.CreateOrganizationUnitRequest
-	25,  // 81: platform.tenant.v1.TenantService.GetOrganizationUnit:input_type -> platform.tenant.v1.GetOrganizationUnitRequest
-	27,  // 82: platform.tenant.v1.TenantService.UpdateOrganizationUnit:input_type -> platform.tenant.v1.UpdateOrganizationUnitRequest
-	29,  // 83: platform.tenant.v1.TenantService.ListOrganizationUnits:input_type -> platform.tenant.v1.ListOrganizationUnitsRequest
-	31,  // 84: platform.tenant.v1.TenantService.CreateInvitation:input_type -> platform.tenant.v1.CreateInvitationRequest
-	33,  // 85: platform.tenant.v1.TenantService.AcceptInvitation:input_type -> platform.tenant.v1.AcceptInvitationRequest
-	35,  // 86: platform.tenant.v1.TenantService.GetInvitation:input_type -> platform.tenant.v1.GetInvitationRequest
-	37,  // 87: platform.tenant.v1.TenantService.RevokeInvitation:input_type -> platform.tenant.v1.RevokeInvitationRequest
-	39,  // 88: platform.tenant.v1.TenantService.ListInvitations:input_type -> platform.tenant.v1.ListInvitationsRequest
-	41,  // 89: platform.tenant.v1.TenantService.CreateGroup:input_type -> platform.tenant.v1.CreateGroupRequest
-	43,  // 90: platform.tenant.v1.TenantService.GetGroup:input_type -> platform.tenant.v1.GetGroupRequest
-	45,  // 91: platform.tenant.v1.TenantService.UpdateGroup:input_type -> platform.tenant.v1.UpdateGroupRequest
-	47,  // 92: platform.tenant.v1.TenantService.AddGroupMember:input_type -> platform.tenant.v1.AddGroupMemberRequest
-	49,  // 93: platform.tenant.v1.TenantService.GetGroupMember:input_type -> platform.tenant.v1.GetGroupMemberRequest
-	51,  // 94: platform.tenant.v1.TenantService.RemoveGroupMember:input_type -> platform.tenant.v1.RemoveGroupMemberRequest
-	53,  // 95: platform.tenant.v1.TenantService.ListGroupMembers:input_type -> platform.tenant.v1.ListGroupMembersRequest
-	55,  // 96: platform.tenant.v1.TenantService.ListGroups:input_type -> platform.tenant.v1.ListGroupsRequest
-	57,  // 97: platform.tenant.v1.TenantService.GetQuota:input_type -> platform.tenant.v1.GetQuotaRequest
-	59,  // 98: platform.tenant.v1.TenantService.ListQuotas:input_type -> platform.tenant.v1.ListQuotasRequest
-	61,  // 99: platform.tenant.v1.TenantService.SetQuota:input_type -> platform.tenant.v1.SetQuotaRequest
-	63,  // 100: platform.tenant.v1.TenantService.ConsumeQuota:input_type -> platform.tenant.v1.ConsumeQuotaRequest
-	65,  // 101: platform.tenant.v1.TenantService.ValidateMembership:input_type -> platform.tenant.v1.ValidateMembershipRequest
-	67,  // 102: platform.tenant.v1.TenantService.GetMembership:input_type -> platform.tenant.v1.GetMembershipRequest
-	69,  // 103: platform.tenant.v1.TenantService.ListUserTenants:input_type -> platform.tenant.v1.ListUserTenantsRequest
-	71,  // 104: platform.tenant.v1.TenantService.ResolveOrganizationScope:input_type -> platform.tenant.v1.ResolveOrganizationScopeRequest
-	12,  // 105: platform.tenant.v1.TenantService.CreateTenant:output_type -> platform.tenant.v1.CreateTenantResponse
-	14,  // 106: platform.tenant.v1.TenantService.GetTenant:output_type -> platform.tenant.v1.GetTenantResponse
-	4,   // 107: platform.tenant.v1.TenantService.ListTenants:output_type -> platform.tenant.v1.ListTenantsResponse
-	16,  // 108: platform.tenant.v1.TenantService.UpdateTenant:output_type -> platform.tenant.v1.UpdateTenantResponse
-	18,  // 109: platform.tenant.v1.TenantService.AddMembership:output_type -> platform.tenant.v1.AddMembershipResponse
-	20,  // 110: platform.tenant.v1.TenantService.UpdateMembership:output_type -> platform.tenant.v1.UpdateMembershipResponse
-	22,  // 111: platform.tenant.v1.TenantService.ListMemberships:output_type -> platform.tenant.v1.ListMembershipsResponse
-	24,  // 112: platform.tenant.v1.TenantService.CreateOrganizationUnit:output_type -> platform.tenant.v1.CreateOrganizationUnitResponse
-	26,  // 113: platform.tenant.v1.TenantService.GetOrganizationUnit:output_type -> platform.tenant.v1.GetOrganizationUnitResponse
-	28,  // 114: platform.tenant.v1.TenantService.UpdateOrganizationUnit:output_type -> platform.tenant.v1.UpdateOrganizationUnitResponse
-	30,  // 115: platform.tenant.v1.TenantService.ListOrganizationUnits:output_type -> platform.tenant.v1.ListOrganizationUnitsResponse
-	32,  // 116: platform.tenant.v1.TenantService.CreateInvitation:output_type -> platform.tenant.v1.CreateInvitationResponse
-	34,  // 117: platform.tenant.v1.TenantService.AcceptInvitation:output_type -> platform.tenant.v1.AcceptInvitationResponse
-	36,  // 118: platform.tenant.v1.TenantService.GetInvitation:output_type -> platform.tenant.v1.GetInvitationResponse
-	38,  // 119: platform.tenant.v1.TenantService.RevokeInvitation:output_type -> platform.tenant.v1.RevokeInvitationResponse
-	40,  // 120: platform.tenant.v1.TenantService.ListInvitations:output_type -> platform.tenant.v1.ListInvitationsResponse
-	42,  // 121: platform.tenant.v1.TenantService.CreateGroup:output_type -> platform.tenant.v1.CreateGroupResponse
-	44,  // 122: platform.tenant.v1.TenantService.GetGroup:output_type -> platform.tenant.v1.GetGroupResponse
-	46,  // 123: platform.tenant.v1.TenantService.UpdateGroup:output_type -> platform.tenant.v1.UpdateGroupResponse
-	48,  // 124: platform.tenant.v1.TenantService.AddGroupMember:output_type -> platform.tenant.v1.AddGroupMemberResponse
-	50,  // 125: platform.tenant.v1.TenantService.GetGroupMember:output_type -> platform.tenant.v1.GetGroupMemberResponse
-	52,  // 126: platform.tenant.v1.TenantService.RemoveGroupMember:output_type -> platform.tenant.v1.RemoveGroupMemberResponse
-	54,  // 127: platform.tenant.v1.TenantService.ListGroupMembers:output_type -> platform.tenant.v1.ListGroupMembersResponse
-	56,  // 128: platform.tenant.v1.TenantService.ListGroups:output_type -> platform.tenant.v1.ListGroupsResponse
-	58,  // 129: platform.tenant.v1.TenantService.GetQuota:output_type -> platform.tenant.v1.GetQuotaResponse
-	60,  // 130: platform.tenant.v1.TenantService.ListQuotas:output_type -> platform.tenant.v1.ListQuotasResponse
-	62,  // 131: platform.tenant.v1.TenantService.SetQuota:output_type -> platform.tenant.v1.SetQuotaResponse
-	64,  // 132: platform.tenant.v1.TenantService.ConsumeQuota:output_type -> platform.tenant.v1.ConsumeQuotaResponse
-	66,  // 133: platform.tenant.v1.TenantService.ValidateMembership:output_type -> platform.tenant.v1.ValidateMembershipResponse
-	68,  // 134: platform.tenant.v1.TenantService.GetMembership:output_type -> platform.tenant.v1.GetMembershipResponse
-	70,  // 135: platform.tenant.v1.TenantService.ListUserTenants:output_type -> platform.tenant.v1.ListUserTenantsResponse
-	72,  // 136: platform.tenant.v1.TenantService.ResolveOrganizationScope:output_type -> platform.tenant.v1.ResolveOrganizationScopeResponse
-	105, // [105:137] is the sub-list for method output_type
-	73,  // [73:105] is the sub-list for method input_type
-	73,  // [73:73] is the sub-list for extension type_name
-	73,  // [73:73] is the sub-list for extension extendee
-	0,   // [0:73] is the sub-list for field type_name
+	85,  // 33: platform.tenant.v1.ListMembershipsResponse.page:type_name -> platform.common.v1.PageResult
+	5,   // 34: platform.tenant.v1.MembershipDirectoryEntry.membership:type_name -> platform.tenant.v1.Membership
+	23,  // 35: platform.tenant.v1.SearchMembershipDirectoryResponse.entries:type_name -> platform.tenant.v1.MembershipDirectoryEntry
+	6,   // 36: platform.tenant.v1.CreateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	6,   // 37: platform.tenant.v1.GetOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	6,   // 38: platform.tenant.v1.UpdateOrganizationUnitResponse.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	6,   // 39: platform.tenant.v1.ListOrganizationUnitsResponse.organization_units:type_name -> platform.tenant.v1.OrganizationUnit
+	7,   // 40: platform.tenant.v1.CreateInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	7,   // 41: platform.tenant.v1.AcceptInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	5,   // 42: platform.tenant.v1.AcceptInvitationResponse.membership:type_name -> platform.tenant.v1.Membership
+	7,   // 43: platform.tenant.v1.GetInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	7,   // 44: platform.tenant.v1.RevokeInvitationResponse.invitation:type_name -> platform.tenant.v1.Invitation
+	84,  // 45: platform.tenant.v1.ListInvitationsRequest.page:type_name -> platform.common.v1.PageRequest
+	7,   // 46: platform.tenant.v1.ListInvitationsResponse.invitations:type_name -> platform.tenant.v1.Invitation
+	85,  // 47: platform.tenant.v1.ListInvitationsResponse.page:type_name -> platform.common.v1.PageResult
+	8,   // 48: platform.tenant.v1.CreateGroupResponse.group:type_name -> platform.tenant.v1.Group
+	8,   // 49: platform.tenant.v1.GetGroupResponse.group:type_name -> platform.tenant.v1.Group
+	8,   // 50: platform.tenant.v1.UpdateGroupResponse.group:type_name -> platform.tenant.v1.Group
+	9,   // 51: platform.tenant.v1.GetGroupMemberResponse.group_member:type_name -> platform.tenant.v1.GroupMember
+	9,   // 52: platform.tenant.v1.ListGroupMembersResponse.group_members:type_name -> platform.tenant.v1.GroupMember
+	8,   // 53: platform.tenant.v1.ListGroupsResponse.groups:type_name -> platform.tenant.v1.Group
+	10,  // 54: platform.tenant.v1.GetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	84,  // 55: platform.tenant.v1.ListQuotasRequest.page:type_name -> platform.common.v1.PageRequest
+	10,  // 56: platform.tenant.v1.ListQuotasResponse.quotas:type_name -> platform.tenant.v1.Quota
+	85,  // 57: platform.tenant.v1.ListQuotasResponse.page:type_name -> platform.common.v1.PageResult
+	10,  // 58: platform.tenant.v1.SetQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	10,  // 59: platform.tenant.v1.ConsumeQuotaResponse.quota:type_name -> platform.tenant.v1.Quota
+	2,   // 60: platform.tenant.v1.ValidateMembershipResponse.tenant:type_name -> platform.tenant.v1.Tenant
+	5,   // 61: platform.tenant.v1.ValidateMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	5,   // 62: platform.tenant.v1.GetMembershipResponse.membership:type_name -> platform.tenant.v1.Membership
+	84,  // 63: platform.tenant.v1.ListUserTenantsRequest.page:type_name -> platform.common.v1.PageRequest
+	2,   // 64: platform.tenant.v1.ListUserTenantsResponse.tenants:type_name -> platform.tenant.v1.Tenant
+	85,  // 65: platform.tenant.v1.ListUserTenantsResponse.page:type_name -> platform.common.v1.PageResult
+	1,   // 66: platform.tenant.v1.MembershipChangedEvent.previous_status:type_name -> platform.tenant.v1.MembershipStatus
+	1,   // 67: platform.tenant.v1.MembershipChangedEvent.current_status:type_name -> platform.tenant.v1.MembershipStatus
+	2,   // 68: platform.tenant.v1.TenantCreatedEvent.tenant:type_name -> platform.tenant.v1.Tenant
+	0,   // 69: platform.tenant.v1.TenantStatusChangedEvent.previous_status:type_name -> platform.tenant.v1.TenantStatus
+	0,   // 70: platform.tenant.v1.TenantStatusChangedEvent.current_status:type_name -> platform.tenant.v1.TenantStatus
+	6,   // 71: platform.tenant.v1.OrganizationUnitChangedEvent.organization_unit:type_name -> platform.tenant.v1.OrganizationUnit
+	7,   // 72: platform.tenant.v1.InvitationChangedEvent.invitation:type_name -> platform.tenant.v1.Invitation
+	8,   // 73: platform.tenant.v1.GroupChangedEvent.group:type_name -> platform.tenant.v1.Group
+	10,  // 74: platform.tenant.v1.QuotaChangedEvent.quota:type_name -> platform.tenant.v1.Quota
+	11,  // 75: platform.tenant.v1.TenantService.CreateTenant:input_type -> platform.tenant.v1.CreateTenantRequest
+	13,  // 76: platform.tenant.v1.TenantService.GetTenant:input_type -> platform.tenant.v1.GetTenantRequest
+	3,   // 77: platform.tenant.v1.TenantService.ListTenants:input_type -> platform.tenant.v1.ListTenantsRequest
+	15,  // 78: platform.tenant.v1.TenantService.UpdateTenant:input_type -> platform.tenant.v1.UpdateTenantRequest
+	17,  // 79: platform.tenant.v1.TenantService.AddMembership:input_type -> platform.tenant.v1.AddMembershipRequest
+	19,  // 80: platform.tenant.v1.TenantService.UpdateMembership:input_type -> platform.tenant.v1.UpdateMembershipRequest
+	21,  // 81: platform.tenant.v1.TenantService.ListMemberships:input_type -> platform.tenant.v1.ListMembershipsRequest
+	24,  // 82: platform.tenant.v1.TenantService.SearchMembershipDirectory:input_type -> platform.tenant.v1.SearchMembershipDirectoryRequest
+	26,  // 83: platform.tenant.v1.TenantService.CreateOrganizationUnit:input_type -> platform.tenant.v1.CreateOrganizationUnitRequest
+	28,  // 84: platform.tenant.v1.TenantService.GetOrganizationUnit:input_type -> platform.tenant.v1.GetOrganizationUnitRequest
+	30,  // 85: platform.tenant.v1.TenantService.UpdateOrganizationUnit:input_type -> platform.tenant.v1.UpdateOrganizationUnitRequest
+	32,  // 86: platform.tenant.v1.TenantService.ListOrganizationUnits:input_type -> platform.tenant.v1.ListOrganizationUnitsRequest
+	34,  // 87: platform.tenant.v1.TenantService.CreateInvitation:input_type -> platform.tenant.v1.CreateInvitationRequest
+	36,  // 88: platform.tenant.v1.TenantService.AcceptInvitation:input_type -> platform.tenant.v1.AcceptInvitationRequest
+	38,  // 89: platform.tenant.v1.TenantService.GetInvitation:input_type -> platform.tenant.v1.GetInvitationRequest
+	40,  // 90: platform.tenant.v1.TenantService.RevokeInvitation:input_type -> platform.tenant.v1.RevokeInvitationRequest
+	42,  // 91: platform.tenant.v1.TenantService.ListInvitations:input_type -> platform.tenant.v1.ListInvitationsRequest
+	44,  // 92: platform.tenant.v1.TenantService.CreateGroup:input_type -> platform.tenant.v1.CreateGroupRequest
+	46,  // 93: platform.tenant.v1.TenantService.GetGroup:input_type -> platform.tenant.v1.GetGroupRequest
+	48,  // 94: platform.tenant.v1.TenantService.UpdateGroup:input_type -> platform.tenant.v1.UpdateGroupRequest
+	50,  // 95: platform.tenant.v1.TenantService.AddGroupMember:input_type -> platform.tenant.v1.AddGroupMemberRequest
+	52,  // 96: platform.tenant.v1.TenantService.GetGroupMember:input_type -> platform.tenant.v1.GetGroupMemberRequest
+	54,  // 97: platform.tenant.v1.TenantService.RemoveGroupMember:input_type -> platform.tenant.v1.RemoveGroupMemberRequest
+	56,  // 98: platform.tenant.v1.TenantService.ListGroupMembers:input_type -> platform.tenant.v1.ListGroupMembersRequest
+	58,  // 99: platform.tenant.v1.TenantService.ListGroups:input_type -> platform.tenant.v1.ListGroupsRequest
+	60,  // 100: platform.tenant.v1.TenantService.GetQuota:input_type -> platform.tenant.v1.GetQuotaRequest
+	62,  // 101: platform.tenant.v1.TenantService.ListQuotas:input_type -> platform.tenant.v1.ListQuotasRequest
+	64,  // 102: platform.tenant.v1.TenantService.SetQuota:input_type -> platform.tenant.v1.SetQuotaRequest
+	66,  // 103: platform.tenant.v1.TenantService.ConsumeQuota:input_type -> platform.tenant.v1.ConsumeQuotaRequest
+	68,  // 104: platform.tenant.v1.TenantService.ValidateMembership:input_type -> platform.tenant.v1.ValidateMembershipRequest
+	70,  // 105: platform.tenant.v1.TenantService.GetMembership:input_type -> platform.tenant.v1.GetMembershipRequest
+	72,  // 106: platform.tenant.v1.TenantService.ListUserTenants:input_type -> platform.tenant.v1.ListUserTenantsRequest
+	74,  // 107: platform.tenant.v1.TenantService.ResolveOrganizationScope:input_type -> platform.tenant.v1.ResolveOrganizationScopeRequest
+	12,  // 108: platform.tenant.v1.TenantService.CreateTenant:output_type -> platform.tenant.v1.CreateTenantResponse
+	14,  // 109: platform.tenant.v1.TenantService.GetTenant:output_type -> platform.tenant.v1.GetTenantResponse
+	4,   // 110: platform.tenant.v1.TenantService.ListTenants:output_type -> platform.tenant.v1.ListTenantsResponse
+	16,  // 111: platform.tenant.v1.TenantService.UpdateTenant:output_type -> platform.tenant.v1.UpdateTenantResponse
+	18,  // 112: platform.tenant.v1.TenantService.AddMembership:output_type -> platform.tenant.v1.AddMembershipResponse
+	20,  // 113: platform.tenant.v1.TenantService.UpdateMembership:output_type -> platform.tenant.v1.UpdateMembershipResponse
+	22,  // 114: platform.tenant.v1.TenantService.ListMemberships:output_type -> platform.tenant.v1.ListMembershipsResponse
+	25,  // 115: platform.tenant.v1.TenantService.SearchMembershipDirectory:output_type -> platform.tenant.v1.SearchMembershipDirectoryResponse
+	27,  // 116: platform.tenant.v1.TenantService.CreateOrganizationUnit:output_type -> platform.tenant.v1.CreateOrganizationUnitResponse
+	29,  // 117: platform.tenant.v1.TenantService.GetOrganizationUnit:output_type -> platform.tenant.v1.GetOrganizationUnitResponse
+	31,  // 118: platform.tenant.v1.TenantService.UpdateOrganizationUnit:output_type -> platform.tenant.v1.UpdateOrganizationUnitResponse
+	33,  // 119: platform.tenant.v1.TenantService.ListOrganizationUnits:output_type -> platform.tenant.v1.ListOrganizationUnitsResponse
+	35,  // 120: platform.tenant.v1.TenantService.CreateInvitation:output_type -> platform.tenant.v1.CreateInvitationResponse
+	37,  // 121: platform.tenant.v1.TenantService.AcceptInvitation:output_type -> platform.tenant.v1.AcceptInvitationResponse
+	39,  // 122: platform.tenant.v1.TenantService.GetInvitation:output_type -> platform.tenant.v1.GetInvitationResponse
+	41,  // 123: platform.tenant.v1.TenantService.RevokeInvitation:output_type -> platform.tenant.v1.RevokeInvitationResponse
+	43,  // 124: platform.tenant.v1.TenantService.ListInvitations:output_type -> platform.tenant.v1.ListInvitationsResponse
+	45,  // 125: platform.tenant.v1.TenantService.CreateGroup:output_type -> platform.tenant.v1.CreateGroupResponse
+	47,  // 126: platform.tenant.v1.TenantService.GetGroup:output_type -> platform.tenant.v1.GetGroupResponse
+	49,  // 127: platform.tenant.v1.TenantService.UpdateGroup:output_type -> platform.tenant.v1.UpdateGroupResponse
+	51,  // 128: platform.tenant.v1.TenantService.AddGroupMember:output_type -> platform.tenant.v1.AddGroupMemberResponse
+	53,  // 129: platform.tenant.v1.TenantService.GetGroupMember:output_type -> platform.tenant.v1.GetGroupMemberResponse
+	55,  // 130: platform.tenant.v1.TenantService.RemoveGroupMember:output_type -> platform.tenant.v1.RemoveGroupMemberResponse
+	57,  // 131: platform.tenant.v1.TenantService.ListGroupMembers:output_type -> platform.tenant.v1.ListGroupMembersResponse
+	59,  // 132: platform.tenant.v1.TenantService.ListGroups:output_type -> platform.tenant.v1.ListGroupsResponse
+	61,  // 133: platform.tenant.v1.TenantService.GetQuota:output_type -> platform.tenant.v1.GetQuotaResponse
+	63,  // 134: platform.tenant.v1.TenantService.ListQuotas:output_type -> platform.tenant.v1.ListQuotasResponse
+	65,  // 135: platform.tenant.v1.TenantService.SetQuota:output_type -> platform.tenant.v1.SetQuotaResponse
+	67,  // 136: platform.tenant.v1.TenantService.ConsumeQuota:output_type -> platform.tenant.v1.ConsumeQuotaResponse
+	69,  // 137: platform.tenant.v1.TenantService.ValidateMembership:output_type -> platform.tenant.v1.ValidateMembershipResponse
+	71,  // 138: platform.tenant.v1.TenantService.GetMembership:output_type -> platform.tenant.v1.GetMembershipResponse
+	73,  // 139: platform.tenant.v1.TenantService.ListUserTenants:output_type -> platform.tenant.v1.ListUserTenantsResponse
+	75,  // 140: platform.tenant.v1.TenantService.ResolveOrganizationScope:output_type -> platform.tenant.v1.ResolveOrganizationScopeResponse
+	108, // [108:141] is the sub-list for method output_type
+	75,  // [75:108] is the sub-list for method input_type
+	75,  // [75:75] is the sub-list for extension type_name
+	75,  // [75:75] is the sub-list for extension extendee
+	0,   // [0:75] is the sub-list for field type_name
 }
 
 func init() { file_platform_tenant_v1_tenant_proto_init() }
@@ -5362,7 +5546,7 @@ func file_platform_tenant_v1_tenant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_platform_tenant_v1_tenant_proto_rawDesc), len(file_platform_tenant_v1_tenant_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   78,
+			NumMessages:   81,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
