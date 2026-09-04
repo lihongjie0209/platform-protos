@@ -3363,6 +3363,7 @@ type CreatePaymentAttemptRequest struct {
 	IdempotencyKey         string                 `protobuf:"bytes,4,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
 	TenantId               string                 `protobuf:"bytes,5,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ApplicationId          string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	InvoiceVersion         int64                  `protobuf:"varint,7,opt,name=invoice_version,json=invoiceVersion,proto3" json:"invoice_version,omitempty"`
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -3437,6 +3438,13 @@ func (x *CreatePaymentAttemptRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *CreatePaymentAttemptRequest) GetInvoiceVersion() int64 {
+	if x != nil {
+		return x.InvoiceVersion
+	}
+	return 0
 }
 
 type CreatePaymentAttemptResponse struct {
@@ -4728,7 +4736,7 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x84\x01\n" +
 	"\x14ListInvoicesResponse\x128\n" +
 	"\binvoices\x18\x01 \x03(\v2\x1c.platform.billing.v1.InvoiceR\binvoices\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xff\x01\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xa8\x02\n" +
 	"\x1bCreatePaymentAttemptRequest\x12\x1d\n" +
 	"\n" +
 	"invoice_id\x18\x01 \x01(\tR\tinvoiceId\x12\x1a\n" +
@@ -4736,7 +4744,8 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x18payment_method_reference\x18\x03 \x01(\tR\x16paymentMethodReference\x12'\n" +
 	"\x0fidempotency_key\x18\x04 \x01(\tR\x0eidempotencyKey\x12\x1b\n" +
 	"\ttenant_id\x18\x05 \x01(\tR\btenantId\x12%\n" +
-	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"\x8a\x01\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\x12'\n" +
+	"\x0finvoice_version\x18\a \x01(\x03R\x0einvoiceVersion\"\x8a\x01\n" +
 	"\x1cCreatePaymentAttemptResponse\x12L\n" +
 	"\x0fpayment_attempt\x18\x01 \x01(\v2#.platform.billing.v1.PaymentAttemptR\x0epaymentAttempt\x12\x1c\n" +
 	"\tduplicate\x18\x02 \x01(\bR\tduplicate\"n\n" +

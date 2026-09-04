@@ -368,6 +368,7 @@ message CreatePaymentAttemptRequest {
   string idempotency_key = 4;
   string tenant_id = 5;
   string application_id = 6;
+  int64 invoice_version = 7;
 }
 message CreatePaymentAttemptResponse {
   PaymentAttempt payment_attempt = 1;
