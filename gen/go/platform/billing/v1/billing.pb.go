@@ -1718,6 +1718,7 @@ type UpsertUsagePriceRequest struct {
 	PricingModel     string                 `protobuf:"bytes,7,opt,name=pricing_model,json=pricingModel,proto3" json:"pricing_model,omitempty"`
 	TiersJson        string                 `protobuf:"bytes,8,opt,name=tiers_json,json=tiersJson,proto3" json:"tiers_json,omitempty"`
 	ExpectedVersion  int64                  `protobuf:"varint,9,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	PlanVersion      int64                  `protobuf:"varint,10,opt,name=plan_version,json=planVersion,proto3" json:"plan_version,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1811,6 +1812,13 @@ func (x *UpsertUsagePriceRequest) GetTiersJson() string {
 func (x *UpsertUsagePriceRequest) GetExpectedVersion() int64 {
 	if x != nil {
 		return x.ExpectedVersion
+	}
+	return 0
+}
+
+func (x *UpsertUsagePriceRequest) GetPlanVersion() int64 {
+	if x != nil {
+		return x.PlanVersion
 	}
 	return 0
 }
@@ -4574,7 +4582,7 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x04page\x18\x03 \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\"x\n" +
 	"\x11ListPlansResponse\x12/\n" +
 	"\x05plans\x18\x01 \x03(\v2\x19.platform.billing.v1.PlanR\x05plans\x122\n" +
-	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xce\x02\n" +
+	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"\xf1\x02\n" +
 	"\x17UpsertUsagePriceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\aplan_id\x18\x02 \x01(\tR\x06planId\x12\x1d\n" +
@@ -4586,7 +4594,9 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\rpricing_model\x18\a \x01(\tR\fpricingModel\x12\x1d\n" +
 	"\n" +
 	"tiers_json\x18\b \x01(\tR\ttiersJson\x12)\n" +
-	"\x10expected_version\x18\t \x01(\x03R\x0fexpectedVersion\"\\\n" +
+	"\x10expected_version\x18\t \x01(\x03R\x0fexpectedVersion\x12!\n" +
+	"\fplan_version\x18\n" +
+	" \x01(\x03R\vplanVersion\"\\\n" +
 	"\x18UpsertUsagePriceResponse\x12@\n" +
 	"\vusage_price\x18\x01 \x01(\v2\x1f.platform.billing.v1.UsagePriceR\n" +
 	"usagePrice\"C\n" +

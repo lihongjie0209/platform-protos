@@ -228,6 +228,7 @@ message UpsertUsagePriceRequest {
   string pricing_model = 7;
   string tiers_json = 8;
   int64 expected_version = 9;
+  int64 plan_version = 10;
 }
 message UpsertUsagePriceResponse {
   UsagePrice usage_price = 1;
