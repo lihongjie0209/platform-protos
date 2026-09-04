@@ -2099,6 +2099,7 @@ type ChangeSubscriptionRequest struct {
 	Version       int64                  `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
 	TenantId      string                 `protobuf:"bytes,5,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ApplicationId string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	PlanVersion   int64                  `protobuf:"varint,7,opt,name=plan_version,json=planVersion,proto3" json:"plan_version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2173,6 +2174,13 @@ func (x *ChangeSubscriptionRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *ChangeSubscriptionRequest) GetPlanVersion() int64 {
+	if x != nil {
+		return x.PlanVersion
+	}
+	return 0
 }
 
 type ChangeSubscriptionResponse struct {
@@ -4613,14 +4621,15 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\x12!\n" +
 	"\fplan_version\x18\a \x01(\x03R\vplanVersion\"c\n" +
 	"\x1aCreateSubscriptionResponse\x12E\n" +
-	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\xc9\x01\n" +
+	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\xec\x01\n" +
 	"\x19ChangeSubscriptionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\aplan_id\x18\x02 \x01(\tR\x06planId\x12%\n" +
 	"\x0eeffective_mode\x18\x03 \x01(\tR\reffectiveMode\x12\x18\n" +
 	"\aversion\x18\x04 \x01(\x03R\aversion\x12\x1b\n" +
 	"\ttenant_id\x18\x05 \x01(\tR\btenantId\x12%\n" +
-	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"c\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\x12!\n" +
+	"\fplan_version\x18\a \x01(\x03R\vplanVersion\"c\n" +
 	"\x1aChangeSubscriptionResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\xad\x01\n" +
 	"\x19CancelSubscriptionRequest\x12\x0e\n" +

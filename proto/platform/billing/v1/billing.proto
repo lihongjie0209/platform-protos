@@ -258,6 +258,7 @@ message ChangeSubscriptionRequest {
   int64 version = 4;
   string tenant_id = 5;
   string application_id = 6;
+  int64 plan_version = 7;
 }
 message ChangeSubscriptionResponse {
   Subscription subscription = 1;
