@@ -1955,6 +1955,7 @@ type CreateSubscriptionRequest struct {
 	ExternalReference string                 `protobuf:"bytes,4,opt,name=external_reference,json=externalReference,proto3" json:"external_reference,omitempty"`
 	IdempotencyKey    string                 `protobuf:"bytes,5,opt,name=idempotency_key,json=idempotencyKey,proto3" json:"idempotency_key,omitempty"`
 	ApplicationId     string                 `protobuf:"bytes,6,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	PlanVersion       int64                  `protobuf:"varint,7,opt,name=plan_version,json=planVersion,proto3" json:"plan_version,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -2029,6 +2030,13 @@ func (x *CreateSubscriptionRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *CreateSubscriptionRequest) GetPlanVersion() int64 {
+	if x != nil {
+		return x.PlanVersion
+	}
+	return 0
 }
 
 type CreateSubscriptionResponse struct {
@@ -4585,14 +4593,15 @@ const file_platform_billing_v1_billing_proto_rawDesc = "" +
 	"\x17DeleteUsagePriceRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\aversion\x18\x02 \x01(\x03R\aversion\"\x1a\n" +
-	"\x18DeleteUsagePriceResponse\"\x89\x02\n" +
+	"\x18DeleteUsagePriceResponse\"\xac\x02\n" +
 	"\x19CreateSubscriptionRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x17\n" +
 	"\aplan_id\x18\x02 \x01(\tR\x06planId\x127\n" +
 	"\tstarts_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\bstartsAt\x12-\n" +
 	"\x12external_reference\x18\x04 \x01(\tR\x11externalReference\x12'\n" +
 	"\x0fidempotency_key\x18\x05 \x01(\tR\x0eidempotencyKey\x12%\n" +
-	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\"c\n" +
+	"\x0eapplication_id\x18\x06 \x01(\tR\rapplicationId\x12!\n" +
+	"\fplan_version\x18\a \x01(\x03R\vplanVersion\"c\n" +
 	"\x1aCreateSubscriptionResponse\x12E\n" +
 	"\fsubscription\x18\x01 \x01(\v2!.platform.billing.v1.SubscriptionR\fsubscription\"\xc9\x01\n" +
 	"\x19ChangeSubscriptionRequest\x12\x0e\n" +

@@ -245,6 +245,7 @@ message CreateSubscriptionRequest {
   string external_reference = 4;
   string idempotency_key = 5;
   string application_id = 6;
+  int64 plan_version = 7;
 }
 message CreateSubscriptionResponse {
   Subscription subscription = 1;
