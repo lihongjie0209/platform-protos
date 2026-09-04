@@ -999,10 +999,11 @@ func (x *ListJobsResponse) GetPageSize() int32 {
 }
 
 type TriggerJobRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ExpectedVersion int64                  `protobuf:"varint,2,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *TriggerJobRequest) Reset() {
@@ -1040,6 +1041,13 @@ func (x *TriggerJobRequest) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *TriggerJobRequest) GetExpectedVersion() int64 {
+	if x != nil {
+		return x.ExpectedVersion
+	}
+	return 0
 }
 
 type TriggerJobResponse struct {
@@ -1404,9 +1412,10 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\x05items\x18\x01 \x03(\v2\x1a.platform.scheduler.v1.JobR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\"#\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\"N\n" +
 	"\x11TriggerJobRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"T\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12)\n" +
+	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"T\n" +
 	"\x12TriggerJobResponse\x12>\n" +
 	"\texecution\x18\x01 \x01(\v2 .platform.scheduler.v1.ExecutionR\texecution\"%\n" +
 	"\x13GetExecutionRequest\x12\x0e\n" +
