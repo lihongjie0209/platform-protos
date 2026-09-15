@@ -161,6 +161,7 @@ message CreatePermissionResponse {
 }
 message GetPermissionRequest {
   string permission_id = 1;
+  string tenant_id = 2;
 }
 message GetPermissionResponse {
   Permission permission = 1;
@@ -171,6 +172,7 @@ message UpdatePermissionRequest {
   string condition_expression = 3;
   string status = 4;
   int64 expected_version = 5;
+  string tenant_id = 6;
 }
 message UpdatePermissionResponse {
   Permission permission = 1;
@@ -196,6 +198,7 @@ message CreateRoleResponse {
 }
 message GetRoleRequest {
   string role_id = 1;
+  string tenant_id = 2;
 }
 message GetRoleResponse {
   Role role = 1;
@@ -207,6 +210,7 @@ message UpdateRoleRequest {
   string data_scope = 4;
   string status = 5;
   int64 expected_version = 6;
+  string tenant_id = 7;
 }
 message UpdateRoleResponse {
   Role role = 1;
@@ -231,12 +235,14 @@ message GrantRolePermissionResponse {
 message RevokeRolePermissionRequest {
   string role_permission_id = 1;
   int64 expected_version = 2;
+  string tenant_id = 3;
 }
 message RevokeRolePermissionResponse {
   RolePermission role_permission = 1;
 }
 message ListRolePermissionsRequest {
   string role_id = 1;
+  string tenant_id = 2;
 }
 message ListRolePermissionsResponse {
   repeated RolePermission role_permissions = 1;
@@ -253,6 +259,7 @@ message CreateBindingResponse {
 }
 message GetBindingRequest {
   string binding_id = 1;
+  string tenant_id = 2;
 }
 message GetBindingResponse {
   Binding binding = 1;
@@ -260,6 +267,7 @@ message GetBindingResponse {
 message RevokeBindingRequest {
   string binding_id = 1;
   int64 expected_version = 2;
+  string tenant_id = 3;
 }
 message RevokeBindingResponse {
   Binding binding = 1;

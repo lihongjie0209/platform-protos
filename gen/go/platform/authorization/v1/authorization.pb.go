@@ -1273,6 +1273,7 @@ func (x *CreatePermissionResponse) GetPermission() *Permission {
 type GetPermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PermissionId  string                 `protobuf:"bytes,1,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1310,6 +1311,13 @@ func (*GetPermissionRequest) Descriptor() ([]byte, []int) {
 func (x *GetPermissionRequest) GetPermissionId() string {
 	if x != nil {
 		return x.PermissionId
+	}
+	return ""
+}
+
+func (x *GetPermissionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -1365,6 +1373,7 @@ type UpdatePermissionRequest struct {
 	ConditionExpression string                 `protobuf:"bytes,3,opt,name=condition_expression,json=conditionExpression,proto3" json:"condition_expression,omitempty"`
 	Status              string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
 	ExpectedVersion     int64                  `protobuf:"varint,5,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	TenantId            string                 `protobuf:"bytes,6,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
@@ -1432,6 +1441,13 @@ func (x *UpdatePermissionRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *UpdatePermissionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type UpdatePermissionResponse struct {
@@ -1705,6 +1721,7 @@ func (x *CreateRoleResponse) GetRole() *Role {
 type GetRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoleId        string                 `protobuf:"bytes,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1742,6 +1759,13 @@ func (*GetRoleRequest) Descriptor() ([]byte, []int) {
 func (x *GetRoleRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
+	}
+	return ""
+}
+
+func (x *GetRoleRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -1798,6 +1822,7 @@ type UpdateRoleRequest struct {
 	DataScope       string                 `protobuf:"bytes,4,opt,name=data_scope,json=dataScope,proto3" json:"data_scope,omitempty"`
 	Status          string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,6,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	TenantId        string                 `protobuf:"bytes,7,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1872,6 +1897,13 @@ func (x *UpdateRoleRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *UpdateRoleRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type UpdateRoleResponse struct {
@@ -2130,6 +2162,7 @@ type RevokeRolePermissionRequest struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	RolePermissionId string                 `protobuf:"bytes,1,opt,name=role_permission_id,json=rolePermissionId,proto3" json:"role_permission_id,omitempty"`
 	ExpectedVersion  int64                  `protobuf:"varint,2,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	TenantId         string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -2176,6 +2209,13 @@ func (x *RevokeRolePermissionRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *RevokeRolePermissionRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type RevokeRolePermissionResponse struct {
@@ -2225,6 +2265,7 @@ func (x *RevokeRolePermissionResponse) GetRolePermission() *RolePermission {
 type ListRolePermissionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoleId        string                 `protobuf:"bytes,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2262,6 +2303,13 @@ func (*ListRolePermissionsRequest) Descriptor() ([]byte, []int) {
 func (x *ListRolePermissionsRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
+	}
+	return ""
+}
+
+func (x *ListRolePermissionsRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -2425,6 +2473,7 @@ func (x *CreateBindingResponse) GetBinding() *Binding {
 type GetBindingRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BindingId     string                 `protobuf:"bytes,1,opt,name=binding_id,json=bindingId,proto3" json:"binding_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2462,6 +2511,13 @@ func (*GetBindingRequest) Descriptor() ([]byte, []int) {
 func (x *GetBindingRequest) GetBindingId() string {
 	if x != nil {
 		return x.BindingId
+	}
+	return ""
+}
+
+func (x *GetBindingRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
 	}
 	return ""
 }
@@ -2514,6 +2570,7 @@ type RevokeBindingRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	BindingId       string                 `protobuf:"bytes,1,opt,name=binding_id,json=bindingId,proto3" json:"binding_id,omitempty"`
 	ExpectedVersion int64                  `protobuf:"varint,2,opt,name=expected_version,json=expectedVersion,proto3" json:"expected_version,omitempty"`
+	TenantId        string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -2560,6 +2617,13 @@ func (x *RevokeBindingRequest) GetExpectedVersion() int64 {
 		return x.ExpectedVersion
 	}
 	return 0
+}
+
+func (x *RevokeBindingRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
 }
 
 type RevokeBindingResponse struct {
@@ -2919,19 +2983,21 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\x18CreatePermissionResponse\x12E\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2%.platform.authorization.v1.PermissionR\n" +
-	"permission\";\n" +
+	"permission\"X\n" +
 	"\x14GetPermissionRequest\x12#\n" +
-	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\"^\n" +
+	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"^\n" +
 	"\x15GetPermissionResponse\x12E\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2%.platform.authorization.v1.PermissionR\n" +
-	"permission\"\xc8\x01\n" +
+	"permission\"\xe5\x01\n" +
 	"\x17UpdatePermissionRequest\x12#\n" +
 	"\rpermission_id\x18\x01 \x01(\tR\fpermissionId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x121\n" +
 	"\x14condition_expression\x18\x03 \x01(\tR\x13conditionExpression\x12\x16\n" +
 	"\x06status\x18\x04 \x01(\tR\x06status\x12)\n" +
-	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\"a\n" +
+	"\x10expected_version\x18\x05 \x01(\x03R\x0fexpectedVersion\x12\x1b\n" +
+	"\ttenant_id\x18\x06 \x01(\tR\btenantId\"a\n" +
 	"\x18UpdatePermissionResponse\x12E\n" +
 	"\n" +
 	"permission\x18\x01 \x01(\v2%.platform.authorization.v1.PermissionR\n" +
@@ -2950,11 +3016,12 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\n" +
 	"data_scope\x18\x05 \x01(\tR\tdataScope\"I\n" +
 	"\x12CreateRoleResponse\x123\n" +
-	"\x04role\x18\x01 \x01(\v2\x1f.platform.authorization.v1.RoleR\x04role\")\n" +
+	"\x04role\x18\x01 \x01(\v2\x1f.platform.authorization.v1.RoleR\x04role\"F\n" +
 	"\x0eGetRoleRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\"F\n" +
+	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"F\n" +
 	"\x0fGetRoleResponse\x123\n" +
-	"\x04role\x18\x01 \x01(\v2\x1f.platform.authorization.v1.RoleR\x04role\"\xc4\x01\n" +
+	"\x04role\x18\x01 \x01(\v2\x1f.platform.authorization.v1.RoleR\x04role\"\xe1\x01\n" +
 	"\x11UpdateRoleRequest\x12\x17\n" +
 	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -2962,7 +3029,8 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\n" +
 	"data_scope\x18\x04 \x01(\tR\tdataScope\x12\x16\n" +
 	"\x06status\x18\x05 \x01(\tR\x06status\x12)\n" +
-	"\x10expected_version\x18\x06 \x01(\x03R\x0fexpectedVersion\"I\n" +
+	"\x10expected_version\x18\x06 \x01(\x03R\x0fexpectedVersion\x12\x1b\n" +
+	"\ttenant_id\x18\a \x01(\tR\btenantId\"I\n" +
 	"\x12UpdateRoleResponse\x123\n" +
 	"\x04role\x18\x01 \x01(\v2\x1f.platform.authorization.v1.RoleR\x04role\"d\n" +
 	"\x10ListRolesRequest\x12\x1b\n" +
@@ -2976,14 +3044,16 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\arole_id\x18\x02 \x01(\tR\x06roleId\x12#\n" +
 	"\rpermission_id\x18\x03 \x01(\tR\fpermissionId\"q\n" +
 	"\x1bGrantRolePermissionResponse\x12R\n" +
-	"\x0frole_permission\x18\x01 \x01(\v2).platform.authorization.v1.RolePermissionR\x0erolePermission\"v\n" +
+	"\x0frole_permission\x18\x01 \x01(\v2).platform.authorization.v1.RolePermissionR\x0erolePermission\"\x93\x01\n" +
 	"\x1bRevokeRolePermissionRequest\x12,\n" +
 	"\x12role_permission_id\x18\x01 \x01(\tR\x10rolePermissionId\x12)\n" +
-	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"r\n" +
+	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\x12\x1b\n" +
+	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"r\n" +
 	"\x1cRevokeRolePermissionResponse\x12R\n" +
-	"\x0frole_permission\x18\x01 \x01(\v2).platform.authorization.v1.RolePermissionR\x0erolePermission\"5\n" +
+	"\x0frole_permission\x18\x01 \x01(\v2).platform.authorization.v1.RolePermissionR\x0erolePermission\"R\n" +
 	"\x1aListRolePermissionsRequest\x12\x17\n" +
-	"\arole_id\x18\x01 \x01(\tR\x06roleId\"s\n" +
+	"\arole_id\x18\x01 \x01(\tR\x06roleId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"s\n" +
 	"\x1bListRolePermissionsResponse\x12T\n" +
 	"\x10role_permissions\x18\x01 \x03(\v2).platform.authorization.v1.RolePermissionR\x0frolePermissions\"\xbc\x01\n" +
 	"\x14CreateBindingRequest\x12\x1b\n" +
@@ -2992,16 +3062,18 @@ const file_platform_authorization_v1_authorization_proto_rawDesc = "" +
 	"\arole_id\x18\x03 \x01(\tR\x06roleId\x120\n" +
 	"\x14organization_unit_id\x18\x04 \x01(\tR\x12organizationUnitId\"U\n" +
 	"\x15CreateBindingResponse\x12<\n" +
-	"\abinding\x18\x01 \x01(\v2\".platform.authorization.v1.BindingR\abinding\"2\n" +
+	"\abinding\x18\x01 \x01(\v2\".platform.authorization.v1.BindingR\abinding\"O\n" +
 	"\x11GetBindingRequest\x12\x1d\n" +
 	"\n" +
-	"binding_id\x18\x01 \x01(\tR\tbindingId\"R\n" +
+	"binding_id\x18\x01 \x01(\tR\tbindingId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"R\n" +
 	"\x12GetBindingResponse\x12<\n" +
-	"\abinding\x18\x01 \x01(\v2\".platform.authorization.v1.BindingR\abinding\"`\n" +
+	"\abinding\x18\x01 \x01(\v2\".platform.authorization.v1.BindingR\abinding\"}\n" +
 	"\x14RevokeBindingRequest\x12\x1d\n" +
 	"\n" +
 	"binding_id\x18\x01 \x01(\tR\tbindingId\x12)\n" +
-	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\"U\n" +
+	"\x10expected_version\x18\x02 \x01(\x03R\x0fexpectedVersion\x12\x1b\n" +
+	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"U\n" +
 	"\x15RevokeBindingResponse\x12<\n" +
 	"\abinding\x18\x01 \x01(\v2\".platform.authorization.v1.BindingR\abinding\"\xa5\x01\n" +
 	"\x13ListBindingsRequest\x12\x1b\n" +
