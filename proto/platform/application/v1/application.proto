@@ -138,6 +138,12 @@ message GetApplicationResponse {
 message ListApplicationsRequest {
   string status = 1;
   platform.common.v1.PageRequest page = 2;
+  string keyword = 3;
+  repeated string ids = 4;
+  google.protobuf.Timestamp created_from = 5;
+  google.protobuf.Timestamp created_to = 6;
+  google.protobuf.Timestamp updated_from = 7;
+  google.protobuf.Timestamp updated_to = 8;
 }
 message ListApplicationsResponse {
   repeated Application applications = 1;
@@ -218,6 +224,12 @@ message ListTenantApplicationsRequest {
   string tenant_id = 1;
   bool active_only = 2;
   platform.common.v1.PageRequest page = 3;
+  repeated string application_ids = 4;
+  repeated string statuses = 5;
+  google.protobuf.Timestamp created_from = 6;
+  google.protobuf.Timestamp created_to = 7;
+  google.protobuf.Timestamp updated_from = 8;
+  google.protobuf.Timestamp updated_to = 9;
 }
 message ListTenantApplicationsResponse {
   repeated TenantApplicationGrant grants = 1;
