@@ -861,6 +861,12 @@ type ListJobsRequest struct {
 	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
 	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	ApplicationId string                 `protobuf:"bytes,5,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	Keyword       string                 `protobuf:"bytes,6,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Ids           []string               `protobuf:"bytes,7,rep,name=ids,proto3" json:"ids,omitempty"`
+	Statuses      []string               `protobuf:"bytes,8,rep,name=statuses,proto3" json:"statuses,omitempty"`
+	Upstreams     []string               `protobuf:"bytes,9,rep,name=upstreams,proto3" json:"upstreams,omitempty"`
+	CreatedFrom   *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_from,json=createdFrom,proto3" json:"created_from,omitempty"`
+	CreatedTo     *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=created_to,json=createdTo,proto3" json:"created_to,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -928,6 +934,48 @@ func (x *ListJobsRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *ListJobsRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *ListJobsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *ListJobsRequest) GetStatuses() []string {
+	if x != nil {
+		return x.Statuses
+	}
+	return nil
+}
+
+func (x *ListJobsRequest) GetUpstreams() []string {
+	if x != nil {
+		return x.Upstreams
+	}
+	return nil
+}
+
+func (x *ListJobsRequest) GetCreatedFrom() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedFrom
+	}
+	return nil
+}
+
+func (x *ListJobsRequest) GetCreatedTo() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedTo
+	}
+	return nil
 }
 
 type ListJobsResponse struct {
@@ -1183,12 +1231,20 @@ func (x *GetExecutionResponse) GetExecution() *Execution {
 }
 
 type ListExecutionsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	JobId         string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
-	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
-	PageSize      int32                  `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	JobId                   string                 `protobuf:"bytes,1,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	Page                    int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize                int32                  `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Keyword                 string                 `protobuf:"bytes,4,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Ids                     []string               `protobuf:"bytes,5,rep,name=ids,proto3" json:"ids,omitempty"`
+	Statuses                []string               `protobuf:"bytes,6,rep,name=statuses,proto3" json:"statuses,omitempty"`
+	TriggerTypes            []string               `protobuf:"bytes,7,rep,name=trigger_types,json=triggerTypes,proto3" json:"trigger_types,omitempty"`
+	StartedFrom             *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=started_from,json=startedFrom,proto3" json:"started_from,omitempty"`
+	StartedTo               *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=started_to,json=startedTo,proto3" json:"started_to,omitempty"`
+	DurationMinMilliseconds int64                  `protobuf:"varint,10,opt,name=duration_min_milliseconds,json=durationMinMilliseconds,proto3" json:"duration_min_milliseconds,omitempty"`
+	DurationMaxMilliseconds int64                  `protobuf:"varint,11,opt,name=duration_max_milliseconds,json=durationMaxMilliseconds,proto3" json:"duration_max_milliseconds,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *ListExecutionsRequest) Reset() {
@@ -1238,6 +1294,62 @@ func (x *ListExecutionsRequest) GetPage() int32 {
 func (x *ListExecutionsRequest) GetPageSize() int32 {
 	if x != nil {
 		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListExecutionsRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *ListExecutionsRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
+func (x *ListExecutionsRequest) GetStatuses() []string {
+	if x != nil {
+		return x.Statuses
+	}
+	return nil
+}
+
+func (x *ListExecutionsRequest) GetTriggerTypes() []string {
+	if x != nil {
+		return x.TriggerTypes
+	}
+	return nil
+}
+
+func (x *ListExecutionsRequest) GetStartedFrom() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartedFrom
+	}
+	return nil
+}
+
+func (x *ListExecutionsRequest) GetStartedTo() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartedTo
+	}
+	return nil
+}
+
+func (x *ListExecutionsRequest) GetDurationMinMilliseconds() int64 {
+	if x != nil {
+		return x.DurationMinMilliseconds
+	}
+	return 0
+}
+
+func (x *ListExecutionsRequest) GetDurationMaxMilliseconds() int64 {
+	if x != nil {
+		return x.DurationMaxMilliseconds
 	}
 	return 0
 }
@@ -1401,13 +1513,21 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\rGetJobRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\">\n" +
 	"\x0eGetJobResponse\x12,\n" +
-	"\x03job\x18\x01 \x01(\v2\x1a.platform.scheduler.v1.JobR\x03job\"\x9e\x01\n" +
+	"\x03job\x18\x01 \x01(\v2\x1a.platform.scheduler.v1.JobR\x03job\"\xfe\x02\n" +
 	"\x0fListJobsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x16\n" +
 	"\x06status\x18\x03 \x01(\tR\x06status\x12\x1b\n" +
 	"\ttenant_id\x18\x04 \x01(\tR\btenantId\x12%\n" +
-	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\"\x8b\x01\n" +
+	"\x0eapplication_id\x18\x05 \x01(\tR\rapplicationId\x12\x18\n" +
+	"\akeyword\x18\x06 \x01(\tR\akeyword\x12\x10\n" +
+	"\x03ids\x18\a \x03(\tR\x03ids\x12\x1a\n" +
+	"\bstatuses\x18\b \x03(\tR\bstatuses\x12\x1c\n" +
+	"\tupstreams\x18\t \x03(\tR\tupstreams\x12=\n" +
+	"\fcreated_from\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\vcreatedFrom\x129\n" +
+	"\n" +
+	"created_to\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedTo\"\x8b\x01\n" +
 	"\x10ListJobsResponse\x120\n" +
 	"\x05items\x18\x01 \x03(\v2\x1a.platform.scheduler.v1.JobR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
@@ -1421,11 +1541,21 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\x13GetExecutionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"V\n" +
 	"\x14GetExecutionResponse\x12>\n" +
-	"\texecution\x18\x01 \x01(\v2 .platform.scheduler.v1.ExecutionR\texecution\"_\n" +
+	"\texecution\x18\x01 \x01(\v2 .platform.scheduler.v1.ExecutionR\texecution\"\xbe\x03\n" +
 	"\x15ListExecutionsRequest\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\"\x97\x01\n" +
+	"\tpage_size\x18\x03 \x01(\x05R\bpageSize\x12\x18\n" +
+	"\akeyword\x18\x04 \x01(\tR\akeyword\x12\x10\n" +
+	"\x03ids\x18\x05 \x03(\tR\x03ids\x12\x1a\n" +
+	"\bstatuses\x18\x06 \x03(\tR\bstatuses\x12#\n" +
+	"\rtrigger_types\x18\a \x03(\tR\ftriggerTypes\x12=\n" +
+	"\fstarted_from\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\vstartedFrom\x129\n" +
+	"\n" +
+	"started_to\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tstartedTo\x12:\n" +
+	"\x19duration_min_milliseconds\x18\n" +
+	" \x01(\x03R\x17durationMinMilliseconds\x12:\n" +
+	"\x19duration_max_milliseconds\x18\v \x01(\x03R\x17durationMaxMilliseconds\"\x97\x01\n" +
 	"\x16ListExecutionsResponse\x126\n" +
 	"\x05items\x18\x01 \x03(\v2 .platform.scheduler.v1.ExecutionR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
@@ -1486,31 +1616,35 @@ var file_platform_scheduler_v1_scheduler_proto_depIdxs = []int32{
 	0,  // 6: platform.scheduler.v1.CreateJobResponse.job:type_name -> platform.scheduler.v1.Job
 	0,  // 7: platform.scheduler.v1.UpdateJobResponse.job:type_name -> platform.scheduler.v1.Job
 	0,  // 8: platform.scheduler.v1.GetJobResponse.job:type_name -> platform.scheduler.v1.Job
-	0,  // 9: platform.scheduler.v1.ListJobsResponse.items:type_name -> platform.scheduler.v1.Job
-	1,  // 10: platform.scheduler.v1.TriggerJobResponse.execution:type_name -> platform.scheduler.v1.Execution
-	1,  // 11: platform.scheduler.v1.GetExecutionResponse.execution:type_name -> platform.scheduler.v1.Execution
-	1,  // 12: platform.scheduler.v1.ListExecutionsResponse.items:type_name -> platform.scheduler.v1.Execution
-	2,  // 13: platform.scheduler.v1.SchedulerService.CreateJob:input_type -> platform.scheduler.v1.CreateJobRequest
-	4,  // 14: platform.scheduler.v1.SchedulerService.UpdateJob:input_type -> platform.scheduler.v1.UpdateJobRequest
-	6,  // 15: platform.scheduler.v1.SchedulerService.DeleteJob:input_type -> platform.scheduler.v1.DeleteJobRequest
-	8,  // 16: platform.scheduler.v1.SchedulerService.GetJob:input_type -> platform.scheduler.v1.GetJobRequest
-	10, // 17: platform.scheduler.v1.SchedulerService.ListJobs:input_type -> platform.scheduler.v1.ListJobsRequest
-	12, // 18: platform.scheduler.v1.SchedulerService.TriggerJob:input_type -> platform.scheduler.v1.TriggerJobRequest
-	14, // 19: platform.scheduler.v1.SchedulerService.GetExecution:input_type -> platform.scheduler.v1.GetExecutionRequest
-	16, // 20: platform.scheduler.v1.SchedulerService.ListExecutions:input_type -> platform.scheduler.v1.ListExecutionsRequest
-	3,  // 21: platform.scheduler.v1.SchedulerService.CreateJob:output_type -> platform.scheduler.v1.CreateJobResponse
-	5,  // 22: platform.scheduler.v1.SchedulerService.UpdateJob:output_type -> platform.scheduler.v1.UpdateJobResponse
-	7,  // 23: platform.scheduler.v1.SchedulerService.DeleteJob:output_type -> platform.scheduler.v1.DeleteJobResponse
-	9,  // 24: platform.scheduler.v1.SchedulerService.GetJob:output_type -> platform.scheduler.v1.GetJobResponse
-	11, // 25: platform.scheduler.v1.SchedulerService.ListJobs:output_type -> platform.scheduler.v1.ListJobsResponse
-	13, // 26: platform.scheduler.v1.SchedulerService.TriggerJob:output_type -> platform.scheduler.v1.TriggerJobResponse
-	15, // 27: platform.scheduler.v1.SchedulerService.GetExecution:output_type -> platform.scheduler.v1.GetExecutionResponse
-	17, // 28: platform.scheduler.v1.SchedulerService.ListExecutions:output_type -> platform.scheduler.v1.ListExecutionsResponse
-	21, // [21:29] is the sub-list for method output_type
-	13, // [13:21] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	18, // 9: platform.scheduler.v1.ListJobsRequest.created_from:type_name -> google.protobuf.Timestamp
+	18, // 10: platform.scheduler.v1.ListJobsRequest.created_to:type_name -> google.protobuf.Timestamp
+	0,  // 11: platform.scheduler.v1.ListJobsResponse.items:type_name -> platform.scheduler.v1.Job
+	1,  // 12: platform.scheduler.v1.TriggerJobResponse.execution:type_name -> platform.scheduler.v1.Execution
+	1,  // 13: platform.scheduler.v1.GetExecutionResponse.execution:type_name -> platform.scheduler.v1.Execution
+	18, // 14: platform.scheduler.v1.ListExecutionsRequest.started_from:type_name -> google.protobuf.Timestamp
+	18, // 15: platform.scheduler.v1.ListExecutionsRequest.started_to:type_name -> google.protobuf.Timestamp
+	1,  // 16: platform.scheduler.v1.ListExecutionsResponse.items:type_name -> platform.scheduler.v1.Execution
+	2,  // 17: platform.scheduler.v1.SchedulerService.CreateJob:input_type -> platform.scheduler.v1.CreateJobRequest
+	4,  // 18: platform.scheduler.v1.SchedulerService.UpdateJob:input_type -> platform.scheduler.v1.UpdateJobRequest
+	6,  // 19: platform.scheduler.v1.SchedulerService.DeleteJob:input_type -> platform.scheduler.v1.DeleteJobRequest
+	8,  // 20: platform.scheduler.v1.SchedulerService.GetJob:input_type -> platform.scheduler.v1.GetJobRequest
+	10, // 21: platform.scheduler.v1.SchedulerService.ListJobs:input_type -> platform.scheduler.v1.ListJobsRequest
+	12, // 22: platform.scheduler.v1.SchedulerService.TriggerJob:input_type -> platform.scheduler.v1.TriggerJobRequest
+	14, // 23: platform.scheduler.v1.SchedulerService.GetExecution:input_type -> platform.scheduler.v1.GetExecutionRequest
+	16, // 24: platform.scheduler.v1.SchedulerService.ListExecutions:input_type -> platform.scheduler.v1.ListExecutionsRequest
+	3,  // 25: platform.scheduler.v1.SchedulerService.CreateJob:output_type -> platform.scheduler.v1.CreateJobResponse
+	5,  // 26: platform.scheduler.v1.SchedulerService.UpdateJob:output_type -> platform.scheduler.v1.UpdateJobResponse
+	7,  // 27: platform.scheduler.v1.SchedulerService.DeleteJob:output_type -> platform.scheduler.v1.DeleteJobResponse
+	9,  // 28: platform.scheduler.v1.SchedulerService.GetJob:output_type -> platform.scheduler.v1.GetJobResponse
+	11, // 29: platform.scheduler.v1.SchedulerService.ListJobs:output_type -> platform.scheduler.v1.ListJobsResponse
+	13, // 30: platform.scheduler.v1.SchedulerService.TriggerJob:output_type -> platform.scheduler.v1.TriggerJobResponse
+	15, // 31: platform.scheduler.v1.SchedulerService.GetExecution:output_type -> platform.scheduler.v1.GetExecutionResponse
+	17, // 32: platform.scheduler.v1.SchedulerService.ListExecutions:output_type -> platform.scheduler.v1.ListExecutionsResponse
+	25, // [25:33] is the sub-list for method output_type
+	17, // [17:25] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_platform_scheduler_v1_scheduler_proto_init() }

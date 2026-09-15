@@ -105,6 +105,12 @@ message ListJobsRequest {
   string status = 3;
   string tenant_id = 4;
   string application_id = 5;
+  string keyword = 6;
+  repeated string ids = 7;
+  repeated string statuses = 8;
+  repeated string upstreams = 9;
+  google.protobuf.Timestamp created_from = 10;
+  google.protobuf.Timestamp created_to = 11;
 }
 message ListJobsResponse {
   repeated Job items = 1;
@@ -129,6 +135,14 @@ message ListExecutionsRequest {
   string job_id = 1;
   int32 page = 2;
   int32 page_size = 3;
+  string keyword = 4;
+  repeated string ids = 5;
+  repeated string statuses = 6;
+  repeated string trigger_types = 7;
+  google.protobuf.Timestamp started_from = 8;
+  google.protobuf.Timestamp started_to = 9;
+  int64 duration_min_milliseconds = 10;
+  int64 duration_max_milliseconds = 11;
 }
 message ListExecutionsResponse {
   repeated Execution items = 1;
