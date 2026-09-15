@@ -415,6 +415,11 @@ type QueryRequest struct {
 	OccurredTo    *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=occurred_to,json=occurredTo,proto3" json:"occurred_to,omitempty"`
 	Page          *v1.PageRequest        `protobuf:"bytes,9,opt,name=page,proto3" json:"page,omitempty"`
 	ApplicationId string                 `protobuf:"bytes,10,opt,name=application_id,json=applicationId,proto3" json:"application_id,omitempty"`
+	ActorType     string                 `protobuf:"bytes,11,opt,name=actor_type,json=actorType,proto3" json:"actor_type,omitempty"`
+	TraceId       string                 `protobuf:"bytes,12,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	SourceService string                 `protobuf:"bytes,13,opt,name=source_service,json=sourceService,proto3" json:"source_service,omitempty"`
+	Keyword       string                 `protobuf:"bytes,14,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	Ids           []string               `protobuf:"bytes,15,rep,name=ids,proto3" json:"ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -517,6 +522,41 @@ func (x *QueryRequest) GetApplicationId() string {
 		return x.ApplicationId
 	}
 	return ""
+}
+
+func (x *QueryRequest) GetActorType() string {
+	if x != nil {
+		return x.ActorType
+	}
+	return ""
+}
+
+func (x *QueryRequest) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *QueryRequest) GetSourceService() string {
+	if x != nil {
+		return x.SourceService
+	}
+	return ""
+}
+
+func (x *QueryRequest) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
+func (x *QueryRequest) GetIds() []string {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
 }
 
 type QueryResponse struct {
@@ -779,7 +819,7 @@ const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"E\n" +
 	"\vGetResponse\x126\n" +
-	"\x06record\x18\x01 \x01(\v2\x1e.platform.audit.v1.AuditRecordR\x06record\"\x9d\x03\n" +
+	"\x06record\x18\x01 \x01(\v2\x1e.platform.audit.v1.AuditRecordR\x06record\"\xaa\x04\n" +
 	"\fQueryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
 	"\bactor_id\x18\x02 \x01(\tR\aactorId\x12\x16\n" +
@@ -794,7 +834,13 @@ const file_platform_audit_v1_audit_proto_rawDesc = "" +
 	"occurredTo\x123\n" +
 	"\x04page\x18\t \x01(\v2\x1f.platform.common.v1.PageRequestR\x04page\x12%\n" +
 	"\x0eapplication_id\x18\n" +
-	" \x01(\tR\rapplicationId\"}\n" +
+	" \x01(\tR\rapplicationId\x12\x1d\n" +
+	"\n" +
+	"actor_type\x18\v \x01(\tR\tactorType\x12\x19\n" +
+	"\btrace_id\x18\f \x01(\tR\atraceId\x12%\n" +
+	"\x0esource_service\x18\r \x01(\tR\rsourceService\x12\x18\n" +
+	"\akeyword\x18\x0e \x01(\tR\akeyword\x12\x10\n" +
+	"\x03ids\x18\x0f \x03(\tR\x03ids\"}\n" +
 	"\rQueryResponse\x128\n" +
 	"\arecords\x18\x01 \x03(\v2\x1e.platform.audit.v1.AuditRecordR\arecords\x122\n" +
 	"\x04page\x18\x02 \x01(\v2\x1e.platform.common.v1.PageResultR\x04page\"i\n" +
