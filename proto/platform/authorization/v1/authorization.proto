@@ -180,6 +180,13 @@ message UpdatePermissionResponse {
 message ListPermissionsRequest {
   string tenant_id = 1;
   platform.common.v1.PageRequest page = 2;
+  string keyword = 3;
+  repeated string permission_ids = 4;
+  repeated string statuses = 5;
+  repeated string resource_types = 6;
+  repeated string actions = 7;
+  google.protobuf.Timestamp created_from = 8;
+  google.protobuf.Timestamp created_to = 9;
 }
 message ListPermissionsResponse {
   repeated Permission permissions = 1;
@@ -218,6 +225,12 @@ message UpdateRoleResponse {
 message ListRolesRequest {
   string tenant_id = 1;
   platform.common.v1.PageRequest page = 2;
+  string keyword = 3;
+  repeated string role_ids = 4;
+  repeated string statuses = 5;
+  repeated string data_scopes = 6;
+  google.protobuf.Timestamp created_from = 7;
+  google.protobuf.Timestamp created_to = 8;
 }
 message ListRolesResponse {
   repeated Role roles = 1;
@@ -276,6 +289,12 @@ message ListBindingsRequest {
   string tenant_id = 1;
   Subject subject = 2;
   platform.common.v1.PageRequest page = 3;
+  repeated string binding_ids = 4;
+  repeated string role_ids = 5;
+  repeated string statuses = 6;
+  repeated string organization_unit_ids = 7;
+  google.protobuf.Timestamp created_from = 8;
+  google.protobuf.Timestamp created_to = 9;
 }
 message ListBindingsResponse {
   repeated Binding bindings = 1;
