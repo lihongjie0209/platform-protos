@@ -1241,8 +1241,8 @@ type ListExecutionsRequest struct {
 	TriggerTypes            []string               `protobuf:"bytes,7,rep,name=trigger_types,json=triggerTypes,proto3" json:"trigger_types,omitempty"`
 	StartedFrom             *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=started_from,json=startedFrom,proto3" json:"started_from,omitempty"`
 	StartedTo               *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=started_to,json=startedTo,proto3" json:"started_to,omitempty"`
-	DurationMinMilliseconds int64                  `protobuf:"varint,10,opt,name=duration_min_milliseconds,json=durationMinMilliseconds,proto3" json:"duration_min_milliseconds,omitempty"`
-	DurationMaxMilliseconds int64                  `protobuf:"varint,11,opt,name=duration_max_milliseconds,json=durationMaxMilliseconds,proto3" json:"duration_max_milliseconds,omitempty"`
+	DurationMinMilliseconds *int64                 `protobuf:"varint,10,opt,name=duration_min_milliseconds,json=durationMinMilliseconds,proto3,oneof" json:"duration_min_milliseconds,omitempty"`
+	DurationMaxMilliseconds *int64                 `protobuf:"varint,11,opt,name=duration_max_milliseconds,json=durationMaxMilliseconds,proto3,oneof" json:"duration_max_milliseconds,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -1341,15 +1341,15 @@ func (x *ListExecutionsRequest) GetStartedTo() *timestamppb.Timestamp {
 }
 
 func (x *ListExecutionsRequest) GetDurationMinMilliseconds() int64 {
-	if x != nil {
-		return x.DurationMinMilliseconds
+	if x != nil && x.DurationMinMilliseconds != nil {
+		return *x.DurationMinMilliseconds
 	}
 	return 0
 }
 
 func (x *ListExecutionsRequest) GetDurationMaxMilliseconds() int64 {
-	if x != nil {
-		return x.DurationMaxMilliseconds
+	if x != nil && x.DurationMaxMilliseconds != nil {
+		return *x.DurationMaxMilliseconds
 	}
 	return 0
 }
@@ -1541,7 +1541,7 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\x13GetExecutionRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"V\n" +
 	"\x14GetExecutionResponse\x12>\n" +
-	"\texecution\x18\x01 \x01(\v2 .platform.scheduler.v1.ExecutionR\texecution\"\xbe\x03\n" +
+	"\texecution\x18\x01 \x01(\v2 .platform.scheduler.v1.ExecutionR\texecution\"\x84\x04\n" +
 	"\x15ListExecutionsRequest\x12\x15\n" +
 	"\x06job_id\x18\x01 \x01(\tR\x05jobId\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x1b\n" +
@@ -1552,10 +1552,12 @@ const file_platform_scheduler_v1_scheduler_proto_rawDesc = "" +
 	"\rtrigger_types\x18\a \x03(\tR\ftriggerTypes\x12=\n" +
 	"\fstarted_from\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\vstartedFrom\x129\n" +
 	"\n" +
-	"started_to\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tstartedTo\x12:\n" +
+	"started_to\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tstartedTo\x12?\n" +
 	"\x19duration_min_milliseconds\x18\n" +
-	" \x01(\x03R\x17durationMinMilliseconds\x12:\n" +
-	"\x19duration_max_milliseconds\x18\v \x01(\x03R\x17durationMaxMilliseconds\"\x97\x01\n" +
+	" \x01(\x03H\x00R\x17durationMinMilliseconds\x88\x01\x01\x12?\n" +
+	"\x19duration_max_milliseconds\x18\v \x01(\x03H\x01R\x17durationMaxMilliseconds\x88\x01\x01B\x1c\n" +
+	"\x1a_duration_min_millisecondsB\x1c\n" +
+	"\x1a_duration_max_milliseconds\"\x97\x01\n" +
 	"\x16ListExecutionsResponse\x126\n" +
 	"\x05items\x18\x01 \x03(\v2 .platform.scheduler.v1.ExecutionR\x05items\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x12\n" +
@@ -1652,6 +1654,7 @@ func file_platform_scheduler_v1_scheduler_proto_init() {
 	if File_platform_scheduler_v1_scheduler_proto != nil {
 		return
 	}
+	file_platform_scheduler_v1_scheduler_proto_msgTypes[16].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

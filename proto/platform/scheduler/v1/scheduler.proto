@@ -141,8 +141,8 @@ message ListExecutionsRequest {
   repeated string trigger_types = 7;
   google.protobuf.Timestamp started_from = 8;
   google.protobuf.Timestamp started_to = 9;
-  int64 duration_min_milliseconds = 10;
-  int64 duration_max_milliseconds = 11;
+  optional int64 duration_min_milliseconds = 10;
+  optional int64 duration_max_milliseconds = 11;
 }
 message ListExecutionsResponse {
   repeated Execution items = 1;
